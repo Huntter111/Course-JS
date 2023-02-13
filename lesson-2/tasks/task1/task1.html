@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task-1</title>
+	</head>
+	<body>
+		<h2>Задача 1. Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</h2>
+		<script>
+			const firstNumber = parseFloat(prompt('Введіть будь-яке число'));
+			const secondNumber = parseFloat(prompt('Введіть будь-яке число'));
+			const sumNumbers = firstNumber + secondNumber;
+			const productNumbers = firstNumber * secondNumber;
+			const fractionNumbers = firstNumber / secondNumber;
+			document.write(`
+			            <table>
+			               <tr>
+			                  <th>Операції</th>
+			                  <th>Перше число <br> <span>${firstNumber}</span></th>
+			                  <th>Друге число <br> <span>${secondNumber}</span></th>
+			               </tr>
+			               <tr>
+                           <td>Сума двох чисел</td>
+                           <td colspan = '2'>${sumNumbers}</td>
+                           
+                        </tr>      
+                        <tr>
+                           <td>Добуток двох чисел</td>
+                           <td colspan = '2'>${productNumbers}</td>
+                           
+                        </tr>
+                        <tr>
+                           <td>Частка двох чисел</td>
+                           <td colspan = '2'>${fractionNumbers}</td>
+                           
+                        </tr>
+			            </table>
+			         `);
+		</script>
+		<style>
+			table {
+				padding: 2rem;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 16px;
+			}
+			th {
+				padding: 0.5rem;
+				background-color: aquamarine;
+			}
+			th:first-child {
+				text-align-last: left;
+			}
+			th span {
+				color: #2500ff;
+			}
+			td {
+				background-color: aqua;
+				border-style: solid;
+				border-width: 0 1px 1px 0;
+				border-color: white;
+			}
+			td:first-child {
+				padding: 1rem;
+				background-color: aquamarine;
+			}
+			td:nth-child(2) {
+				text-align: center;
+			}
+		</style>
+	</body>
+</html>
