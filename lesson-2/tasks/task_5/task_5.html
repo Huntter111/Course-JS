@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>Задача 4. Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.</h3>
+		<script>
+			// 1 Вводимо кількість секунд.
+			const numberSeconds = parseFloat(prompt('Введіть кількість секунд', '0'));
+			// 2
+			const lookForMinutes = numberSeconds / 60;
+			const lookForHours = numberSeconds / 3600;
+			alert(`Хвилини : ${Math.round(lookForMinutes)}хв. , Години: ${Math.round(lookForHours)} год. `);
+			document.write(
+				`Хвилини : ${Math.round(lookForMinutes)} хв. <br> <br> Години: ${Math.round(lookForHours)} год. `,
+			);
+		</script>
+	</body>
+</html>

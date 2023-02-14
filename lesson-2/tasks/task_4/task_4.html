@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>Задача 4. Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.</h3>
+		<script>
+			// 1 Вводимо вартість і кількість одиниць товару
+			const lengthCentimeters = parseFloat(prompt('Введіть довжину у сантиметрах', '0'));
+			// 2 Переводимо сантиметри в метри і кілометри
+			const lengthMeters = lengthCentimeters / Math.pow(10, 3);
+			const lengthKilometers = lengthCentimeters / Math.pow(10, 5);
+			// 3 Виводимо повідомлення про дані величини
+			alert(`Кількість метрів = ${lengthMeters} м. Кількість кілометрів = ${lengthKilometers} км.`);
+			document.write(
+				`Кількість метрів = ${lengthMeters} м. <br> <br> Кількість кілометрів = ${lengthKilometers} км.`,
+			);
+		</script>
+	</body>
+</html>
