@@ -4,20 +4,24 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Task 4</title>
+		<title>Task 5</title>
 	</head>
 	<body>
-		<h3>Задача 4. Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.</h3>
+		<h3>Задача 5. Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</h3>
 		<script>
 			// 1 Вводимо кількість секунд.
-			const numberSeconds = parseFloat(prompt('Введіть кількість секунд', '0'));
+			const numberSeconds = parseInt(prompt('Введіть кількість секунд', '0'));
 			// 2
-			const lookForMinutes = numberSeconds / 60;
-			const lookForHours = numberSeconds / 3600;
-			alert(`Хвилини : ${Math.round(lookForMinutes)}хв. , Години: ${Math.round(lookForHours)} год. `);
-			document.write(
-				`Хвилини : ${Math.round(lookForMinutes)} хв. <br> <br> Години: ${Math.round(lookForHours)} год. `,
-			);
+			const lookForHours = Math.floor(numberSeconds / 3600);
+			const lookForMinutes = Math.floor(numberSeconds / 60 - lookForHours * 60);
+			const lookForSeconds = numberSeconds % 60;
+			// alert(
+			// 	`Години: ${Math.floor(lookForHours)} год., Хвилини : ${Math.floor(
+			// 		lookForMinutes,
+			// 	)}хв. Секунды: ${lookForSeconds} `,
+			// );
+			alert(`Години: ${lookForHours} год., Хвилини : ${lookForMinutes} хв. Секунды: ${lookForSeconds} `);
+			document.write(`Години: ${lookForHours} год., Хвилини : ${lookForMinutes} хв. Секунды: ${lookForSeconds} `);
 		</script>
 	</body>
 </html>

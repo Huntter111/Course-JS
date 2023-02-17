@@ -12,7 +12,7 @@
 			// 1 Вводимо вартість і кількість одиниць товару
 			const lengthCentimeters = parseFloat(prompt('Введіть довжину у сантиметрах', '0'));
 			// 2 Переводимо сантиметри в метри і кілометри
-			const lengthMeters = lengthCentimeters / Math.pow(10, 3);
+			const lengthMeters = lengthCentimeters / Math.pow(10, 2);
 			const lengthKilometers = lengthCentimeters / Math.pow(10, 5);
 			// 3 Виводимо повідомлення про дані величини
 			alert(`Кількість метрів = ${lengthMeters} м. Кількість кілометрів = ${lengthKilometers} км.`);
