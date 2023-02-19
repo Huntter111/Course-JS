@@ -15,16 +15,15 @@
 			const nameFirstChild = prompt("Введіть ім'я першої дитини", '');
 			const nameSecondChild = prompt("Введіть ім'я другої дитини", '');
 
-			const numSweetsFirst = parseInt(prompt('Введіть кількість цукерок для першої дитини', ' 0'));
-			const numSweetsSecond = parseInt(prompt('Введіть кількість цукерок для другої дитини', ' 0'));
+			const numSweetsFirst = parseInt(prompt('Введіть кількість цукерок для першої дитини', '0'));
+			const numSweetsSecond = parseInt(prompt('Введіть кількість цукерок для другої дитини', '0'));
 
-			if (numSweetsFirst === numSweetsSecond) {
-				alert(`Кількість цукерок однакова `);
-			}
 			if (numSweetsFirst > numSweetsSecond) {
-				alert(`Кількість цукерок більше ${nameFirstChild}`);
+				document.write(`Кількість цукерок більше ${nameFirstChild}`);
+			} else if (numSweetsFirst === numSweetsSecond) {
+				document.write(`Кількість цукерок однакова `);
 			} else {
-				alert(`Кількість цукерок більше ${nameSecondChild}`);
+				document.write(`Кількість цукерок більше ${nameSecondChild}`);
 			}
 		</script>
 	</body>
