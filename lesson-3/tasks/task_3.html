@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+	</head>
+	<body>
+		<h3>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</h3>
+		<script>
+			const minNum = 1;
+			const maxNum = 5;
+
+			const generateNum = minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			console.log(`Я згадав число ${generateNum} `);
+
+			const userNum = parseInt(prompt('Перша спроба: Введіть число від 1 до 5 включно', '1'));
+			let userNum2;
+			if (userNum === generateNum) {
+				document.write(`Ви виграли. Я загадав число ${generateNum}`);
+			} else if (userNum != generateNum) {
+				let userNum2 = prompt('Ви не вгадали введіть число від 1 до 5', '1');
+			} else if (userNum2 === generateNum) {
+				document.write(`Ви вгадали число. Я загадав число ${generateNum}`);
+			} else {
+				document.write('Спробуйте ще раз(');
+			}
+		</script>
+	</body>
+</html>
