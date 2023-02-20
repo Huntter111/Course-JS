@@ -16,11 +16,9 @@
 			console.log(`Я згадав число ${generateNum} `);
 
 			const userNum = parseInt(prompt('Перша спроба: Введіть число від 1 до 5 включно', '1'));
-			// let userNum2;
-			if (userNum === generateNum) {
-				document.write(`Ви виграли. Я загадав число ${generateNum}`);
-			} else {
-				let userNum2 = parseInt(prompt('Ви не вгадали введіть число від 1 до 5', '1'));
+			if (userNum === generateNum) document.write(`Ви виграли. Я загадав число ${generateNum}`);
+			else {
+				const userNum2 = parseInt(prompt('Ви не вгадали введіть число від 1 до 5', '1'));
 
 				if (userNum2 === generateNum) {
 					document.write(`Ви вгадали число. Я загадав число ${generateNum}`);
