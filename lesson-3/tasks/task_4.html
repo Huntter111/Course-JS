@@ -21,14 +21,14 @@
 			const userAge = parseInt(prompt('Введіть ваш вік', '0'));
 			if (userAge <= ageChild) {
 				document.write('Ви дитина');
-			} else if (userAge > ageChild && userAge <= ageTeenager) {
+			} else if (userAge <= ageTeenager) {
 				document.write('Ви школяр');
-			} else if (userAge > ageTeenager && userAge <= ageStudent) {
+			} else if (userAge <= ageStudent) {
 				document.write('Ви студент');
-			} else if (userAge > ageWorker && userAge <= ageWorker) {
+			} else if (userAge <= ageWorker) {
 				document.write('Ви працівник');
-			} else if (userAge > ageWorker && userAge <= agePensioner) {
-				document.write('Ви працівник');
+			} else if (userAge > ageWorker) {
+				document.write('Ви пенсіонер');
 			} else {
 				document.write('Введіть коректний вік!');
 			}
