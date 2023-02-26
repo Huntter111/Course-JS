@@ -4,18 +4,20 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Task 4</title>
+		<title>Task 5</title>
 	</head>
 	<body>
-		<h3>Задача 4. Вивести таблицю з 3 рядків і 7 стовпців</h3>
+		<h3>Задача 5. Вивести таблицю</h3>
 		<script>
-			const tableCulumns = 7;
-			const tableRow = 3;
+			const tableCulumns = 3;
+			const tableRow = 1;
+			const Numbers = 9;
 			for (let i = 0; i < tableRow; i++) {
 				document.write(`<table >`);
 				document.write('<tr>');
-				for (let j = 0; j < tableCulumns; j++) {
-					document.write(`<td> ${j + 1} </td>`);
+				for (let j = 0; j < Numbers; j++) {
+					if (j % 3 === 0 && j !== 0) document.write(`<tr>`);
+					document.write(`<td>${j + 1}</td>`);
 				}
 				document.write(`</tr>`);
 				document.write(`</table >`);
