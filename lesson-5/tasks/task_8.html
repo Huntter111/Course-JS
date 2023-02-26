@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>
+			Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати
+			confirm).
+		</h3>
+		<script>
+			const minNumber = 1;
+			const maxNumber = 7;
+			const userNumber = parseInt(prompt('Загадай число від 1 до 7', '2'));
+
+			for (let i = 0; i < 3; i++) {
+				let generateNumber = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1));
+				console.log(generateNumber);
+				alert(`Твоє число - ${generateNumber}`);
+				if (generateNumber === userNumber) {
+					alert(`Я вгадав число твоє число - '${generateNumber}'`);
+					break;
+				} else if (i === 2 && generateNumber !== userNumber) alert('Мої спроби закічились!');
+				else confirm('В мене ще є спроба!');
+			}
+		</script>
+	</body>
+</html>
