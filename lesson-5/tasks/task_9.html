@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>
+			Задача 9. Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати
+			confirm).
+		</h3>
+		<script>
+			const minNumber = 1;
+			const maxNumber = 7;
+			let userNumber = parseInt(prompt('Загадай число від 1 до 7', '2'));
+			let generateNumber;
+			while (true) {
+				if (isNaN(userNumber) || userNumber > 7 || userNumber < 1) {
+					alert('Будь ласка введіть число від 1 до 7!');
+					userNumber = parseInt(prompt('Загадай число від 1 до 7', '2'));
+				} else {
+					break;
+				}
+			}
+			do {
+				generateNumber = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1));
+				console.log(generateNumber);
+				let result = confirm(`Це число ${generateNumber} ?`);
+				if (result) {
+					if (generateNumber != userNumber) {
+						alert('Не пизди');
+					} else {
+						alert(`Я вгадав число! Це число ${generateNumber}`);
+						break;
+					}
+				}
+			} while (true);
+		</script>
+	</body>
+</html>
