@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 12</title>
+	</head>
+	<body>
+		<h3>
+			Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як
+			одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100
+			грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для
+			вибору зображення за номером).
+		</h3>
+		<style>
+			img {
+				max-width: 100%;
+				width: 300px;
+				height: 200px;
+				object-fit: cover;
+			}
+			.won {
+				font-size: 3rem;
+			}
+			.block {
+				display: flex;
+				column-gap: 2rem;
+				padding-left: 2rem;
+			}
+		</style>
+		<script>
+			const firstGenerateNumber = 1 + Math.floor(Math.random() * 4);
+			const secondGenerateNumber = 1 + Math.floor(Math.random() * 4);
+			const thirdGenerateNumber = 1 + Math.floor(Math.random() * 4);
+			console.log(firstGenerateNumber);
+			console.log(secondGenerateNumber);
+			console.log(thirdGenerateNumber);
+			let numberImages = '';
+			for (let i = 1; i < 4; i++) {
+				let indexImage;
+				switch (i) {
+					case 1:
+						indexImage = firstGenerateNumber;
+						break;
+					case 2:
+						indexImage = secondGenerateNumber;
+						break;
+					case 3:
+						indexImage = thirdGenerateNumber;
+						break;
+				}
+				numberImages += `<img src="../task_12/img/${indexImage}.png" alt="">`;
+			}
+			let userWonAmount = 0;
+			if (firstGenerateNumber === secondGenerateNumber && firstGenerateNumber === thirdGenerateNumber)
+				switch (firstGenerateNumber) {
+					case 1:
+						userWonAmount = '100';
+						break;
+					case 2:
+						userWonAmount = '200';
+						break;
+					case 3:
+						userWonAmount = '500';
+						break;
+					case 4:
+						userWonAmount = '1000';
+						break;
+				}
+			document.write(`<div class='block'>
+					${numberImages}
+				</div>`);
+			document.write(`<span class='won'><br> Ви виграли ${userWonAmount} грн </span>`);
+		</script>
+	</body>
+</html>
