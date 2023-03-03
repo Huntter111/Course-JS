@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 12</title>
+	</head>
+	<body>
+		<h3>
+			14. Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до
+			тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму
+			потрібно ввести).
+		</h3>
+		<style>
+			img {
+				max-width: 100%;
+				width: 300px;
+				height: 200px;
+				object-fit: cover;
+			}
+			.won {
+				font-size: 3rem;
+			}
+			.block {
+				display: flex;
+				column-gap: 2rem;
+				padding-left: 2rem;
+			}
+		</style>
+		<script>
+			// Генеруємо суму чека від 50 до 500 грн.
+			const minPrice = 50,
+				maxPrice = 500;
+			const ganerateSum = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 50));
+			console.log(ganerateSum);
+			// Виводимо користувачу повідомлення скільки коштує товар
+			alert(`Товар коштує ${ganerateSum} грн.`);
+			// Зміна для вводу кількості грошей
+			let enterAmountPaid;
+			// Зміна для зберігання суми введеної кількості грошей
+			let amoutPaidSum = 0;
+			// Зміна для виявлення переплати за товар і повернення решти користувачу
+			let essignment;
+			do {
+				enterAmountPaid = parseInt(prompt('Введіть сумму для оплати', '100'));
+				amoutPaidSum += enterAmountPaid;
+				// console.log(`Це перша сума ${amoutPaidSum}`);
+				while (amoutPaidSum < ganerateSum) {
+					let resultSum = ganerateSum - amoutPaidSum;
+					enterAmountPaid = parseInt(prompt(`Вам ще потрібно заплатити ${resultSum} грн.`, '0'));
+					amoutPaidSum += enterAmountPaid;
+					// console.log(`Це друга сума ${amoutPaidSum}`);
+				}
+				if (amoutPaidSum === ganerateSum) {
+					alert('Дякуємо за покупку, гарного дня');
+				} else {
+					essignment = amoutPaidSum - ganerateSum;
+					alert(`Ось ваш чек і решта ${essignment} грн.`);
+				}
+			} while (amoutPaidSum < ganerateSum);
+			console.log(`sum = ${amoutPaidSum}`);
+		</script>
+	</body>
+</html>
