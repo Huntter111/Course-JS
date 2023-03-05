@@ -26,15 +26,15 @@
 		</style>
 		<script>
 			const quantityMoths = parseInt(prompt('Введіть кількість місяців для визначення середньої температури', '12'));
-			let avarageTemperature = 0;
+			let averageTemperature = 0;
 
 			for (let i = 0; i < quantityMoths; i++) {
 				let userTemperature = parseFloat(prompt(`Введіть показник температури за ${i + 1} місяць`, '10'));
-				avarageTemperature += userTemperature;
-				console.log(avarageTemperature);
+				averageTemperature += userTemperature;
+				console.log(averageTemperature);
 			}
-			avarageTemperature /= quantityMoths;
-			document.write(`Середня температура за ${quantityMoths} місяців = ${avarageTemperature}&#176;`);
+			averageTemperature /= quantityMoths;
+			document.write(`Середня температура за ${quantityMoths} місяців = ${averageTemperature}&#176;`);
 		</script>
 	</body>
 </html>
