@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 12</title>
+	</head>
+	<body>
+		<h3>Задача 15. Користувача поступово вводить показники температури протягом року. Знайти середню температуру.</h3>
+		<style>
+			img {
+				max-width: 100%;
+				width: 300px;
+				height: 200px;
+				object-fit: cover;
+			}
+			.won {
+				font-size: 3rem;
+			}
+			.block {
+				display: flex;
+				column-gap: 2rem;
+				padding-left: 2rem;
+			}
+		</style>
+		<script>
+			const quantityMoths = parseInt(prompt('Введіть кількість місяців для визначення середньої температури', '12'));
+			let avarageTemperature = 0;
+
+			for (let i = 0; i < quantityMoths; i++) {
+				let userTemperature = parseFloat(prompt(`Введіть показник температури за ${i + 1} місяць`, '10'));
+				avarageTemperature += userTemperature;
+				console.log(avarageTemperature);
+			}
+			avarageTemperature /= quantityMoths;
+			document.write(`Середня температура за ${quantityMoths} місяців = ${avarageTemperature}&#176;`);
+		</script>
+	</body>
+</html>
