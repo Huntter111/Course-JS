@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 12</title>
+	</head>
+	<body>
+		<h3>Задача 15. Користувача поступово вводить показники температури протягом року. Знайти середню температуру.</h3>
+
+		<script>
+			const quantityWeekends = parseInt(prompt('Введіть кількість тижнів', '3'));
+			let amountMoneyWeekends = 0;
+			let amountMoneyDays = 0;
+			let totalAmount = 0;
+			for (let i = 0; i < quantityWeekends; i++) {
+				for (let j = 0; j < 7; j++) {
+					let userMoney = parseFloat(prompt(`Введіть прибуток магазину за ${i + 1} тиждень ${j + 1} день`, '200'));
+					if (userMoney == false) break;
+					amountMoneyDays += userMoney;
+					console.log(amountMoneyDays);
+				}
+				amountMoneyWeekends += amountMoneyDays;
+				document.write(`Gрибуток за ${i + 1}  тиждень дорівнює ${amountMoneyWeekends} грн. <br>`);
+			}
+			totalAmount += amountMoneyWeekends;
+			document.write(`Загальний прибуток дорівнює ${totalAmount} грн.`);
+		</script>
+	</body>
+</html>
