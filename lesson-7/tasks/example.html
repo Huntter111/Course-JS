@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 15</title>
+	</head>
+	<body>
+		<h2>Генерація команд</h2>
+		<style>
+			span {
+				background-color: rgba(0, 255, 13, 0.651);
+				margin: 5px;
+				font-size: 25px;
+			}
+			.teams {
+				background-color: aqua;
+			}
+		</style>
+		<script>
+			// Ввід кількості гравців та кількості гравців у команді
+			let numPlayers = parseInt(prompt('Введіть кількість гравців:'));
+			let playersPerTeam = parseInt(prompt('Введіть кількість гравців у команді:'));
+
+			// Розрахунок кількості команд
+			let numTeams = Math.floor(numPlayers / playersPerTeam);
+
+			// Створення масиву гравців
+			let players = [];
+			for (let i = 1; i <= numPlayers; i++) {
+				players.push(i);
+			}
+
+			// Рандомне розподілення гравців по командах
+			let teams = [];
+			for (let i = 1; i <= numTeams; i++) {
+				let team = [];
+				for (let j = 1; j <= playersPerTeam; j++) {
+					let randomIndex = Math.floor(Math.random() * players.length);
+					team.push(players[randomIndex]);
+					players.splice(randomIndex, 1);
+				}
+				teams.push(team);
+			}
+
+			// Вивід команд
+			for (let i = 0; i < teams.length; i++) {
+				document.write(
+					`<span class='teams'> Команда ${i + 1}${`:   `}</span> <span>${teams[i].join(', ')}</span>  <br> <br>`,
+				);
+			}
+		</script>
+	</body>
+</html>
