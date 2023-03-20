@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+	</head>
+	<body>
+		<h3>Задача 3. Створити окремі функції, які для 4 чисел знаходять:</h3>
+		<ol>
+			<li>суму;</li>
+			<li>добуток;</li>
+			<li>середнє арифметичне;</li>
+			<li>мінімальне значення.</li>
+		</ol>
+
+		<style>
+			span {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			function getSum(a, b, c, d) {
+				return a + b + c + d;
+			}
+			function getProduct(a, b, c, d) {
+				return a * b * c * d;
+			}
+			function getAverage(a, b, c, d) {
+				return (a + b + c + d) / 4;
+			}
+			function getMinNumber(a, b, c, d) {
+				return Math.min(a, b, c, d);
+			}
+			let numberFirst = parseFloat(prompt('Введіть перше число', '1'));
+			let numberSecond = parseFloat(prompt('Введіть друге число', '1'));
+			let numberThird = parseFloat(prompt('Введіть третє число', '1'));
+			let numberFourth = parseFloat(prompt('Введіть четверте число', '1'));
+
+			const resultSum = getSum(numberFirst, numberSecond, numberThird, numberFourth);
+			const resultProduct = getProduct(numberFirst, numberSecond, numberThird, numberFourth);
+			const resultAvarage = getAverage(numberFirst, numberSecond, numberThird, numberFourth);
+			const resultMinNumber = getMinNumber(numberFirst, numberSecond, numberThird, numberFourth);
+			document.write(`<span>Сумма = ${resultSum}</span> <br>`);
+			document.write(`<span>Добуток = ${resultProduct}</span> <br>`);
+			document.write(`<span>Середнє арифметичне = ${resultAvarage}</span> <br>`);
+			document.write(`<span>Мінімальне значення = ${resultMinNumber}</span> <br>`);
+		</script>
+	</body>
+</html>
