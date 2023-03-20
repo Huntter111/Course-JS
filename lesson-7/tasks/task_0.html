@@ -15,7 +15,7 @@
 			}
 		</style>
 		<script>
-			function getMonth(month) {
+			function getSeason(month) {
 				let result;
 				switch (numMonth) {
 					case 1:
@@ -48,7 +48,7 @@
 				return result;
 			}
 			let numMonth = parseInt(prompt('Введіть номер місяця', '1'));
-			let resultMonth = getMonth(numMonth);
+			let resultMonth = getSeason(numMonth);
 			document.write(`<span>${resultMonth}</span>`);
 		</script>
 	</body>
