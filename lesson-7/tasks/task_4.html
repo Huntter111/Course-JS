@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних,
+			кількість додатних, кількість більших за 100.
+		</h3>
+
+		<style>
+			span {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			const numberFirst = parseInt(prompt('Введіть перше число', '5'));
+			const numberSecond = parseInt(prompt('Введіть друге число', '50'));
+			const numberThird = parseInt(prompt('Введіть третє число', '120'));
+			function getResultNubers(a, b, c) {
+				let countEvenNumbers = 0;
+				let countPositiveNumbers = 0;
+				let countGreaterThen100 = 0;
+				let resultNumbers;
+				if (a % 2 === 0) countEvenNumbers++;
+				if (b % 2 === 0) countEvenNumbers++;
+				if (c % 2 === 0) countEvenNumbers++;
+
+				if (a > 0) countPositiveNumbers++;
+				if (b > 0) countPositiveNumbers++;
+				if (c > 0) countPositiveNumbers++;
+
+				if (a > 100) countGreaterThen100++;
+				if (b > 100) countGreaterThen100++;
+				if (c > 100) countGreaterThen100++;
+				resultNumbers = `<span>Кількість парних чисел = ${countEvenNumbers}</span> <br>
+            <span>Кількість додатних чисел = ${countPositiveNumbers} <br> </span>
+            <span>Кількість чисел більших за 100 = ${countGreaterThen100} <br> </span>
+            `;
+				return resultNumbers;
+			}
+			let result = getResultNubers(numberFirst, numberSecond, numberThird);
+			document.write(result);
+		</script>
+	</body>
+</html>
