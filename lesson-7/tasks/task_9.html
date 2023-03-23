@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 9</title>
+	</head>
+	<body>
+		<h3>
+			Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість
+			від’ємних показів температури.
+		</h3>
+
+		<style>
+			span {
+				font-size: 1.5rem;
+			}
+			.span-counter {
+				padding: 5px;
+				background-color: aqua;
+			}
+		</style>
+		<!--
+      1. Користувач вводить скільки позазників він хоче ввести
+      2. Функція підраховує скільки від'ємних позакників
+      3. Генеруємо 15 чисел від -30 до 30  -->
+
+		<script>
+			const minTemperature = -30;
+			const maxTemperature = 30;
+			function randomTemparature(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getCounterMinTemperature() {
+				let counter = 0;
+				let temperature;
+				for (let i = 0; i < 15; i++) {
+					temperature = randomTemparature(minTemperature, maxTemperature);
+					if (temperature < 0) counter++;
+					document.write(`<span>${temperature}, </span>`);
+				}
+				let resultMinTemperature = document.write(
+					`<br> <br> <span>Від'ємних показників температури = <span class='span-counter'>${counter}</span> </span>`,
+				);
+				return resultMinTemperature;
+			}
+			let result = getCounterMinTemperature();
+		</script>
+	</body>
+</html>
