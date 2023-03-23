@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>Задача 5. Створити окремі функції, які переводять</h3>
+		<ol>
+			<li>Сантиметри у дюйми;</li>
+			<li>Кілограми у фунти;</li>
+			<li>Кілометри у милі.</li>
+		</ol>
+
+		<style>
+			span {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			function getInches(centimeters) {
+				const inches = 2.54;
+				return centimeters * inches;
+			}
+			function getPounds(kilograms) {
+				const pounds = 0.45;
+				return kilograms / pounds;
+			}
+			function getCute(kilometres) {
+				const cute = 1.61;
+				return kilometres / cute;
+			}
+			let numberIntoCentimeters = parseFloat(prompt('Введіть довжину в сантиметрах', '10.5'));
+			let numberIntoKilograms = parseFloat(prompt('Введіть кількість кілограм', '5.3'));
+			let numberIntoKilometres = parseFloat(prompt('Введіть довжину в кілометрах', '7.7'));
+
+			const resultInches = getInches(numberIntoCentimeters);
+			const resultPounds = getPounds(numberIntoKilograms);
+			const resultCute = getCute(numberIntoKilometres);
+
+			document.write(`<span>${numberIntoCentimeters} см = ${resultInches} дюймів</span> <br>`);
+			document.write(`<span>${numberIntoKilograms} кг = ${numberIntoKilograms} фунтів</span> <br>`);
+			document.write(`<span>${numberIntoKilometres} км = ${numberIntoKilometres} миль</span> <br>`);
+		</script>
+	</body>
+</html>
