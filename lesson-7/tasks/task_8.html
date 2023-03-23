@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>
+			Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди
+			переходимо при кліку на зображення (тег img повине знаходитись у середині тега a:
+			<!-- <a> <img src="”шлях”" /> </a> -->
+		</h3>
+
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+		<script>
+			let imageBanner = parseInt(prompt('Виберіть одне з 4 зображень', '2'));
+			let titleBanner = prompt('Введіть заголовок банеру', 'Наші подорожі найкращі!');
+			let linkBanner = 'https://huntter111.github.io/course-js/lesson-7/';
+			function getBanner(image, link, title = 'Заголовок') {
+				switch (image) {
+					case 1:
+						resultImages = `image-1.png`;
+						break;
+					case 2:
+						resultImages = `image-2.png`;
+						break;
+					case 3:
+						resultImages = `image-3.png`;
+						break;
+					case 4:
+						resultImages = `image-4.png`;
+					default:
+						resultImages = `image-1.png`;
+						break;
+				}
+				let rusultBanner = document.write(`
+               <h2>${title}<h2>
+               <a href='${link}tasks/img/${resultImages}'><img src="../tasks/img/${resultImages}"></a> 
+            `);
+				return resultBanner;
+			}
+			let result = getBanner(imageBanner, linkBanner, titleBanner);
+		</script>
+	</body>
+</html>
