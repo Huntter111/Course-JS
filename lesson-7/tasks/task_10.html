@@ -4,13 +4,14 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Task 9</title>
+		<title>Task 10</title>
 	</head>
 	<body>
 		<h3>
-			Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість
-			від’ємних показів температури.
+			Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє
+			значення для додатних показів температури.
 		</h3>
+
 		<style>
 			span {
 				font-size: 1.5rem;
@@ -20,6 +21,7 @@
 				background-color: aqua;
 			}
 		</style>
+
 		<script>
 			const minTemperature = -30;
 			const maxTemperature = 30;
@@ -29,13 +31,22 @@
 			function getCounterMinTemperature() {
 				let counter = 0;
 				let temperature;
+				let temperatureSum = 0;
+				let avarageTemparature;
 				for (let i = 0; i < 15; i++) {
 					temperature = randomTemparature(minTemperature, maxTemperature);
-					if (temperature < 0) counter++;
+					if (temperature > 0) {
+						temperatureSum += temperature;
+						counter++;
+					}
 					document.write(`<span>${temperature}, </span>`);
+					console.log(temperatureSum);
 				}
+				avarageTemparature = temperatureSum / counter;
 				let resultMinTemperature = document.write(
-					`<br> <br> <span>Від'ємних показників температури = <span class='span-counter'>${counter}</span> </span>`,
+					`<br><br><span>Сумма чисел = ${temperatureSum}</span> <br> <span>Лічильник = ${counter}<span> <br> <span>Середня температура = ${avarageTemparature.toFixed(
+						1,
+					)} </span> `,
 				);
 				return resultMinTemperature;
 			}
