@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 2</title>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+			<ul>
+				<li>номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
+				<li>номери днів, коли кількість відвідувачів була мінімальною;</li>
+				<li>загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</li>
+			</ul>
+		</h3>
+		<style></style>
+		<script>
+			function getRandomNumber(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			}
+			function getArrayVisitors() {
+				let arrayVisitors = [];
+				let randomNumber;
+				for (let i = 1; i <= 7; i++) {
+					randomNumber = getRandomNumber(1, 50);
+					arrayVisitors.push(randomNumber);
+				}
+				return arrayVisitors;
+			}
+			let arrayVisitorsResult = getArrayVisitors();
+			function getVisitorsLessThen20(arrayVisitorsResult) {
+				let counterDayLessThan20 = 0;
+				let arrayResult = [];
+				for (let j = 0; j < arrayVisitorsResult.length; j++) {
+					if (arrayVisitorsResult[j] < 20 && arrayVisitorsResult[j] > 10) {
+						counterDayLessThan20 += 1;
+						arrayResult.push(`День ${j + 1}`);
+					}
+				}
+				if (arrayResult.length == 0) {
+					arrayResult = `В цей тиждень всі дні було людей більше ніж 20`;
+				}
+				return arrayResult;
+			}
+			function getVisitorsMin(arrayVisitorsResult) {
+				let counterDayMin = 0;
+				let arrayMinResult = [];
+				for (let j = 0; j < arrayVisitorsResult.length; j++) {
+					if (arrayVisitorsResult[j] < 10) {
+						counterDayMin += 1;
+						arrayMinResult.push(`День ${j + 1}`);
+					}
+				}
+				if (arrayMinResult.length == 0) {
+					arrayMinResult = `В цей тиждень всі дні було людей більше ніж 10`;
+				}
+				return arrayMinResult;
+			}
+			let resultLessThen20 = getVisitorsLessThen20(arrayVisitorsResult);
+			let resultMinVisitors = getVisitorsMin(arrayVisitorsResult);
+			function getSumVisitorsDays(firstDay, lastDay) {
+				let counterSumVisitors = 0;
+				for (let k = firstDay; k < lastDay; k++) {
+					let element = arrayVisitorsResult[k];
+					counterSumVisitors += arrayVisitorsResult[k];
+				}
+				return counterSumVisitors;
+			}
+			let sumWorkingDays = getSumVisitorsDays(0, 5);
+			let sumWeekendsDays = getSumVisitorsDays(5, 7);
+			let resultTask = document.write(
+				`Кількість відвідувачів за тиждень = ${arrayVisitorsResult} <br><br> 
+				Номери днів, протягом яких кількість відвідувачів була меншою за 20 : ${resultLessThen20}  <br><br>
+            Номери днів, протягом яких кількість відвідувачів була мінімальною : ${resultMinVisitors}  <br><br>
+            Кількість відвідучавів в робочі дні ${sumWorkingDays} чол.  <br><br> 
+				Кількість відвідучавів в вихідні дні ${sumWeekendsDays} чол.  <br><br>`,
+			);
+			console.log(arrayVisitorsResult);
+		</script>
+	</body>
+</html>
