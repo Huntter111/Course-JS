@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>
+			Задача 5. Дано послідовність оцінок учня. Підрахувати кількість:
+			<ul>
+				<li>двійок</li>
+				<li>кількість хороших оцінок (добре, відмінно);</li>
+				<li>кількість оцінок, які нижче середнього.</li>
+			</ul>
+		</h3>
+		<style></style>
+		<script>
+			function getRandomNumber(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			}
+			function getNumberOfStudentGrades(numberAssessment) {
+				let numberStudentGrades = [];
+
+				for (let i = 0; i < numberAssessment; i++) {
+					let randomAssessment = getRandomNumber(2, 12);
+					numberStudentGrades.push(randomAssessment);
+				}
+				return numberStudentGrades;
+			}
+			const resultStudentGrades = getNumberOfStudentGrades(10);
+			console.log(resultStudentGrades);
+			function getNumberTwos(studentGrades) {
+				let counterTwos = 0;
+				for (let j = 0; j < studentGrades.length; j++) {
+					if (studentGrades[j] == 2 || studentGrades[j] == 3) {
+						counterTwos += 1;
+					}
+				}
+				return counterTwos;
+			}
+			function getGoodPerfectlyGrades(studentGrades) {
+				let counterGood = 0;
+				for (let k = 0; k < studentGrades.length; k++) {
+					if (studentGrades[k] > 8) counterGood += 1;
+				}
+				return counterGood;
+			}
+			function getAverageCrades(studentGrades) {
+				let averageCounter = 0;
+				for (let n = 0; n < studentGrades.length; n++) {
+					if (studentGrades[n] < 8 && studentGrades[n] > 4) {
+						averageCounter += 1;
+					}
+				}
+				return averageCounter;
+			}
+			let result = document.write(
+				`  
+            Підрахувати кількість: двійок = ${getNumberTwos(resultStudentGrades)} <br>
+            Підрахувати кількість: хороших оцінок (добре, відмінно) = ${getGoodPerfectlyGrades(
+					resultStudentGrades,
+				)} <br>
+            Підрахувати кількість: оцінок, які нижче середнього = ${getAverageCrades(resultStudentGrades)}
+            `,
+			);
+		</script>
+	</body>
+</html>
