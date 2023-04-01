@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>
+			Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим
+			чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів (поки він не
+			відмовиться). Знаходити сумарний виграш.
+		</h3>
+		<style></style>
+		<script>
+			function randomNumber(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			}
+			console.log(randomNumber(-500, 500));
+			let userNubmer = parseInt(prompt('Введіть кількість елементів в лотареї', '5'));
+			function getArr(userNubmer) {
+				let arrNumbers = [];
+				for (let i = 0; i < userNubmer; i++) {
+					arrNumbers.push(randomNumber(-500, 500));
+				}
+				return arrNumbers;
+			}
+			const arrayElem = getArr(userNubmer);
+			console.log(arrayElem);
+			function getSumWin(arrayElem) {
+				let counterSumWin = 0;
+				let choice = true;
+
+				while (choice === true) {
+					const inputNumElem = parseInt(prompt('Введіть номер елемента', '1'));
+					if (isNaN(inputNumElem) || inputNumElem < 0 || inputNumElem >= arrayElem.length) {
+						alert('Введіть правильний номер елемента');
+						continue;
+					}
+					counterSumWin += arrayElem[inputNumElem];
+					choice = confirm(
+						"Бажаєте вибрати ще один елемент? Натисніть 'OK', щоб продовжити або 'Cancel', щоб повернути виграш.",
+					);
+				}
+				return counterSumWin;
+			}
+			document.write(`Ваш виграш: ${getSumWin(arrayElem)} грн. `);
+		</script>
+	</body>
+</html>
