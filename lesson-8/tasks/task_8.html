@@ -34,11 +34,11 @@
 
 				while (choice === true) {
 					const inputNumElem = parseInt(prompt('Введіть номер елемента', '1'));
-					if (isNaN(inputNumElem) || inputNumElem < 0 || inputNumElem >= arrayElem.length) {
+					if (isNaN(inputNumElem) || inputNumElem < 1 || inputNumElem >= arrayElem.length) {
 						alert('Введіть правильний номер елемента');
 						continue;
 					}
-					counterSumWin += arrayElem[inputNumElem];
+					counterSumWin += arrayElem[inputNumElem - 1];
 					choice = confirm(
 						"Бажаєте вибрати ще один елемент? Натисніть 'OK', щоб продовжити або 'Cancel', щоб повернути виграш.",
 					);
