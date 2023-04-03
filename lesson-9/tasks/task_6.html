@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 6</title>
+	</head>
+	<body>
+		<h3>6.Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+			span {
+				font-size: 2rem;
+			}
+		</style>
+		<script>
+			const arr = [2, -3, 4, 0, -1, 7, 8, 11, 9];
+			function getProductNumbersTwo(randomArray) {
+				let productResult = [];
+				for (const item of randomArray) {
+					if (item > randomArray[0]) {
+						let resultProduct = item * 2;
+						productResult.push(resultProduct);
+					}
+				}
+				return productResult;
+			}
+
+			let result = document.write(`
+			Рандомний масив елементів = ${arr} <br> <br>
+			<span>Числа більші за 100: ${getProductNumbersTwo(arr)}</span>
+               `);
+		</script>
+	</body>
+</html>
