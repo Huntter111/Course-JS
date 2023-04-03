@@ -19,9 +19,9 @@
 		<script>
 			const userNumber = parseInt(prompt('Введіть кількість елементів для заповнення масиву', '20'));
 			function getArrayFill(number) {
-				let arr = new Array(userNumber);
+				let arr = new Array(number);
 				arr.fill(1, 0, 5);
-				arr.fill(7, 5, userNumber);
+				arr.fill(7, 5, number);
 				console.log(arr);
 				return arr;
 			}
