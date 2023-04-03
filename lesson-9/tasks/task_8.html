@@ -18,7 +18,7 @@
 		</style>
 		<script>
 			const arrCarNumbers = ['AA5347BA', 'BA5347AA', 'AT5347BA', 'AE5347BA', 'BT5347BA', 'HM5347BA', 'AA5347BA'];
-			function get30PercentDiscont(array) {
+			function getCarNumbersStartA(array) {
 				let carNumbersResult = [];
 				// Розв'язок For..of
 				// for (const item of array) {
@@ -37,7 +37,7 @@
 
 			let result = document.write(`
 			Масив номерів машин = ${arrCarNumbers} <br> <br>
-			<span>новий масив номерів які починаються з "А": ${get30PercentDiscont(arrCarNumbers)} </span>`);
+			<span>новий масив номерів які починаються з "А": ${getCarNumbersStartA(arrCarNumbers)} </span>`);
 		</script>
 	</body>
 </html>

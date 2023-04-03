@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 9</title>
+	</head>
+	<body>
+		<h3>9. Дано масив імен. Сформувати масив з перших літер цих імен.</h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+			span {
+				font-size: 2rem;
+			}
+		</style>
+		<script>
+			const arrNames = ['Іван', 'Григорій', 'Олег', 'Радько', 'та', 'aто', 'Ілона', 'Володимир', 'Андрій', 'Назар'];
+			function getFirstLetterArr(array) {
+				let resultLetterArr = [];
+				// Розв'язок ForEach
+				array.forEach((element) => {
+					resultLetterArr.push(element.charAt(0));
+				});
+				return resultLetterArr;
+			}
+
+			let result = document.write(`
+			Масив номерів машин = ${arrNames} <br> <br>
+			<span>новий масив номерів які починаються з "А": ${getFirstLetterArr(arrNames)} </span>`);
+		</script>
+	</body>
+</html>
