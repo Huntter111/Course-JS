@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 2</title>
+	</head>
+	<body>
+		<h3>
+			2. Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга
+			заповнена 7-ками.
+		</h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			const userNumber = parseInt(prompt('Введіть кількість елементів для заповнення масиву', '20'));
+			function getArrayFill(number) {
+				let arr = new Array(userNumber);
+				arr.fill(0, 0, userNumber / 2);
+				arr.fill(7, userNumber / 2, userNumber);
+				console.log(arr);
+				return arr;
+			}
+			let result = document.write(`Масив з числами заповнений 0 і 7: ${getArrayFill(userNumber)}`);
+		</script>
+	</body>
+</html>
