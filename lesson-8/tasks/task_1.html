@@ -31,7 +31,8 @@
 			}
 			let averageCounter = counter / arrayRating.length;
 			document.write(`Середнє значення = ${averageCounter} <br>`);
-			let arrayMinNumber = Math.min.apply(null, arrayRating);
+			let arrayMinNumber = Math.min(...arrayRating);
+
 			console.log(`minNumber = ${arrayMinNumber}`);
 			if (arrayMinNumber == 2) {
 				document.write('Двійочник');

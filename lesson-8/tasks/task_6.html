@@ -19,7 +19,7 @@
 				let productsTitles = ['cheese', 'juice', 'sosage', 'milk', 'water', 'bread'];
 				let resultBuy;
 				for (let i = 0; i < productsPrices.length; i++) {
-					if (productsPrices[i] == amountMoney) {
+					if (productsPrices[i] > amountMoney) {
 						resultBuy = productsTitles[i];
 					}
 				}
