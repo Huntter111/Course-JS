@@ -27,15 +27,14 @@
 				// Розв'язок ForEach
 				array.forEach((element) => {
 					let taxNumber = (element * percentTax) / 100;
-					let resultNumberAfterTax = element - taxNumber;
-					resultTaxPaid.push(resultNumberAfterTax);
+					resultTaxPaid.push(taxNumber);
 				});
 				return resultTaxPaid;
 			}
 
 			let result = document.write(`
 			Масив цін у грн до сплати податку = ${arrPrices} <br> <br>
-			<span>Після сплати податку: ${getArrTaxPaid(arrPrices)} </span>`);
+			<span>Величина сплаченого податку: ${getArrTaxPaid(arrPrices)} </span>`);
 		</script>
 	</body>
 </html>
