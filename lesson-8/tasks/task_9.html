@@ -15,6 +15,50 @@
 		</h3>
 		<style></style>
 		<script>
+			/*
+			//Сформувати поле гри
+			// Гра користувача
+			// 1 Пункт
+			function getRandomNumber(minV, maxV) {
+				return minV + Math.floor(Math.random() * (maxV - minV + 1));
+			}
+			function getFreeCell(gameFiled) {
+				let shipIndex;
+				const lastIndex = gameFiled.length - 1;
+				do {
+					shipIndex = getRandomNumber(0, lastIndex);
+				} while (gameFiled[shipIndex] === 1);
+				return shipIndex;
+			}
+			function createGameField(cellsNumber, shipsNumber) {
+				const gameField = new Array(cellsNumber).fill(0);
+				for (let i = 0; i < cellsNumber; i++) {
+					let shipIndex = getFreeCell(gameField);
+					gameField[shipIndex] = 1;
+				}
+				console.log(gameField);
+				return gameField;
+			}
+			function game(gameField, shipsNumber) {
+				do {
+					// Спитати у користувача номер клітинки
+					const userStrikePosition = parseInt(prompt(`куди стріляємо (1 -${gameField.length}?`)) - 1;
+
+					if (gameField[userStrikePosition] === 1) {
+						shipsNumber--;
+						alert('Попали');
+						gameField[userStrikePosition] = 0;
+					} else alert('Промазав');
+					// Якщо у дані позиції то кількість кораблів зменшуємо і
+					// повідомляємо користувачу
+					// інакше
+					// кажемо що він промазав
+				} while (shipsNumber > 0);
+			}
+			const gameField = createGameField(10, 3);
+			game(gameField, 3);
+			*/
+
 			let userInputNumArr = parseInt(prompt('Введіть кількість клітинок одновимірного масиву: ', '5'));
 			let userInputNumShips = parseInt(prompt('Введіть кількість одиночних кораблів', '2'));
 
