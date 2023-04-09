@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tasks lesson</title>
+	</head>
+	<body>
+		<h3></h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			/*
+			// Дано масив Імен людей вивести перші літери цих імен. Задача на map
+
+			let names = ['Ivan', 'Petro', 'Andrew'];
+			const firstLettersNamesList = names.map((name) => name[0]);
+			console.log(firstLettersNamesList);
+			*/
+			/*
+			// Дано масив цін. Сформувати масив з маисв з тих які більші за 100
+			const prices = [234, 12, 456, 458, 34, 878, 95];
+			const pricesGreaterThan100 = prices.filter((price) => price > 100);
+			console.log(pricesGreaterThan100);
+			*/
+			/*
+			// Дана масив показників термометра протягом місяця. З'ясувати, чи усі показники є більшими за 10 градусів.
+			const temperaturesList = [-23, 1, 10, 20, 30, 40, -20, -30, -38];
+			// Метод every Всі показники більше за 10
+			const resultTemperaturesAll = temperaturesList.every((temp) => temp > 10);
+			// Метод some Хоча б один показник менше нуля
+			const resultTemperaturesOne = temperaturesList.some((temp) => temp < 0);
+			console.log(`Всі показники більше за 10: ${resultTemperaturesAll}`);
+			console.log(`Хоча б один показник менше нуля: ${resultTemperaturesOne}`);
+			*/
+
+			/*
+			// !REDUCE
+			function checkElementAndGetNextResult(prevNegativeNumberProduct, element, index, arr) {
+				return element < 0 ? prevNegativeNumberProduct * element : prevNegativeNumberProduct;
+			}
+			let arr = [12, -34, 2, 3, 9, 22, -8];
+			let prevNegativeNumberProduct = arr.reduce(
+				(prevNegativeNumberProduct, element, index, baseArrRef) =>
+					element < 0 ? prevNegativeNumberProduct * element : prevNegativeNumberProduct,
+				1,
+			);
+			*/
+
+			/*
+			// Знайти суму парних елементів REDUCE
+			let arr = [12, 34, 122, 100, 20, 30, 50, 37, 29, 41];
+			const SumEvenNumber = arr.reduce((prevSum, elemnt) => (elemnt % 2 === 0 ? (prevSum += elemnt) : prevSum), 0);
+			console.log(SumEvenNumber);
+			*/
+			/*
+			// Дано масив. Підрахувати кулькість чисел які = 7
+			let arr = [12, 7, 122, 7, 20, 30, 7, 37, 29, 41];
+			// let sevenNumber = 0;
+			// for (let i = 0; i < arr.length; i++) {
+			// 	const element = arr[i];
+			// 	if (element === 7) sevenNumber += 1;
+			// }
+			// console.log(sevenNumber);
+			// ==== REDUCE ===== Коли є {} дужки після =>, то тоді потрібно писати return
+			let sevenNumber = arr.reduce(
+				(prevSevenNumber, element) => (element === 7 ? prevSevenNumber + 1 : prevSevenNumber),
+				0,
+			);
+			console.log(sevenNumber);
+			*/
+			/*
+			// Знайти суму всіх елементів
+			let arr = [12, 7, 122, 7, 20, 30, 7, 37, 29, 41];
+			// let sum = 0;
+			// for (let i = 0; i < arr.length; i++) {
+			// 	const element = arr[i];
+			// 	sum += element;
+			// }
+			// console.log(sum);
+			// ===  REDUCE ===
+			let sum = arr.reduce((prevSum, element) => prevSum + element, 0);
+			console.log(sum);
+			*/
+			/*
+			// Знайти Максимальний елемент
+			let arr = [12, 7, 122, 7, 20, 30, 7, 37, 29, 41];
+			// let maxNumber = Math.max(...arr);
+			// console.log(maxNumber);
+
+			// let max = arr[0];
+			// for (let i = 1; i < arr.length; i++) {
+			// 	const element = arr[i];
+			// 	if (element > max) max = element;
+			// }
+			// console.log(max);
+			// === REDUCE ===
+			// let max = arr.reduce((prevMax, element) => (element > prevMax ? (prevMax = element) : prevMax));
+			// console.log(max);
+			*/
+
+			/*
+			// Знайти Максимальний елемент серед від'ємних
+			let arr = [12, -7, -122, 7, 20, 30, 7, 37, -29];
+			// let maxNegative = -Infinity;
+			// for (let i = 0; i < arr.length; i++) {
+			// 	const element = arr[i];
+			// 	if (element < 0 && element > maxNegative) maxNegative = element;
+			// }
+			let maxNegative = arr.reduce(
+				(prevMaxNegative, element) => (element < 0 && element > prevMaxNegative ? element : prevMaxNegative),
+				-Infinity,
+			);
+			console.log(maxNegative);
+			*/
+			/*
+			// ====== SORT ==== Спочатку умова сортування
+			let arr = [12, -7, -122, 7, 20, 30, 7, 37, -29];
+			function rule(elem1, elem2) {
+				if (elem1 < elem2) return 1;
+				else if (elem2 < elem1) return -1;
+				else return 0;
+			}
+			result = arr.sort(rule);
+			console.log(result);
+			*/
+			// Приклад упорядкування за ЗРОСТАННЯМ за другою буквою
+			// let names = ['Ivan', 'Leomid', 'Greg', 'Lara'];
+			// names.sort((name1, name2) => {
+			// 	if (name1[1] > name2[1]) return 1;
+			// 	else if (name1[1] < name2[1]) return -1;
+			// 	else return 0;
+			// });
+			// console.log(names);
+			// Приклад упорядкування за СПАДАННЯИ за другою буквою
+			let names = ['Ivan', 'Leomid', 'Greg', 'Lara'];
+			names.sort((name1, name2) => {
+				if (name1[1] > name2[1]) return -1;
+				else if (name1[1] < name2[1]) return 1;
+				else return 0;
+			});
+			console.log(names);
+		</script>
+	</body>
+</html>
