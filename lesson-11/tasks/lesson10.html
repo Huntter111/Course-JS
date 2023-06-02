@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tasks lesson 11</title>
+	</head>
+	<body>
+		<h3></h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			// Дано масив цын Змінити цей масив так, що на ціни які більше за 1000 грн. дати знижку 30% (*0.7)
+			// const arr = [56, 83, 3333, 12034, 3545, 943, 13414, 1034, 43, 56, 789, 2034];
+			// ! ForEach
+			// arr.forEach((element, index, arrRef) => {
+			// 	if (element > 1000) arrRef[index] *= 0.7;
+			// });
+
+			// !.map Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга 7-ками.
+			// const arrayMiddleIndex = Math.floor(arr.length / 2);
+			// arr.fill(1, 0, arrayMiddleIndex);
+			// arr.fill(7, arrayMiddleIndex);
+
+			// Дано масив імен. Сформувати масив з перших літер цих імен.
+			// const autoList = ['AO2312BC', 'DF3423AF', 'AT3245ED'];
+			// const firstLettersList = autoList.map((autoNumber) => autoNumber[0]);
+			// console.log(firstLettersList);
+
+			const scores = [56, -83, -494, 33, -34, 35, 94, 414, -34, 43, 56, -89, 203];
+
+			scores.forEach((element, index, arrRef) => {
+				if (element > 0) arrRef[index] *= 0.8;
+			});
+			console.log(scores);
+			const coureDollar = 38;
+			const scoresInDollarList = scores.map((element) => element / coureDollar);
+			console.log(scoresInDollarList);
+		</script>
+	</body>
+</html>
