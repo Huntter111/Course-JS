@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>test-code</title>
+	</head>
+	<body>
+		<script>
+			//  +++++++++ Рекомндації З Викорстання Керуючих Конструкцій ++++++++++++++++++
+			/*
+			// ==== Вивід в нумерований список рандомних чисел. =====
+			// const userNumber = parseInt(prompt('Введіть число від 1 до 100', '20'));
+			// const minNum = 1;
+			// const maxNum = 100;
+			// document.write(`<ol>`);
+			// for (let i = 0; i < userNumber; i++) {
+			// 	const randomNumber = minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			// 	document.write(`<li>${randomNumber}</li>`);
+			// }
+			// document.write(`</ol>`);
+
+			// == Задача про калькулятор на сайті замість капчі. ==
+			/*
+			const testNumber = parseInt(prompt('Введіть кількість прикладів', '5'));
+			const maxNumber = parseInt(prompt('Введіть максимальне число', '100'));
+
+			let correctAnswersNumber = 0;
+			for (let i = 0; i < testNumber; i++) {
+				const firstNumber = Math.floor(Math.random() * maxNumber + 1);
+				const secondNumber = Math.floor(Math.random() * maxNumber + 1);
+				const correctAnswer = firstNumber + secondNumber;
+				const userAnswer = parseInt(prompt(`${firstNumber} + ${secondNumber} = `));
+				if (userAnswer === correctAnswer) {
+					alert('Ok');
+					correctAnswersNumber++;
+				} else {
+					alert(`Помилка! ${firstNumber} + ${secondNumber} = ${correctAnswer}`);
+				}
+			}
+			      */
+			//============= Вивести на екран числа які кратні 3 від  6 до 28. ОБОВ'ЯЗОКОВО ПИСАТИ i=i+3 ===========
+			/*
+			document.write('<ol>');
+			for (let i = 6; i < 28; i = i + 3) {
+				document.write(`<li>${i}</li>`);
+			}
+			document.write('</ol>');
+			      */
+			// ========= Ввести прибуток підриємства за місяці 2 кварталу (місяці : 4,5,6). Знайти загальний прибуток =======
+			/*
+			let counterSum = 0;
+			for (let monthNumber = 4; monthNumber <= 6; monthNumber++) {
+				const scoreMonth = parseFloat(prompt(`Введіть', 'прибуток за місяць № ${monthNumber}`));
+				counterSum += scoreMonth;
+			}
+			alert(`Загальний прибуток за 2 квартал = ${counterSum}`);
+			      */
+			//  === Задача. Користувач вводить наявну кількість грошей. Поки є гроші (не менше25грн.) пропонувати товари  (1.Сік - 25 грн. 2. Коктейль - 120грн. 3.Фреш - 70грн.) Підрахувати кількість куплених товарів ===
+			/*
+			let userMoney = parseInt(prompt('Введіть кількість грошей', '1000'));
+			let selectedProductNumber = 0;
+			const minMoneyLimit = 25;
+			while (userMoney >= minMoneyLimit) {
+				const userAnswer = parseInt(prompt('1.Сік = 25 грн.\n2. Коктейль = 120 грн.\n3.Фреш = 70 грн.'));
+				switch (userAnswer) {
+					case 1:
+						userMoney -= 25;
+						break;
+					case 2:
+						userMoney -= 120;
+						break;
+					case 3:
+						userMoney -= 70;
+						break;
+					default:
+						alert('Немає такого товару');
+						break;
+				}
+				console.log(userMoney);
+				selectedProductNumber++;
+			}
+			document.write(`Було куплено ${selectedProductNumber} товарів`);
+			      */
+			// ===== Коли відома умова продовження. Але принаймні один раз треба виконати =====
+			/*
+			const maxTestNumber = parseInt(prompt('Введіть максимальне число'));
+			let userAnswer, correctNumber;
+			let completedTestsNumber = 0;
+			do {
+				const firstNum = Math.floor(Math.random() * maxTestNumber + 1);
+				const secondNum = Math.floor(Math.random() * maxTestNumber + 1);
+				correctNumber = firstNum + secondNum;
+				userAnswer = parseInt(prompt(`Який результат? ${firstNum} + ${secondNum} = `));
+				if (correctNumber === userAnswer) {
+					alert('Все вірно!');
+					completedTestsNumber++;
+				} else {
+					alert(`Правильно відповідь ${correctNumber}`);
+				}
+			} while (userAnswer === correctNumber);
+			alert(`Кількість правильних = ${completedTestsNumber}`);
+			*/
+
+			// ++++++++ Рекомендації_з_ОбробкиМасивів ++++++++++++++++
+			let arr = [10, 20, 10, 3, 4, 5, 1, 2, 100, 20, 50, 30, 85];
+			// === Потрібно переглянути усі елементи без зміни елементів масиву. Можна використати цикл for..of ====
+			// for (const elem of arr) {
+			// 	if (elem > 7) console.log(elem);
+			// }
+			// ==== Потрібно переглянути усі елементи або елементи з деякими номерами можливо із зміною елементів масиву. ===
+			// ==== Можна використати цикл for (використовувати коли треба індекси або треба змінювати ====
+			/*
+			let sum = 0;
+			for (let i = 0; i < arr.length; i++) {
+				sum += arr[i];
+			}
+			console.log(`Загальний прибуток ${sum}`);
+			*/
+			// Потрібно переглянути усі елементи або елементи з деякими номерами можливо із зміною елементів масиву.
+			// Можна використати цикл for
+			/*
+			let sum = 0;
+			for (let i = 4; i <= 9; i++) {
+				sum += arr[i];
+			}
+			console.log(sum);
+			*/
+			//
+			/*
+			for (let i = 4; i <= 9; i++) {
+				if (arr[i] < 1000) arr[i] = 1000;
+			}
+			console.log(arr);
+			*/
+			// ======= Потрібно переглянути усі елементи можливо із зміною елементів масиву. Можна використати цикл forEach===
+			// arr.forEach((element) => {
+			// 	if (element > 7) document.write(` ${element} <br>`);
+			// });
+			// arr.forEach((element, index, baseArrRef) => {
+			// 	if (element > 7) baseArrRef[index] = 0;
+			// });
+			// console.log(arr);
+			// for (let i = 0; i < arr.length; i++) {
+			// 	arr[i] *= 200;
+			// }
+			// console.log(arr);
+			// ==== For Each =====
+			// arr.forEach((element, index, baseArrRef) => {
+			// 	baseArrRef[index] *= 200;
+			// });
+			// console.log(arr);
+			// +++++++ Створення на основі елементів іншого ітерованого об'єкта. іншого масива ! +++++++++
+			// let arr2 = Array.from(arr, (element, index) => element * 3);
+			// console.log(arr2);
+			// ====== MAP =======
+			/*
+			// let arr2 = arr.map((element) => element * 3);
+			// console.log(arr2);
+			// ==== Дано величини прибутків за рік. Кожен елемент помножити на 200
+			let newArr = [];
+			for (let i = 0; i < arr.length; i++) {
+				newArr.push(arr[i] * 200);
+			}
+			console.log(newArr);
+
+			for (const element of arr) {
+				newArr.push(element * 200);
+			}
+			console.log(newArr);
+
+			newArr = arr.map((el) => el * 200);
+			console.log(newArr);
+			*/
+			// ++++++ Filter ++++++++
+			// const elements = arr.filter((el, index, baseArrRef) => el > 20);
+			// console.log(elements);
+			// let newArr = [];
+			// for (let i = 0; i < arr.length; i++) {
+			// 	if (arr[i] < 10) newArr.push(arr[i]);
+			// }
+			// console.log(newArr);
+			// let newArr = [];
+			// for (const element of arr) {
+			// 	if (element < 10) newArr.push(element);
+			// }
+			// console.log(newArr);
+			// +_+_+_+_+_+_+_+ REDUCE +_+_+_+_+_+_+_+_+_+
+			// Знайти кількість додатніх
+			// function checkFunc(prevResult, x, i, arr) {
+			// 	if (x > 0) {
+			// 		prevResult++;
+			// 	}
+			// 	return prevResult;
+			// }
+			// let a = [1, 2, -3, 4, -5];
+			// let res = a.reduce(checkFunc, 0);
+			// console.log(res);
+			//  Дано величини прибутків за рік. Знайти суму тих, які менші за 10.
+			// let newArr = [];
+			// for (let i = 0; i < arr.length; i++) {
+			// 	if (arr[i] < 10) newArr.push(arr[i]);
+			// }
+			// console.log(newArr);
+			// let newArr = [];
+			// for (const el of arr) {
+			// 	if (el < 10) newArr.push(el);
+			// }
+			// console.log(newArr);
+			// let newArr = arr.reduce((prevSum, element) => (element < 10 ? prevSum + element : prevSum));
+			// console.log(newArr);
+
+			// ==================
+
+			console.log(resArr);
+		</script>
+	</body>
+</html>

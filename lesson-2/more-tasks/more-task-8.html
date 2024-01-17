@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task8</title>
+	</head>
+	<body>
+		<h2>
+			Розробити програму (не використовувати if), яка за номером року Y визначає номер століття C (врахувати, що
+			початком XX століття був 1901, а не 1900 рік).
+		</h2>
+		<script>
+			let numberYear = parseInt(prompt('Введіть номер року', '1976'));
+			let numberCentury = Math.floor((numberYear - 1) / 100 + 1);
+
+			document.write(`Це в нас ${numberCentury} століття`);
+		</script>
+	</body>
+</html>

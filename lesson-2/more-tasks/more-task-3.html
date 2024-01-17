@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task3</title>
+	</head>
+	<body>
+		<h2>
+			З клавіатури вводяться вартість одиниці та кількість одиниць двох товарів. Вивести на екран вартість кожного з
+			видів товарів окремо і загальну вартість.
+		</h2>
+		<script>
+			let unitCostFirst = parseInt(prompt('Введіть вартість одиниці першого товару', '100'));
+			let quantityGoodsFirst = parseInt(prompt('Введіть кількість одиниць першого товару', '2'));
+
+			let unitCostSecond = parseInt(prompt('Введіть вартість одиниці другого товару', '200'));
+			let quantityGoodsSecond = parseInt(prompt('Введіть кількість одиниць другого товару', '5'));
+
+			let totalCostFirstGood = unitCostFirst * quantityGoodsFirst;
+			let totalCostSecondGood = unitCostSecond * quantityGoodsSecond;
+
+			const totalCost = totalCostFirstGood + totalCostSecondGood;
+			document.write(
+				`Вартість першого товару = ${unitCostFirst}, Вартість другого товару = ${unitCostSecond}, Загальна вартість товарів = ${totalCost}`,
+			);
+		</script>
+	</body>
+</html>

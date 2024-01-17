@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task10</title>
+	</head>
+	<body>
+		<h2>
+			З клавіатури вводиться кількість монет номіналом 1 копійка. Визначити скільки гривень і копійок є у даній сумі.
+			Наприклад, дано 245 копійок, а вивести 2 грн 45 копійок.
+		</h2>
+		<script>
+			let numbersOfCoins = parseInt(prompt('Введіть кількість копійок', '245'));
+			const oneGrivna = 100;
+			rivnas = Math.floor(numbersOfCoins / oneGrivna);
+
+			let coins = numbersOfCoins % oneGrivna;
+
+			document.write(`На вашому рахнку ${grivnas}грн. ${coins}коп.`);
+		</script>
+	</body>
+</html>

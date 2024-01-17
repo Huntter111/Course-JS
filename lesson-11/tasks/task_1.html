@@ -7,219 +7,124 @@
 		<title>Task 1</title>
 	</head>
 	<body>
-		<h3>
-			Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
-			<ol>
-				<li>Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.</li>
-				<li>Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.</li>
-				<li>Сформувати список з тих цін, які більші за попереднє значення</li>
-				<li>Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального</li>
-				<li>Підрахувати кількість змін цін</li>
-				<li>Визначити, чи є ціна, що менше 1000</li>
-				<li>Визначати, чи усі ціни більше за 1000</li>
-				<li>Підрахувати кількість цін, що більше за 1000</li>
-				<li>Підрахувати суму цін, що більше за 1000</li>
-				<li>Знайти першу ціну, що більше за 1000</li>
-				<li>Знайти індекс першої ціни, що більше за 1000</li>
-				<li>Знайти останню ціну, що більше за 1000</li>
-				<li>Знайти індекс останньої ціни, що більше за 1000</li>
-			</ol>
-		</h3>
-		<style></style>
+		<h3>Задача 1. Знайти суми елементів у вказаній області</h3>
+		<img src="../img/image-1.png" alt="" />
+		<style>
+			img {
+				margin-bottom: 2rem;
+				display: block;
+			}
+		</style>
 		<script>
-			// Генерація рандомного числа
-			function getRandomNumbers(minNum, maxNum) {
-				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
-			}
-			// Генерація масива
-			function getGanarateArray(quantiyArrayNumbers) {
-				let arrSecurityPrices = [];
-				for (let i = 0; i < quantiyArrayNumbers; i++) {
-					let generateNum = getRandomNumbers(1, 10000);
-					arrSecurityPrices.push(generateNum);
-				}
-				return arrSecurityPrices;
-			}
-			// Введення кількість цінних паперів
-			let userNumber = parseInt(prompt('Введіть кількість цінних паперів', '10'));
-			// Збереження рандомного масиву
-			const randomArraySecurityPrices = getGanarateArray(userNumber);
-			console.log(randomArraySecurityPrices);
-			// 1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
-			function getArrayGreaterThan1000(array) {
-				const arrMoreGreater1000 = array.filter((arr) => arr > 1000);
-				return arrMoreGreater1000;
-			}
-			console.log(getArrayGreaterThan1000(randomArraySecurityPrices));
-
-			//  2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
-			function getIndexNumbersArray(array) {
-				let arrIndexNumbers = [];
-				for (let i = 0; i < array.length; i++) {
-					const element = array[i];
-					if (element > 1000) {
-						arrIndexNumbers.push(i + 1);
+			let table = [
+				[10, 20, 30, 40],
+				[50, 60, 70, 80],
+				[90, 100, 110, 120],
+				[130, 140, 150, 160],
+			];
+			document.write(`Приклад таблиці <br>
+			[10, 20, 30, 40], <br>
+			[50, 60, 70, 80], <br>
+			[90, 100, 110, 120],<br>
+			[130, 140, 150, 160],<br>`);
+			// ====================================================================
+			function getOneFrame(table) {
+				let sum = 0;
+				for (let i = 0; i < 2; i++) {
+					for (let j = 0; j < 2; j++) {
+						sum += table[i][j];
 					}
 				}
-				return arrIndexNumbers;
+				return sum;
 			}
-			console.log(getIndexNumbersArray(randomArraySecurityPrices));
+			const resultOneFrame = getOneFrame(table);
+			document.write(`Cума в першій області = ${resultOneFrame} <br>`);
 
-			//  3)Сформувати список з тих цін, які більші за попереднє значення
-			function getArrayNumGreaterForPrevious(array) {
-				let newArr = [];
-				for (let i = 1; i < array.length; i++) {
-					if (array[i - 1] < array[i]) {
-						newArr.push(array[i]);
+			// =================================================================
+			function getTwoFrame(table) {
+				let sum = 0;
+				for (let i = 0; i < 2; i++) {
+					for (let j = 2; j < 4; j++) {
+						sum += table[i][j];
 					}
 				}
-				return newArr;
+				return sum;
 			}
-			console.log(getArrayNumGreaterForPrevious(randomArraySecurityPrices));
-
-			// 4) Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
-			function getArrayIncludePricesPercent(array) {
-				let newArr = [];
-				let maxNumber = array.reduce((maxValue, element) => (element > maxValue ? (maxValue = element) : maxValue));
-				// console.log(`MAX = ${maxNumber}`);
-				for (let i = 0; i < array.length; i++) {
-					const element = array[i];
-					if (element != maxNumber) {
-						let percentNumber = (element * 100) / maxNumber;
-						newArr.push(percentNumber.toFixed(0) + `% `);
+			const resultTwoFrame = getTwoFrame(table);
+			document.write(`Cума в дпугій області = ${resultTwoFrame} <br>`);
+			// ====================================================================
+			function getThreeFrame(table) {
+				let sum = 0;
+				for (let i = 2; i < 4; i++) {
+					for (let j = 0; j < 2; j++) {
+						sum += table[i][j];
 					}
 				}
-				return newArr;
+				return sum;
 			}
-			console.log(getArrayIncludePricesPercent(randomArraySecurityPrices));
-
-			//   5)Підрахувати кількість змін цін
-			function getQuantityPriceChange(array) {
-				let counter = 0;
-				for (let i = 0; i < array.length; i++) {
-					if (array[i] > array[i + 1]) {
-						counter += 1;
+			const resultThreeFrame = getThreeFrame(table);
+			document.write(`Cума в третій області = ${resultThreeFrame} <br>`);
+			// ====================================================================
+			function getFourFrame(table) {
+				let sum = 0;
+				for (let i = 2; i < 4; i++) {
+					for (let j = 2; j < 4; j++) {
+						sum += table[i][j];
 					}
 				}
-				return counter;
+				return sum;
 			}
-
-			console.log(`COunter = ${getQuantityPriceChange(randomArraySecurityPrices)}`);
-
-			// 6)Визначити, чи є ціна, що менше 1000
-			function getSomeElemArray(array) {
-				let resultSomeArray = array.some((elem) => elem < 1000);
-				return resultSomeArray ? 'Є ціна менша за 1000' : 'Немає ціни меншої за 1000';
-			}
-			console.log(getSomeElemArray(randomArraySecurityPrices));
-
-			//  7)Визначати, чи усі ціни більше за 1000
-			function getEveryElemArray(array) {
-				let everyElemArray = array.every((elem) => elem > 1000);
-				return everyElemArray ? 'Усі ціни більші за 1000' : 'Хоча б одна ціна менша за 1000';
-			}
-			console.log(getEveryElemArray(randomArraySecurityPrices));
-
-			//  8)Підрахувати кількість цін, що більше за 1000
-			function getQuantityGreaterThan1000(array) {
-				let counterGreaterThan1000 = array.reduce(
-					(counterElem, element) => (element > 1000 ? counterElem + 1 : counterElem),
-					0,
-				);
-				return counterGreaterThan1000;
-			}
-			console.log(getQuantityGreaterThan1000(randomArraySecurityPrices));
-
-			//  9)Підрахувати суму цін, що більше за 1000
-			function getSumGreaterThan1000(array) {
-				let sumGreaterNumbersThan1000 = array.reduce(
-					(elemPrev, elem) => (elem > 1000 ? (elemPrev += elem) : elemPrev),
-					0,
-				);
-				return sumGreaterNumbersThan1000;
-			}
-			console.log(getSumGreaterThan1000(randomArraySecurityPrices));
-
-			//   10)Знайти першу ціну, що більше за 1000
-			function getFirstPriceGreaterThan1000(array) {
-				let i = 0;
-				while (i < array.length) {
-					if (array[i] > 1000) break;
-					i++;
+			const resultFourFrame = getFourFrame(table);
+			document.write(`Cума в четвертій області = ${resultFourFrame} <br>`);
+			// ====================================================================
+			function getEvenLines(table) {
+				let sum = 0;
+				for (let i = 1; i < 4; i = i + 2) {
+					for (let j = 0; j < table.length; j++) {
+						sum += table[i][j];
+					}
 				}
-				return array[i];
+				return sum;
 			}
-			console.log(getFirstPriceGreaterThan1000(randomArraySecurityPrices));
-
-			//  11)Знайти індекс першої ціни, що більше за 1000
-			function getFirstIndexGreaterThan1000(array) {
-				let i = 0;
-				while (i < array.length) {
-					if (array[i] > 1000) break;
-					i++;
+			const resultEvenLines = getEvenLines(table);
+			document.write(`Сума парних рядків: ${resultEvenLines} <br>`);
+			// ====================================================================
+			function getOddColumns(table) {
+				let sum = 0;
+				for (let i = 0; i < table.length; i++) {
+					for (let j = 0; j < table.length; j = j + 2) {
+						sum += table[i][j];
+					}
 				}
-				return i + 1;
+				return sum;
 			}
+			const resultGetOddColumns = getOddColumns(table);
+			document.write(`Суму непарних стовпців: ${resultGetOddColumns} <br>`);
 
-			// 12)Знайти останню ціну, що більше за 1000
-			function getLastPriceGreaterThan1000(array) {
-				let lastPrice = array.findLast((elem) => elem > 1000);
-				return lastPrice;
+			// ====================================================================
+			function getEvenLinesOddColumsElement(table) {
+				let sum = 0;
+				for (let i = 1; i < table.length; i = i + 2) {
+					for (let j = 0; j < table.length; j = j + 2) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
 			}
-			console.log(getLastPriceGreaterThan1000(randomArraySecurityPrices));
-
-			//  13)Знайти індекс останньої ціни, що більше за 1000
-			function getLastIndexGreaterThan1000(array) {
-				let lastIndex = array.findLastIndex((elem) => elem > 1000);
-				return lastIndex + 1;
+			const resultEvenLinesOddColums = getEvenLinesOddColumsElement(table);
+			document.write(`У парних рядках – непарні стовпці: ${resultEvenLinesOddColums} <br>`);
+			// ====================================================================
+			function getOddLinesEvenColumnsElement(table) {
+				let sum = 0;
+				for (let i = 0; i < table.length; i = i + 2) {
+					for (let j = 1; j < table.length; j = j + 2) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
 			}
-			console.log(getLastIndexGreaterThan1000(randomArraySecurityPrices));
-			// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			let result = document.write(`
-			<h2>Результат<h2>
-				<p>Масив згенерованих елементів = ${getGanarateArray(userNumber)}</p>
-			<ol>
-				<li>
-					Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн. = ${getArrayGreaterThan1000(
-						randomArraySecurityPrices,
-					)}
-				</li>
-				<li>
-					Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн. = ${getArrayGreaterThan1000(
-						randomArraySecurityPrices,
-					)}
-				</li>
-				<li>
-					Сформувати список з тих цін, які більші за попереднє значення: ${getArrayNumGreaterForPrevious(
-						randomArraySecurityPrices,
-					)}
-				</li>
-				<li>
-					Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального:  ${getArrayIncludePricesPercent(
-						randomArraySecurityPrices,
-					)}
-				</li>
-				<li>Підрахувати кількість змін цін = ${getQuantityPriceChange(randomArraySecurityPrices)}</li>
-				<li>Визначити, чи є ціна, що менше 1000: "${getSomeElemArray(randomArraySecurityPrices)}" </li>
-				<li>Визначати, чи усі ціни більше за 1000 "${getEveryElemArray(randomArraySecurityPrices)}"
-				</li>
-				<li>Підрахувати кількість цін, що більше за 1000: "${getQuantityGreaterThan1000(randomArraySecurityPrices)}"</li>
-				<li>Підрахувати суму цін, що більше за 1000: Сума = ${getSumGreaterThan1000(randomArraySecurityPrices)}</li>
-				<li>Знайти першу ціну, що більше за 1000: Ціна під номером "${getFirstPriceGreaterThan1000(
-					randomArraySecurityPrices,
-				)}" більша за 1000
-				</li>
-				<li>Знайти індекс першої ціни, що більше за 1000: Індекс = ${getFirstIndexGreaterThan1000(
-					randomArraySecurityPrices,
-				)}</li>
-				<li>
-					Знайти останню ціну, що більше за 1000: ${getLastPriceGreaterThan1000(randomArraySecurityPrices)}
-				</li>
-				<li>
-					Знайти індекс останньої ціни, що більше за 1000: ${getLastIndexGreaterThan1000(randomArraySecurityPrices)}
-					</li>
-			</ol>
-			`);
+			const resultOddLinesEvenColumnsElement = getOddLinesEvenColumnsElement(table);
+			document.write(`У непарних – парні: ${resultOddLinesEvenColumnsElement} <br>`);
 		</script>
 	</body>
 </html>
