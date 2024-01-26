@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task14</title>
+	</head>
+	<body>
+		<style>
+			span {
+				font-size: 1.5rem;
+			}
+		</style>
+		<h2>З клавіатури вводиться номер дня тижня (від 1 до 7). Визначити який буде день тижня через N днів.</h2>
+		<script>
+			let userInputDay = parseInt(prompt('Введіть номер дня тижня від 1 до 7', '4'));
+			let userInputNumber = parseInt(prompt('Введіть кількість днів для визначення дня поточного дня', '4'));
+			const minDay = 1;
+			const maxDay = 7;
+			let quantityDays = ((userInputDay + userInputNumber - minDay) % maxDay) + minDay;
+			document.write(`Це буде <span>${quantityDays}</span> день`);
+		</script>
+	</body>
+</html>

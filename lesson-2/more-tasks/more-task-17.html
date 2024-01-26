@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task17</title>
+	</head>
+	<body>
+		<h2>
+			Зашифрувати один введений англійський символ у верхньому регістрі (один з символів: A,B,…Z) методом зміщення
+			(шифр Цезаря).
+		</h2>
+		<style>
+			span {
+				font-size: 1.5rem;
+				color: blue;
+			}
+		</style>
+		<script>
+			let userInputChar = prompt('Введіть англійський символ у верхньому регістрі', 'Z');
+			let countValueLetter = userInputChar.charCodeAt(0);
+			console.log('countValueLetter:', countValueLetter);
+			const characterOffset = 2;
+			const minValueLetter = 65;
+			const maxValueLetter = 90;
+			const newLetterCode =
+				((countValueLetter - minValueLetter + characterOffset) % (maxValueLetter - minValueLetter + 1)) +
+				minValueLetter;
+
+			const newLetter = String.fromCharCode(newLetterCode);
+			document.write(
+				`Ви ввели літеру ${userInputChar}, <span> а зашифрований символ = ${newLetter}</span>, метод шифр Цезаря зміщує літеру на 2 позиції   `,
+			);
+		</script>
+	</body>
+</html>

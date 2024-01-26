@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task13</title>
+	</head>
+	<body>
+		<h2>Визначити скільки повних тижнів є у вказаній кількості днів.</h2>
+		<script>
+			let userInputDays = parseInt(prompt('Введіть кількість днів', '22'));
+			const oneWeek = 7;
+			let sumWeek = Math.floor(userInputDays / oneWeek);
+			document.write(`Кількість повних тижнів = ${sumWeek}`);
+		</script>
+	</body>
+</html>
