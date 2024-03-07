@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 7</title>
+	</head>
+	<body>
+		<h3>
+			Задача 7. Гра в кості. Правила гри: <br />
+			1) користувач може кинути кості не більше двох разів (користувач сам вирішує чи робити, чи не робити другий
+			кидок); <br />
+			2) якщо випадає парне число, то кількість балів збільшується на це число; <br />
+			3) якщо випадає непарне число, то кількість балів зменшується на це число; <br />
+			4) виграє той, у кого кількість балів більша.
+		</h3>
+		<script>
+			let result;
+			let resultFirstUser;
+			let resultSecondUser;
+			const minNum = 1;
+			const maxNum = 6;
+			let firstThrowFirstUserValue;
+			let secondThrowFirstUserValue;
+
+			let secondtUserValue;
+			let firstUserThrow = confirm('Ви перший гравець! Щоб зробити перший кидок натисніть "ОК"');
+
+			if (firstUserThrow === true) {
+				const firstThrowFirstUser = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+				console.log('firstThrowFirstUser:', firstThrowFirstUser);
+				if (firstThrowFirstUser % 2 === 0) {
+					firstThrowFirstUserValue = firstThrowFirstUser + firstThrowFirstUser;
+				} else {
+					firstThrowFirstUserValue = firstThrowFirstUser - firstThrowFirstUser;
+				}
+				alert(`Зараз ваші бали = ${firstThrowFirstUserValue}`);
+				resultFirstUser = firstThrowFirstUserValue;
+				firstUserThrow = confirm('Бажаєте зробити наступний кидок?');
+				if (firstUserThrow === true) {
+					const secondThrowFirstUser = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+					console.log('secondThrowFirstUser:', secondThrowFirstUser);
+					if (secondThrowFirstUser % 2 === 0) {
+						secondThrowFirstUserValue = secondThrowFirstUser + secondThrowFirstUser;
+					} else {
+						secondThrowFirstUserValue = secondThrowFirstUser - secondThrowFirstUser;
+					}
+					resultFirstUser = secondThrowFirstUserValue + firstThrowFirstUserValue;
+				}
+			} else alert('Нажаль ви не зробили кидок!');
+			alert(`Ваші бали зараз = ${resultFirstUser}`);
+			// ! ========================================================================================
+			let firstThrowSecondUserValue;
+			let secondThrowSecondUserValue;
+			let secondUserThrow = confirm('Ви другий гравець! Щоб зробити перший кидок натисніть "ОК"');
+			if (secondUserThrow === true) {
+				const secondThrowSecondUser = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+				console.log('secondThrowSecondUser:', secondThrowSecondUser);
+				if (secondThrowSecondUser % 2 === 0) {
+					firstThrowSecondUserValue = secondThrowSecondUser + secondThrowSecondUser;
+				} else {
+					firstThrowSecondUserValue = secondThrowSecondUser - secondThrowSecondUser;
+				}
+				alert(`Зараз ваш виграш = ${firstThrowSecondUserValue}`);
+				resultSecondUser = firstThrowSecondUserValue;
+				let secondUserThrow = confirm('Бажаєте зробити наступний кидок? натисність "ОК"');
+				if (secondUserThrow === true) {
+					const nextThrowSecondUser = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+					console.log('nextThrowSecondUser:', nextThrowSecondUser);
+					if (nextThrowSecondUser % 2 === 0) {
+						secondThrowSecondUserValue = nextThrowSecondUser + nextThrowSecondUser;
+					} else {
+						secondThrowSecondUserValue = nextThrowSecondUser - nextThrowSecondUser;
+					}
+					resultSecondUser = secondThrowSecondUserValue + firstThrowSecondUserValue;
+				}
+			} else alert('Нажаль ви не зробили кидок!');
+			if (resultFirstUser === resultSecondUser) {
+				result = 'нічия';
+			} else if (resultFirstUser > resultSecondUser) {
+				result = 'Переміг перший юзер';
+			} else result = 'Переміг другий юзер';
+			alert(result);
+			document.write(
+				`Результат першого юзера = ${resultFirstUser}, Результат другого юзера = ${resultSecondUser}, <b>Загальний результат = ${result} </b>`,
+			);
+		</script>
+	</body>
+</html>

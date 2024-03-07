@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 5</title>
+	</head>
+	<body>
+		<h3>
+			Задача 5. Модифікувати попередню задачу з можливістю після пострілу переміщення корабля випадковим чином у
+			вибрану сусідню клітинку (якщо звичайно корабель не було потоплено за першим разом).
+		</h3>
+		<script>
+			let result;
+			const minNum = 1;
+			let getValueShips = parseInt(prompt('Введіть кількість квадратів розмір', '6'));
+			const maxNum = getValueShips;
+			const randomNumber = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+			console.log('randomNumber:', randomNumber);
+
+			let userFirstShot = parseInt(prompt('Введіть число щоб вразити корабль', '2'));
+
+			if (userFirstShot === randomNumber) {
+				result = 'Ви потопили корабль!';
+			} else if (userFirstShot === randomNumber + 1 || userFirstShot === randomNumber - 1) {
+				alert('Корабель пошкоджено, ви попали в сусідню клітинку');
+				let userSecondShot = parseInt(prompt('Спробуйте ще раз вразити корабль поперднє клітинка є хибна', '4'));
+				if (userSecondShot === randomNumber) {
+					result = 'Нарешті! Ви потопили корабль!';
+				} else {
+					result = 'Корабль не потоплено спробуйте ще раз';
+				}
+			}
+			alert(result);
+			document.write(`${result} <button id="reload">Спробувати ще</button>`);
+
+			document.getElementById('reload').onclick = function () {
+				location.reload(); // перезагружаем страницу
+			};
+		</script>
+	</body>
+</html>

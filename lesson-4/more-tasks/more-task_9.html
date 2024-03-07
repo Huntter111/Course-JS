@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 9</title>
+	</head>
+	<body>
+		<h3>
+			Задача 9. З клавіатури вводиться перша літера розширення файлу («html», «doc», «jpeg», «mp3», «xls»). Вивести
+			на екран назву програми, яка може відкрити цей тип файлу.
+		</h3>
+		<script>
+			let result;
+			let getUserWriteLetter = prompt(
+				'Введіть першу букву наступних розширень файлу «html», «doc», «jpeg», «mp3», «xls»',
+				'h',
+			);
+
+			switch (getUserWriteLetter) {
+				case 'h':
+					result = 'Сhrome, Safari, Firefox, Opera, ';
+					break;
+				case 'd':
+					result = 'Word, Google document';
+					break;
+				case 'j':
+					result = 'Image picker';
+					break;
+				case 'm':
+					result = 'Winamp, Widows Media Player, VLC';
+					break;
+				case 'x':
+					result = 'Exel';
+					break;
+
+				default:
+					result = 'Ви ввели не правильну літеру';
+					break;
+			}
+			document.write(`Це розширення файлу може відрити наступні програми <b>${result}</b>`);
+		</script>
+	</body>
+</html>

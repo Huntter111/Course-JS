@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 6</title>
+	</head>
+	<body>
+		<h3>
+			Задача 6. Полювання. Заєць знаходиться у верхньому лівому кутку поля. Поле складається з двох рядків і двох
+			стовпців. За один крок заєць може стрибнути у будь-яку із вільних клітинок. Користувач ставить пастку вказуючи
+			номер рядка і стовпця клітинки. Якщо заєць потрапляє у пастку, то користувач виграв і отримав 100 балів. Якщо
+			користувач зловить зайця за другою спробою, то одержує 50 балів.
+		</h3>
+		<script>
+			let result;
+			const minNum = 1;
+			const maxNum = 2;
+			let getUserRow = parseInt(prompt('Введіть рядок в якому знаходиться заєць 1 або 2', '1'));
+			let getUserColumn = parseInt(prompt('Введіть стовпець в якому знаходиться заєць 1 або 2', '2'));
+
+			const randomNumberRow = minNum + Math.floor(Math.random() * (maxNum - minNum + minNum));
+			console.log('randomNumberRow:', randomNumberRow);
+			const randomNumberColumn = minNum + Math.floor(Math.random() * (maxNum - minNum + minNum));
+			console.log('randomNumberColumn:', randomNumberColumn);
+
+			if (randomNumberRow === getUserRow && getUserColumn === randomNumberColumn)
+				result = 'Ура ви зловили зайця і отримуєте 100 балів';
+			else {
+				alert('Ви промахнулись, заєць в іншій клітинці, спробуйте ще');
+				getUserRow = parseInt(prompt('Введіть рядок в якому знаходиться заєць 1 або 2', '1'));
+				getUserColumn = parseInt(prompt('Введіть стовпець в якому знаходиться заєць 1 або 2', '2'));
+				if (getUserRow === randomNumberRow && getUserColumn === randomNumberColumn)
+					result = 'Ви зловили зайця і отримуєте 50 балів';
+				else result = 'Нажаль ви не зловили зайця';
+			}
+			alert(result);
+			document.write(
+				`${result}. <b>Заєць знаходився в ${randomNumberRow}-му ряду і ${randomNumberColumn}-му стовпцю</b>`,
+			);
+		</script>
+	</body>
+</html>
