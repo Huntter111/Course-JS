@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const B = 45;
+			console.log('B:', B);
+
+			const C = B;
+			console.log('C:', C);
+
+			const D = B + 8;
+			console.log('D:', D);
+
+			{
+				let a = 9;
+
+				{
+					a = 45;
+				}
+
+				a = 23;
+				console.log('a:', a);
+			}
+		</script>
+	</body>
+</html>

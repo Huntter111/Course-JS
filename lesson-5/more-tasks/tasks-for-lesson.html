@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks</title>
+	</head>
+	<body>
+		<h3>поступово вводяться вартості 7 товарів із зазначенням номера товару. Знайти загальну вартість</h3>
+		<script>
+			// let userPrice;
+			// let totalPrice = 0;
+			// let num = 1;
+			// while (num <= 7) {
+			// 	userPrice = parseFloat(prompt(`Введіть ціну ${num} товару`, '10'));
+			// 	totalPrice = totalPrice + userPrice;
+			// 	num++;
+			// }
+
+			// let userPrice;
+			// let totalPrice = 0;
+			// for (let num = 1; num <= 7; num++) {
+			// 	userPrice = parseFloat(prompt(`Введіть ціну ${num} товару`, '10'));
+			// 	totalPrice = totalPrice + userPrice;
+			// }
+			// document.write(`${totalPrice}`);
+
+			for (let i = 0; i < 5; i++) {
+				let firstNumber = parseInt(prompt('Введіть перше число', '10'));
+				let secondNumber = parseInt(prompt('Введіть друге число', '10'));
+				if (firstNumber === secondNumber) {
+					result = `Сума чисел дорівнює ${firstNumber + secondNumber}`;
+				} else {
+					result = `Добуток чисел дорівнює ${firstNumber * secondNumber}`;
+				}
+			}
+		</script>
+	</body>
+</html>
