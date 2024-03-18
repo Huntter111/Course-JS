@@ -13,27 +13,47 @@
 			нього (від лівого або правого краю) не більше ніж на 10.
 		</h3>
 		<script>
+			// ! Мій варіант
+			// let result;
+			// const minNum = 1;
+			// const maxNum = 100;
+			// const randomNumber = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+			// console.log('randomNumber:', randomNumber);
+			// let getUserNumber = parseInt(prompt("Вгадайте число загадане комп'ютером від 1 до 100", '25'));
+
+			// const AllowableValue = 10;
+			// let minAllowableValue = randomNumber - AllowableValue;
+			// console.log('minAllowableValue:', minAllowableValue);
+			// let maxAllowableValue = randomNumber + AllowableValue;
+			// console.log('maxAllowableValue:', maxAllowableValue);
+
+			// if (getUserNumber === randomNumber) {
+			// 	result = 'Ви точно вгадали число';
+			// } else if (getUserNumber <= maxAllowableValue && getUserNumber >= minAllowableValue) {
+			// 	result = 'Ви вгадали число';
+			// } else result = 'Ви НЕ вгадали число';
+			// document.write(
+			// 	`Загадане число комп'ютером було ${randomNumber}, Ваше число ${getUserNumber}. Результат: ${result}`,
+			// );
+
+			// ! Так як потрібно
+			let min = 1 + Math.floor(Math.random() * 100 - 1 + 1);
+			console.log('min:', min);
+			let max = 1 + Math.floor(Math.random() * 100 - 1 + 1);
+			console.log('max:', max);
 			let result;
-			const minNum = 1;
-			const maxNum = 100;
-			const randomNumber = Math.floor(Math.random() * (maxNum - minNum) + minNum);
-			console.log('randomNumber:', randomNumber);
-			let getUserNumber = parseInt(prompt("Вгадайте число загадане комп'ютером від 1 до 100", '25'));
-
-			const AllowableValue = 10;
-			let minAllowableValue = randomNumber - AllowableValue;
-			console.log('minAllowableValue:', minAllowableValue);
-			let maxAllowableValue = randomNumber + AllowableValue;
-			console.log('maxAllowableValue:', maxAllowableValue);
-
-			if (getUserNumber === randomNumber) {
-				result = 'Ви точно вгадали число';
-			} else if (getUserNumber <= maxAllowableValue && getUserNumber >= minAllowableValue) {
-				result = 'Ви вгадали число';
-			} else result = 'Ви НЕ вгадали число';
-			document.write(
-				`Загадане число комп'ютером було ${randomNumber}, Ваше число ${getUserNumber}. Результат: ${result}`,
-			);
+			if (min > max) {
+				let temp = min;
+				min = max;
+				max = temp;
+			}
+			console.log('min2:', min);
+			console.log('max2:', max);
+			let userNumber = parseInt(prompt('Введіть число в проміжку від 1 до 100', '20'));
+			if (min - 10 <= userNumber && userNumber <= max + 10) {
+				result = `Ви вгадали проміжок який загадав комп'ютер`;
+			} else result = `Спробуйте ще раз`;
+			document.write(`${result}`);
 		</script>
 	</body>
 </html>
