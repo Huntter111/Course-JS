@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших
+			за 100.
+		</h3>
+		<script>
+			let firtstNum = parseFloat(prompt('Введіть перше число', '120'));
+			let secondNum = parseFloat(prompt('Введіть друге число', '-11'));
+			let thirdNum = parseFloat(prompt('Введіть третє число', '14'));
+
+			function getAllParam(num1, num2, num3) {
+				let quantityEven = 0;
+				let quantityPlusNumber = 0;
+				let quantityMoreThan100 = 0;
+
+				if (num1 > 0) {
+					quantityPlusNumber++;
+					if (num1 % 2 === 0) {
+						quantityEven++;
+					}
+					if (num1 >= 100) {
+						quantityMoreThan100++;
+					}
+				}
+				if (num2 > 0) {
+					quantityPlusNumber++;
+					if (num2 % 2 === 0) {
+						quantityEven++;
+					}
+					if (num2 >= 100) {
+						quantityMoreThan100++;
+					}
+				}
+				if (num3 > 0) {
+					quantityPlusNumber++;
+					if (num3 % 2 === 0) {
+						quantityEven++;
+					}
+					if (num3 >= 100) {
+						quantityMoreThan100++;
+					}
+				}
+				let result = `кількість парних = ${quantityEven}, Кількість додатних = ${quantityPlusNumber}, Кількість більших за 100 = ${quantityMoreThan100}`;
+				return result;
+			}
+
+			document.write(`${getAllParam(firtstNum, secondNum, thirdNum)}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

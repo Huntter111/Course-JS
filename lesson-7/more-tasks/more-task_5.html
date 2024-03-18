@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>Задача 5. Створити окремі функції, які переводять: Сантиметри у дюйми; Кілограми у фунти; Кілометри у милі.</h3>
+		<script>
+			let userNumber = parseInt(prompt('Введіть число яке потрібно перетворити ', '120'));
+
+			function getInches(number) {
+				return number * 0.3937008;
+			}
+			function getPounds(number) {
+				return number * 2.2046226;
+			}
+			function getMiles(number) {
+				return number * 1.609344;
+			}
+
+			document.write(`Сантиметри у дюйми = ${getInches(userNumber).toFixed(3)} <br>
+         Кілограми у фунти = ${getPounds(userNumber).toFixed(3)}  <br>
+         Кілометри у милі = ${getMiles(userNumber).toFixed(3)}
+         `);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 9</title>
+	</head>
+	<body>
+		<h3>Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			let userMinTemperature = parseInt(prompt('Введіть мінімальну температуру за 30 днів', '-30'));
+			let userMaxTemperature = parseInt(prompt('Введіть максимальну температуру за 30 днів', '30'));
+			let userDays = parseInt(prompt('Введіть кількість днів', '22'));
+			let randomNumber;
+			function getMinusDaysTemparature(minTemp, maxTemp, valueDays) {
+				let counterMitusTemperature = 0;
+				for (let i = 0; i < userDays; i++) {
+					randomNumber = getRandomNumber(minTemp, maxTemp);
+					console.log('getMinusDaysTemparature ~ randomNumber:', randomNumber);
+					if (randomNumber < 0) {
+						counterMitusTemperature++;
+					}
+				}
+				return counterMitusTemperature;
+			}
+			let result = getMinusDaysTemparature(userMinTemperature, userMaxTemperature, userDays);
+			document.write(`Кількість днів з мінусовою погодою було ${result}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

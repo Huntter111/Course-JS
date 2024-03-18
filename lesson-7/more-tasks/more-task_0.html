@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 0</title>
+	</head>
+	<body>
+		<h3>Задача 0. Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</h3>
+		<script>
+			// 0
+			function getSeason(month) {
+				let result;
+				switch (month) {
+					case 1:
+					case 2:
+					case 12:
+						result = `Зима`;
+						break;
+					case 3:
+					case 4:
+					case 5:
+						result = `Весна`;
+						break;
+					case 6:
+					case 7:
+					case 8:
+						result = `Літо`;
+						break;
+					case 9:
+					case 10:
+					case 11:
+						result = `Осінь`;
+						break;
+
+					default:
+						result = `Немає такого місяця`;
+						break;
+				}
+				return result;
+			}
+			let userInputMonth = parseInt(prompt('Введіть місяць щоб дізнатись пору року', '3'));
+
+			let resultSeason = getSeason(userInputMonth);
+			document.write(`Пору року = ${resultSeason}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>
