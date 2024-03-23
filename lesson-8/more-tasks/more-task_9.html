@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 9</title>
+	</head>
+	<body>
+		<h3>
+			Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці
+			одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер
+			клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getArray(min, max, value) {
+				let arr = [];
+				for (let i = 0; i < value; i++) {
+					let randomNum = getRandomNumber(min, max);
+					arr.push(randomNum);
+				}
+				return arr;
+			}
+			let userInputCell = parseInt(prompt('Введіть кількість клітинок', '10'));
+			let userShips = parseInt(prompt('Введіть кількість Кораблів', '3'));
+			let arrayNum = getArray(0, 0, userInputCell);
+
+			function getArrShips(arr, minValueLength, maxValueLength, userShips) {
+				let ship = 1;
+
+				while (userShips !== 0) {
+					if (userShips - 1 > maxValueLength) {
+						alert(`Кораблів більше ніж клітинок!`);
+						break;
+					}
+					let randomShip = getRandomNumber(minValueLength, maxValueLength);
+					console.log('randomShip:', randomShip);
+					if (arr[randomShip] === 1) {
+						continue;
+					} else {
+						arr[randomShip] = ship;
+						userShips--;
+					}
+				}
+				return arr;
+			}
+			let arrayShips = getArrShips(arrayNum, 0, userInputCell - 1, userShips);
+			console.log('arrayShips:', arrayShips);
+
+			function getUserWin(arrayShips, userShips, userInput) {
+				let counterShips = userShips;
+				let result;
+				let counterUserShots = 0;
+				do {
+					let userShotShip = parseInt(prompt(`Зробіть постріл в одному із клітинок від 1 до ${userInput}`, '2'));
+					console.log('getUserWin ~ userShotShip:', userShotShip);
+					if (userShotShip === null || userShotShip === NaN) {
+						break;
+					}
+					if (arrayShips[userShotShip - 1] === 1) {
+						counterShips--;
+						arrayShips[userShotShip - 1] = 0;
+						alert(`Ви попали в клітинці ${userShotShip} був корабль. Ще залишилось ${counterShips} кораблів`);
+					} else {
+						alert(`Ви промахнулись в клітинці ${userShotShip} не було корабля`);
+					}
+					counterUserShots++;
+				} while (counterShips !== 0);
+				result = `Ви виграли вам знадобилось ${counterUserShots} спроб, щоб потопити всі кораблі`;
+				return result;
+			}
+			let userWin = getUserWin(arrayShips, userShips, userInputCell);
+			document.write(`${userWin}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

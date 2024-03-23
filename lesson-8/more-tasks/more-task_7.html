@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 7</title>
+	</head>
+	<body>
+		<h3>
+			Задача 7. Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+			<ol>
+				<li>за весь рік; 12 місяців</li>
+				<li>у першій половині року; 1-6</li>
+				<li>у другій половині року; 7-12</li>
+				<li>за літо; 6-8</li>
+				<li>за ІІ квартал; 3-5</li>
+				<li>за парні місяці (з парними номерами); 2,4,6,8,10,12</li>
+				<li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).3, 6, 9, 12</li>
+			</ol>
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getArray(min, max, value) {
+				let arr = [];
+				for (let i = 0; i < value; i++) {
+					let randomNum = getRandomNumber(min, max);
+					arr.push(randomNum);
+				}
+				return arr;
+			}
+
+			let payments = getArray(50, 400, 12);
+
+			console.log('payments:', payments);
+			function getPayments(startYear, EndYear, arr) {
+				let counterPayment = 0;
+				for (let i = startYear; i <= EndYear; i++) {
+					const payment = arr[i - 1];
+
+					counterPayment += payment;
+				}
+				return counterPayment;
+			}
+			function getPaymentsEvenMonth(startYear, EndYear, arr) {
+				let counterPaymentsEvenMonth = 0;
+				for (let i = startYear + 1; i <= EndYear; i += 2) {
+					const paymentEven = arr[i - 1];
+
+					counterPaymentsEvenMonth += paymentEven;
+				}
+				return counterPaymentsEvenMonth;
+			}
+			function getStartOfMonthPayments(startYear, EndYear, arr) {
+				let totalPayment = 0;
+				for (let i = startYear + 2; i <= EndYear; i += 3) {
+					const paymentEven = arr[i - 1];
+					totalPayment += paymentEven;
+				}
+				return totalPayment;
+			}
+			document.write(`Сума за увесь рік = ${getPayments(1, 12, payments)} <br>`);
+			document.write(`Сума у першій половині року = ${getPayments(1, 6, payments)} <br>`);
+			document.write(`Сума у другій половині року = ${getPayments(7, 12, payments)} <br>`);
+			document.write(`Сума за літо = ${getPayments(6, 8, payments)} <br>`);
+			document.write(`Сума за ІІ квартал = ${getPayments(3, 5, payments)} <br>`);
+			document.write(`Сума за парні місяці = ${getPaymentsEvenMonth(1, 12, payments)} <br>`);
+			document.write(`Сума за парні місяці = ${getStartOfMonthPayments(1, 12, payments)} <br>`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

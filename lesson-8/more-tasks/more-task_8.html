@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>
+			Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500).
+			Надаючи користувачу можливість вибирати номери елементів (поки він не відмовиться). Знаходити сумарний виграш.
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getArray(min, max, value) {
+				let arr = [];
+				for (let i = 0; i < value; i++) {
+					let randomNum = getRandomNumber(min, max);
+					arr.push(randomNum);
+				}
+				return arr;
+			}
+			let userInputValue = parseInt(prompt('Введіть кількість елементів в масиві', '20'));
+			let arrWinPoints = getArray(-500, 500, userInputValue);
+
+			function getUserWin(arr, userInput) {
+				let sum = 0;
+				let choice = true;
+				do {
+					let userItemSelection = parseInt(prompt(`Виберіть номер елемента від 1 до ${userInput}`, '2'));
+					if (isNaN(userItemSelection) || userItemSelection < 1 || userItemSelection > arr.length) {
+						alert(`Введіть правильне число від 1 до ${userInput} `);
+						continue;
+					}
+					sum += arr[userItemSelection - 1];
+					choice = confirm(`Ваш вигра зараз ${sum} грн. Натисніть 'OK', щоб продовжити або 'Cancel', щоб забрати виграш виграш.`);
+				} while (choice === true);
+				return sum;
+			}
+			let rusultUserWin = getUserWin(arrWinPoints, userInputValue);
+			document.write(`Ви виграли ${rusultUserWin} грн.`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>
