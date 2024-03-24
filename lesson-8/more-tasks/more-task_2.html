@@ -37,9 +37,9 @@
 			function getValueVisitors(array) {
 				let result;
 				let counterVisitorsLessThan20 = [];
-				console.log('getValueVisitors ~ counterVisitorsLessThan20:', counterVisitorsLessThan20);
+
 				let counterVisitorsLess = [];
-				console.log('getValueVisitors ~ counterVisitorsLess:', counterVisitorsLess);
+
 				let counterVisitorsWorkDay = 0;
 				let counterVisitorsWeekend = 0;
 				for (let j = 0; j < array.length; j++) {
@@ -61,8 +61,9 @@
 						counterVisitorsLess.push(i + 1);
 					}
 				}
-				return (result = `Кількість відвідувачів була меншою за 20 = ${counterVisitorsLessThan20} <br> Кількість відвідувачів була мінімальною = ${counterVisitorsLess}, 
-				<br> Кількість клієнтів у робочі дні =  ${counterVisitorsWorkDay}, <br>   Кількість клієнтів у вихідні дні = ${counterVisitorsWeekend}, <br>`);
+				result = `Кількість відвідувачів була меншою за 20 = ${counterVisitorsLessThan20} <br> Кількість відвідувачів була мінімальною = ${counterVisitorsLess}, 
+				<br> Кількість клієнтів у робочі дні =  ${counterVisitorsWorkDay}, <br>   Кількість клієнтів у вихідні дні = ${counterVisitorsWeekend}, <br>`;
+				return result;
 			}
 			document.write(`${getValueVisitors(arr)}`);
 		</script>

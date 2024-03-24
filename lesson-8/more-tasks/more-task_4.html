@@ -65,8 +65,9 @@
 					if (carNumber.charAt(0) === 'А') counterCarNumberStartA++;
 					if (carNumber.charAt(0) === carNumber.charAt(carNumber.length - 1)) counterCarNumberStartEndA++;
 				}
-				return (result = `складаються з більше ніш 5 символів ${counterCarNumberMoreThanFiveLetters} <br> Починаються на букву «А» ${counterCarNumberStartA} <br> 
-            перша і остання літери співпадають ${counterCarNumberStartEndA}`);
+				result = `складаються з більше ніш 5 символів ${counterCarNumberMoreThanFiveLetters} <br> Починаються на букву «А» ${counterCarNumberStartA} <br> 
+            перша і остання літери співпадають ${counterCarNumberStartEndA}`;
+				return result;
 			}
 
 			document.write(`${getValueCarsNumber(arrCarNumbers)}`);
