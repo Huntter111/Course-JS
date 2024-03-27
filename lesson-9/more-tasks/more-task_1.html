@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>1. Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.</h3>
+		<script>
+			let userValueElements = parseInt(prompt('Введіть кількість елементів в масиві', '10'));
+			function getNewArray(userValue) {
+				return new Array(userValue).fill(0);
+			}
+			let newArray = getNewArray(userValueElements);
+			console.log('newArray:', newArray);
+			document.write(`${newArray}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

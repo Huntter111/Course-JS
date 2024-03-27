@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</h3>
+		<script>
+			// let numberCarsArray = ['АН2240ВТ', 'АК1725', 'АН4034РК', 'ВТ2874', 'АВ4523ОР'];
+			function randomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function randomCarsArray(min, max, value) {
+				let newArray = [];
+				for (let i = 0; i < value; i++) {
+					let ramdomElem = randomNumber(min, max);
+					console.log('randomCarsArray ~ ramdomElem:', ramdomElem);
+					switch (ramdomElem) {
+						case 1:
+							newArray.push('АН2240ВТ');
+							break;
+						case 2:
+							newArray.push('АК1725');
+							break;
+						case 3:
+							newArray.push('ВТ2874');
+							break;
+						case 4:
+							newArray.push('АН4034РК');
+							break;
+						case 5:
+							newArray.push('ТВ4523ОР');
+							break;
+					}
+				}
+				return newArray;
+			}
+			let randomCarsNumberArray = randomCarsArray(1, 5, 10);
+			console.log('randomCarsNumberArray:', randomCarsNumberArray);
+			function getArrayFirstLetter(arr) {
+				let newCarsArray = arr.filter(element => element[0] === 'А');
+				return newCarsArray;
+			}
+			console.log(`${getArrayFirstLetter(randomCarsNumberArray)}`);
+			document.write(`Масив номерів, які починаються на "А" = ${getArrayFirstLetter(randomCarsNumberArray)}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

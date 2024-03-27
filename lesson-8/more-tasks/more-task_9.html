@@ -70,7 +70,7 @@
 					if (arrayShips[userShotShip - 1] === 1) {
 						counterShips--;
 						arrayShips[userShotShip - 1] = 0;
-						alert(`Ви попали в клітинці ${userShotShip} був корабль. Ще залишилось ${counterShips} кораблів`);
+						alert(`Ви попали, в клітинці ${userShotShip} був корабль. Ще залишилось ${counterShips} кораблів`);
 					} else {
 						alert(`Ви промахнулись в клітинці ${userShotShip} не було корабля`);
 					}
@@ -79,6 +79,7 @@
 				result = `Ви виграли вам знадобилось ${counterUserShots} спроб, щоб потопити всі кораблі`;
 				return result;
 			}
+			console.log('arrayShips:', arrayShips);
 			let userWin = getUserWin(arrayShips, userShips, userInputCell);
 			document.write(`${userWin}`);
 		</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 10</title>
+	</head>
+	<body>
+		<h3>10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getRandomArray(min, max, valueElementsArray) {
+				let randomArray = [];
+				for (let i = 0; i < valueElementsArray; i++) {
+					let randomElement = getRandomNumber(min, max);
+					randomArray.push(randomElement);
+				}
+				return randomArray;
+			}
+			let arrayElements = getRandomArray(800, 1200, 5);
+			console.log('arrayElements:', arrayElements);
+
+			function getArrayDiscountsWithMap(arr) {
+				let discont = 1 - 0.8;
+				let newArray = arr.map(element => (element *= discont).toFixed(2));
+				return newArray;
+			}
+			console.log(getArrayDiscountsWithMap(arrayElements));
+			document.write(
+				`
+				Дано масив цін у грн. Податок складає 20% = ${getArrayDiscountsWithMap(arrayElements)}
+            
+            `,
+			);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>
