@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>Задача 1. Знайти суми елементів у вказаній області</h3>
+		<img src="../img/image-1.png" alt="" />
+		<style>
+			img {
+				margin-bottom: 2rem;
+				display: block;
+			}
+		</style>
+		<script>
+			let megaArray = [
+				[10, 20, 30, 40],
+				[50, 60, 70, 80],
+				[90, 100, 110, 120],
+				[130, 140, 150, 160],
+			];
+			function getSum(rowStart, rowEnd, columnStart, columnEnd, array) {
+				let sum = 0;
+				for (let i = rowStart; i <= rowEnd; i++) {
+					for (let j = columnStart; j <= columnEnd; j++) {
+						sum += array[i][j];
+					}
+				}
+
+				return sum;
+			}
+
+			let firstSum = getSum(0, 1, 0, 1, megaArray);
+			console.log('firstSum:', firstSum);
+			let secondSum = getSum(0, 1, 2, 3, megaArray);
+			console.log('secondSum:', secondSum);
+
+			let thirdSum = getSum(2, 3, 0, 1, megaArray);
+			console.log('thirdSum:', thirdSum);
+			let fourdSum = getSum(2, 3, 2, 3, megaArray);
+			console.log('fourdSum:', fourdSum);
+		</script>
+
+		<script>
+			// Знайти Суму парних рядків
+			let newSumRow = 0;
+			for (let i = 0; i < megaArray.length; i = i + 2) {
+				for (let j = 0; j < megaArray.length; j++) {
+					newSumRow += megaArray[i][j];
+				}
+			}
+			console.log('newSumRow:', newSumRow);
+		</script>
+		<script>
+			// Суму непарних стовпців
+			let newSumColumn = 0;
+			for (let i = 0; i < megaArray.length; i++) {
+				for (let j = 1; j < megaArray.length; j = j + 2) {
+					newSumColumn += megaArray[i][j];
+				}
+			}
+			console.log('newSumColumn:', newSumColumn);
+		</script>
+		<script>
+			// У парних рядках – непарні стовпці, у непарних – парні.
+			// let evenRowsOddColumns = 0;
+			// for (let i = 1; i < megaArray.length; i = i + 2) {
+			// 	for (let j = 0; j < megaArray.length; j = j + 2) {
+			// 		evenRowsOddColumns += megaArray[i][j];
+			// 		console.log('megaArray[i][j]:', megaArray[i][j]);
+			// 	}
+			// }
+			// console.log('evenRowsOddColumns:', evenRowsOddColumns);
+
+			// let oddRowsEvenColumns = 0;
+			// for (let i = 0; i < megaArray.length; i = i + 2) {
+			// 	for (let j = 1; j < megaArray.length; j = j + 2) {
+			// 		oddRowsEvenColumns += megaArray[i][j];
+			// 		console.log('megaArray:', megaArray[i][j]);
+			// 	}
+			// }
+			// console.log('oddRowsEvenColumns:', oddRowsEvenColumns);
+			let counterEvenRowsOddColumns = 0;
+			// ======== 1 Варіант =========
+			// for (let rowIndex = 0; rowIndex < megaArray.length; rowIndex++) {
+			// 	let startColIndex;
+			// 	if (startColIndex % 2 === 0) startColIndex = 1;
+			// 	else startColIndex = 0;
+			// 	for (let colIndex = startColIndex; colIndex < megaArray[rowIndex].length; colIndex += 2) {
+			// 		counterEvenRowsOddColumns += megaArray[rowIndex][colIndex];
+			// 		console.log('counterEvenRowsOddColumns:', counterEvenRowsOddColumns);
+			// 	}
+			// }
+			// ======== 2 Варіант =========
+			for (let rowIndex = 0; rowIndex < megaArray.length; rowIndex++) {
+				for (let colIndex = 1 - (rowIndex % 2); colIndex < megaArray[rowIndex].length; colIndex += 2) {
+					// Менший запис
+					counterEvenRowsOddColumns += megaArray[rowIndex][colIndex];
+					console.log('counterEvenRowsOddColumns:', counterEvenRowsOddColumns);
+				}
+			}
+
+			console.log('1: counterEvenRowsOddColumns:', counterEvenRowsOddColumns);
+		</script>
+	</body>
+</html>

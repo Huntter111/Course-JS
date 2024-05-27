@@ -14,20 +14,31 @@
 			}
 		</style>
 		<script>
+			arr = [a[(1, 2, 3, 4)], b[(5, 6, 7, 8)], c[(9, 10, 11)]];
+		</script>
+		<!-- <script>
 			// Дано масив цін. Змінити цей масив так, що на ціни які більше за 1000 грн. дати знижку 30% (*0.7)
-			// const arr = [56, 83, 3333, 12034, 3545, 943, 13414, 1034, 43, 56, 789, 2034];
+			const arr = [56, 83, 3333, 12034, 3545, 943, 13414, 1034, 43, 56, 789, 2034];
+			console.log('arr:', arr);
 			// ! ForEach
-			// arr.forEach((element, index, arrRef) => {
-			// 	if (element > 1000) arrRef[index] *= 0.7;
-			// });
+			arr.forEach((element, index, baseArrRef) => {
+				if (element > 1000) {
+					baseArrRef[index] *= 0.7;
+				}
+			});
+			console.log('arr:', arr);
+		</script> -->
+		<!-- <script>
+			// (fill) Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга 7-ками.
+			let userElements = 10;
+			let array = new Array(userElements);
 
-			// !.map Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга 7-ками.
-			// let arr = [1, 1, 1, 1, 1, 1, 1, 1, 1];
-			// const arrayMiddleIndex = Math.floor(arr.length / 2);
-			// arr.fill(1, 0, arrayMiddleIndex);
-			// arr.fill(7, arrayMiddleIndex);
-			// console.log(arr);
-
+			let arrayMiddleIndex = Math.floor(array.length / 2);
+			array.fill(1, 0, arrayMiddleIndex).fill(7, arrayMiddleIndex);
+			console.log('array:', array);
+		</script> -->
+		<!-- <script>
+			
 			// Для зміни існуючого масива ForEach.
 			// Дано масив елементів. Усі елементи, які більше за пеший елемент помножити на 2.
 			// let arr = [5, 10, 1, 20, 30, 40, 50];
@@ -631,6 +642,6 @@
 			}
 			let totalVisitorsHalfOfYear = getVisitorsHalfOfYear(cafeVisitors);
 			console.log('🚀 ~ file: lesson10.html:633 ~ totalVisitorsHalfOfYear:', totalVisitorsHalfOfYear);
-		</script>
+		</script> -->
 	</body>
 </html>

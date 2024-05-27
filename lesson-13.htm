@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson 13</title>
+	</head>
+	<body>
+		<!-- ! Рекурсія -->
+
+		<!-- <script>
+			function factoiral(n) {
+				if (n === 1) return 1;
+				else return factoiral(n - 1) * n;
+			}
+
+			let f3 = factoiral(3);
+			console.log('f3:', f3);
+			n = 3;
+			let factorialStart = 1;
+			for (let i = 1; i <= n; i++) {
+				factorialStart *= i;
+			}
+			console.log('factorialStart:', factorialStart);
+		</script> -->
+
+		<script>
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function myFunc() {
+				let firstRandomNum = getRandomNum(10, 20);
+				let secondRandomNum = getRandomNum(10, 30);
+				let resultSum = firstRandomNum + secondRandomNum;
+				let newTimeOut = setTimeout(() => {
+					let userNumber = parseInt(prompt(`Введіть суму двох чисел ${firstRandomNum} + ${secondRandomNum}`, ''));
+
+					if (userNumber === resultSum) {
+						alert('Вітаю, все правильно!');
+					} else {
+						alert(`Ні, відповідь ${resultSum}!`);
+					}
+
+					myFunc();
+				}, 3000);
+			}
+			myFunc();
+		</script>
+	</body>
+</html>

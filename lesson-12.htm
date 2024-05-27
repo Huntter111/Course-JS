@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson 12</title>
+	</head>
+	<body>
+		<!-- ! Sort Сортування масивів, щоб спочатку були нулі, потім від'ємні, потім додатні без зміни їх слідування -->
+		<!-- <script>
+			let arr = [23, 0, 0, 4, 11, -2, 0, -5];
+			let newArr = arr.sort((el1, el2) => {
+				if (el1 === 0 && el2 === 0) return 0;
+				if (el1 !== 0 && el2 === 0) return 1;
+				if (el1 === 0 && el2 !== 0) return -1;
+				if (el1 * el2 < 0) return el1 - el2;
+				return 0;
+			});
+			console.log('newArr:', newArr);
+
+		</script> -->
+
+		<!-- ! Sort Сортування масивів, спочатку тільки ті що більше за 200 а потім всі інші -->
+		<!-- <script>
+			let scores = [201, 404, 100, 0, 20, 365, 43, 5034, 340, 31, 0, 200, 300, 0];
+
+			let newScrores = scores.sort((el1, el2) => {
+				if (el1 > 200 && el2 <= 200) return -1;
+				if (el1 <= 200 && el2 > 200) return 1;
+				if (el1 > 200 && el2 > 200) return 0;
+				return 0;
+			});
+			console.log('newScrores ~ newScrores:', newScrores);
+
+			// Відсортувати так щоб спочатку були ваграші/програші (тобто по модулю) <10, потім <100, потім <200, потім <300, потім <400 ...
+			let newScoresABS = scores.sort((el1, el2) => {
+				return Math.abs(el1) - Math.abs(el2);
+			});
+			console.log('newScoresABS ~ newScoresABS:', newScoresABS);
+		</script> -->
+
+		<!-- ! Дано масив імен користувачів -->
+		<!-- <script>
+			// 1. Упорядкувати за зростанням, потрібно написати тільки sort і більше нічого не потрібно, воно упорядковує рядочки автоматично
+			let names = ['John', 'Paul', 'Olga', 'Andrew', 'Abrams', 'Peter', 'Tina', 'Olga', 'Jack', 'Peter'];
+			names.sort(); // Упорядковує автоматично рядки в за зростанням порядку
+			console.log('names:', names);
+
+			names.sort().reverse(); // так працює але робимо подвійну роботу
+
+			names.sort((el1, el2) => {
+				if (el1 > el2) return -1;
+				if (el1 < el2) return 1;
+				return 0;
+			});
+			console.log('names.sort ~ names:', names);
+
+			// 5). Упорядкувати масив імен за зростанням довжин імен
+			names.sort((el1, el2) => {
+				return el1.length - el2.length;
+			});
+			document.write(`Упорядкувати масив імен за зростанням довжин імен: ${names}`);
+			// 6). Упорядкувати масив імен за спаданням довжин імен
+			names.sort((el1, el2) => {
+				return el2.length - el1.length;
+			});
+			document.write(`Упорядкувати масив імен за спаданням довжин імен: ${names}`);
+
+			// 7) Упорядкувати масив так, щоб спочатку буви Peter, потім все інші
+			/*
+			names.sort((el1, el2) => {
+				if (el1 === 'Peter' && el2 !== 'Peter') return -1;
+				if (el1 !== 'Peter' && el2 === 'Peter') return 1;
+				return 0;
+			});
+			console.log('names.sort ~ names:', names);
+			*/
+			const namePeter = names.filter(name => name === 'Peter');
+			const nameNotPeter = names.filter(name => name !== 'Peter');
+			let res = [...namePeter, ...nameNotPeter];
+			console.log('res:', res);
+			// 8) Упорядкувати масив так щоб спочатку були Peter в кінці Olga потім все інші
+			names.sort((el1, el2) => {
+				if (el1 === 'Peter' && el2 !== 'Peter') return -1;
+				if (el1 !== 'Peter' && el2 === 'Peter') return 1;
+				if (el1 === 'Olga' && el2 !== 'Olga') return 1;
+				if (el1 !== 'Olga' && el2 === 'Olga') return -1;
+				return 0;
+			});
+			console.log('Упорядкувати масив так щоб спочатку були Peter в кінці Olga потім все інші:', names);
+		</script> -->
+		<!-- ! Трьох вимірні масиви -->
+		<script>
+			// let threeArray = [
+			// 	[
+			// 		[1, 2, 3, 4],
+			// 		[5, 6, 7, 8],
+			// 		[9, 10, 11, 12],
+			// 	],
+			// 	[
+			// 		[1, 2, 3, 4],
+			// 		[5, 6, 7, 8],
+			// 		[9, 10, 11, 12],
+			// 	],
+			// ];
+			// let newElem = threeArray[0][1][1];
+			// console.log('newElem:', newElem);
+
+			function getRandomNum(minV, maxV) {
+				return minV + Math.floor(Math.random() * (maxV - minV + 1));
+			}
+			// Формування рандомного масиву
+			function getArray(arrayLength, minV, maxV) {
+				let arr = [];
+
+				for (let i = 0; i < arrayLength; i++) {
+					const randomNum = getRandomNum(minV, maxV);
+					arr.push(randomNum);
+				}
+				return arr;
+			}
+			// Формування рандомного двовимірного масиву
+			function getTable(rowsNum, columnsNum, minV, maxV) {
+				let table = [];
+
+				for (let rowNum = 0; rowNum < rowsNum; rowNum++) {
+					const randomArray = getArray(columnsNum, minV, maxV);
+					table.push(randomArray);
+				}
+				return table;
+			}
+
+			// Формування 3D масиву
+
+			function get_3D_Array(layersNum, rowsNum, columnsNum, minV, maxV) {
+				let array_3D = [];
+				for (let i = 0; i < layersNum; i++) {
+					const table = getTable(rowsNum, columnsNum, minV, maxV);
+					array_3D.push(table);
+				}
+				return array_3D;
+			}
+			const CLASS_NUMBER = 11;
+			const schoolNumber = parseInt(prompt('Скільки є шкіл?', '5'));
+			const studentsNumber = parseInt(prompt('Скільки учнів у класі?', '12'));
+
+			const studentsHeightInSchools = get_3D_Array(schoolNumber, CLASS_NUMBER, studentsNumber, 100, 250);
+			console.log('studentsHeightInSchools:', studentsHeightInSchools);
+
+			let max = studentsHeightInSchools[0][0][0];
+			// ------ 01 ------ Читати або змінювати (можемо звернутись до індекса)
+			for (let school = 0; school < studentsHeightInSchools.length; school++) {
+				for (let classNumber = 0; classNumber < studentsHeightInSchools[school].length; classNumber++) {
+					for (let studentsNumber = 0; studentsNumber < studentsHeightInSchools[school][classNumber].length; studentsNumber++) {
+						const studentHeigt = studentsHeightInSchools[school][classNumber][studentsNumber];
+						if (studentHeigt > max) max = studentHeigt;
+					}
+				}
+			}
+			console.log('max:', max);
+			//------ 02 ------ тільки читати
+			for (const school of studentsHeightInSchools) {
+				for (const class_ of school) {
+					for (const student of class_) {
+						if (student > max) max = student;
+					}
+				}
+			}
+
+			console.log('max 2:', max);
+			// ------ 03 ------ тільки побачити результат
+			let maxStudentHeight = Math.max(...studentsHeightInSchools.flat(Infinity));
+			console.log('maxStudentHeight:', maxStudentHeight);
+		</script>
+	</body>
+</html>

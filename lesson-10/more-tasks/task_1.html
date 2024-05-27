@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>
+			Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+
+			<ol>
+				<li>Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн. (filter)</li>
+				<li>Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн. (filter)</li>
+				<li>Сформувати список з тих цін, які більші за попереднє значення (filter)</li>
+				<li>Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального (map)</li>
+				<li>Підрахувати кількість змін цін (reduce)</li>
+				<li>Визначити, чи є ціна, що менше 1000 (some)</li>
+				<li>Визначати, чи усі ціни більше за 1000 (every)</li>
+				<li>Підрахувати кількість цін, що більше за 1000 (reduce)</li>
+				<li>Підрахувати суму цін, що більше за 1000 (reduce)</li>
+				<li>Знайти першу ціну, що більше за 1000 (some)</li>
+				<li>Знайти індекс першої ціни, що більше за 1000 (some)</li>
+				<li>Знайти останню ціну, що більше за 1000 (findLast)</li>
+				<li>Знайти індекс останньої ціни, що більше за 1000 (findLast)</li>
+			</ol>
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getRandomArray(value, minV, maxV) {
+				const array = new Array(value).fill(0).map(() => getRandomNumber(minV, maxV));
+				return array;
+			}
+			let array = getRandomArray(12, 1, 10000);
+			console.log('array:', array);
+			let arr = [150, 7191, 450, 1571, 586, 749, 1752, 920, 6440, 303];
+			console.log('arr:', arr);
+
+			//1) Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+			const arrValueMoreThan1000 = arr.filter(element => element > 1000);
+			console.log('arrMoreThan1000:', arrValueMoreThan1000);
+
+			// 2) Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+			const arrIndexMoreThan1000 = arr.filter((element, index) => {
+				if (element > 1000) return index;
+			});
+			console.log('arrIndexMoreThan1000', arrIndexMoreThan1000);
+
+			// 3) Сформувати список з тих цін, які більші за попереднє значення
+			const arrMoreThanFirstValue = arr.filter((element, index) => element > arr[index + 1]);
+			console.log('arrMoreThanFirstValue:', arrMoreThanFirstValue);
+
+			// 4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+			let maxValueArrayElement = Math.max(...arr);
+			console.log('maxValueArray:', maxValueArrayElement);
+			const arrPercent = arr.map(element => (element * 100) / maxValueArrayElement);
+			console.log('arrPercent:', arrPercent);
+
+			// 6)Визначити, чи є ціна, що менше 1000
+			const arrPriceLess1000 = arr.some(element => element < 1000);
+			console.log('arrPriceLess1000:', arrPriceLess1000);
+
+			// 7)Визначати, чи усі ціни більше за 1000
+			const arrAllPricesMoreThan1000 = arr.every(element => element > 1000);
+			console.log('arrAllPricesMoreThan1000:', arrAllPricesMoreThan1000);
+
+			// 8)Підрахувати кількість цін, що більше за 1000
+			const arrValuePriceMoreThan1000 = arr.reduce((prevValue, element) => (element > 1000 ? prevValue + 1 : prevValue), 0);
+			console.log('valuePriceMoreThan1000:', arrValuePriceMoreThan1000);
+
+			//   9)Підрахувати суму цін, що більше за 1000
+			const arrSumPricesMoreThan1000 = arr.reduce((prevValue, element) => (element > 1000 ? prevValue + element : prevValue), 0);
+			console.log('arrSumPricesMoreThan1000:', arrSumPricesMoreThan1000);
+
+			// 10)Знайти першу ціну, що більше за 1000
+			function getFirstValueMoreThan1000(arr) {
+				let result;
+				let firstElement = 0;
+				let index = 0;
+				for (let i = 0; i < arr.length; i++) {
+					const element = arr[i];
+					if (element > 1000) {
+						index = i;
+						firstElement = element;
+						break;
+					}
+				}
+				result = `Перша ціна яка більша за 1000 = ${firstElement}, її індекс ${index}`;
+				return result;
+			}
+			let firstValueMoreThan1000 = getFirstValueMoreThan1000(arr);
+			console.log('firstValueMoreThan1000:', firstValueMoreThan1000);
+		</script>
+	</body>
+</html>
