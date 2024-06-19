@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 3. Розробити клас MultChecker для перевірки таблиці множення
+
+			<ul>
+				<li>Поля(властивості)</li>
+				<li>
+					<ul>
+						<li>Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)</li>
+						<li>Кількість правильних відповідей</li>
+						<li>Кількість неправильних відповідей</li>
+					</ul>
+				</li>
+				<li>Методи (дії)</li>
+				<li>
+					<ul>
+						<li>Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)</li>
+						<li>Перевірка правильності вказаної відповіді</li>
+						<li>render - виведення інформації про тестування на екран</li>
+					</ul>
+				</li>
+			</ul>
+		</h3>
+		<script>
+			class multChecker {
+				constructor(trueAnswer = 0, badAnswer = 0) {
+					this.trueAnswer = trueAnswer;
+					this.badAnswer = badAnswer;
+				}
+				// Методи
+				generateRandomNum(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1));
+				}
+				randomNum() {
+					return this.generateRandomNum(1, 10);
+					// return num;
+				}
+				generateMathExample() {
+					let userNumber = parseInt(prompt(`Наведіть суму добуток двох чисел: 7 * ${this.randomNum()}`));
+					console.log('multChecker ~ generateMathExample ~ userAnswer:', userNumber);
+					return userNumber;
+				}
+				checkExample() {
+					let userAnswer = this.generateMathExample();
+					let sum = this.randomNum() * 7;
+					console.log('multChecker ~ checkExample ~ sum:', sum);
+					if (userAnswer === sum) this.trueAnswer++;
+					else this.badAnswer++;
+					return `Правильний відповідей: ${this.trueAnswer}, не правильних: ${this.badAnswer}`;
+				}
+			}
+
+			let checker = new multChecker();
+			document.write(`${checker.render()}`);
+
+			console.log('userInput:', checker);
+		</script>
+	</body>
+</html>

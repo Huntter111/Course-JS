@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>
+			Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження
+			добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+		</h3>
+		<script>
+			// 1. Створити два різні об'єкти з масивом цілих чисел
+			// Приклад об'єктів
+			const obj1 = {
+				numbers: [1, 2, 3, 4],
+				//
+				// 2. В першому буде функція знаходження суми
+				sum: function () {
+					return this.numbers.reduce((prevSum, el) => prevSum + el, 0);
+				},
+			};
+
+			const obj2 = {
+				numbers: [5, 6, 15, 20],
+				//
+				// 3. В другом буде функція для знаходження доботку тих, які знаходяться між заданими мінімальними і макасимальних значення.
+				product: function (minV, maxV) {
+					return this.numbers.reduce((prevSum, el) => (el > minV && el < maxV ? prevSum * el : prevSum), 1);
+				},
+			};
+			let sum = obj1.sum();
+			console.log('sum:', sum);
+			let product = obj2.product(5, 20);
+			console.log('product:', product);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>
+			Задача 5. Розробити клас «Керівник танців»
+
+			<ul>
+				<li>Поля(властивості)</li>
+				<li>
+					<ul>
+						<li>Масив імен хлопців Масив імен дівчат</li>
+						<li>Масив імен хлопців Масив імен дівчат</li>
+					</ul>
+				</li>
+				<li>Методи (дії)</li>
+				<li>
+					<ul>
+						<li>Метод випадкового вибору імені хлопця</li>
+						<li>Метод випадкового вибору імені дівчини</li>
+						<li>Метод виведення пари для танців</li>
+						<li>Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців</li>
+					</ul>
+				</li>
+			</ul>
+		</h3>
+		<script>
+			const coachDance = {
+				boys: ['Igor', 'Ivan', 'Max', 'Tramp', 'Djin'],
+				girls: ['Olga', 'Marta', 'Vika', 'Masha', 'Sonya'],
+				//
+				// Metods
+				getRandomNumber: function (minV, maxV) {
+					return minV + Math.floor(Math.random() * (maxV - minV) + 1);
+				},
+				randomlyBoysName: function () {
+					let radom = this.getRandomNumber(0, this.boys.length - 1);
+					console.log('radom:', radom);
+					let boyName = this.boys[radom];
+
+					return boyName;
+				},
+				randomlyGirlsName: function () {
+					let radom = this.getRandomNumber(0, this.girls.length - 1);
+					console.log('radom:', radom);
+					let girlName = this.girls[radom];
+
+					return girlName;
+				},
+				getDancePair: function () {
+					return `${this.randomlyBoysName()} і ${this.randomlyGirlsName()}`;
+				},
+				run: function () {
+					setInterval(() => {
+						console.log(`Нова пара для танців ${this.getDancePair()}`);
+					}, 5000);
+				},
+			};
+			document.write(`Метод випадкового вибору імені хлопця: ${coachDance.randomlyBoysName()}, <br>
+			        Метод випадкового вибору імені дівчини: ${coachDance.randomlyGirlsName()}, <br>
+					Пара для танців ${coachDance.getDancePair()}, <br>
+					
+			      `);
+
+			coachDance.run();
+		</script>
+	</body>
+</html>

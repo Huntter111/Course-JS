@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Розробити клас Baner
+
+			<ul>
+				<li>Поля(властивості)</li>
+				<li>
+					<ul>
+						<li>Масив об’єктів (графічних зображень та посилань на сайти)</li>
+					</ul>
+				</li>
+				<li>Методи (дії)</li>
+				<li>
+					<ul>
+						<li>Метод випадкового вибору об’єкта (графічного зображення та посилання)</li>
+						<li>Метод виведення випадкового банера</li>
+					</ul>
+				</li>
+			</ul>
+		</h3>
+		<script>
+			// Створити конструктор для виведення графічного зображення та посилання
+			// img
+			// link
+
+			class Baner {
+				constructor() {
+					this.banners = [
+						{ image: 'https://www.warzone.org.ua/img/advantages/image-1.webp', link: 'https://www.warzone.org.ua/' },
+						{ image: 'https://warzone.org.ua/img/about/image-1.webp', link: 'https://www.google.com/' },
+						{ image: 'https://www.warzone.org.ua/img/main/background-1.webp', link: 'https://github.com/' },
+					];
+				}
+				// Методи
+				// Метод випадкового вибору об’єкта (графічного зображення та посилання)
+				getRandomBanner() {
+					const randomIndex = Math.floor(Math.random() * this.banners.length);
+					return this.banners[randomIndex];
+				}
+				displayRandomBanner() {
+					const banner = this.getRandomBanner();
+					// Створюємо HTML елементи для банера
+					const bannerElement = document.createElement('div');
+					const imageElement = document.createElement('img');
+					const linkElement = document.createElement('a');
+
+					imageElement.src = banner.image;
+					linkElement.href = banner.link;
+					linkElement.appendChild(imageElement);
+
+					bannerElement.appendChild(linkElement);
+
+					// Додаємо банер на сторінку
+					document.body.appendChild(bannerElement);
+				}
+			}
+			const myBaner = new Baner();
+			myBaner.displayRandomBanner();
+		</script>
+	</body>
+</html>
