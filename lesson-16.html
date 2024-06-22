@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson-16</title>
+	</head>
+	<body>
+		<!-- TODO: Годинник -->
+		<!-- <script>
+			// --- Властивості
+			// * години
+			// * хвилини
+			// --- методи
+			//  * метод збільшення годин
+			//  * метод зменшення годин
+			//  * метод збільшення хвилин
+			//  * метод зменшення хвилин
+			//  Для якогось об'єкта потрібно знати
+			// - початкове значення
+			// - початкове значення звилин
+			class TTime {
+				constructor(initHours, initMinutes) {
+					// * години
+					this.hours = initHours;
+					// * хвилини
+					this.minutes = initMinutes;
+				}
+				// --- методи
+				//  * метод збільшення годин
+				increaseHours(value) {
+					this.hours = (this.hours + value) % 24;
+				}
+				//  * метод зменшення годин
+				decreaseHours(value) {
+					this.hours;
+				}
+				//  * метод збільшення хвилин
+				increaseMinutes(value) {
+					this.minutes += value;
+					this.increaseHours(Math.floor(this.minutes / 60));
+					this.minutes = this.minutes % 60;
+				}
+				//  * метод зменшення хвилин
+				decreaseMinutes(value) {
+					this.minutes -= value; // завершити
+				}
+				toString() {
+					return `${this.hours}: ${this.minutes}`;
+				}
+			}
+			let t1 = new TTime(3, 45);
+			t1.increaseHours(7);
+			t1.increaseMinutes(20);
+			document.write(t1);
+		</script> -->
+		<!-- TODO: Проблема логічної помилки -->
+		<!-- <script>
+			let pupil = {
+				name: 'Ivan',
+				age: 15,
+				class_: 8,
+				score: 8,
+				toString: function () {
+					return `${this.name}: ${this.age}`;
+				},
+			};
+			pupil.age = -15;
+			document.write(`${pupil}`);
+		</script> -->
+		<!-- TODO: Приватні поля учень -->
+		<!-- <script>
+			// Створити об'єкт учень
+			// -- Властивості характеристики
+			//  ПІБ
+			//  клас, у якому навчається
+
+			class Pupil {
+				// 1) опис приватних полів
+				#userName;
+				#age;
+				#class;
+				#_averageScore;
+				// 4) Конструктор
+				constructor(initName, initClass, initAge, initScore, minAge = 7, maxAge = 17) {
+					this.minAge = minAge;
+					this.maxAge = maxAge;
+					this.Age = initAge;
+					this.UserName = initName;
+					this.Class = initClass;
+					this.AverageScore = initScore;
+				}
+				// 2) метод зчитування значення закритого поля (геттер)
+				get Age() {
+					return this.#age;
+				}
+				get UserName() {
+					return this.#userName;
+				}
+				get Class() {
+					return this.#class;
+				}
+				get AverageScore() {
+					return this.#_averageScore;
+				}
+				// 3) метод опису значення закритого поля
+				set Age(newAgeValue) {
+					if (newAgeValue < this.minAge || newAgeValue > this.maxAge) {
+						throw new Error('Значення віку учня некоректне');
+					} else this.#age = newAgeValue;
+				}
+				set UserName(newName) {
+					if (newName.length === 0) throw new Error("Nan can't be empty");
+
+					this.#userName = newName;
+				}
+				set Class(newClass) {
+					if (newClass < 1 || newClass > 12) throw new Error('Class is in correct');
+					this.#class = newClass;
+				}
+				set AverageScore(val) {
+					if (val < 0 || val > 12) throw new Error('Score is incorrect');
+					this.#_averageScore = val;
+				}
+
+				// Методи
+				get Category() {
+					if (this.AverageScore < 4) return 'Двійочник';
+					if (this.AverageScore < 7) return 'Трійочик';
+					if (this.AverageScore < 10) return 'Хорошист';
+					return 'Відмінник';
+				}
+				get YearsToComplete() {
+					return 11 - this.Class;
+				}
+			}
+			let p1 = new Pupil('Ivan', 7, 13, 10);
+			p1.Age = 11; // виконається сеттер
+			document.write(`Category: ${p1.Category} <br>`);
+			document.write(`Years: ${p1.YearsToComplete}`);
+			let r = p1.Age; // get метод викличиться
+		</script> -->
+		<!-- TODO: Приватні поля Створити "Клієнт"-->
+		<script>
+			// (ім'я - довільний доступ (відкрите поле))
+			// номер рахунку - тільки для читання,
+			// кількість грошей - контрольований доступ (і читання і запис)
+
+			class Client {
+				// 1.
+				#accountNumber;
+				#money;
+				// 4)
+				constructor(initName, accountNumber, initMoney) {
+					this.name = initName;
+					this.#accountNumber = accountNumber;
+					this.#money = initMoney;
+				}
+				// 2)
+				get AccountNumber() {
+					this.#accountNumber;
+				}
+				get Money() {
+					return this.#money;
+				}
+				// 3)
+				set Money(val) {
+					if (val < 0) throw new Error('You can\t enough money');
+					this.#money = val;
+				}
+				toString() {
+					return `${this.name}, account: ${this.AccountNumber}, Balance: ${this.Money}`;
+				}
+			}
+			let user = new Client('Ivan', '323232332', 20000);
+			document.write(user);
+			document.write(`<br>`);
+			user.Money = 230001;
+			document.write(user);
+			document.write(`<br>`);
+		</script>
+	</body>
+</html>

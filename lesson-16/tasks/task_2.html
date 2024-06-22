@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 2</title>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи
+			додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс
+			долара зберігати в окремому полі.
+		</h3>
+		<script>
+			// Кількість доларів
+			// Курс долара
+			// -- Методи
+			// Додавання грошей
+			// Вилучення грошей
+			// курс долара при якому сума у гривнях збільшиться на 100
+			class TMoney {
+				#dollarAmount;
+				// Курс долара
+				#exchangeRate;
+				constructor(initMoney = 0, initDollar = 42) {
+					this.#dollarAmount = initMoney;
+					this.#exchangeRate = initDollar;
+				}
+				// 2) Get
+				// Дивимось суму грошей у доларах
+				get DollarAmount() {
+					return this.#dollarAmount;
+				}
+				// Дивимось курс долара
+				get ExchangeRate() {
+					this.#exchangeRate;
+				}
+				// 3) Set
+				// Встановлюємо новий курс долара
+				set ExchangeRate(newDollarExchange) {
+					this.#exchangeRate = newDollarExchange;
+				}
+				// --- Методи
+				// Сума доларів переведені з гривні
+
+				// Додавання грошей
+				addMoney(valAddMoney) {
+					const dollars = valAddMoney / this.#exchangeRate;
+					this.#dollarAmount += dollars;
+				}
+				removeMoney(valRemoveMoney) {
+					const dollars = valRemoveMoney / this.#exchangeRate;
+					if (dollars > this.#dollarAmount) console.log('Недостатньо коштів');
+					else this.#dollarAmount -= dollars;
+				}
+				newExchangeRateForIncrease(valIncrease) {
+					const newExchangeRate = (this.#dollarAmount * this.#exchangeRate + valIncrease) / this.#dollarAmount;
+					return newExchangeRate;
+				}
+				toString() {
+					return `Кількість грошей: ${this.#dollarAmount.toFixed(2)}$, курс долара: ${this.#exchangeRate.toFixed(2)} грн/$ Курс долара при якому буде + 100
+					 = ${this.newExchangeRateForIncrease(100).toFixed(2)} грн/$`;
+				}
+			}
+			let p1 = new TMoney(2500, 45);
+			p1.addMoney(4500);
+			p1.removeMoney(9000);
+
+			document.write(`${p1}`);
+		</script>
+	</body>
+</html>

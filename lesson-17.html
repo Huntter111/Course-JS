@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson-17</title>
+	</head>
+	<body>
+		<!-- ? Задача реалізувати конвертер валют. Курси валбт і методи перетворення мають бути статичними. -->
+		<!-- <script>
+			// Задача реалізувати конвертер валют. Курси валбт і методи перетворення мають бути статичними.
+
+			class Converter {
+				static dollarRate = 39;
+				static euroRate = 40;
+
+				static dollarToGrivna(dollarValue) {
+					// return dollarValue * this.dollarRate;
+					return dollarValue * Converter.dollarRate;
+				}
+				static euroToGrivna(euroAvalue) {
+					return euroAvalue * Converter.euroRate;
+				}
+
+				static grivnaToDollar(grivnaValue) {
+					return grivnaValue / Converter.dollarRate;
+				}
+				static grivnaToEuro(grivnaValue) {
+					return grivnaValue / Converter.euroRate;
+				}
+			}
+
+			document.write(`${Converter.dollarToGrivna(100)} <br>`);
+			document.write(`${Converter.grivnaToDollar(5000).toFixed(2)}<br>`);
+			Converter.dollarRate = 30;
+			document.write(`${Converter.dollarToGrivna(100)} <br>`);
+			document.write(`${Converter.grivnaToDollar(5000).toFixed(2)}<br>`);
+		</script> -->
+
+		<!-- ? Розробити рекламний агент -->
+		<!-- <script>
+			class Reklama {
+				static minIntervalValue;
+				static maxInntervalValue;
+				constructor(message, minIntervalValue, maxInntervalValue) {
+					this.message = message;
+					Reklama.minIntervalValue = minIntervalValue;
+					Reklama.maxInntervalValue = maxInntervalValue;
+				}
+				get currentIntervalValue() {
+					document.write(`<br>min = ${Reklama.minIntervalValue}, max = ${Reklama.maxInntervalValue} <br>`);
+					return Reklama.minIntervalValue + Math.floor(Math.random() * (Reklama.maxInntervalValue - Reklama.minIntervalValue + 1));
+				}
+				start() {
+					setTimeout(() => {
+						document.write(`${this.message}`);
+						this.start();
+					}, this.currentIntervalValue * 1000);
+				}
+			}
+			for (let i = 0; i < 10; i++) {
+				let r1 = new Reklama(`Hello ${i} <br>`, 0, 3);
+				r1.start();
+			}
+			setTimeout(() => {
+				Reklama.minIntervalValue = 2;
+				Reklama.maxInntervalValue = 5;
+			}, 2000);
+
+		</script> -->
+
+		<!-- ? Задача Статистика методів. Який з методів скільки разів був викликаний -->
+		<!-- <script>
+			class MyArray {
+				static sumCounter = 0;
+				static prodCounter = 0;
+				static maxCounter = 0;
+				static totalObjectNumber = 0;
+				constructor(dataList) {
+					this.dataList = [...dataList];
+					MyArray.totalObjectNumber++;
+				}
+				getSum() {
+					MyArray.sumCounter++;
+					return this.dataList.reduce((prevSum, el) => prevSum + el);
+				}
+				getProduct() {
+					MyArray.prodCounter++;
+					return this.dataList.reduce((prevProd, el) => prevProd * el, 1);
+				}
+				getMax() {
+					MyArray.maxCounter++;
+					return Math.max(...this.dataList);
+				}
+				static getStatistics() {
+					return `Objects number = ${MyArray.totalObjectNumber} sum = ${this.sumCounter}, prod=${this.prodCounter}, max=${this.maxCounter}`;
+				}
+			}
+
+			let m1 = new MyArray([2, 1, 4]);
+			let m2 = new MyArray([22, 11, 41, 35]);
+			document.write(`Sum 1 = ${m1.getSum()}<br>`);
+			document.write(`Sum 2 = ${m2.getSum()}<br>`);
+			document.write(`Sum 2 = ${m2.getSum()}<br>`);
+			document.write(`Sum 2 = ${m1.getProduct()}<br>`);
+
+			document.write(`Statistics = ${MyArray.getStatistics()}`);
+		</script> -->
+
+		<!-- ? Singleton! Задача. Черговий. Дано список студентів одного курса (ПІБ). Розробити менеджер чергових, який дозволяє випадковим чином обирати і запам'ятовувати обраного чергового студента -->
+		<!-- <script>
+			class DutyStudent {
+				static currentDutyStudentObj;
+
+				constructor(studentsList) {
+					if (DutyStudent.currentDutyStudentObj) {
+						return DutyStudent.currentDutyStudentObj;
+					}
+					this.studentsList = studentsList;
+					this.currentDutyStudent = this.getRandomStudent();
+
+					DutyStudent.currentDutyStudentObj = this;
+				}
+				getRandomStudent() {
+					const studentIndex = Math.floor(Math.random() * this.studentsList.length);
+					return this.studentsList[studentIndex];
+				}
+				toString() {
+					return `Duty: ${this.currentDutyStudent}`;
+				}
+			}
+			let studentsList = ['Ivan', 'Olga', 'Petro', 'Andrew'];
+			let s1 = new DutyStudent(studentsList);
+			document.write(`${s1}<br>`);
+			let s2 = new DutyStudent(studentsList);
+			document.write(`${s2}<br>`);
+			let s3 = new DutyStudent(studentsList);
+			document.write(`${s3}<br>`);
+		</script> -->
+
+		<!-- ! Задача. Дана список учнів школи. У школі проводиться декілька гуртків. Учень може брати участь у декількох гуртках. Реалізувати 
+        Реалізувати додавання / відрахування учнів з гуртків
+      -->
+		<!-- <script>
+			// ===== Учень ======
+			// - прізвище
+			// - ім'я
+			// - номер класу
+			class Student {
+				constructor(initData) {
+					Object.assign(this, initData);
+				}
+				toString() {
+					return `${this.firstName} ${this.surname} - ${this.classNum}`;
+				}
+			}
+			//  ===== Гурток =====
+			// ------ Властивості -----
+			//  - назва
+			//  - день проведення
+			//  - список учасників-учнів
+			class WorkShop {
+				constructor(initData) {
+					Object.assign(this, initData);
+					this.participants = [];
+				}
+				addStudent(newStudent) {
+					this.participants.push({
+						id: new Date().getTime(),
+						data: newStudent,
+					});
+				}
+			}
+			// ===== Методи ======
+			// - додавання учня
+			// - відрахування учня
+			// - перевірка належності учня до гуртка
+		</script>-->
+		<!-- ? Нова задача -->
+		<script>
+			// ======== Студент =========
+			class Student {
+				constructor(name, score) {
+					this.name = name;
+					this.score = score;
+				}
+				static getAverageScore(student1, student2) {
+					return student1.score + student2.score / 2;
+				}
+				toString() {
+					return `${this.name} ${this.score}`;
+				}
+			}
+			// ======== Команда =========
+			class Team {
+				constructor(student1, student2) {
+					this.student1 = student1;
+					this.student2 = student2;
+				}
+				get averageScore() {
+					return Student.getAverageScore(this.student1, this.student2);
+				}
+				static getWinnerTeam(team1, team2) {
+					if (team1.averageScore < team2.averageScore) return team1.toString();
+					if (team1.averageScore > team2.averageScore) return team2.toString();
+					return 'Draw';
+				}
+				toString() {
+					return `Team : <br>${this.student1} <br> ${this.student2}`;
+				}
+			}
+			// ===== GAME =======
+			class Game {
+				constructor(studentsList) {
+					this.studentsList = studentsList;
+				}
+				getRandomStudent(currentStudentList) {
+					const studentIndex = Math.floor(Math.random() * currentStudentList.length);
+					const student = currentStudentList[studentIndex];
+					// Фільтрація 1
+					currentStudentList.splice(studentIndex, 1);
+					return student;
+					// Фільтрація 2
+					// return currentStudentList.fileter(item => item !== student);
+				}
+				play() {
+					let currentDutyStudent = [...this.studentsList];
+					let st1 = this.getRandomStudent(currentDutyStudent);
+					let st2 = this.getRandomStudent(currentDutyStudent);
+
+					const team1 = new Team(st1, st2);
+
+					st1 = this.getRandomStudent(currentDutyStudent);
+					st2 = this.getRandomStudent(currentDutyStudent);
+
+					const team2 = new Team(st1, st2);
+
+					const winner = Team.getWinnerTeam(team1, team2);
+
+					document.write(winner);
+				}
+			}
+			// --------
+			const studentList = [
+				new Student('Ivan1', 33),
+				new Student('Ivan2', 2312),
+				new Student('Ivan3', 325),
+				new Student('Ivan4', 200),
+				new Student('Ivan5', 500),
+				new Student('Ivan6', 244),
+			];
+			const game = new Game(studentList);
+			game.play();
+		</script>
+	</body>
+</html>

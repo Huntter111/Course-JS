@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 3</title>
+	</head>
+	<body>
+		<h3>Задача 3. Об’єкт “Фірма” (використати члени-класи)</h3>
+		<img src="../tasks/img/1.png" alt="" />
+		<style>
+			img {
+				display: block;
+				margin-bottom: 20px;
+			}
+		</style>
+		<script>
+			// // дата заснування (рік, місяць);
+
+			class Services {
+				constructor(initNameService, initCostService, initDeadlineService) {
+					this.name = initNameService;
+					this.cost = initCostService;
+					this.deadline = initDeadlineService;
+				}
+				toString() {
+					return `${this.name}, ${this.cost}, ${this.deadline}; <br>`;
+				}
+			}
+			class Branches {
+				constructor(country, city, street, buildingNumber) {
+					this.country = country;
+					this.city = city;
+					this.street = street;
+					this.buildingNumber = buildingNumber;
+				}
+				toString() {
+					return `${this.country}, ${this.city}, ${this.street}, ${this.buildingNumber}; <br>`;
+				}
+			}
+			class Firm {
+				constructor(initName, initFoundationYear, initFoundationMonth) {
+					this.nameFirm = initName;
+					this.foundationYear = initFoundationYear;
+					this.foundationMonth = initFoundationMonth;
+					this.services = [];
+					this.branch = [];
+				}
+
+				howFirmCostAllServices() {
+					const costAllServices = this.services.reduce((prevSum, el) => prevSum + el.cost, 0);
+					return costAllServices;
+				}
+				howLongFirmWork() {
+					const correntDate = new Date();
+					const currentYear = correntDate.getFullYear();
+					const currentMonth = correntDate.getMonth() + 1;
+
+					let years = currentYear - this.foundationYear;
+
+					if (currentMonth <= this.foundationMonth) return years;
+					return (years -= 1);
+				}
+				addService(service) {
+					this.services.push(service);
+				}
+				addBranch(branch) {
+					this.branch.push(branch);
+				}
+				allFilialsInCity(filial) {
+					const newFilial = this.branch.filter(el => el.city.toUpperCase() === filial.toUpperCase());
+					if (newFilial.length === 0) return `В цьому місті немає Філіалів`;
+					return newFilial;
+				}
+				getServicesByCostAndDuration(maxCost, dedline) {
+					return this.services.filter(service => service.cost <= maxCost && service.deadline <= dedline);
+				}
+			}
+
+			const firm = new Firm('Apple', 1982, 10);
+			console.log('firm:', firm);
+			firm.addService(new Services('Web Development', 1500, 30));
+			firm.addService(new Services('Mobile App Development', 2000, 45));
+			firm.addService(new Services('Digital Marketing', 1200, 20));
+			firm.addService(new Services('Content Creation', 600, 7));
+			firm.addService(new Services('Cloud Solutions', 2500, 60));
+			firm.addService(new Services('IT Support', 400, 10));
+			firm.addService(new Services('Network Security', 1000, 25));
+			firm.addService(new Services('Data Analysis', 1500, 30));
+			firm.addService(new Services('Software Testing', 800, 15));
+			firm.addService(new Services('Project Management', 1800, 40));
+			firm.addService(new Services('UX/UI Design', 700, 14));
+
+			// Країна місто
+			firm.addBranch(new Branches('Ukraine', 'Kyiv', 'Khreshchatyk', 1));
+			firm.addBranch(new Branches('Ukraine', 'Lviv', 'Shevchenka', 10));
+			firm.addBranch(new Branches('Poland', 'Warsaw', 'Nowy Świat', 3));
+			firm.addBranch(new Branches('Ukraine', 'Lviv', 'Shevchenka', 10));
+
+			document.write(`<br >Фірма працює вже ${firm.howLongFirmWork()} р.`);
+			document.write(`Філіали у Львові: ${firm.allFilialsInCity('Lviv')} <br>`);
+			document.write(`Які ви надаєте послуги дл 1000$: <br> ${firm.getServicesByCostAndDuration(1000, 30)}`);
+			document.write(`Фірма заробляє за всі послуги = ${firm.howFirmCostAllServices()} $`);
+			// -------------------------------------------------------------------------------------------------------------------------
+			// class Service {
+			// 	constructor(name, cost, duration) {
+			// 		this.name = name;
+			// 		this.cost = cost;
+			// 		this.duration = duration;
+			// 	}
+			// }
+
+			// class Branch {
+			// 	constructor(country, city, street, buildingNumber) {
+			// 		this.country = country;
+			// 		this.city = city;
+			// 		this.street = street;
+			// 		this.buildingNumber = buildingNumber;
+			// 	}
+			// }
+
+			// class Firm {
+			// 	constructor(name, foundationYear, foundationMonth) {
+			// 		this.name = name;
+			// 		this.foundationYear = foundationYear;
+			// 		this.foundationMonth = foundationMonth;
+			// 		this.services = [];
+			// 		this.branches = [];
+			// 	}
+
+			// 	addService(service) {
+			// 		this.services.push(service);
+			// 	}
+
+			// 	addBranch(branch) {
+			// 		this.branches.push(branch);
+			// 	}
+
+			// 	getYearsOfExistence() {
+			// 		const currentDate = new Date();
+			// 		const currentYear = currentDate.getFullYear();
+			// 		const currentMonth = currentDate.getMonth() + 1; // Місяці в JavaScript починаються з 0
+			// 		let years = currentYear - this.foundationYear;
+
+			// 		if (currentMonth < this.foundationMonth) {
+			// 			years -= 1;
+			// 		}
+
+			// 		return years;
+			// 	}
+
+			// 	getBranchesInCity(city) {
+			// 		return this.branches.filter(branch => branch.city.toLowerCase() === city.toLowerCase());
+			// 	}
+
+			// 	getServicesByCostAndDuration(maxCost, maxDuration) {
+			// 		return this.services.filter(service => service.cost <= maxCost && service.duration <= maxDuration);
+			// 	}
+			// }
+
+			// // Приклад використання
+			// const firm = new Firm('Tech Solutions', 2010, 5);
+
+			// firm.addService(new Service('Web Development', 1500, 30));
+			// firm.addService(new Service('SEO Optimization', 700, 15));
+			// firm.addService(new Service('Graphic Design', 500, 10));
+			// firm.addService(new Service('Consulting', 300, 5));
+
+			// firm.addBranch(new Branch('Ukraine', 'Kyiv', 'Khreshchatyk', 1));
+			// firm.addBranch(new Branch('Ukraine', 'Lviv', 'Shevchenka', 10));
+			// firm.addBranch(new Branch('Poland', 'Warsaw', 'Nowy Świat', 3));
+
+			// console.log(`Фірмі ${firm.name} вже ${firm.getYearsOfExistence()} років.`);
+			// console.log('Філіали в місті Lviv:', firm.getBranchesInCity('Lviv'));
+			// console.log('Послуги за вказану суму та термін:', firm.getServicesByCostAndDuration(1000, 15));
+		</script>
+	</body>
+</html>
