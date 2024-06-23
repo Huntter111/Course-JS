@@ -176,8 +176,8 @@
 			// - відрахування учня
 			// - перевірка належності учня до гуртка
 		</script>-->
-		<!-- ? Нова задача -->
-		<script>
+		<!-- ? Нова задача  гра про двох студентів і команди -->
+		<!-- <script>
 			// ======== Студент =========
 			class Student {
 				constructor(name, score) {
@@ -251,6 +251,40 @@
 			];
 			const game = new Game(studentList);
 			game.play();
-		</script>
+		</script> -->
+
+		<!-- ! калькулятор -->
+		<!-- <script>
+			class Calculator {
+				// Створіть функцію-конструктор Calculator, який створює об’єкти з трьома методами:
+				// read() запитує два значення за допомогою prompt і записує їх у властивості об’єкта з іменами a та b.
+				// sum() повертає суму цих властивостей.
+				// mul() повертає результат множення даних властивостей.
+				constructor(initA, initB) {
+					this.a = initA;
+					this.b = initB;
+				}
+				read() {
+					this.a = +prompt('Введіть число А', '5');
+					this.b = +prompt('Введіть число B', '5');
+				}
+				sum() {
+					return this.a + this.b;
+				}
+				static sum(a, b) {
+					return a * b;
+				}
+				mul() {
+					return this.a * this.b;
+				}
+				toString() {
+					return `sum = ${this.sum()}, mul = ${this.mul()} <br>`;
+				}
+			}
+			const p1 = new Calculator(5, 5);
+			document.write(`${p1}`); // Виклик toString() автоматично відбувається при використанні об'єкта в якості рядка
+			console.log(p1);
+			document.write(`Сума = ${Calculator.sum(5, 10)}`);
+		</script> -->
 	</body>
 </html>

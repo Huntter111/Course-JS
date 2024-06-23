@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 5</title>
+	</head>
+	<body>
+		<h3>
+			Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва,
+			реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і
+			наявність на даний час. Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+		</h3>
+
+		<script>
+			class Books {
+				constructor(nameAutor, yearBirthday, description, nameBook, genre, namePublish, numRegistration, foundationYear, section) {
+					this.author = {
+						nameAutor: nameAutor,
+						yearBirthday: yearBirthday,
+						description: description,
+					};
+					this.nameBook = nameBook;
+					this.genre = genre;
+					this.publishing = {
+						namePublish: namePublish,
+						numRegistration: numRegistration,
+						foundationYear: foundationYear,
+						section: section,
+					};
+				}
+			}
+
+			class Library {
+				constructor() {
+					this.books = [];
+				}
+				addBook(nameAutor, yearBirthday, description, nameBook, genre, namePublish, numRegistration, foundationYear, section) {
+					const book = this.books.find(book => book.publishing.numRegistration);
+
+					if (book) console.log('Така книга вже зареєстрована');
+					else {
+						const newBook = new Books(nameAutor, yearBirthday, description, nameBook, genre, namePublish, numRegistration, foundationYear, section);
+						this.books.push(newBook);
+					}
+				}
+				dispatchBook(nameBook, numRegistration) {
+					const book = this.books.find(book => book.nameBook === nameBook && book.publishing.numRegistration === numRegistration);
+
+					if (book) {
+						this.books = this.books.filter(b => b !== book);
+						console.log(`Видалив книгу ${nameBook}`);
+					}
+				}
+				// Чи є книга в бібліотеці наявність?
+				isBook(nameBook, nameAutor, namePublish) {
+					const book = this.books.some(book => book.nameBook === nameBook || book.nameAutor === nameAutor || book.namePublish === namePublish);
+					if (book) console.log('Так, така книга є в бібліотеці');
+					else console.log('Ні, такої книги немає в бібліотеці');
+					return book;
+				}
+			}
+			let myLibrary = new Library();
+			myLibrary.addBook('Шевченко', 1880, 'Мені 13 минало я пас...', 'Кобзар', 'Біографія', 'Видавництво ранок', 100200, 1920, 2);
+			document.write(`${myLibrary.isBook('Видавництво ранок')} Ранок`);
+			console.log(`${myLibrary.isBook('Кобзар')}`);
+			console.log(myLibrary);
+			myLibrary.dispatchBook('Кобзар', 100200);
+			console.log(myLibrary);
+
+			console.log(`${myLibrary.isBook('Кобзар')}`);
+		</script>
+	</body>
+</html>

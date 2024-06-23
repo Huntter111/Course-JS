@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 1</title>
+	</head>
+	<body>
+		<h3>
+			Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа
+			(статичні методи)
+		</h3>
+		<script>
+			class arrayMath {
+				constructor(initArr) {
+					this.arr = initArr;
+				}
+				static positiveNumbers(arr) {
+					return arr.reduce((prevPositive, el) => (el > 0 ? prevPositive + 1 : prevPositive), 0);
+				}
+				static negativeNumbers(arr) {
+					return arr.reduce((prevNegative, el) => (el < 0 ? prevNegative + 1 : prevNegative), 0);
+				}
+				static countOccurences(arr, number) {
+					return arr.reduce((prevNum, el) => (el === number ? prevNum + 1 : prevNum), 0);
+				}
+				toString() {
+					return `new Arr = ${this.arr} <br> Кількість позитивних = ${arrayMath.positiveNumbers(
+						this.arr,
+					)} <br> Кількість негативних = ${arrayMath.negativeNumbers(this.arr)} <br> Кількість які дорівнюють числу ${arrayMath.countOccurences(
+						this.arr,
+						20,
+					)}`;
+				}
+			}
+			const exampleArr = [10, 20, -30, 40, -50, -60, -70, 80, 90];
+			const arr = new arrayMath(exampleArr);
+
+			document.write(arr);
+			console.log(arr);
+			document.write(`<br> <br>`);
+			// document.write(`Кількість позитивних чесел = ${arrayMath.positiveNumbers(exampleArr)} <br>`);
+			// document.write(`Кількість негативних чесел = ${arrayMath.negativeNumbers(exampleArr)} <br>`);
+		</script>
+	</body>
+</html>
