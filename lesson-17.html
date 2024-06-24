@@ -286,5 +286,71 @@
 			console.log(p1);
 			document.write(`Сума = ${Calculator.sum(5, 10)}`);
 		</script> -->
+		<script>
+			class Person {
+				constructor({ firstName, surname, age }) {
+					this.firstName = firstName;
+					this.surname = surname;
+					this.age = age;
+				}
+				get FullName() {
+					return this.firstName + ' ' + this.surname;
+				}
+				setFullName(value) {
+					var split = value.split(' ');
+					this.firstName = split[0];
+					this.surname = split[1];
+				}
+				toString() {
+					return `${this.FullName} - ${this.age}`;
+				}
+			}
+			class Address {
+				constructor({ zipCode, city, street, num }) {
+					this.zipCode = zipCode;
+					this.city = city;
+					this.street = street;
+					this.num = num;
+				}
+
+				toString() {
+					return `${this.zipCode} ${this.city} ${this.street} ${this.num}`;
+				}
+			}
+			class Client {
+				#balance;
+				constructor(initData) {
+					this.title = new Person(initData);
+					this.Adress = new Address(initData);
+					// this.title = new Person(initData.firstName, initData.surname, initData.age);
+					// this.address = new Address(initData.zipCode, initData.city, initData.street, initData.num);
+					this.accountNumber = initData.accountNumber;
+					this.balance = initData.balance;
+				}
+				get Balance() {
+					return this.#balance;
+				}
+				set Balance(val) {
+					if (val < 0) throw new Error('The value is incorrect');
+					this.#balance = val;
+				}
+				toString() {
+					return `${this.title} \n ${this.Adress} \n ${this.accountNumber} \n ${this.balance} \n`;
+				}
+			}
+			let client1 = new Client({
+				firstName: 'Ivan',
+				surname: 'Sirko',
+				age: 21,
+				zipCode: 88000,
+				city: 'Best city',
+				street: 'Holovna',
+				num: 25,
+				accountNumber: '2123213121',
+				balance: 45000,
+			});
+			client1.Balance = 4000;
+			console.log(client1);
+		</script>
 	</body>
 </html>
