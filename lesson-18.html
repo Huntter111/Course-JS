@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson-18</title>
+		<style>
+			.active {
+				background-color: green;
+			}
+			label {
+				margin-right: 20px;
+			}
+		</style>
+		<!-- ! Калькулятор -->
+		<!-- <script>
+			function func1() {
+				const num1 = parseFloat(document.getElementById('first').value);
+				const num2 = parseFloat(document.getElementById('second').value);
+				const sum = num1 + num2;
+				document.getElementById('result').value = sum;
+			}
+
+			window.onload = function () {
+				document.getElementsByTagName('button')[0].onclick = func1;
+			};
+		</script> -->
+		<!--! Задача конвертер валют -->
+		<!-- <script>
+			function convert() {
+				const dollarRate = parseFloat(document.getElementById('course').value);
+				const grn = parseFloat(document.getElementById('grn').value);
+				const dollarValue = grn / dollarRate;
+				document.getElementById('res').innerHTML = dollarValue.toFixed(2);
+			}
+			window.onload = function () {
+				document.querySelector('#grn').oninput = convert;
+			};
+		</script> -->
+		<!-- !Розрахунок обіду -->
+		<!-- <script>
+			function getTotalPrice() {
+				const inputList = document.getElementsByTagName('input');
+				let sum = 0;
+				for (const inp of inputList) {
+					if (inp.checked) sum += parseFloat(inp.value);
+				}
+				// let sum = [].reduce.call(inputs, (prevSum, inp) => (inp.checked ? prevSum + parseFloat(inp.value) : prevSum), 0);
+				document.getElementById('result').innerHTML = sum;
+			}
+			window.onload = function () {
+				document.querySelector('button').onclick = getTotalPrice;
+			};
+		</script> -->
+		<script>
+			function getTotalPrice(params) {
+				const typePrice = parseFloat(document.getElementById('cattidgeType').value);
+				const acPrice = parseFloat(document.getElementById('acPackage').value);
+
+				const totalPrice = typePrice + acPrice;
+				document.getElementById('result').innerText = totalPrice;
+			}
+			window.onload = function () {
+				document.getElementsByTagName('button')[0].onclick = getTotalPrice;
+			};
+		</script>
+	</head>
+	<body>
+		<h3 id="lesson">Lesson 18</h3>
+		<!-- ! поїздка у потязі -->
+		<div>
+			<label>
+				<h2>Тип вагону</h2>
+				<select id="cattidgeType">
+					<option value="200">плацкарт 200 грн</option>
+					<option value="800">купе 800 грн</option>
+				</select>
+			</label>
+		</div>
+		<div>
+			<label>
+				<h2>Акційні пакети</h2>
+				<select id="acPackage">
+					<option value="50">сніданок 50 грн</option>
+					<option value="0">чай (безкоштовно)</option>
+					<option value="0">кава (безкоштовно)</option>
+				</select>
+			</label>
+		</div>
+		<div>
+			<button>Загальна вартість</button>
+		</div>
+		<div>Загальна вартість = <span id="result">0</span> грн.</div>
+		<!-- ! Розрахунок обіду -->
+		<!-- <div>
+			<h2>Напої</h2>
+			<label>
+				Чай
+				<input type="checkbox" value="10" />
+			</label>
+			<label>
+				Сік
+				<input type="checkbox" value="20" />
+			</label>
+			<label>
+				Кава
+				<input type="checkbox" value="35" />
+			</label>
+		</div>
+		<div>
+			<h2>Перше</h2>
+			<label>
+				Суп
+				<input type="checkbox" value="45" />
+			</label>
+			<label>
+				Борщ
+				<input type="checkbox" value="37" />
+			</label>
+		</div>
+		<div>
+			<h2>Друге</h2>
+			<label>
+				Паста
+				<input type="checkbox" value="60" />
+			</label>
+			<label>
+				Картопля з катлетою
+				<input type="checkbox" value="55" />
+			</label>
+			<label>
+				Гречка з грибами
+				<input type="checkbox" value="49" />
+			</label>
+		</div>
+		<div>
+			<button>Розрахувати загальну вартість</button>
+		</div>
+		<div>Заглом: <span id="result"></span></div> -->
+
+		<!-- ! Задача конвертер валют -->
+		<!-- <label>
+			Course
+			<input id="course" type="number" value="39" />
+		</label>
+		<label>
+			Кількість гривень
+			<input id="grn" type="number" value="0" />
+		</label>
+		<div>
+			<button id="button">Convert</button>
+		</div>
+		<div>Кількість доларів = <span id="res"></span></div> -->
+
+		<!-- ! Калькулятор -->
+		<!-- <label>
+			First number
+			<input id="first" type="number" placeholder="number one" value="0" />
+		</label>
+		<label>
+			Second number
+			<input id="second" type="number" placeholder="number two" value="0" />
+		</label>
+		<label>
+			sum
+			<input id="result" type="number" placeholder="Result" />
+		</label>
+		<div id="container">
+			<button onclick="func1()">Result</button>
+		</div> -->
+
+		<!-- ! Приклад 1-->
+		<!-- <div>
+			<h1>Title</h1>
+			<p id="First" class="edge">
+				Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello.Hello. Hello. Hello. Hello.Hello. Hello. Hello. Hello.Hello. Hello. Hello. Hello.Hello.
+				Hello. Hello. Hello.Hello. Hello. Hello. Hello.Hello. Hello. Hello. Hello.Hello. Hello. Hello. Hello.Hello. Hello. Hello. Hello.Hello. Hello. Hello.
+				Hello.
+			</p>
+			<h1>Title</h1>
+			<section>
+				<p id="MyTitle2" class="middle">
+					From From From From From From From From From From From From From From From From From From From From From From From From From From From From From
+					From From From From From From From From From From From
+				</p>
+			</section>
+			<h1>Title</h1>
+			<p>
+				From From From From From From From From From From From From From From From From From From From From From From From From From From From From From
+				From From From From From From From From From From From
+			</p>
+			<section>
+				<p class="middle">
+					<b>Text Text Text Text</b>
+					<b>Text Text Text Text</b>
+					<b>Text Text Text Text</b>
+				</p>
+			</section>
+		</div>
+		<script>
+			document.getElementById('First').style.color = 'red';
+			document.getElementById('MyTitle2').style.backgroundColor = 'green';
+			const itemsList = document.getElementsByClassName('middle');
+
+			console.log(itemsList);
+			for (const item of itemsList) {
+				item.style.backgroundColor = 'yellow';
+			}
+			document.querySelector('h1').style.backgroundColor = 'blue';
+			const h1List = document.querySelectorAll('h1');
+			for (const h1 of h1List) {
+				h1.style.backgroundColor = 'blue';
+			}
+			document.querySelector('.edge').style.backgroundColor = 'yellow';
+		</script> -->
+
+		<!-- ! Приклад 2  -->
+		<!-- <div id="container" class="active">
+			<p>Hello! Hello! Hello! Hello! Hello! Hello!</p>
+			<p>Hello! Hello! Hello! Hello! Hello! Hello!</p>
+			<p>Hello! Hello! Hello! Hello! Hello! Hello!</p>
+		</div>
+
+		<script>
+			const container = document.getElementById('container');
+			// setInterval(() => {
+			// 	container.classList.toggle('active');
+			// }, 1000);
+			container.setAttribute('my', 23);
+		</script> -->
+	</body>
+</html>
