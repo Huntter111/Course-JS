@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 1</title>
+		<script>
+			function getAdd() {
+				const firstNum = parseFloat(document.getElementById('firstNum').value);
+				const secondNum = parseFloat(document.getElementById('secondNum').value);
+				let result = firstNum + secondNum;
+				document.getElementById('result').textContent = result;
+			}
+			function getTakeAway() {
+				const firstNum = parseFloat(document.getElementById('firstNum').value);
+				const secondNum = parseFloat(document.getElementById('secondNum').value);
+				let result = firstNum - secondNum;
+				document.getElementById('result').textContent = result;
+			}
+			function getMultiply() {
+				const firstNum = parseFloat(document.getElementById('firstNum').value);
+				const secondNum = parseFloat(document.getElementById('secondNum').value);
+				let result = firstNum * secondNum;
+				document.getElementById('result').textContent = result;
+			}
+			function getDivide() {
+				const firstNum = parseFloat(document.getElementById('firstNum').value);
+				const secondNum = parseFloat(document.getElementById('secondNum').value);
+				let result = secondNum !== 0 ? firstNum / secondNum : 'cant divide by zero';
+				document.getElementById('result').textContent = result;
+			}
+
+			window.onload = function () {
+				document.getElementById('add').onclick = getAdd;
+				document.getElementById('takeAway').onclick = getTakeAway;
+				document.getElementById('multiply').onclick = getMultiply;
+				document.getElementById('divide').onclick = getDivide;
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача 1. Розробити калькулятор</h3>
+		<div>
+			<label>
+				First number
+				<input id="firstNum" type="number" />
+			</label>
+		</div>
+		<div>
+			<label>
+				Second number
+				<input id="secondNum" type="number" />
+			</label>
+		</div>
+		<div>
+			<button id="add">Додати</button>
+			<button id="takeAway">Відняти</button>
+			<button id="multiply">Помножити</button>
+			<button id="divide">Поділити</button>
+		</div>
+		<div>
+			<label>Result: <span id="result">0</span></label>
+		</div>
+	</body>
+</html>
