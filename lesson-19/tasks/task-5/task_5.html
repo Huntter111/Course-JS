@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+		<style>
+			#container {
+				padding-top: 65px;
+				height: 80vh;
+			}
+			.img-container {
+				position: relative;
+			}
+			.tank {
+				position: absolute;
+				max-width: 300px;
+				transform: rotate(90deg);
+				transition: all 0.1s;
+			}
+			.burst {
+				position: absolute;
+				top: 200px;
+				left: 200px;
+				max-width: 300px;
+				transform: rotate(90deg);
+			}
+		</style>
+		<script>
+			class Tanks {
+				constructor(valueTanks, imgTank, imgBrust) {
+					this.valueTanks = valueTanks;
+					this.imgTank = imgTank;
+					this.imgBrust = imgBrust;
+					this.tanksArray = [];
+				}
+				getRandomNumber(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1));
+				}
+				generateTank(targetContainer) {
+					this.imgContainer = document.createElement('div');
+					this.imgContainer.className = 'img-container';
+
+					const imageTank = document.createElement('img');
+					imageTank.className = 'tank';
+					imageTank.src = this.imgTank;
+
+					imageTank.style.left = this.getRandomNumber(100, window.innerWidth - 300) + 'px';
+					imageTank.style.top = '0px';
+
+					this.imgContainer.append(imageTank);
+					targetContainer.append(this.imgContainer);
+
+					const speed = this.getRandomNumber(1, 5); // швидкість переміщення
+					this.tanksArray.push({ tankImg: imageTank, speed: speed });
+
+					imageTank.onclick = this.generateBrust.bind(this, imageTank);
+				}
+				generateBrust(tankImg) {
+					const imageBrust = document.createElement('img');
+					imageBrust.className = 'burst';
+					imageBrust.src = this.imgBrust;
+					imageBrust.style.top = tankImg.style.top;
+					imageBrust.style.left = tankImg.style.left;
+					tankImg.parentElement.append(imageBrust);
+					setTimeout(() => {
+						tankImg.parentElement.remove();
+					}, 100); // Затримка, щоб показати вибух
+				}
+
+				render(containerId) {
+					const targetContainer = document.getElementById(containerId);
+					for (let i = 0; i < this.valueTanks; i++) {
+						this.generateTank(targetContainer);
+					}
+					setInterval(() => {
+						this.tanksArray.forEach(tank => {
+							const top = parseInt(tank.tankImg.style.top);
+							if (top >= targetContainer.clientHeight) {
+								tank.tankImg.style.top = '0px';
+								tank.tankImg.style.left = this.getRandomNumber(100, window.innerWidth - 300) + 'px';
+							} else {
+								tank.tankImg.style.top = top + tank.speed + 'px';
+							}
+						});
+					}, 30);
+				}
+			}
+			window.onload = function () {
+				const tanks = new Tanks(5, './img/tank.png', './img/burst.png');
+				tanks.render('container');
+				console.log('tanks:', tanks);
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 5. Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз. При кліку на танк він вибухає і
+			зникає з екрану.
+		</h3>
+		<div id="container"></div>
+	</body>
+</html>

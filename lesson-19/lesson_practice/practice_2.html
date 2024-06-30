@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 2</title>
+		<style>
+			.cards {
+				display: flex;
+			}
+			.card-container {
+				width: 50px;
+				margin: 10px;
+
+				font-size: 16px;
+			}
+			.img-container {
+				border-radius: 50%;
+				height: 50px;
+
+				background-color: rgb(117, 117, 117);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.card-img {
+				width: 30px;
+				/* border-radius: 50%; */
+			}
+			.card-title {
+				text-align: center;
+			}
+		</style>
+		<script>
+			// Задача. Дано масив з даними про сайти (графічне зображення, назва, посилання). Розробити клас LinkCard, що дозволяє генерувати картку за зразком.
+
+			class LinkCard {
+				constructor({ imgSrc, title, link }) {
+					this.imgSrc = imgSrc;
+					this.title = title;
+					this.link = link;
+				}
+				render(containerSelector) {
+					const cardContainer = document.createElement('div');
+					cardContainer.className = 'card-container';
+
+					//
+					const imageContainer = document.createElement('div');
+					imageContainer.className = 'img-container';
+					cardContainer.append(imageContainer);
+
+					const img = document.createElement('img');
+					img.className = 'card-img';
+					img.src = this.imgSrc;
+					imageContainer.append(img);
+
+					// -------- створюємо назву з лінком
+					const titleContainer = document.createElement('div');
+					titleContainer.className = 'card-title';
+					cardContainer.append(titleContainer);
+
+					const link = document.createElement('a');
+					link.href = this.link;
+					link.innerText = this.title;
+					link.target = '_blank';
+					titleContainer.append(link);
+
+					const targetContainer = document.querySelector(containerSelector);
+					targetContainer.append(cardContainer);
+				}
+			}
+			const linksSet = [
+				{
+					imgSrc: './img/ukrNet.jpg',
+					title: 'ukr Net',
+					link: 'https://www.ukr.net/',
+				},
+				{
+					imgSrc: './img/speedTest.png',
+					title: 'speed Test',
+					link: 'https://www.speedtest.net/',
+				},
+			];
+			window.onload = function () {
+				for (const linkData of linksSet) {
+					let c1 = new LinkCard(linkData).render('.cards');
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div class="cards"></div>
+	</body>
+</html>
