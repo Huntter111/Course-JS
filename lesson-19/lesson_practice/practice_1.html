@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 1</title>
+		<style>
+			.min {
+				background-color: rgb(146, 16, 16);
+			}
+			.max {
+				background-color: rgb(3, 179, 3);
+			}
+		</style>
+		<script>
+			// Задача. Розробити клас, що дозволяє відображати таблицю вказаної розмірності з випадковими числами (0-10).
+			// При цьому мінімальні значення мають червоний колір, максимальні – зелений.
+			class RandomColoredTable {
+				constructor(rowsCount, columnsCount, minValue = 0, maxValue = 10) {
+					this.rowsCount = rowsCount;
+					this.columnsCount = columnsCount;
+					this.minValue = minValue;
+					this.maxValue = maxValue;
+					this.dataArray = this.getRandomArray();
+				}
+				getRandomNumber() {
+					return this.minValue + Math.floor(Math.random() * (this.maxValue - this.minValue + 1));
+				}
+				getRandomArray() {
+					const arr = [];
+					for (let r = 0; r < this.rowsCount; r++) {
+						let row = [];
+						for (let c = 0; c < this.columnsCount; c++) {
+							row.push(this.getRandomNumber());
+						}
+						arr.push(row);
+					}
+					return arr;
+				}
+				get maxNumber() {
+					// == Flat == допомгає піднятися масиву з двовимірного до одновимірного, якщо велика кількість вкладень то застосувати Infitity
+					return Math.max(...this.dataArray.flat());
+				}
+				get minNumber() {
+					return Math.min(...this.dataArray.flat());
+				}
+				render(containerId) {
+					const table = document.createElement('table');
+					for (const row of this.dataArray) {
+						const tr = document.createElement('tr');
+						table.append(tr);
+						for (const el of row) {
+							const td = document.createElement('td');
+							td.innerText = el;
+							if (el === this.minNumber) td.className = 'min';
+							if (el === this.maxNumber) td.className = 'max';
+							tr.append(td);
+						}
+					}
+					document.getElementById(containerId).append(table);
+				}
+			}
+			window.onload = function () {
+				const t1 = new RandomColoredTable(3, 4);
+				t1.render('container');
+				const t2 = new RandomColoredTable(5, 20, 10, 100);
+				t2.render('container2');
+			};
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<hr />
+		<div id="container2"></div>
+	</body>
+</html>

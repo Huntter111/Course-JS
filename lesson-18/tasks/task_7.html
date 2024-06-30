@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 7</title>
+		<style>
+			.title {
+				font-size: 1.25rem;
+			}
+			.wrapper {
+				margin-bottom: 1.875rem;
+			}
+			label {
+				display: block;
+			}
+		</style>
+		<script>
+			function getResult() {
+				const transport = parseFloat(document.getElementById('transopt').value);
+				const foodList = document.getElementsByClassName('foodInput');
+				let sumFood = 0;
+				for (const food of foodList) {
+					if (food.checked) sumFood += parseFloat(food.value);
+					else sumFood;
+				}
+				let sumGuige = 0;
+				const radioList = document.getElementsByClassName('inputRadio');
+				for (const radio of radioList) {
+					if (radio.checked) {
+						sumGuige += parseFloat(radio.value);
+						break;
+					}
+				}
+				const totalPrice = transport + sumFood + sumGuige;
+				document.getElementById('result').innerText = totalPrice;
+			}
+			window.onload = function () {
+				document.getElementById('buttonResult').onclick = getResult;
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список),
+			харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+		</h3>
+		<div class="wrapper">
+			<label>
+				<h2 class="title">Виберіть транспорт для подорожі</h2>
+				<select id="transopt">
+					<option value="400">авто - 400 грн</option>
+					<option value="200">автобус - 200 грн</option>
+					<option value="1000">літак - 1000 грн</option>
+				</select>
+			</label>
+		</div>
+		<div class="wrapper">
+			<h2 class="title">Виберіть що ви будете їсти:</h2>
+			<label>
+				Сніданок - 40 грн
+				<input type="checkbox" value="40" class="foodInput" />
+			</label>
+			<label>
+				Обід - 120 грн
+				<input type="checkbox" value="120" class="foodInput" />
+			</label>
+			<label>
+				Вечеря - 80 грн
+				<input type="checkbox" value="80" class="foodInput" />
+			</label>
+		</div>
+		<div class="wrapper">
+			<h2 class="title">Виберіть гіда, який буде вас супроводжувати</h2>
+			<label>
+				Перший гід - 200 грн
+				<input type="radio" value="200" class="inputRadio" name="guide" checked />
+			</label>
+			<label>
+				Другий гід - 250 грн
+				<input type="radio" value="250" class="inputRadio" name="guide" />
+			</label>
+			<label>
+				Третій гід - 180 грн
+				<input type="radio" value="180" class="inputRadio" name="guide" />
+			</label>
+		</div>
+		<div class="wrapper">
+			<button id="buttonResult">Розрахувати вартість</button>
+		</div>
+		<div class="wrapper">
+			<h2 class="title">Загальна варатість <span id="result">0</span> грн.</h2>
+		</div>
+	</body>
+</html>

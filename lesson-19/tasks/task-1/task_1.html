@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 1</title>
+
+		<style>
+			.cards {
+				display: grid;
+				grid-template-columns: repeat(7, 1fr);
+				column-gap: 10px;
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			}
+			.card {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				row-gap: 10px;
+				border: 2px solid red;
+				padding: 15px;
+				text-decoration: none;
+				color: #000;
+				@media (any-hover: hover) {
+					transition: all 0.3s;
+					&:hover {
+						transform: scale(1.02);
+					}
+				}
+			}
+			.border-choose {
+				border: 2px solid green;
+			}
+			.card__image {
+				max-width: 100%;
+				width: 300px;
+			}
+			.card__label {
+				padding: 5px;
+				border-radius: 10px;
+				font-weight: 700;
+			}
+			.card__price {
+				color: #a30000;
+				font-size: 30px;
+			}
+			.card__symbol {
+				margin-left: 5px;
+			}
+		</style>
+		<script>
+			class Cards {
+				constructor(dataBase) {
+					this.dataBase = dataBase;
+				}
+				render(containerId) {
+					const cards = document.createElement('div');
+					cards.className = 'cards';
+
+					for (const item of this.dataBase) {
+						this.link = document.createElement('a');
+						this.link.href = item.link;
+						this.link.className = 'card';
+						this.link.target = '_blank';
+						// this.link.onclick = this.onBorder.bind(this);
+						this.link.setAttribute('onclick', 'this.classList.toggle("border-choose")');
+						cards.append(this.link); // Додали link в cards
+
+						// зафіксували клік по одному з лінків а тобіш карточкам і додали клас для зміни border
+
+						const labelSpan = document.createElement('span');
+						labelSpan.className = 'card__label';
+						labelSpan.innerText = item.label.title;
+						labelSpan.style.backgroundColor = item.label.color;
+						this.link.append(labelSpan); // додаємо в card label топ продажів
+
+						const img = document.createElement('img');
+						img.className = 'card__image';
+						img.src = item.imageSrc;
+						this.link.append(img);
+
+						const titleCard = document.createElement('h3');
+						titleCard.className = 'card__title';
+						titleCard.innerText = item.title;
+						this.link.append(titleCard);
+
+						const priceValue = document.createElement('span');
+						priceValue.className = 'card__price';
+						priceValue.innerText = item.price;
+						this.link.append(priceValue);
+					}
+					const targetContainer = document.getElementById(containerId);
+					targetContainer.append(cards);
+				}
+			}
+			window.onload = function () {
+				const card1 = new Cards(dataBase);
+				card1.render('container');
+			};
+			const dataBase = [
+				{
+					link: 'https://rozetka.com.ua/lenovo-83bg001ara/p379912026/',
+					label: {
+						title: 'Топ продаж',
+						color: 'tomato',
+					},
+					imageSrc: '../task-1/img/lenovo.png',
+					title: 'Ноутбук Lenovo IdeaPad Slim 5 16IAH8',
+					price: '25 999 ₴',
+				},
+				{
+					link: 'https://rozetka.com.ua/acer-nhqn4eu001/p391395969/',
+					label: {
+						title: 'Топ продаж',
+						color: 'tomato',
+					},
+					imageSrc: '../task-1/img/acer.png',
+					title: 'Ноутбук Acer Aspire 7 A715-76G-56U7',
+					price: '30 999 ₴',
+				},
+				{
+					link: 'https://rozetka.com.ua/apple_macbook_air_13_m1_256gb_2020_space_gray/p245161909/',
+					label: {
+						title: 'Акція',
+						color: 'orange',
+					},
+					imageSrc: '../task-1/img/mackbook.png',
+					title: 'Ноутбук Apple MacBook Air 13" M1 8/256GB 2020 (MGN63) Space Gray',
+					price: '30 999 ₴',
+				},
+			];
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 4</title>
+		<script>
+			let arr = [
+				'Подорожувати світом',
+				'Вивчити нову мову',
+				'Зайнятися спортом',
+				'Навчитися грати на музичному інструменті',
+				'Купити власний будинок',
+				'Досягти успіху в кар’єрі',
+				'Провести більше часу з сім’єю',
+				'Відвідати улюблений концерт',
+				'Спробувати нову кухню',
+				'Допомогти іншим через волонтерство',
+			];
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			let maxValue = arr.length - 1;
+			function setRandomText(elementId) {
+				let randomNum = getRandomNum(0, maxValue);
+				const firstResult = (document.getElementById(elementId).innerHTML = arr[randomNum]);
+			}
+
+			window.onload = function () {
+				setRandomText('first');
+				setRandomText('second');
+				setRandomText('third');
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div
+			(їх треба створити і додати на сторінку)
+		</h3>
+
+		<div class="container">
+			<div id="first"></div>
+			<div id="second"></div>
+			<div id="third"></div>
+		</div>
+	</body>
+</html>

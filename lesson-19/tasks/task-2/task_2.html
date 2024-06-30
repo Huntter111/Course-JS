@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 2</title>
+		<style>
+			#container {
+				display: flex;
+				column-gap: 100px;
+			}
+			.general-list,
+			.selected-list {
+				list-style-type: none;
+				padding: 0;
+			}
+			h3 {
+				padding: 5px;
+			}
+			ul {
+				border: 1px solid black;
+				padding: 5px;
+			}
+			li {
+				/* border: 1px solid black; */
+				padding: 5px;
+				border-top: 1px solid black;
+				/* border-bottom: 0.5px solid black; */
+			}
+
+			.selected-list__item:last-child {
+				border-bottom: 1px solid black;
+			}
+			.general-list__item,
+			.selected-list__item {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				/* margin-bottom: 1px; */
+			}
+			.arrow {
+				cursor: pointer;
+				font-size: 20px;
+				padding: 0 10px;
+			}
+		</style>
+		<script>
+			// Задача 2. Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається у загальний список.
+			class Sportsman {
+				constructor(sportsmanList) {
+					this.sportsmanList = sportsmanList;
+					this.selectedList = [];
+				}
+				addToSelectedList(sportsman) {
+					const index = this.sportsmanList.indexOf(sportsman);
+					this.sportsmanList.splice(index, 1);
+					this.selectedList.push(sportsman);
+					this.render('container');
+				}
+				removeFromSelectedList(sportsman) {
+					const index = this.selectedList.indexOf(sportsman);
+					this.selectedList.splice(index, 1);
+					this.sportsmanList.push(sportsman);
+					this.render('container');
+				}
+				render(elementId) {
+					const targetContainer = document.getElementById(elementId);
+					// Таким чином код адаптується кожного разу і перезаписується без цієї строчки кода, всі списки дублюються
+					targetContainer.innerHTML = '';
+
+					const generalList = document.createElement('ul');
+					generalList.className = 'general-list';
+					const titleGeneralList = document.createElement('h3');
+					titleGeneralList.innerText = 'Загальний список';
+					generalList.append(titleGeneralList);
+
+					for (const sportsman of this.sportsmanList) {
+						const li = document.createElement('li');
+						li.className = 'general-list__item';
+						li.innerText = sportsman;
+
+						const arrow = document.createElement('span');
+						arrow.innerHTML = '&#x2192;';
+						arrow.className = 'arrow';
+						arrow.style.color = 'green';
+						arrow.onclick = this.addToSelectedList.bind(this, sportsman);
+
+						li.append(arrow);
+						generalList.append(li);
+					}
+
+					const selectedUl = document.createElement('ul');
+					selectedUl.className = 'selected-list';
+					const titleSelectedUl = document.createElement('h3');
+					titleSelectedUl.innerText = 'Обрані для змагання';
+					selectedUl.append(titleSelectedUl);
+
+					for (const sportsman of this.selectedList) {
+						const li = document.createElement('li');
+						li.className = 'selected-list__item';
+						li.innerText = sportsman;
+
+						const arrow = document.createElement('span');
+						arrow.innerHTML = '&#x2190;';
+						arrow.className = 'arrow';
+						arrow.style.color = 'red';
+
+						arrow.onclick = this.removeFromSelectedList.bind(this, sportsman);
+
+						li.append(arrow);
+						selectedUl.append(li);
+					}
+
+					targetContainer.append(generalList);
+					targetContainer.append(selectedUl);
+					console.log('Sportsman ~ constructor ~ this.selectedList :', this.selectedList);
+				}
+			}
+
+			const sportsmanList = ['John Depp', 'Sara Wik', 'Den Miro', 'Alan Woo', 'Olga Sich', 'Ivan Hal', 'Brad Pit'];
+			window.onload = function () {
+				const p1 = new Sportsman(sportsmanList);
+				p1.render('container');
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені
+			всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні
+			на червону стрілку спортсмен переміщається у загальний список.
+		</h3>
+		<div id="container"></div>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 1</title>
+		<style>
+			.min {
+				background-color: #ff0000;
+			}
+			.max {
+				background-color: #00842e;
+			}
+		</style>
+		<script>
+			// Задача. Розробити клас, що дозволяє відображати таблицю вказаної розмірності з випадковими числами (0-10).
+			// При цьому мінімальні значення мають червоний колір, максимальні – зелений.
+
+			class RandomArray {
+				constructor(rowsCount, columnsCount, minV = 0, maxV = 10) {
+					this.rowsCount = rowsCount;
+					this.columnsCount = columnsCount;
+					this.minV = minV;
+					this.maxV = maxV;
+					this.dataArray = this.getRandomArray();
+				}
+				getRandomNumber() {
+					return this.minV + Math.floor(Math.random() * (this.maxV - this.minV + 1));
+				}
+				getRandomArray() {
+					const arr = [];
+					for (let r = 0; r < this.rowsCount; r++) {
+						let row = [];
+						for (let c = 0; c < this.columnsCount; c++) {
+							row.push(this.getRandomNumber());
+						}
+						arr.push(row);
+					}
+					return arr;
+				}
+				get maxNumber() {
+					return Math.max(...this.dataArray.flat());
+				}
+				get minNumber() {
+					return Math.min(...this.dataArray.flat());
+				}
+				render(containerId) {
+					const table = document.createElement('table');
+					for (const row of this.dataArray) {
+						const tr = document.createElement('tr');
+						table.append(tr);
+						for (const el of row) {
+							const td = document.createElement('td');
+							td.innerText = el;
+							if (el === this.maxNumber) td.className = 'max';
+							if (el === this.minNumber) td.className = 'min';
+							tr.append(td);
+						}
+					}
+					document.getElementById(containerId).append(table);
+				}
+			}
+			window.onload = function () {
+				const p1 = new RandomArray(3, 3);
+				p1.render('container');
+				const p2 = new RandomArray(3, 10);
+				p2.render('container');
+			};
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<hr />
+		<div id="container2"></div>
+	</body>
+</html>

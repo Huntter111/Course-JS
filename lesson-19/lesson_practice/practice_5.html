@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 5</title>
+		<style>
+			#container {
+				position: relative;
+			}
+			button {
+				position: absolute;
+				/* top: 200px;
+				left: 200px; */
+			}
+		</style>
+		<script>
+			class CrazyButton {
+				constructor(title) {
+					this.title = title;
+				}
+				getRandomColor() {
+					const randomColorList = ['red', 'green', 'yellow'];
+					const randIndex = Math.floor(Math.random() * randomColorList.length);
+					return randomColorList[randIndex];
+				}
+				getRandomShift(value) {
+					return -value + Math.floor(Math.random() * 2 * value);
+				}
+				onhover() {
+					this.btn.style.backgroundColor = this.getRandomColor();
+					const left = parseInt(this.btn.style.left) + this.getRandomShift(20) + 'px';
+					const top = parseInt(this.btn.style.top) + this.getRandomShift(20) + 'px';
+
+					this.btn.style.left = left;
+					this.btn.style.top = top;
+				}
+				onleave() {
+					this.btn.style.backgroundColor = 'gray';
+				}
+				render(containerId) {
+					this.btn = document.createElement('button');
+					this.btn.innerText = this.title;
+					console.log('CrazyButton ~ render ~ this.btn.innerTex:', this.btn.innerText);
+					this.btn.onmouseover = this.onhover.bind(this);
+					this.btn.onmouseleave = this.onleave.bind(this);
+					this.btn.style.left = '500px';
+					this.btn.style.top = '500px';
+					this.btn.style.padding = '15px';
+
+					const targetContainer = document.getElementById(containerId);
+					targetContainer.append(this.btn);
+				}
+			}
+			window.onload = function () {
+				for (let i = 0; i < 10; i++) {
+					const b1 = new CrazyButton('Test');
+					b1.render('container');
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+</html>

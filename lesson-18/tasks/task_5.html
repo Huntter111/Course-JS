@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 5</title>
+		<script>
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function table() {
+				const getBody = document.getElementsByTagName('body')[0];
+				const createDiv = document.createElement('div');
+				const createTable = document.createElement('table');
+				const createCaption = document.createElement('caption');
+				const createTBody = document.createElement('tbody');
+				createCaption.innerText = 'Create new Table';
+				getBody.append(createDiv);
+				createDiv.append(createTable);
+				createTable.append(createCaption);
+				createTable.append(createTBody);
+				for (let i = 0; i < 3; i++) {
+					const createTableRow = document.createElement('tr');
+					createTBody.append(createTableRow);
+					for (let j = 0; j < 4; j++) {
+						let randomNum = getRandomNum(10, 99);
+						const createTableColumn = document.createElement('th');
+						createTableRow.append(createTableColumn);
+						createTableColumn.innerText = randomNum;
+						createTableColumn.style.border = '1px solid black';
+					}
+				}
+				createTable.style.backgroundColor = 'blue';
+				createTable.style.fontSize = '1.5rem';
+				createTable.style.lineHeight = '2rem';
+
+				createTable.style.color = 'white';
+				createTable.style.width = '30%';
+				createTable.style.fontWeight = '700';
+				createCaption.style.color = 'black';
+				// newDiv.innerHTML = randomNum;
+			}
+
+			window.onload = function () {
+				table();
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача 5. Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)</h3>
+	</body>
+</html>

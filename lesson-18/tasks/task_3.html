@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 3</title>
+		<script>
+			function getYears() {
+				const userBirthYear = parseInt(document.getElementById('yearBirthDay').value);
+				console.log('getYears ~ userBirthYear:', userBirthYear);
+				const currentDate = new Date();
+				const currentYear = currentDate.getFullYear();
+				const resultYear = currentYear - userBirthYear;
+
+				const spanResult = (document.getElementById('result').innerText = resultYear);
+			}
+			window.onload = function () {
+				document.getElementById('yearBirthDay').oninput = getYears;
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача 3. Користувач задає рік народження. Визначити кількість років користувача.</h3>
+		<div>
+			<label>
+				Ваш рік народження
+				<input id="yearBirthDay" type="number" value="0" />
+			</label>
+		</div>
+		<div>
+			<label>Вам вже <span id="result"></span><span>р.</span> </label>
+		</div>
+	</body>
+</html>
