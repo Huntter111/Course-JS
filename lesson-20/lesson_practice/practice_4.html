@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 4</title>
+		<style>
+			input {
+				margin-left: 10px;
+			}
+		</style>
+		<!-- <script>
+			class LoginForm {
+				constructor(loginTitle, passwordTitle, loginBtnTitle) {
+					this.loginTitle = loginTitle;
+					this.loginBtnTitle = loginBtnTitle;
+					this.passwordTitle = passwordTitle;
+				}
+				checkValidity() {
+					const validityStatus = this.loginInp.value && this.passwordInp.value;
+					if (validityStatus) this.loginButton.removeAttribute('disabled');
+					else this.loginButton.setAttribute('disabled', 'true');
+				}
+				createInputItem(labelText, inputType) {
+					const div = document.createElement('div');
+					const label = document.createElement('label');
+					label.innerText = labelText;
+
+					const input = document.createElement('input');
+					input.type = inputType;
+					input.oninput = this.checkValidity.bind(this);
+
+					label.append(input);
+					div.append(label);
+					return { div, input };
+				}
+				render(targetSelector) {
+					const container = document.createElement('div');
+
+					const inpObj1 = this.createInputItem(this.loginTitle, 'text');
+					container.append(inpObj1.div);
+					this.loginInp = inpObj1.input;
+
+					const inpObj2 = this.createInputItem(this.passwordTitle, 'password');
+					container.append(inpObj2.div);
+					this.passwordInp = inpObj2.input;
+
+					const btn = document.createElement('button');
+					btn.innerText = this.loginBtnTitle;
+					btn.setAttribute('disabled', 'true');
+					this.loginButton = btn;
+
+					container.append(btn);
+					document.querySelector(targetSelector).append(container);
+				}
+			}
+			window.onload = function () {
+				const f1 = new LoginForm('Login', 'Password', 'Login');
+				f1.render('#cnt');
+			};
+		</script> -->
+		<script>
+			class checkInput {
+				constructor(loginTitle, passwordTitle, buttonTitle) {
+					this.loginTitle = loginTitle;
+					this.passwordTitle = passwordTitle;
+					this.buttonTitle = buttonTitle;
+				}
+				checkValidity() {
+					const validityStatus = this.loginInput.value && this.loginPassword.value;
+					console.log('checkInput ~ checkValidity ~ validityStatus:', validityStatus);
+					if (validityStatus) this.loginBtn.removeAttribute('disabled');
+					else this.loginBtn.setAttribute('disabled', 'true');
+				}
+				createElements(labelText, inputType) {
+					const div = document.createElement('div');
+
+					const label = document.createElement('label');
+					label.innerText = labelText;
+
+					const inp = document.createElement('input');
+					inp.type = inputType;
+					inp.oninput = this.checkValidity.bind(this);
+
+					label.append(inp);
+					div.append(label);
+					return { div, inp };
+				}
+				render(targetSelector) {
+					const container = document.createElement('div');
+
+					const obj1 = this.createElements(this.loginTitle, 'text');
+					console.log('checkInput ~ render ~ obj1:', obj1);
+					container.append(obj1.div);
+					this.loginInput = obj1.inp;
+
+					const obj2 = this.createElements(this.passwordTitle, 'password');
+					this.loginPassword = obj2.inp;
+					container.append(obj2.div);
+
+					const btn = document.createElement('button');
+					btn.className = 'btn';
+					btn.innerText = this.buttonTitle;
+					btn.setAttribute('disabled', 'true');
+					this.loginBtn = btn;
+					container.append(btn);
+					document.querySelector(targetSelector).append(container);
+				}
+			}
+			window.onload = function () {
+				const p1 = new checkInput('Login', 'Password', 'Login');
+				p1.render('#cnt');
+				console.log(p1);
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача. Розробити форму для введення логіна і пароля.</h3>
+		<div id="cnt" class="login"></div>
+	</body>
+</html>

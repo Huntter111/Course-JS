@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 1</title>
+		<style>
+			.container {
+				width: 520px;
+				border: 2px solid green;
+				padding: 10px;
+				border-radius: 10px;
+			}
+			.container div {
+				height: 15px;
+			}
+			.item {
+				padding: 5px;
+				width: 500px;
+			}
+			.item-2 {
+				/* padding: 5px; */
+				width: 500px;
+				border: 2px solid yellow;
+			}
+			.title {
+				display: inline-block;
+				width: 200px;
+			}
+			.title-2 {
+				display: inline-block;
+				width: 200px;
+				font-weight: bold;
+			}
+			.value-container {
+				width: 300px;
+				display: inline-block;
+			}
+		</style>
+		<!-- <script>
+			class Diagram {
+				constructor(dataList, sectionColorList, cssStylesObject) {
+					this.dataList = dataList;
+					this.sectionColorList = sectionColorList;
+
+					this.cssStylesObject = {
+						container: 'container',
+						item: 'item',
+						title: 'title',
+						valueContainer: 'value-container',
+						...(cssStylesObject ?? {}),
+					};
+				}
+				getValueColor(value) {
+					const sectionLength = 100 / this.sectionColorList.length;
+					const sectionNum = Math.ceil(value / sectionLength);
+					return this.sectionColorList[sectionNum - 1];
+				}
+				createItemElement({ title, value }) {
+					// деструктуризація ({title, value})
+					const container = document.createElement('div');
+					//container.classList.add(this.cssStylesObject?.item ?? 'item'); // якщо this.cssStylesObject = undefined ?? якщо ліва частина undefined то права буде присвоєна, ?? - використовується тоді коли перша частина null або undefined
+					container.classList.add(this.cssStylesObject.item);
+					const titleContainer = document.createElement('div');
+					titleContainer.className = this.cssStylesObject.title;
+					titleContainer.innerText = title;
+					container.append(titleContainer);
+
+					const valueContainer = document.createElement('div');
+					valueContainer.className = this.cssStylesObject.valueContainer;
+					const valueDiv = document.createElement('div');
+					valueDiv.style.width = `${value}%`;
+					container.append(valueContainer);
+					valueDiv.style.backgroundColor = this.getValueColor(value);
+
+					valueContainer.append(valueDiv);
+					container.append(valueContainer);
+
+					return container;
+				}
+				render(targetSelector) {
+					const diagramContainer = document.createElement('div');
+					diagramContainer.className = this.cssStylesObject.container;
+
+					this.dataList.forEach(item => {
+						const itemElement = this.createItemElement(item);
+						diagramContainer.append(itemElement);
+					});
+
+					document.querySelector(targetSelector).append(diagramContainer);
+				}
+			}
+
+			let sectionColorList = ['red', 'blue', 'green'];
+			let dataList = [
+				{
+					title: 'Ivan',
+					value: 7,
+				},
+				{
+					title: 'Petro',
+					value: 71,
+				},
+				{
+					title: 'Olga',
+					value: 79,
+				},
+				{
+					title: 'Vlad',
+					value: 50,
+				},
+			];
+			window.onload = function () {
+				const cssObject = {
+					item: 'item-2',
+					title: 'title-2',
+				};
+
+				const d1 = new Diagram(dataList, sectionColorList, cssObject);
+				d1.render('#dataContainer');
+			}; 
+		</script> -->
+		<script>
+			class Diagram {
+				constructor(dataList, dataColorList, cssStyleObject) {
+					this.dataList = dataList;
+					this.dataColorList = dataColorList;
+					this.cssStyleObject = {
+						container: 'container',
+						title: 'title',
+						valueContainer: 'value-container',
+						item: 'item',
+						...(cssStyleObject ?? {}),
+					};
+				}
+				getValueColor(value) {
+					const sectionPosition = 100 / this.dataColorList.length;
+					const sectionNum = Math.ceil(value / sectionPosition);
+					return dataColorList[sectionNum - 1];
+				}
+				createElement({ title, value }) {
+					const item = document.createElement('div');
+					item.className = this.cssStyleObject.item;
+
+					const titleValue = document.createElement('div');
+					titleValue.innerText = title;
+					titleValue.className = this.cssStyleObject.title;
+					item.append(titleValue);
+
+					const valueContainer = document.createElement('div');
+					valueContainer.className = this.cssStyleObject.valueContainer;
+					item.append(valueContainer);
+
+					const valueItem = document.createElement('div');
+					valueItem.style.width = `${value}%`;
+					valueItem.style.backgroundColor = this.getValueColor(value);
+					valueContainer.append(valueItem);
+
+					return item;
+				}
+				render(targetSelector) {
+					const container = document.createElement('div');
+					container.className = this.cssStyleObject.container;
+
+					this.dataList.forEach(item => {
+						const createItem = this.createElement(item);
+						container.append(createItem);
+					});
+
+					document.querySelector(targetSelector).append(container);
+				}
+			}
+			window.onload = function () {
+				const cssStyleObject = {
+					title: 'title-2',
+					item: 'item-2',
+				};
+				const d1 = new Diagram(dataList, dataColorList, cssStyleObject);
+				d1.render('#dataContainer');
+			};
+			const dataColorList = ['red', 'blue', 'green'];
+			const dataList = [
+				{
+					title: 'Ivan',
+					value: 100,
+				},
+				{
+					title: 'Mark',
+					value: 55,
+				},
+				{
+					title: 'Zeus',
+					value: 90,
+				},
+				{
+					title: 'Olga',
+					value: 33.3,
+				},
+			];
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача. Компонент діаграма. Значення від 0 до 100. Область розділено на 3 частини (значення у першій частині – червоне заповнення, значення у другій
+			частині – синій колір, значення у третій – зелений.
+		</h3>
+		<div id="dataContainer"></div>
+	</body>
+</html>
