@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 5</title>
+		<style>
+			.container {
+				display: flex;
+				column-gap: 15px;
+			}
+			table {
+				border: 10px solid black;
+				font-size: 50px;
+				padding: 10px;
+			}
+			td {
+				padding: 10px;
+				border: 5px solid black;
+				@media (any-hover: hover) {
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+			.highlight {
+				border: 10px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до відповідної таблиці додається
+			червона рамка (спробуйте додати можливість відображення кількості кліків біля назви таблиці з використанням відповідно доданого для цього атрибута).
+		</h3>
+		<div class="container">
+			<div class="table-container">
+				<table>
+					<tbody>
+						<tr>
+							<td>22</td>
+							<td>10</td>
+							<td>45</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>45</td>
+							<td>21</td>
+						</tr>
+						<tr>
+							<td>95</td>
+							<td>67</td>
+							<td>78</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>Кількість кліків: <span id="click-count-1">0</span></div>
+			</div>
+			<div class="table-container">
+				<table>
+					<tbody>
+						<tr>
+							<td>28</td>
+							<td>45</td>
+							<td>21</td>
+						</tr>
+						<tr>
+							<td>95</td>
+							<td>67</td>
+							<td>78</td>
+						</tr>
+						<tr>
+							<td>23</td>
+							<td>54</td>
+							<td>78</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>Кількість кліків: <span id="click-count-2">0</span></div>
+			</div>
+			<div class="table-container">
+				<table>
+					<tbody>
+						<tr>
+							<td>23</td>
+							<td>54</td>
+							<td>78</td>
+						</tr>
+						<tr>
+							<td>23</td>
+							<td>54</td>
+							<td>78</td>
+						</tr>
+						<tr>
+							<td>92</td>
+							<td>17</td>
+							<td>56</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>Кількість кліків: <span id="click-count-3">0</span></div>
+			</div>
+		</div>
+		<script>
+			const clickCounts = [0, 0, 0];
+			document.querySelectorAll('table').forEach((table, index) => {
+				table.onclick = function (event) {
+					console.log(event.target);
+					if (event.target.tagName === 'TD') {
+						table.classList.toggle('highlight');
+						clickCounts[index]++;
+						document.getElementById(`click-count-${index + 1}`).innerText = clickCounts[index];
+					}
+				};
+			});
+		</script>
+	</body>
+</html>

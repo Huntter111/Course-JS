@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 2</title>
+		<style>
+			div {
+				display: flex;
+				max-width: 300px;
+				flex-direction: column;
+				margin-bottom: 20px;
+				font-size: 30px;
+				/* border: 10px solid black; */
+				@media (any-hover: hover) {
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному порядку(кожен
+			попередній має значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+		</h3>
+		<!-- ! Перший варіант -->
+		<!-- <div class="container">
+			<input type="number" name="" id="" />
+			<input type="number" name="" id="" />
+			<input type="number" name="" id="" />
+			<input type="number" name="" id="" />
+			<input type="number" name="" id="" />
+		</div>
+		<script>
+			function onInputTarget() {
+				let input = this;
+
+				let value = parseInt(input.value);
+				console.log('value:', value);
+				if (!isNaN(value)) {
+					let nextInput = input;
+
+					while (nextInput.nextElementSibling) {
+						nextInput = nextInput.nextElementSibling;
+						value++;
+						nextInput.value = value;
+					}
+					let previousInput = input;
+					value = parseInt(input.value);
+					while (previousInput.previousElementSibling) {
+						previousInput = previousInput.previousElementSibling;
+						value--;
+						previousInput.value = value;
+					}
+				}
+			}
+			const containerInputs = document.querySelector('.container');
+			for (const inp of containerInputs.children) {
+				inp.addEventListener('input', onInputTarget);
+			}
+		</script> -->
+
+		<!-- ! Другий варіант -->
+		<div class="container">
+			<form action="files/sendmail/sendmail.php" method="POST">
+				<input type="text" name="form[email]" data-error="Error" placeholder="E-mail" class="input" />
+				<button type="submit" class="button">Send</button>
+			</form>
+			.container__
+			<label>Value 1<input type="text" /></label>
+			<label>Value 2<input type="text" /></label>
+			<label>Value 3<input type="text" /></label>
+			<label>Value 4<input type="text" /></label>
+			<label>Value 5<input type="text" /></label>
+		</div>
+		<script>
+			function onInputTarget() {
+				let input = this;
+				let value = parseInt(input.value);
+				console.log('value:', value);
+				console.log('input:', input);
+
+				if (!isNaN(value)) {
+					// Заповнюємо наступні поля
+					let nextInput = input;
+					let nextValue = value;
+					while (nextInput.parentElement.nextElementSibling) {
+						nextInput = nextInput.parentElement.nextElementSibling.querySelector('input');
+						nextValue++;
+						nextInput.value = nextValue;
+					}
+
+					// Заповнюємо попередні поля
+					let prevInput = input;
+					let prevValue = value;
+					while (prevInput.parentElement.previousElementSibling) {
+						prevInput = prevInput.parentElement.previousElementSibling.querySelector('input');
+						prevValue--;
+						prevInput.value = prevValue;
+					}
+				}
+			}
+
+			const containerInputs = document.querySelector('.container');
+			const inputs = containerInputs.querySelectorAll('input[type="text"]');
+
+			for (const input of inputs) {
+				input.addEventListener('input', onInputTarget);
+			}
+		</script>
+	</body>
+</html>

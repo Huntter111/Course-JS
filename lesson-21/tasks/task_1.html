@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 1</title>
+		<style>
+			div {
+				margin-bottom: 20px;
+				font-size: 30px;
+				/* border: 10px solid black; */
+				@media (any-hover: hover) {
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+		</style>
+		<script>
+			// class CreateDiv {
+			// 	constructor() {}
+			// 	createElement() {
+			// 		const div = document.createElement('div');
+			// 		div.innerText = 'Hello!';
+			// 		return div;
+			// 	}
+			// 	render(targetSelector) {
+			// 		const container = document.createElement('div');
+			// 		for (let i = 0; i < 10; i++) {
+			// 			const div = this.createElement();
+			// 			container.append(div);
+			// 		}
+			// 		document.querySelector(targetSelector).append(container);
+			// 	}
+			// }
+			// window.onload = function () {
+			// 	const div1 = new CreateDiv();
+			// 	div1.render('.container');
+			// };
+		</script>
+	</head>
+	<body>
+		<h3>Задача 1. Дано 10 рядків тексту «Hello!» у окремих div. При кліку на якийсь із них усі наступні повинні бути зафарбовані у червоний колір.</h3>
+		<div class="container">
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+			<div>Hello</div>
+		</div>
+		<script>
+			// function onDivColor() {
+			// 	let div = this;
+			// 	if (div) {
+			// 		div.style.backgroundColor = 'red';
+			// 		const copyDiv = div;
+			// 		while (div.nextElementSibling) {
+			// 			div = div.nextElementSibling;
+
+			// 			if (div.style.backgroundColor === 'red') {
+			// 				break;
+			// 			} else {
+			// 				div.style.backgroundColor = 'red';
+			// 			}
+			// 		}
+			// 		div = copyDiv;
+			// 		while (div.previousElementSibling) {
+			// 			div = div.previousElementSibling;
+			// 			if (div.style.backgroundColor === 'red') {
+			// 				break;
+			// 			} else {
+			// 				div.style.backgroundColor = 'red';
+			// 			}
+			// 		}
+			// 	}
+			// }
+			function onDivColor() {
+				let div = this;
+				console.log('onDivColor ~ div:', div);
+				if (div) {
+					div.style.backgroundColor = 'red';
+					const divCopy = div;
+					while (div.nextElementSibling) {
+						div = div.nextElementSibling;
+						if (div.style.backgroundColor === 'red') {
+							break;
+						} else {
+							div.style.backgroundColor = 'red';
+						}
+					}
+					div = divCopy;
+					while (div.previousElementSibling) {
+						div = div.previousElementSibling;
+						if (div.style.backgroundColor === 'red') {
+							break;
+						} else {
+							div.style.backgroundColor = 'red';
+						}
+					}
+				}
+			}
+			const dives = document.querySelector('.container');
+			console.log('dives:', dives.children);
+			for (const div of dives.children) {
+				div.onclick = onDivColor;
+			}
+		</script>
+	</body>
+</html>

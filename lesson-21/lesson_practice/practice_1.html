@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 1</title>
+		<style>
+			td {
+				background-color: #1e1d1d;
+			}
+			table {
+				border: 2px solid black;
+				width: 500px;
+				height: 50px;
+				transition: all 0.3s;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>
+			// Задача. Однорядковий сапер. Однорядкова таблиця, до клітинок якої додано інформацію про наявність міни (використати атрибути). Спочатку клітинки
+			сірі. При натисненні на клітинку аналізується чи є там міна і тоді колір стає червоним, якщо немає – зеленим. Додати можливість відкриття усіх сусідніх
+			незамінованих клітинок при відкритті незамінованої клітинки.
+		</h2>
+		<table>
+			<tr>
+				<td mine="1"></td>
+				<td mine="0"></td>
+				<td mine="1"></td>
+				<td mine="0"></td>
+				<td mine="0"></td>
+				<td mine="0"></td>
+				<td mine="0"></td>
+				<td mine="1"></td>
+			</tr>
+		</table>
+		<script>
+			function onTdClick() {
+				let td = this; // це і є той самий елемент на який клікаєш
+				if (td.getAttribute('mine') === '1') {
+					td.style.backgroundColor = 'red';
+				} else {
+					td.style.backgroundColor = 'green';
+					const copyTd = td;
+					while (td.nextElementSibling) {
+						td = td.nextElementSibling;
+						if (td.getAttribute('mine') === '1') {
+							break;
+						} else {
+							td.style.backgroundColor = 'green';
+						}
+					}
+					td = copyTd;
+					while (td.previousElementSibling) {
+						td = td.previousElementSibling;
+						if (td.getAttribute('mine') === '1') {
+							break;
+						} else {
+							td.style.backgroundColor = 'green';
+						}
+					}
+				}
+			}
+
+			const tr = document.querySelector('tr');
+			console.log(tr.children);
+
+			for (const td of tr.children) {
+				td.onclick = onTdClick;
+			}
+		</script>
+	</body>
+</html>

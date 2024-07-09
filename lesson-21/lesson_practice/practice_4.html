@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 4</title>
+		<style>
+			table {
+				border: 5px solid gray;
+			}
+			tr {
+				border: 5px solid gray;
+			}
+			td {
+				border: 5px solid gray;
+				width: 50px;
+				height: 50px;
+				background-color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Гра 'miner'</h2>
+		<table>
+			<tr>
+				<td mine="0"></td>
+				<td mine="1"></td>
+				<td mine="0"></td>
+				<td mine="0"></td>
+			</tr>
+			<tr>
+				<td mine="1"></td>
+				<td mine="0"></td>
+				<td mine="0"></td>
+				<td mine="1"></td>
+			</tr>
+			<tr>
+				<td mine="0"></td>
+				<td mine="1"></td>
+				<td mine="1"></td>
+				<td mine="0"></td>
+			</tr>
+			<tr>
+				<td mine="0"></td>
+				<td mine="1"></td>
+				<td mine="0"></td>
+				<td mine="0"></td>
+			</tr>
+		</table>
+
+		<script>
+			function onTdClick() {
+				if (event.target.tagName === 'TD') {
+					let td = event.target; // це адреса елемента який згенерував подію
+					if (td.getAttribute('mine') === '1') {
+						console.log(td.getAttribute('mine'));
+						td.style.backgroundColor = 'red';
+					} else {
+						td.style.backgroundColor = 'green';
+						const copyTd = td;
+						// відкриваємо усі клітинки де немає мін, що розташовані справа.
+						while (td.nextElementSibling) {
+							td = td.nextElementSibling; // присвоїв наступний елемент на той який  клікнув
+							if (td.getAttribute('mine') === '1') {
+								break;
+							} else td.style.backgroundColor = 'green';
+						}
+						td = copyTd;
+						while (td.previousElementSibling) {
+							td = td.previousElementSibling; // присвоїв попередній елемент на той який клікнув
+							if (td.getAttribute('mine') === '1') {
+								break;
+							} else td.style.backgroundColor = 'green';
+						}
+					}
+				}
+			}
+
+			document.querySelector('table').onclick = onTdClick;
+		</script>
+	</body>
+</html>
