@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 2</title>
+		<script>
+			class Range {
+				constructor(minValue, maxValue) {
+					this.minValue = minValue;
+					this.maxValue = maxValue;
+				}
+				inRange(value) {
+					return value >= this.minValue && value <= this.maxValue;
+				}
+				toString() {
+					return `Range (${this.minValue}, ${this.maxValue})`;
+				}
+			}
+			// На основі Range створити PensionerChecker
+
+			class PensionerChecker extends Range {
+				constructor(pensionAge = 65) {
+					super(pensionAge, Infinity); // викликали конструктор предка
+				}
+				isPensioner(age) {
+					return this.inRange(age);
+				}
+				toString() {
+					return `PensionerChecker >= ${this.minValue}`;
+				}
+				checkAge() {
+					const age = parseInt(this.input.value);
+					if (this.isPensioner(age)) alert('Pensioner');
+					else alert('Not a pensioner');
+				}
+				render(containerID) {
+					const div = document.createElement('div');
+					this.input = document.createElement('input');
+					div.append(this.input);
+					const btn = document.createElement('button');
+					btn.innerText = 'Чи є пенсіонером';
+					div.append(btn);
+					// btn.addEventListener('click', )
+					btn.onclick = this.checkAge.bind(this);
+					document.getElementById(containerID).append(div);
+				}
+			}
+			window.onload = function () {
+				let p1 = new PensionerChecker();
+				p1.render('container');
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача 2. Створити клас Range (діапазон)</h3>
+		<div id="container"></div>
+	</body>
+</html>

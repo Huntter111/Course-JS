@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 5</title>
+		<style></style>
+		<script>
+			class IsNotNumberError extends Error {
+				constructor() {
+					super();
+					this.message = 'Має бути числом';
+					this.name = 'IsNotNumberError';
+				}
+			}
+			class IsNegativeNumberError extends Error {
+				constructor() {
+					super();
+					this.message = "Не може бути від'ємним";
+					this.name = 'IsNegativeNumberError';
+				}
+			}
+			class IsTooHightNumberError extends Error {
+				constructor(currentNumber) {
+					super();
+					this.currentNumber = currentNumber;
+					this.message = 'Не може бути більшим за 65';
+					this.name = 'IsTooHightNumberError';
+				}
+			}
+
+			function validate() {
+				try {
+					var exp = document.forms[0].elements[0].value;
+					if (isNaN(exp)) throw new IsNotNumberError();
+					if (exp < 0) throw new IsNegativeNumberError();
+					if (exp > 65) throw new IsTooHightNumberError(exp);
+				} catch (err) {
+					if (err instanceof IsNotNumberError) {
+						console.log(err.message + ' Пишіть тільки числа');
+						document.forms[0].elements[0].value = 0;
+					} else if (err instanceof IsNegativeNumberError) {
+						console.log(err.message + " Не можуть бути від'ємними");
+						document.forms[0].elements[0].value = 0;
+					} else if (err instanceof IsTooHightNumberError) {
+						console.log(err.message + ' Не може бути більшим за 65.');
+						document.forms[0].elements[0].value = 65;
+					} else console.log(err.message);
+					return false;
+				}
+				return true;
+			}
+			window.onload = function () {
+				document.forms[0].onsubmit = validate;
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Створення власних виключних ситуацій</h3>
+		<form>
+			Стаж: <input type="text" name="exp" value="" /><br />
+			З.п: <input type="text" name="salary" value="" /><br />
+			<input type="submit" value="Надіслати" />
+		</form>
+	</body>
+</html>

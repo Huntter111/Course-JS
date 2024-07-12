@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+		<script>
+			// Задача. Створити клас Client
+			class Client {
+				constructor(ID, firstName, secondName, valueAmountMoney) {
+					this.ID = ID;
+					this.firstName = firstName;
+					this.secondName = secondName;
+					this.valueAmountMoney = valueAmountMoney;
+				}
+
+				addMoney(moneyValue) {
+					this.valueAmountMoney += moneyValue;
+				}
+				withDrawMoney(moneyValue) {
+					this.valueAmountMoney -= moneyValue;
+				}
+
+				toString() {
+					return `${this.firstName} ${this.secondName}. Кількість грошей: ${this.valueAmountMoney} `;
+				}
+			}
+
+			class GoldenClient extends Client {
+				constructor(ID, firstName, secondName, valueAmountMoney, creditFunds, percentageCreditFunds) {
+					super(ID, firstName, secondName, valueAmountMoney);
+					this.creditFunds = creditFunds;
+					this.percentageCreditFunds = percentageCreditFunds;
+				}
+				addMoneyGoldenClient(moneyValue) {
+					this.addMoney(moneyValue);
+				}
+				withDrawMoneyGoldenClient(moneyValue) {
+					this.withDrawMoney(moneyValue);
+				}
+				determinationPenaltyForUseCreditFunds(days) {
+					const penalty = ((this.creditFunds * this.percentageCreditFunds) / 100) * days;
+					return penalty;
+				}
+
+				toString() {
+					return `${super.toString()} Кредитні кошти: ${this.creditFunds}. Відсоток за використання кредитних коштів: ${this.percentageCreditFunds}%`;
+				}
+			}
+
+			class Bank {
+				constructor() {
+					this.clients = [];
+				}
+				addClient(client) {
+					this.clients.push(client);
+				}
+				getAllSimpleClients() {
+					return this.clients.filter(client => !(client instanceof GoldenClient));
+				}
+				getAllGoldenClients() {
+					return this.clients.filter(client => client instanceof GoldenClient);
+				}
+				getTotalMoney() {
+					return this.clients.reduce((prevMoney, client) => prevMoney + client.valueAmountMoney, 0);
+				}
+				printClients(clients) {
+					clients.forEach(client => console.log(client.toString()));
+				}
+			}
+			window.onload = function () {
+				// Створити банк
+				const bank = new Bank();
+				// Створити клієнтів
+				const client1 = new Client('111', 'John', 'Doe', 3000);
+				const client2 = new Client('112', 'Jane', 'Doe', 4500);
+				const goldenClient1 = new GoldenClient('113', 'Igor', 'Martin', 50000, 1000, 5);
+				const goldenClient2 = new GoldenClient('114', 'Max', 'Smith', 70000, 2000, 3);
+				// Додати клієнтів простих і gold
+
+				bank.addClient(client1);
+				bank.addClient(client2);
+				bank.addClient(goldenClient1);
+				bank.addClient(goldenClient2);
+				// Вивести простих і gold клієнтів
+				console.log(`Прості клієнти: `);
+				bank.printClients(bank.getAllSimpleClients());
+
+				console.log(`Gold клієнти: `);
+				bank.printClients(bank.getAllGoldenClients());
+
+				// Вивести загальну суму грошей
+				console.log(`Сумарна кількість грошей: ${bank.getTotalMoney()}`);
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача. Створити клас Client. Властивості ID, ПІБ, Кількість грошей на рахунку. Методи: Додавання грошей, Зняття грошей, ToString. <br />
+			<br />
+			На основі цього класу створити клас GoldenClient. Властивості ID, ПІБ, Кількість грошей на рахунку, Ліміт кредитних коштів, Відсоток за використання
+			кредитних коштів. Методи: Додавання грошей, Зняття грошей, Визначення пені за використання кредитних коштів, ToString. <br />
+			<br />
+			Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції Вивести усіх простих клієнтів; Вивести усіх клієнтів GoldenClient;
+			Знати сумарну кількість грошей на рахунку;
+		</h3>
+	</body>
+</html>
