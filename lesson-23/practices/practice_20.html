@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 20</title>
+	</head>
+	<body>
+		<h3>Задача. Користувач вводить прізвище та ім’я в одному рядку через пробіл. Замінити пробіл на дефіс.</h3>
+		<script>
+			let userInputNameSurname = prompt("Введіть прізвище та ім'я", 'Vitaliy Done');
+
+			let replaceUserInput = userInputNameSurname.replace(' ', ' - ');
+			document.write(`Введене ім'я: ${userInputNameSurname} <br> Заміна через replace: ${replaceUserInput}`);
+		</script>
+
+		<h3>Задача. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік»</h3>
+		<script>
+			let userInputDate = prompt('Введіть дату день місяць рік', '');
+			let replaceUserInputDate = userInputDate.replaceAll(' ', '/');
+			document.write(`Дата з replace: ${replaceUserInputDate}`);
+		</script>
+	</body>
+</html>

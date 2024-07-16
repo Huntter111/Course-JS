@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+		<script>
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			let arr = [];
+			for (let i = 0; i < 100000; i++) {
+				const element = getRandomNum(1, 800);
+				arr.push(element);
+			}
+			function sortBubble(array) {
+				let timeStartCodeSortBubble = new Date();
+
+				let changed;
+				do {
+					changed = false;
+					for (let i = 1; i < array.length; i++) {
+						if (array[i - 1] > array[i]) {
+							let temp = array[i - 1];
+							array[i - 1] = array[i];
+							array[i] = temp;
+							changed = true;
+						}
+					}
+				} while (changed);
+				let timeEndCodeSortBubble = new Date();
+				let resultBubble = (timeEndCodeSortBubble - timeStartCodeSortBubble) / 1000;
+				return resultBubble;
+			}
+
+			function sortIncludes(array) {
+				let timeStartCode = new Date();
+				console.log('start:', array);
+
+				let key, i;
+				for (let k = 1; k < array.length; k++) {
+					key = array[k];
+					i = k - 1;
+					while (i >= 0 && array[i] > key) {
+						array[i + 1] = array[i];
+						i = i - 1;
+					}
+					array[i + 1] = key;
+				}
+				let timeEndCode = new Date();
+				let result = (timeEndCode - timeStartCode) / 1000;
+				return result;
+			}
+			console.log('resultBubble:', sortBubble([...arr]));
+			console.log('resultIncludes:', sortIncludes([...arr]));
+		</script>
+	</head>
+	<body>
+		<h3>Задача 3. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.</h3>
+	</body>
+</html>

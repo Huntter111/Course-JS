@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 2</title>
+		<script>
+			function getYogurtIsSuitable(year, month, day, dayIsSuitable, date) {
+				// Створюємо дату виготовлення йогурта
+				let manufactureDate = new Date(year, month - 1, day);
+				console.log('Створюємо дату виготовлення йогурта:', manufactureDate);
+
+				// Розраховуємо дату кінця терміну придатності
+				let expiryDate = new Date(manufactureDate.getTime() + dayIsSuitable * 24 * 3600 * 1000);
+				console.log('Розраховуємо дату кінця терміну придатності:', expiryDate);
+
+				// Поточна дата
+				let currentDate = date;
+				console.log('Поточна дата', currentDate);
+
+				if (currentDate <= expiryDate) return true;
+				else return false;
+			}
+
+			let yearYogurt = 2024;
+			let monthYogurt = 6;
+			let dayYogurt = 1;
+			let dayIsSuitable = 60;
+
+			const currentDate = new Date();
+
+			let result = getYogurtIsSuitable(yearYogurt, monthYogurt, dayYogurt, dayIsSuitable, currentDate);
+			if (result) alert('годний');
+			else alert('Не годний');
+		</script>
+	</head>
+	<body>
+		<h3>Задача 2 . Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.</h3>
+	</body>
+</html>

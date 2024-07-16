@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 19</title>
+	</head>
+	<body>
+		<h3>Задача. Шифр Цезаря.</h3>
+		<script>
+			function encryption(userInput, shiftCode) {
+				console.log('encryption ~ userInput:', userInput.length);
+				let line = '';
+				let result = '';
+				for (let i = 0; i < userInput.length; i++) {
+					const element = userInput.charAt(i);
+
+					const codeElement = element.charCodeAt();
+
+					const shiftCodeElement = codeElement + shiftCode;
+
+					const fromShiftCodeElement = String.fromCharCode(shiftCodeElement);
+
+					result += fromShiftCodeElement;
+				}
+				return result;
+				console.log('encryption ~ result:', result);
+			}
+			let userInput = prompt('Введіть слово яке хочете закодувати', '');
+			document.write(`Слово яке дано: ${userInput} <br> <br> Закодована фраза: ${encryption(userInput, 2)}`);
+		</script>
+	</body>
+</html>

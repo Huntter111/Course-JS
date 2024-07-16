@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>Усі задачі можете оформити у одному файлі (так, як ми робимо на лекції)</h3>
+
+		<script>
+			// Задача 1. Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази)
+			const randomArray = [
+				'42',
+				'apple',
+				'B',
+				'7',
+				'banana',
+				'X',
+				'18',
+				'cherry',
+				'M',
+				'33',
+				'grape',
+				'A',
+				'56',
+				'honeydew',
+				'L',
+				'90',
+				'fig',
+				'Q',
+				'23',
+				'elderberry',
+				'BTN',
+				'MNK',
+			];
+			function getValue(randomArray) {
+				let newArray = [];
+				randomArray.forEach(element => {
+					if (/\d{1,3}/g.test(element)) {
+						newArray.push(element);
+					}
+				});
+
+				let result = newArray.join(', ');
+
+				return result;
+			}
+			document.write(`<b>1. Дано масив рядків. Вивести ті, у яких є цифри:</b> ${getValue(randomArray)}<br> <br>`);
+
+			// Задача 2. Дано масив рядків. Вивести ті, у яких немає цифр.
+			function getNotValue(randomArray) {
+				let newArray = [];
+				for (const el of randomArray) {
+					if (/\D/g.test(el)) newArray.push(el);
+				}
+
+				let result = newArray.join(', ');
+				return result;
+			}
+			document.write(`<b>2. Дано масив рядків. Вивести ті, у яких немає цифр:</b> ${getNotValue(randomArray)}<br> <br>`);
+
+			// Задача 3. Дано масив рядків. Вивести ті, у яких є голосні літери.
+			function getVowelWordsInclude(randomArray) {
+				let newArr = [];
+				for (const el of randomArray) {
+					if (/[aeiouy]/gi.test(el)) newArr.push(el);
+				}
+				console.log('getVowelWordsInclude ~ newArr:', newArr);
+				let result = newArr.join(', ');
+				return result;
+			}
+			document.write(`<b>3. Дано масив рядків. Вивести ті, у яких є голосні літери:</b> ${getVowelWordsInclude(randomArray)}<br> <br>`);
+
+			// Задача 4. Дано масив рядків. Вивести ті, у яких немає голосних літер.
+			function getNotVowelWordsInclude(randomArray) {
+				let newArr = [];
+				for (const el of randomArray) {
+					if (!/[aeiouy\d]/gi.test(el)) newArr.push(el);
+				}
+				console.log('getVowelWordsInclude ~ newArr:', newArr);
+				let result = newArr.join(', ');
+				return result;
+			}
+			document.write(`<b>4. Дано масив рядків. Вивести ті, у яких немає голосних літер:</b> ${getNotVowelWordsInclude(randomArray)}<br> <br>`);
+
+			// Задача 5. Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.
+			function getStringIncludeNum1And3(randomArray) {
+				let newArr = [];
+				for (const el of randomArray) {
+					if (/1|3/g.test(el)) newArr.push(el);
+				}
+				let result = newArr.join(', ');
+				return result;
+			}
+			document.write(`<b>5. Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3:</b> ${getStringIncludeNum1And3(randomArray)}<br> <br>`);
+
+			// Задача 6. Дано рядок тексту, вивести усі числа, які є у тексті.
+			function getNumbersFromText() {
+				let historicalExample =
+					'У 1917 році розпочалася Українська революція, яка тривала до 1921 року. У 1991 році Україна проголосила незалежність, а у 2004 році відбулася Помаранчева революція.';
+				let result = historicalExample.match(/\d/g);
+				console.log('getNumbersFromText ~ result:', result);
+				return result;
+			}
+			document.write(`<b>6. Дано рядок тексту, вивести усі числа, які є у тексті:</b> ${getNumbersFromText()}<br> <br>`);
+
+			// Задача 7. Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.
+			function getPunctuationMarks() {
+				let exampleSentence =
+					'Україна здобула незалежність у 1991 році: це було важливе досягнення - воно відкрило нову еру... Але, чи завжди це було просто? "Так!" - відповість більшість (хоча й були труднощі); і сьогодні, 2024 року, ми можемо сказати, що ми стали сильнішими. Відзначимо, що важливі події / досягнення стали можливими завдяки єдності нації.';
+				let result = exampleSentence.match(/[.,:;!?()"\-\/]/g);
+				console.log('getPunctuationMarks ~ result:', result);
+				return result;
+			}
+			document.write(`<b>7. Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.:</b> ${getPunctuationMarks()}<br> <br>`);
+
+			// Задача 8. Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.
+			function getSeparatedComponents() {
+				let exampleSentence =
+					'Україна здобула незалежність у 1991 році: це було важливе досягнення - воно відкрило нову еру... Але, чи завжди це було просто? "Так!" - відповість більшість (хоча й були труднощі); і сьогодні, 2024 року, ми можемо сказати, що ми стали сильнішими. Відзначимо, що важливі події / досягнення стали можливими завдяки єдності нації.';
+				// Розділяємо рядок за допомогою розділових знаків
+				let components = exampleSentence.split(/[.,:;!?()"\-\/\s]+/);
+				// Фільтруємо пусті рядки, які можуть виникнути через множинні розділові знаки
+				components = components.filter(component => component.length > 0);
+				return components;
+			}
+			document.write(`<b>8. Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками:</b> ${getSeparatedComponents()}<br> <br>`);
+
+			// Задача 9. Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).
+			function getDateFromText() {
+				let dateExample = 'I have a good day 15.07.2024 and the weather was hot';
+				let result;
+				// let audit = /\d{2}.\d{2}.\d{4}/g;
+				if (/\d{2}\.\d{2}\.\d{4}\b/g.test(dateExample)) result = `Дата яка була знайдена: ${dateExample.match(/\d{2}\.\d{2}\.\d{4}\b/g)}`;
+				else result = 'Немає дати з в такому форматі';
+				return result;
+			}
+
+			document.write(`<b>9. Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy:</b> ${getDateFromText()}<br> <br>`);
+
+			// Задача 10. Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.
+			function getTowDigitNumbers() {
+				let textWithTwoDigitNumbers = 'У цьому рядку містяться числа: 1, 23, 45, 3, 42, 72, 34, 87, 67, і 89.';
+				let regex = /\b\d{2}\b/g;
+				// Знаходимо всі двоцифрові числа у тексті
+				let arrDigitNumbers = textWithTwoDigitNumbers.match(regex);
+				if (!arrDigitNumbers) return 'Немає таких чи';
+				else return arrDigitNumbers.length;
+			}
+			document.write(`<b>10. Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку:</b> ${getTowDigitNumbers()}<br><br>`);
+
+			//Задача 11. Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі такі номери.
+
+			function getBankCards() {
+				let text =
+					'Мої банківські карти: Visa: 4142-3433-2323-3434 MasterCard: 5123-4567-8901-2345 American Express: 3782-822463-10005. Якщо потрібно щось купити, можна використовувати будь-яку з цих карт.';
+				let result;
+				let regex = /\d{4}-\d{4}-\d{4}-\d{4}/g;
+
+				if (regex.test(text)) result = text.match(regex);
+				else result = 'немає банківських карт';
+
+				return result;
+			}
+
+			document.write(
+				`<b>11. Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі такі номери:</b> ${getBankCards()}<br><br>`,
+			);
+
+			// Задача 12. Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”)
+			function isDomainGov() {
+				let domain = 'https://www.usa.gov';
+
+				let result;
+				let regex = /\.gov\b/i;
+				if (regex.test(domain)) result = 'Домен є урядовим містить .gov';
+				else result = 'Домен НЕ є урядовим';
+
+				return result;
+			}
+			document.write(`<b>12. Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”):</b> ${isDomainGov()}<br><br>`);
+
+			// Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення
+			function getYears() {
+				let text =
+					'З 1991 року і по 2006. У 2021 році було введено нові технології, які будуть актуальні до 2022 і 2024 років, а також у наступні роки. Починаючи з 2025 кіберспорт ставатиме дедалі популярнішим';
+				let regex = /202[2-9]|20[3-9]\d/g;
+				let years = text.match(regex);
+				return years;
+			}
+
+			document.write(`<b>13. Вибрати усі роки після 2021 року з отриманого повідомлення:</b> ${getYears()}<br><br>`);
+			// Задача 14. Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починається на «+38»)
+		</script>
+	</body>
+</html>

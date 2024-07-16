@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 5</title>
+		<script>
+			function getExpDate(date, rentHours) {
+				return new Date(date.setHours(date.getHours() + rentHours));
+			}
+			let rentHours = parseInt(prompt('rent hours', ''));
+			const currentDate = new Date();
+			const expDate = getExpDate(currentDate, rentHours);
+			console.log('expDate:', expDate);
+			alert(`Машину потрібно повернути до: ${expDate.toLocaleTimeString('uk-UA')}`);
+		</script>
+	</head>
+	<body>
+		<h3>Задача 5. Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення</h3>
+	</body>
+</html>

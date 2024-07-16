@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 14</title>
+		<script>
+			let str = 'In 1987 we founded 18 dogs and 2190 cats';
+
+			if (/\D19\d{2}\D/.test(str)) {
+				let list = str.match(/\D19\d{2}\D/g);
+				console.log('list:', list);
+				alert(list);
+			} else alert('no');
+		</script>
+	</head>
+	<body>
+		<h3>Задача 14. Дано повідомлення від користувача. Визначити, чи є всередині (не на початку і не у кінці) повідомлення рік, що починається з «19».</h3>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 21</title>
+	</head>
+	<body>
+		<h3>Задача. Користувач вводить прізвище, ім’я, та по-батькові через пробіл. Отримати рядок згідно формату «ім’я ПРІЗВИЩЕ»</h3>
+		<!-- ! 1 варіант -->
+		<!-- <script>
+			let userInput = 'Віталій Дан Максимович';
+			let stringArray = userInput.split(' ');
+
+			let formatName = stringArray[0].toLowerCase();
+
+			let formatSurname = stringArray[1].toUpperCase();
+
+			let fatherNames = stringArray[2];
+
+			let arr = new Array();
+			arr.push(formatName);
+			arr.push(formatSurname);
+			arr.push(fatherNames);
+
+			let newString = arr.join(' ');
+			document.write(`Від форматоване ім'я: ${newString}`);
+		</script> -->
+		<script>
+			let userInput = 'Віталій Дан Максимович';
+			let stringArray = userInput.split(' ');
+
+			// Беремо перший елемент як ім'я і другий елемент як прізвище
+			let firstName = stringArray[0];
+			let lastName = stringArray[1].toUpperCase();
+
+			// Формуємо новий рядок у необхідному форматі
+			let formattedString = `${firstName} ${lastName}`;
+
+			// Виводимо результат
+			document.write(`Від форматоване ім'я: ${formattedString}`);
+		</script>
+	</body>
+</html>
