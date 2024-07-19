@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 9</title>
+		<script>
+			let userInput = parseInt(prompt('Введіть номер дня тижня', '7'));
+			let N = parseInt(prompt('Введіть кількість днів, щоб дізнатись який буде день', '8'));
+
+			let min = 1;
+			let max = 7;
+
+			let res = ((userInput - min + N) % (max - min + 1)) + min;
+			console.log('res:', res);
+
+			let massage = '';
+			switch (res) {
+				case 1:
+					massage = 'Понеділок';
+					break;
+				case 2:
+					massage = 'Вівторок';
+					break;
+				case 3:
+					massage = 'Середа';
+					break;
+				case 4:
+					massage = 'Четвер';
+					break;
+				case 5:
+					massage = "П'ятниця";
+					break;
+				case 6:
+					massage = 'Субота';
+					break;
+				case 7:
+					massage = 'Неділя';
+					break;
+			}
+			console.log(massage);
+		</script>
+	</head>
+	<body>
+		<h3>Визначити який буде день тижня через N днів</h3>
+	</body>
+</html>

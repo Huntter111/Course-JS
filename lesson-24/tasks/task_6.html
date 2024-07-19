@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 6</title>
+	</head>
+	<body>
+		<h3>Задача 6. Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.</h3>
+		<script>
+			let books = [
+				{ title: 'Війна і мир', year: 1869, author: 'Лев Толстой' },
+				{ title: '1984', year: 1949, author: 'Джордж Орвелл' },
+				{ title: 'Майстер і Маргарита', year: 1967, author: 'Михайло Булгаков' },
+				{ title: 'Тихий Дон', year: 1940, author: 'Михайло Шолохов' },
+				{ title: 'Улісс', year: 1922, author: 'Джеймс Джойс' },
+				{ title: 'Підземний караван', year: 1973, author: 'Гарріет Бічер-Стоу' },
+				{ title: 'Маленький принц', year: 1943, author: 'Антуан де Сент-Екзюпері' },
+				{ title: 'Відьмак', year: 1993, author: 'Анджей Сапковський' },
+				{ title: 'Гаррі Поттер і філософський камінь', year: 1997, author: 'Джоан Роулінг' },
+				{ title: 'Відьмак. Останнє бажання', year: 1993, author: 'Анджей Сапковський' },
+			];
+			console.log('example:', books);
+
+			let map = new Map();
+
+			for (const el of books) {
+				let elCount = map.get(el.author) || 0;
+				console.log('elCount:', elCount);
+				map.set(el.author, elCount + 1);
+			}
+			console.log('map:', map);
+		</script>
+	</body>
+</html>

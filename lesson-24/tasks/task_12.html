@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 12</title>
+		<style></style>
+	</head>
+	<body>
+		<h3>
+			Задача 12. Зберігати у пам'яті список справ, які користувачу треба виконати (зберігати у localStorage). <br />
+			Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm). <br />
+			Якщо користувач натискає на «Ок», то видаляти цю задачу.
+		</h3>
+
+		<script>
+			// Згенерувати random num
+			// записати в пам'ять справи які потрібно зробити користувачу
+			// Кожні 2 секунди setInterval виводити повідомлення в confirm
+
+			// Якщо користувач настине ОК то видаляти задачу
+
+			function getRandomNum(arrLength) {
+				return Math.floor(Math.random() * arrLength);
+			}
+			function getListTasks() {
+				const arr = ['Винести сміття', 'Прибратись у кухні', 'Полити квіти', 'Поспілкуватись з родиною', 'Прогулятись на свіжому повітрі'];
+				return arr;
+			}
+
+			localStorage.setItem('tasks', JSON.stringify(getListTasks()));
+
+			function showRandomTask() {
+				let tasks = JSON.parse(localStorage.getItem('tasks'));
+				let tasksLength = tasks.length;
+				if (tasksLength === 0) {
+					clearInterval(interval);
+					console.log('Завдання закінчилися.');
+					return;
+				}
+
+				let randomNum = getRandomNum(tasksLength - 1);
+				let userInput = confirm(`Потрібно ${tasks[randomNum]}`);
+				console.log('interval ~ userInput:', userInput);
+				if (userInput) {
+					tasks.splice(randomNum, 1);
+					localStorage.setItem('tasks', JSON.stringify(tasks));
+					console.log('tasks:', tasks);
+				} else {
+					clearInterval(interval);
+					console.log('tasks:', tasks);
+					console.log('Ви відмінили показ задач');
+				}
+			}
+
+			// Встановлення інтервалу для періодичного показу завдань
+			let interval = setInterval(showRandomTask, 2000);
+		</script>
+	</body>
+</html>

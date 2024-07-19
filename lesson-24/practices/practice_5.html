@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 5</title>
+	</head>
+	<body>
+		<h3>Задача 5. Отримати усі елементи тегів, що знаходяться у трикутних дужках "<...>"</h3>
+		<script>
+			let str = '<ol><li>11</li><li>22</li><li>33</li><li>44</li></li>';
+			console.log('example:', str);
+			let res = str.match(/<.*?>/g); // лінивий пошук шукаю перший відкриваючий < і до найближчого закриваючого
+			console.log('res:', res);
+		</script>
+	</body>
+</html>

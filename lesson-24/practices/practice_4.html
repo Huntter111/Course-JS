@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 4</title>
+	</head>
+	<body>
+		<h3>Задача 4. Дано номер кредитної карти. Розділити кожні 4 цифри через пробіл.</h3>
+		<script>
+			let str = '1234567812345678';
+			console.log('example:', str);
+			let res = str.replace(/(\d{4})\B/g, '$&-'); // шукаємо довільні цифри а саме 4 і не кінець початок і не кінець слова
+			console.log('res:', res);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+	</head>
+	<body>
+		<h3>Задача 3. Після кожного значення року після 2000 року додати «р.»</h3>
+		<script>
+			let text = 'Я народився 2001, а в школу пішов у 2007» ';
+			console.log('example:', text);
+
+			let regex = /(\b20\d{2})(\b)/g;
+			// \b20\d{2} знаходить роки з 2000 по 2099.
+			// \b202[0-4] конкретніше знаходить роки з 2020 по 2024.
+			// \b позначає границю слова, щоб забезпечити, що тільки цілі роки будуть знайдені, а не частини чисел або інших слів.
+
+			let newText = text.replace(regex, '$1р.');
+			document.write(`<b>Попередній текст</b>: ${text} <br> <br>${newText}`);
+		</script>
+	</body>
+</html>

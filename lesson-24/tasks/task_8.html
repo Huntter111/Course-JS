@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>Задача 8. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів.</h3>
+		<script>
+			let students = [
+				{ name: 'Іваненко Іван Іванович', course: 2, faculty: 'Фізико-математичний' },
+				{ name: 'Петренко Петро Петрович', course: 3, faculty: 'Економічний' },
+				{ name: 'Сидоренко Сидір Сидорович', course: 1, faculty: 'Юридичний' },
+				{ name: 'Ковальчук Олексій Олексійович', course: 4, faculty: 'Економічний' },
+				{ name: 'Гончаренко Ганна Григорівна', course: 2, faculty: 'Філологічний' },
+				{ name: 'Бойко Ольга Олександрівна', course: 3, faculty: 'Інженерний' },
+				{ name: 'Шевченко Тарас Григорович', course: 1, faculty: 'Історичний' },
+				{ name: 'Мельник Наталія Іванівна', course: 4, faculty: 'Біологічний' },
+				{ name: 'Кузьменко Дмитро Дмитрович', course: 2, faculty: 'Фізико-математичний' },
+				{ name: 'Лисенко Марія Михайлівна', course: 3, faculty: 'Соціологічний' },
+			];
+			console.log('example:', students);
+
+			let facultiesSet = new Set(students.map(student => student.faculty));
+
+			let uniqueFacultiesCount = facultiesSet.size;
+			console.log('uniqueFacultiesCount:', uniqueFacultiesCount);
+
+			// Підрахунок кількості студентів на кожному курсі
+			let coursesMap = new Map();
+
+			for (const student of students) {
+				let courseCount = coursesMap.get(student.course) || 0;
+				coursesMap.set(student.course, courseCount + 1);
+			}
+			console.log('Кількість студентів на кожному курсі:', coursesMap);
+		</script>
+	</body>
+</html>

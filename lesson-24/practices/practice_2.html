@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 2</title>
+	</head>
+	<body>
+		<h3>Дано рядок тексту, що містить фрагмент розмітки з таблицею.</h3>
+		<script>
+			let str = '<table><tr><td>aa</td><td>bb</td><td>cc</td></tr></table>';
+			console.log('example:', str);
+			let res = str.match(/(?<=<td>)(.*?)(?=<\/td>)/g);
+			alert(res);
+
+			let str2 = '';
+		</script>
+	</body>
+</html>

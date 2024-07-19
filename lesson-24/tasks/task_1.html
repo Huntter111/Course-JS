@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>
+			Задача 1. Дано масив рядкових представлень чисел (тобто масив чисел у лапках (string). З використанням перевірки за допомогою регулярних виразів і груп
+			підрахувати кількість тих, у яких перша і остання літери однакові.
+		</h3>
+		<script>
+			let strArray = ['202', '202', '304', '40001', '5055', '3043'];
+			console.log('example:', strArray);
+
+			let regex = /^(.).*\1$/;
+			// ^ позначає початок рядка.
+			// (.): Збігається з будь-яким символом і зберігає його в групі 1.
+			// .*: Збігається з будь-якою кількістю символів (включаючи 0).
+			// \1: Збігається з тим самим символом, який був знайдений групою 1.
+			// $ позначає кінець рядка.
+
+			let count = 0;
+			for (const el of strArray) {
+				if (regex.test(el)) {
+					count++;
+				} else count;
+			}
+			console.log('counts:', count);
+		</script>
+	</body>
+</html>

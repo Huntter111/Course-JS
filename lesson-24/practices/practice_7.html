@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 7</title>
+		<script>
+			let arr = [12, 'hello', '12', 45, true, 'false', 'true', '12'];
+			console.log('example:', arr);
+			let map = new Map();
+			for (const el of arr) {
+				let elCount = map.get(el) || 0;
+				map.set(el, elCount + 1);
+			}
+			console.log(map);
+		</script>
+	</head>
+	<body>
+		<h3>Задача. Підрахувати кількість входжень кожного із значень</h3>
+	</body>
+</html>
