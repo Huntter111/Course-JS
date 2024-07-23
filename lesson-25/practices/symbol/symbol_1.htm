@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Symbol 1</title>
+	</head>
+	<body>
+		<script>
+			let id = Symbol('id');
+			console.log(id.toString());
+
+			let user = {
+				name: 'Вася',
+				age: 30,
+				[id]: 123,
+			};
+			for (const key in user) {
+				if (Object.hasOwnProperty.call(user, key)) {
+					const element = user[key];
+					console.log('element:', element);
+				}
+			}
+			alert(user[id]);
+
+			let clone = Object.assign({}, user);
+			console.log(clone);
+		</script>
+	</body>
+</html>

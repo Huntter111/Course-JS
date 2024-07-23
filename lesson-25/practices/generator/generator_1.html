@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Generator Examples</title>
+	</head>
+	<body>
+		<script>
+			function* generatorSequence(start, end) {
+				for (let i = start; i <= end; i++) {
+					yield i;
+				}
+			}
+			generatorSequence(1, 5);
+			console.log('generatorSequence(1, 5):', generatorSequence(1, 5));
+			// комплексний генератор
+
+			function* generatePassword() {
+				yield* generatorSequence(48, 57);
+				yield* generatorSequence(65, 90);
+				yield* generatorSequence(97, 122);
+			}
+
+			let arr = [...generatePassword()];
+			console.log('arr:', arr);
+
+			let arrGenerate = [...generatorSequence(1, 5)];
+			console.log('arrGenerate:', arrGenerate);
+		</script>
+	</body>
+</html>

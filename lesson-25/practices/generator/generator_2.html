@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Generator Examples</title>
+	</head>
+	<body>
+		<script>
+			let range = {
+				from: 1,
+				to: 5,
+
+				*[Symbol.iterator]() {
+					for (let value = this.from; value <= this.to; value++) {
+						yield value;
+					}
+				},
+			};
+
+			let arr = [...range];
+			console.log('arr:', arr);
+		</script>
+	</body>
+</html>

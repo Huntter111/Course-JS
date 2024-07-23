@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+		<style>
+			img {
+				width: 300px;
+				height: 300px;
+				object-fit: cover;
+			}
+			.img-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+
+		<script>
+			const ducksEndpoints = {
+				allCats: 'https://api.thecatapi.com/v1/images/search',
+			};
+			async function loadCats() {
+				const url = ducksEndpoints.allCats;
+				return new Promise((resolve, reject) => {
+					fetch(url)
+						.then(response => response.json())
+						.then(data => data[0])
+						.then(object => {
+							resolve(object.url);
+							console.log(`Посилання на тварину` + object.url);
+						})
+						.catch(err => {
+							console.log(err);
+						});
+				});
+			}
+			loadCats();
+
+			function createImage(imgSrc) {
+				const img = document.createElement('img');
+				img.src = imgSrc;
+				return img;
+			}
+
+			async function go() {
+				const imageLink = await loadCats();
+
+				// document.body.append(createImage(imageLink));
+				const imgContainer = document.querySelector('.img-container');
+				imgContainer.append(createImage(imageLink));
+			}
+			go();
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Використовуючи один з АРІ https://github.com/public-apis/public-apis#animals та функцію fetch організувати завантаження та відображення даних
+		</h3>
+		<div class="img-container"></div>
+	</body>
+</html>

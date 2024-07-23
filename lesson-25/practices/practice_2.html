@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 2</title>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Дано список книг (масив об'єктів класу Book (назва книги, автор, ціна)). При перегляді у циклі потрібно видавати рядкове значення «назва -
+			ціна»
+		</h3>
+		<script>
+			class Book {
+				constructor(title, author, price) {
+					this.title = title;
+					this.author = author;
+					this.price = price;
+				}
+				// -- Функція перетворення у примітив
+				[Symbol.toPrimitive](hint) {
+					switch (hint) {
+						case 'string':
+							return `${this.title} - ${this.price}`;
+							break;
+						default:
+							return this.title;
+							break;
+					}
+				}
+			}
+
+			class Library {
+				constructor(booksList) {
+					this.booksList = booksList;
+					this.currentIndex = 0;
+				}
+				// 1) ---- Створили Symbol iterator
+				[Symbol.iterator]() {
+					this.currentIndex = 0;
+					return this;
+				}
+				// 2) ----- Створюємо next()
+				next() {
+					if (this.currentIndex < this.booksList.length) {
+						const currentBook = this.booksList[this.currentIndex];
+						this.currentIndex++;
+						// return { done: false, value: `${currentBook.title}-${currentBook.price}` };
+						return { done: false, value: String(currentBook) };
+					} else return { done: true };
+				}
+			}
+
+			// ==============
+			const bookList = [
+				new Book('Book1', 'Author1', 1111),
+				new Book('Book2', 'Author2', 2222),
+				new Book('Book3', 'Author3', 3333),
+				new Book('Book4', 'Author4', 4444),
+			];
+			const lib = new Library(bookList);
+
+			for (const item of lib) {
+				console.log(item);
+			}
+			let arr = [...lib];
+			console.log(arr);
+		</script>
+	</body>
+</html>

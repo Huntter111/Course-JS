@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 4</title>
+	</head>
+	<body>
+		<h3>Задача 4. Створити генератор, у який передається список і генератор поступово видає випадкове значення з цього списку поки вони не закінчаться</h3>
+		<script>
+			function* getRandomItems(list) {
+				const listCopy = [...list];
+				while (listCopy.length > 0) {
+					const randIndex = Math.floor(Math.random() * listCopy.length);
+					const item = listCopy[randIndex];
+					listCopy.splice(randIndex, 1);
+					yield item;
+				}
+			}
+			for (const item of getRandomItems(['a', 'r', 'o', 'q', 'y'])) {
+				console.log(item);
+			}
+		</script>
+	</body>
+</html>

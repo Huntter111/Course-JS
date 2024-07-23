@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 5</title>
+	</head>
+	<body>
+		<h3>Задача 5. Приклад надсилання файлу</h3>
+		<script>
+			// Масив з шляхами до API
+			const apiEndpoints = {
+				allBreadsList: 'https://dog.ceo/api/breeds/list/all',
+				getReadByBreedNameLink: breedName => `https://dog.ceo/api/breed/${breedName}/images/random`,
+			};
+			// --- Функція завантаження списку усіх порід
+
+			async function loadBreedsList() {
+				const url = apiEndpoints.allBreadsList;
+				return new Promise((resolve, reject) => {
+					fetch(url)
+						.then(response => response.json())
+						.then(data => data.message)
+						.then(listObject => {
+							console.log(Object.keys(listObject));
+							resolve(Object.keys(listObject));
+						})
+						.catch(err => {
+							console.log(err);
+						});
+				});
+			}
+			//--- Функція вибору випадкового елементу
+			function getRandomListItem(list) {
+				const randIndex = Math.floor(Math.random() * list.length);
+				return list[randIndex];
+			}
+			// ---- Функція завантаження випадкового зображення вказаної породи
+			async function loadBreedImage(breadName) {
+				const url = apiEndpoints.getReadByBreedNameLink(breadName);
+				return new Promise((resolve, reject) => {
+					fetch(url)
+						.then(res => res.json())
+						.then(data => data.message)
+						.then(imageLink => {
+							console.log(imageLink);
+							resolve(imageLink);
+						})
+						.catch(err => {
+							console.log(err);
+						});
+				});
+			}
+			//---- функція створення елемента зображення
+
+			function createImage(imgSrc) {
+				const img = document.createElement('img');
+				img.src = imgSrc;
+				return img;
+			}
+
+			// --- головна функція виконання усіх кроків
+
+			async function go() {
+				// Отримання списку порід
+				let breedsList = await loadBreedsList();
+				// вибір випадкової позиції
+				const randomBreed = getRandomListItem(breedsList);
+				//  отримання випадкового зображення вказаної собаки
+				const imageLink = await loadBreedImage(randomBreed);
+				// створення і додавання елемента зображення собаки
+				document.body.append(createImage(imageLink));
+			}
+			go();
+		</script>
+	</body>
+</html>

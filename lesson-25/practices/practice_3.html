@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 3</title>
+	</head>
+	<body>
+		<h3>Задача 3. Створити генератор, який буде передавати поступово назви пір року</h3>
+		<script>
+			function* getSeasonsTitles() {
+				let seasons = ['winter', 'spring', 'summer', 'fall'];
+				yield 'winter';
+				yield 'spring';
+				yield 'summer';
+				yield 'fall';
+				// for (const season of seasons) {
+				// 	yield season;
+				// }
+			}
+			for (const item of getSeasonsTitles()) {
+				console.log(item);
+			}
+		</script>
+	</body>
+</html>
