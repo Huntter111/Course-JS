@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 1</title>
+	</head>
+	<body>
+		<h3>Mutation Observer (спостерігач за мутаціями). Генерується випадкове число від 1 до 20 і якщо число більше за 10 то видаляти його</h3>
+		<div id="test"></div>
+		<script>
+			function createDivWithRandomNumber(minValue = 1, maxValue = 20) {
+				const div = document.createElement('div');
+				div.innerText = minValue + Math.floor(Math.random() * (maxValue - minValue + 1));
+				return div;
+			}
+
+			function checkDiv(mutationRecords) {
+				console.log(mutationRecords);
+				mutationRecords.forEach(record => {
+					record.addedNodes.forEach(element => {
+						const number = parseInt(element?.innerText);
+						if (number > 10) {
+							setTimeout(() => {
+								console.log(`removed - ${number}`);
+								element.remove();
+							}, 1000);
+						}
+					});
+				});
+			}
+
+			window.onload = function () {
+				let observer = new MutationObserver(checkDiv);
+
+				const config = {
+					childList: true,
+				};
+				const testElement = document.getElementById('test'); // Get the element correctly
+				observer.observe(testElement, config);
+
+				setInterval(() => {
+					document.getElementById('test').append(createDivWithRandomNumber());
+				}, 1000);
+			};
+		</script>
+	</body>
+</html>
