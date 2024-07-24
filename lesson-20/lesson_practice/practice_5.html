@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 5</title>
+		<script>
+			class MovingObject {
+				constructor(imgSrc, imgWidth, maxWidth, maxHeight) {
+					this.imgSrc = imgSrc;
+					this.imgWidth = imgWidth;
+					this.maxWidth = maxWidth;
+					this.maxHeight = maxHeight;
+				}
+				getRandomNumber(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1));
+				}
+				updateImgPosition() {
+					this.img.style.left = this.left + 'px';
+					this.img.style.top = this.top + 'px';
+				}
+				move() {
+					const newLeft = this.left + this.vx;
+					const newTop = this.top + this.vy;
+					if (newLeft < 0 || newLeft + this.imgWidth > this.maxWidth) this.vx = -this.vx;
+					if (newTop < 0 || newTop + this.imgWidth > this.maxHeight) this.vy = -this.vy;
+
+					this.left = newLeft;
+					this.top = newTop;
+
+					this.updateImgPosition();
+				}
+				start() {
+					setInterval(() => {
+						this.move();
+						console.log('Moving...');
+					}, 30);
+				}
+				render(targetSelector) {
+					const container = document.createElement('div');
+					container.style.position = 'relative';
+					container.style.width = this.maxWidth + 'px';
+					container.style.height = this.maxHeight + 'px';
+					container.style.border = '2px solid blue';
+
+					this.img = document.createElement('img');
+					this.img.src = this.imgSrc;
+					this.img.style.position = 'absolute';
+					this.img.style.width = this.imgWidth + 'px';
+
+					this.left = this.getRandomNumber(0, this.maxWidth - this.imgWidth);
+					this.img.style.left = this.left + 'px';
+
+					this.top = this.getRandomNumber(0, this.maxHeight - this.imgWidth);
+					this.img.style.top = this.top + 'px';
+
+					this.vx = this.getRandomNumber(5, 15);
+					this.vy = this.getRandomNumber(5, 15);
+
+					container.append(this.img);
+
+					document.querySelector(targetSelector).append(container);
+				}
+			}
+			window.onload = function () {
+				const og1 = new MovingObject('./img/cockroach.png', 128, 500, 500);
+				og1.render('#cnt');
+				og1.start();
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача. Блукаючий об'єкт. Випадковим чином рухається деякий об'єкт в межах контейнера. При зустрічі з краєм контейнера він відбивається.</h3>
+		<div id="cnt" class="login"></div>
+	</body>
+</html>

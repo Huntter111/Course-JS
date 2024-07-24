@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 3</title>
+		<style>
+			.container {
+				display: flex;
+				column-gap: 15px;
+			}
+		</style>
+		<script>
+			class CreateLists {
+				constructor() {}
+
+				getRandomNum(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1));
+				}
+				onClickButton() {
+					const allLists = document.querySelectorAll('ol');
+					for (const list of allLists) {
+						// Зміна кольору фону залежно від кількості елементів у списку
+						const listLength = list.children.length;
+						if (listLength % 2 === 0) {
+							list.style.backgroundColor = 'green';
+						} else {
+							list.style.backgroundColor = 'red';
+						}
+					}
+				}
+				// Функція для відображення списків і кнопки
+				render(targetSelector) {
+					for (let i = 0; i < 5; i++) {
+						const ol = document.createElement('ol');
+
+						const valueRandomElements = this.getRandomNum(1, 10);
+						for (let i = 0; i < valueRandomElements; i++) {
+							const li = document.createElement('li');
+							li.innerText = this.getRandomNum(1, 100);
+							ol.append(li);
+						}
+						document.querySelector(targetSelector).append(ol);
+					}
+
+					const btnContainer = document.createElement('div');
+					btnContainer.className = 'btn-cnt';
+
+					const btn = document.createElement('button');
+					btn.innerText = 'Click here';
+
+					btn.addEventListener('click', this.onClickButton.bind(this));
+					btnContainer.append(btn);
+
+					document.querySelector(targetSelector).append(btnContainer);
+				}
+			}
+
+			window.onload = function () {
+				const lists = new CreateLists();
+				lists.render('.container');
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 3. Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку випадкова від 1 до 10, елементи
+			випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у червоний.
+		</h3>
+		<div class="container"></div>
+	</body>
+</html>

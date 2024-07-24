@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks 14</title>
+	</head>
+	<body>
+		<h3>
+			14. Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до
+			тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму
+			потрібно ввести).
+		</h3>
+
+		<script>
+			const randomNumber = Math.floor(Math.random() * 100);
+			console.log('randomNumber:', randomNumber);
+			let userSum = 0;
+			let userPayment = 0;
+			let result;
+			while (userSum <= randomNumber) {
+				let howMuch = randomNumber - userSum;
+				alert(`Вам потрібно заплатити ${howMuch} грн.`);
+				userPayment = parseFloat(prompt(`Введіть суму для оплати, ще потрібно ${howMuch}`, '10'));
+				userSum += userPayment;
+				console.log('userSum:', userSum);
+				if (userPayment === false) {
+					break;
+				}
+				if (userSum >= randomNumber) {
+					result = `Ви сплатили ваше замлолення ваша решта = ${userSum - randomNumber} грн. Гарного дня!`;
+					break;
+				} else {
+					result = `Ви не сплатили ваше замовлення!`;
+				}
+			}
+			document.write(`${result}`);
+		</script>
+	</body>
+	<style></style>
+</html>

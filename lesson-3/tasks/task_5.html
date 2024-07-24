@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>
+			З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль).
+			Вивести на екран назву транспортного засобу, яким він може керувати.
+		</h3>
+		<script>
+			const categoryBike = 'A';
+			const categoryCar = 'B';
+			const categoryTruck = 'C';
+
+			let userCategory = prompt('Введіть назву категорії водія', 'A');
+			console.log(userCategory);
+			if (userCategory == 'A' || userCategory == 'a') {
+				document.write(
+					`
+               <ol>
+                  <h5>Керувати можна наступним видом транспорта:</h5>
+                  <li>
+                     Мопеди
+                  </li>
+                  <li>
+                     Моторолери
+                  </li>
+                  <li>
+                     Мотоцикли
+                  </li>
+               </ol>   
+               `,
+				);
+			} else if (userCategory == 'B' || userCategory == 'b') {
+				document.write(
+					`
+               <ol>
+                  <h5>Керувати можна наступним видом транспорта:</h5>
+                  <li>
+                     Автомобілі до 3.5т
+                  </li>
+               </ol>   
+               `,
+				);
+			} else if (userCategory == 'C' || userCategory == 'c') {
+				document.write(
+					`
+               <ol>
+                  <h5>Керувати можна наступним видом транспорта:</h5>
+                  <li>
+                     Вантажівки до 7.5т
+                  </li>
+               </ol>   
+               `,
+				);
+			}
+		</script>
+	</body>
+</html>

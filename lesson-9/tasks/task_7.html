@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 7</title>
+	</head>
+	<body>
+		<h3>7.Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+			span {
+				font-size: 2rem;
+			}
+		</style>
+		<script>
+			const arr = [500, 700, 600, 1100, 1200, 1800, 200, 2000, 1300];
+			function get30PercentDiscont(array) {
+				let discontResult = [];
+				for (const item of array) {
+					if (item > 1000) {
+						let resultDiscont = (item * 30) / 100;
+						let resultNumber = item - resultDiscont;
+						discontResult.push(resultNumber);
+					}
+				}
+				return discontResult;
+			}
+
+			let result = document.write(`
+			Масив цін = ${arr} <br> <br>
+			<span>30% знижка: ${get30PercentDiscont(arr)}</span>
+               `);
+		</script>
+	</body>
+</html>

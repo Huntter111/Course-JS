@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 12</title>
+		<script>
+			let str = 'Ann is 10 and she has 20 friends';
+			if (/[0-9]/.test(str)) {
+				let digits = str.match(/[0-9]/g);
+				console.log('digits:', digits);
+				alert(digits);
+			} else alert('no digits');
+		</script>
+	</head>
+	<body>
+		<h3>Задача 12. Користувач вводить текст. Визначити, чи є там цифри і отримати список усіх цифр.</h3>
+	</body>
+</html>

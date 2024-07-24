@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 3</title>
+	</head>
+	<body>
+		<h2>При натисканні на btn 1 відобразити текст кнопки і так само для btn 2</h2>
+		<button id="b1">btn 1</button>
+		<button id="b2">btn 2</button>
+
+		<script>
+			function onButtonClick(event) {
+				alert(event.target.innerText);
+			}
+			b1.onclick = onButtonClick;
+			b2.onclick = onButtonClick;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+	</head>
+	<body>
+		<h3>Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування включеннями.</h3>
+
+		<script>
+			function getRandomNum(minV, maxV) {
+				return minV + Math.floor(Math.random() * (maxV - minV + 1));
+			}
+			function getRandomArray(elements, minV, maxV) {
+				let arr = [];
+				for (let i = 0; i < elements; i++) {
+					const randNum = getRandomNum(minV, maxV);
+					arr.push(randNum);
+				}
+				return arr;
+			}
+			let newArr = [32, 32, 44, 64, 62, 94, 59, 79, 29, 75, 30, 82, 40, 61, 45, 79, 85, 86, 74, 62, 48, 65, 29, 89, 35, 59, 100, 51, 80, 33];
+			let array = getRandomArray(30, 20, 100);
+			console.log('array:', array);
+
+			// Сортування включенням вставкою
+			function getInclusionSort(arr) {
+				// Лічильник порівнянь
+				let counterComparing = 0;
+				// Лічильник обмінів
+				let counterExchanges = 0;
+
+				let key, i;
+				for (let k = 1; k < arr.length; k++) {
+					key = arr[k];
+					i = k - 1;
+					while (i >= 0 && arr[i] > key) {
+						arr[i + 1] = arr[i];
+						i = i - 1;
+						counterExchanges++;
+						counterComparing++;
+					}
+					arr[i + 1] = key;
+					counterComparing++;
+				}
+
+				let result = `${arr} Кількість порівнянь: ${counterComparing}, Кількість обмінів елементів: ${counterExchanges}`;
+				return result;
+			}
+			let sort = getInclusionSort(array);
+			console.log('sort:', sort);
+			let sort1 = getInclusionSort(newArr);
+			console.log('sort1:', sort1);
+		</script>
+	</body>
+</html>

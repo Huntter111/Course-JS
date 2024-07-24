@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task2</title>
+	</head>
+	<body>
+		<h2>
+			З клавіатури вводиться розмір заробітної плати та розмір прожиткового мінімуму. Визначити розмір соціальної
+			допомоги (ввжаємо, що заробітна плата є меншою).
+		</h2>
+
+		<script>
+			let wage = parseFloat(prompt('Введіть вашу заробітну плату', '100'));
+			let costLiving = parseFloat(prompt('Прожитковий мінімум', '200'));
+
+			const resultHelp = costLiving - wage;
+			document.write(`Розмір соціальної допомоги = ${resultHelp} грн.`);
+		</script>
+	</body>
+</html>

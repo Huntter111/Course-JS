@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 1</title>
+		<script>
+			function getInvitation(date) {
+				const hours = date.getHours();
+
+				if (hours < 11) return 'Good morning!';
+
+				if (hours <= 16) return 'Good afternoon!';
+				else return 'Good evening!';
+			}
+			const currentDate = new Date();
+			const message = getInvitation(currentDate);
+
+			alert(message);
+		</script>
+	</head>
+	<body>
+		<h3>Задача 1. Визначити привітання в залежності від часу доби</h3>
+	</body>
+</html>

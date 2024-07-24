@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 2</title>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Дано масив імен спортсменів. Розробити програму для виведення усіх можливих результатів змагань (списки імен у відповідності до місць, які
+			вони займуть).
+		</h3>
+
+		<script>
+			// Функція для генерації всіх перестановок масиву
+			function permute(arr) {
+				let results = [];
+
+				// Базовий випадок: якщо масив порожній, повертаємо порожній масив
+				if (arr.length === 0) {
+					return [];
+				}
+				// Якщо в масиві один елемент, повертаємо масив, що містить масив з цим елементом
+				if (arr.length === 1) {
+					return [arr];
+				}
+
+				for (let i = 0; i < arr.length; i++) {
+					// Вибираємо поточний елемент
+					let currentElement = arr[i];
+					// Залишковий масив без поточного елемента
+					let remainingElements = arr.slice(0, i).concat(arr.slice(i + 1));
+					// Генеруємо всі перестановки для залишкових елементів
+					let remainingPermutations = permute(remainingElements);
+
+					// Додаємо поточний елемент до кожної з перестановок залишкових елементів
+					for (let j = 0; j < remainingPermutations.length; j++) {
+						let permutedArray = [currentElement].concat(remainingPermutations[j]);
+						results.push(permutedArray);
+					}
+				}
+
+				return results;
+			}
+
+			// Функція для виведення всіх можливих результатів змагань
+			function generateCompetitionResults(athletes) {
+				let permutations = permute(athletes);
+
+				// Виводимо всі перестановки
+				permutations.forEach((permutation, index) => {
+					console.log(`Результат ${index + 1}: ${permutation.join(', ')}`);
+				});
+			}
+
+			// Приклад використання
+			let athletes = ['Alice', 'Bob', 'Charlie'];
+			generateCompetitionResults(athletes);
+		</script>
+	</body>
+</html>

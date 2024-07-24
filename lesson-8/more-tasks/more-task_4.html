@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які : • починаються на букву «А»; • перша і остання літери
+			співпадають; • складаються з більше ніш 5 символів;
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getArray(min, max, value) {
+				let arr = [];
+				for (let i = 0; i < value; i++) {
+					let randomNum = getRandomNumber(min, max);
+					switch (randomNum) {
+						case 1:
+							arr.push('АН5434НА');
+
+							break;
+						case 2:
+							arr.push('ВТ23АМ');
+
+							break;
+						case 3:
+							arr.push('ОП2П');
+
+							break;
+						case 4:
+							arr.push('AT2354ВМ');
+
+							break;
+						case 5:
+							arr.push('АК4534АК');
+							break;
+					}
+				}
+				return arr;
+			}
+			let arrCarNumbers = getArray(1, 5, 5);
+			console.log('arrCarNumbers:', arrCarNumbers);
+
+			function getValueCarsNumber(arr) {
+				let result;
+				let counterCarNumberMoreThanFiveLetters = 0;
+				let counterCarNumberStartA = 0;
+				let counterCarNumberStartEndA = 0;
+
+				for (let i = 0; i < arr.length; i++) {
+					const carNumber = arr[i];
+					if (carNumber.length > 5) counterCarNumberMoreThanFiveLetters++;
+					if (carNumber.charAt(0) === 'А') counterCarNumberStartA++;
+					if (carNumber.charAt(0) === carNumber.charAt(carNumber.length - 1)) counterCarNumberStartEndA++;
+				}
+				result = `складаються з більше ніш 5 символів ${counterCarNumberMoreThanFiveLetters} <br> Починаються на букву «А» ${counterCarNumberStartA} <br> 
+            перша і остання літери співпадають ${counterCarNumberStartEndA}`;
+				return result;
+			}
+
+			document.write(`${getValueCarsNumber(arrCarNumbers)}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 6</title>
+	</head>
+	<body>
+		<h3>Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).</h3>
+		<script>
+			let userRow = parseInt(prompt('Введіть кількість рядків', '4'));
+			let userColumn = parseInt(prompt('Введіть кількість стовпців', '5'));
+			function getMessage() {
+				return `Hello`;
+			}
+			function getTable(row, column) {
+				document.write(`<table>`);
+				document.write(`<tbody>`);
+				for (let r = 0; r < row; r++) {
+					document.write(`<tr>`);
+					for (let c = 0; c < column; c++) {
+						document.write(`<td>${getMessage()}</td>`);
+					}
+					document.write(`</tr>`);
+				}
+				document.write(`</tbody>`);
+				document.write(`</table>`);
+			}
+			getTable(userRow, userColumn);
+		</script>
+	</body>
+	<style>
+		table {
+			* {
+				border: 1px solid red;
+			}
+		}
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

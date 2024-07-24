@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>4.Дано масив елементів. Вивести на екран елементи, що більші за 100</h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+			span {
+				font-size: 2rem;
+			}
+		</style>
+		<script>
+			function getRandomNumber(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			}
+			const userNumber = parseInt(prompt('Введіть кількість елементів для заповнення масиву', '20'));
+			function getArray(number) {
+				let arr = new Array();
+				let resultNumbers;
+				for (let i = 0; i < number; i++) {
+					arr.push(getRandomNumber(50, 150));
+				}
+				console.log(arr);
+				return arr;
+			}
+			let randomArray = getArray(userNumber);
+			function getNumbersMoreThan100(randomArray) {
+				let arrMoreThan100 = [];
+				for (const item of randomArray) {
+					if (item > 100) {
+						arrMoreThan100.push(item);
+					}
+				}
+				return arrMoreThan100;
+			}
+			let result = document.write(`
+         Рандомний масив елементів = ${getArray(userNumber)} <br> <br>
+         <span>Числа більші за 100: ${getNumbersMoreThan100(randomArray)}</span>`);
+		</script>
+	</body>
+</html>

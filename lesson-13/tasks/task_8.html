@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>
+			Задача 8. При старті питаємо у користувача чи хоче він читати новини. Якщо так, то одразу переходимо до сайту Ukr.Net, якщо ні, то через 20 секунд самі
+			переходимо на сайт ukr.net. Для цього через 20 секунд після відкриття треба виконати команду
+		</h3>
+
+		<script>
+			let userQuestion = confirm('Чи хотіли б ви перейти на сайт Ukr.Net');
+			console.log('userQuestion:', userQuestion);
+			if (userQuestion) {
+				window.location.href = 'https://www.ukr.net/';
+			} else {
+				let linkTOUkrNet = setTimeout(() => {
+					window.location.href = 'https://www.ukr.net/';
+				}, 20000);
+			}
+		</script>
+	</body>
+</html>

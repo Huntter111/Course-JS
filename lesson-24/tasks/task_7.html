@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 7</title>
+	</head>
+	<body>
+		<h3>
+			Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). Підрахувати для кожного клієнта кількість
+			відвідувань.
+		</h3>
+		<script>
+			const visitors = [
+				{
+					login: 'user1',
+					firstName: 'Олександр',
+					lastName: 'Петренко',
+					email: 'oleksandr.petrenko@email.com',
+					registrationDate: '2024-01-15',
+					lastLogin: '2024-07-10',
+				},
+				{
+					login: 'user2',
+					firstName: 'Марія',
+					lastName: 'Іванова',
+					email: 'mariya.ivanova@email.com',
+					registrationDate: '2023-12-20',
+					lastLogin: '2024-07-11',
+				},
+				{
+					login: 'user3',
+					firstName: 'Іван',
+					lastName: 'Коваленко',
+					email: 'ivan.kovalenko@email.com',
+					registrationDate: '2022-06-05',
+					lastLogin: '2024-07-12',
+				},
+				{
+					login: 'user4',
+					firstName: 'Наталія',
+					lastName: 'Шевченко',
+					email: 'natalia.shevchenko@email.com',
+					registrationDate: '2021-09-30',
+					lastLogin: '2024-07-13',
+				},
+				{
+					login: 'user5',
+					firstName: 'Андрій',
+					lastName: 'Бондаренко',
+					email: 'andriy.bondarenko@email.com',
+					registrationDate: '2023-03-22',
+					lastLogin: '2024-07-14',
+				},
+				{
+					login: 'user1',
+					firstName: 'Олександр',
+					lastName: 'Петренко',
+					email: 'oleksandr.petrenko@email.com',
+					registrationDate: '2024-01-15',
+					lastLogin: '2024-07-22',
+				},
+			];
+			console.log('example:', visitors);
+
+			let mapUsers = new Map();
+
+			for (const user of visitors) {
+				let count = mapUsers.get(user.login) || 0;
+				// Підрахувати для кожного клієнта кількість відвідувань.
+				mapUsers.set(user.login, count + 1);
+			}
+			console.log('mapUsers:', mapUsers);
+		</script>
+	</body>
+</html>

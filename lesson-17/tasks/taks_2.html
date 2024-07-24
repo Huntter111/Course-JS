@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 2</title>
+	</head>
+	<body>
+		<h3>Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.</h3>
+		<script>
+			// Number 1
+			class CompanyCar {
+				static carRef;
+
+				constructor(driver, brandCar, carNumber) {
+					if (CompanyCar.carRef) return CompanyCar.carRef;
+					this.driver = driver;
+					this.brandCar = brandCar;
+					this.carNumber = carNumber;
+
+					CompanyCar.carRef = this;
+				}
+				toString() {
+					return `${this.driver} - ${this.brandCar} - ${this.carNumber}`;
+				}
+			}
+
+			const companyCar1 = new CompanyCar('Ivan', 'BMW', 'AR3456RF');
+			console.log('companyCar1:', companyCar1);
+			const companyCar2 = new CompanyCar('Mike', 'Audi', 'AK467RT');
+			console.log(companyCar1 === companyCar2);
+			console.log('companyCar2:', companyCar2);
+
+			// // Number 2
+			// class carCompany {
+			// 	static driverRef;
+
+			// 	constructor(driver, brandCar, carNumber) {
+			// 		if (carCompany.driverRef) return carCompany.driverRef;
+			// 		this.driver = driver;
+			// 		this.brandCar = brandCar;
+			// 		this.carNumber = carNumber;
+			// 		carCompany.driverRef = this;
+			// 	}
+			// 	toString() {
+			// 		return `${this.driver}, ${this.brandCar}, ${this.carNumber}`;
+			// 	}
+			// }
+			// let p1 = new carCompany('Max', 'Opel', 'AK4334MF');
+			// console.log(p1);
+			// let p2 = new carCompany('Yana', 'Porshe', 'AA1111AA');
+			// console.log(p2);
+			// ========================== 3 ==============================
+			// class CARCAMPANY {
+			// 	static carCampanyRef;
+
+			// 	constructor(driver, car, numberCar) {
+			// 		if (CARCAMPANY.carCampanyRef) return CARCAMPANY.carCampanyRef;
+			// 		this.driver = driver;
+			// 		this.car = car;
+			// 		this.numberCar = numberCar;
+
+			// 		CARCAMPANY.carCampanyRef = this;
+			// 	}
+			// 	toString() {
+			// 		return `${this.driver} ${this.car} ${this.numberCar}`;
+			// 	}
+			// }
+			// p1 = new CARCAMPANY('Ivan', 'BMW', 'FA4342FR');
+			// console.log(p1);
+			// p2 = new CARCAMPANY('Max', 'Audi', 'fw211123');
+			// console.log(p2);
+		</script>
+	</body>
+</html>

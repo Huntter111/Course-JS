@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування бульбашкою</h3>
+
+		<script>
+			function getRandomNum(minV, maxV) {
+				return minV + Math.floor(Math.random() * (maxV - minV + 1));
+			}
+			function getRandomArray(elements, minV, maxV) {
+				let arr = [];
+				for (let i = 0; i < elements; i++) {
+					const randNum = getRandomNum(minV, maxV);
+					arr.push(randNum);
+				}
+				return arr;
+			}
+			let newArr = [32, 32, 44, 64, 62, 94, 59, 79, 29, 75, 30, 82, 40, 61, 45, 79, 85, 86, 74, 62, 48, 65, 29, 89, 35, 59, 100, 51, 80, 33];
+			let array = getRandomArray(30, 20, 100);
+			console.log('array:', array);
+
+			function getBubbleSort(arr) {
+				let changed;
+				// Лічильник порівнянь
+				let counterComparing = 0;
+				// Лічильник обмінів
+				let counterExchanges = 0;
+				do {
+					changed = false;
+					for (let i = 1; i < arr.length; i++) {
+						counterComparing++;
+						if (arr[i - 1] > arr[i]) {
+							let temp = arr[i - 1];
+							arr[i - 1] = arr[i];
+							arr[i] = temp;
+							changed = true;
+							counterExchanges++;
+						}
+					}
+				} while (changed);
+				let result = `${arr} Кількість порівнянь: ${counterComparing}, Кількість обмінів елементів: ${counterExchanges}`;
+				return result;
+			}
+			let sort = getBubbleSort(array);
+			console.log('sort:', sort);
+			let sort1 = getBubbleSort(newArr);
+			console.log('sort1:', sort1);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Морський бій. Ворожий корабель, може знаходитись в одному із квадратів (кількість квадратів вводиться
+			з клавіатури), які розташовані лінійно (один за одним) на річці. <br />
+			Позиція корабля визначається комп’ютером випадковим чином. Гра відбувається за правилами: <br />
+			1) якщо користувач стріляє у заданий квадрат (тобто вводиться номер квадрата), то корабель потоплено; <br />
+			2) якщо корабель знаходиться у сусідньому по відношенню до квадрата, де знаходиться корабель, то корабель
+			пошкоджено (про це повідомляємо користувача). <br />
+			За два постріли спробувати потопити корабель.
+		</h3>
+		<script>
+			let result;
+			const minNum = 1;
+			let getValueShips = parseInt(prompt('Введіть кількість квадратів розмір', '6'));
+			const maxNum = getValueShips;
+			const randomNumber = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+			console.log('randomNumber:', randomNumber);
+
+			let userFirstShot = parseInt(prompt('Введіть число щоб вразити корабль', '2'));
+
+			if (userFirstShot === randomNumber) {
+				result = 'Ви потопили корабль!';
+			} else {
+				if (userFirstShot === randomNumber + 1 || userFirstShot === randomNumber - 1) {
+					result = 'Корабель пошкоджено, ви попали в сусідню клітинку';
+					alert(result);
+				}
+				let userSecondShot = parseInt(prompt('Спробуйте ще раз вразити корабль поперднє клітинка є хибна', '4'));
+				if (userSecondShot === randomNumber) {
+					result = 'Нарешті! Ви потопили корабль!';
+				} else {
+					result = 'Корабль не потоплено спробуйте ще раз';
+				}
+			}
+
+			alert(result);
+			document.write(`${result} <button id="reload">Спробувати ще</button>`);
+
+			document.getElementById('reload').onclick = function () {
+				location.reload(); // перезагружаем страницу
+			};
+		</script>
+	</body>
+</html>

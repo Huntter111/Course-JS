@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 2</title>
+		<script>
+			function isWorkingDate(date) {
+				// Знаходимо номер дня тижня
+				const dayNum = date.getDay();
+				console.log('isWorkingDate ~ dayNum:', dayNum);
+				// 0 - це неділя, 6 - це субота
+				return dayNum !== 0 && dayNum !== 6;
+			}
+			function getFormatDate(date) {
+				const year = date.getFullYear();
+				const month = date.getMonth();
+
+				const dateType = isWorkingDate(date) ? 'Робочий' : 'Вихідний';
+				return `${month + 1} місяць - ${year} рік - ${dateType}`;
+			}
+			const currentDate = new Date();
+			const message = getFormatDate(currentDate);
+			alert(message);
+		</script>
+	</head>
+	<body>
+		<h3>Задача 2. Вивести дату у форматі: (місяць - рік - вихідний/робочий)</h3>
+	</body>
+</html>

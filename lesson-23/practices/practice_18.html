@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 18</title>
+	</head>
+	<body>
+		<h3>Задача. Користувач вводить логін. Перевірити правильність логіна (регістр не враховується)</h3>
+		<script>
+			function checkLogin() {
+				let answer;
+				const userInputLogin = prompt('Введіть логін', '');
+				const userLogin = 'copy-paste';
+				console.log('checkLogin ~ userLogin:', userLogin);
+				if (userInputLogin.toLocaleLowerCase() === userLogin.toLocaleLowerCase()) answer = 'Логін вірний';
+				else answer = 'Не вірний логін';
+				return answer;
+			}
+			document.write(`${checkLogin()}`);
+		</script>
+	</body>
+</html>

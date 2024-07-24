@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 4</title>
+		<script>
+			// Задача. Розробити клас, що дозволяє створювати текстове поле з написом для введення віку працівника. Якщо введений вік буде виходити за межі, тоді колір фону червоний, якщо в межах – зелений.
+			class RangeInput {
+				constructor(title, minValue, maxValue) {
+					this.title = title;
+					this.minValue = minValue;
+					this.maxValue = maxValue;
+				}
+				checkValue() {
+					const currentVal = parseInt(this.inp.value);
+					if (currentVal >= this.minValue && currentVal <= this.maxValue) {
+						this.inp.style.backgroundColor = 'green';
+					} else this.inp.style.backgroundColor = 'red';
+				}
+				render(containerId) {
+					const label = document.createElement('label');
+					label.innerText = this.title;
+
+					this.inp = document.createElement('input');
+					label.append(this.inp);
+					this.inp.onchange = this.checkValue.bind(this);
+
+					const targetContainer = document.getElementById(containerId);
+					targetContainer.append(label);
+				}
+			}
+			window.onload = function () {
+				const t1 = new RangeInput('Вік користувача', 18, 65);
+				t1.render('container');
+				const t2 = new RangeInput('Вік учня', 6, 17);
+				t2.render('container');
+			};
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+</html>

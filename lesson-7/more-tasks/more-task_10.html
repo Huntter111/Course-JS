@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 10</title>
+	</head>
+	<body>
+		<h3>
+			Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			let userMinTemperature = parseInt(prompt('Введіть мінімальну температуру за 30 днів', '-30'));
+			let userMaxTemperature = parseInt(prompt('Введіть максимальну температуру за 30 днів', '30'));
+			let userDays = parseInt(prompt('Введіть кількість днів', '22'));
+			function getAvaregePlusTemperature(minTemp, maxTemp, valueDays) {
+				let randomNumber;
+				let counterTemperature = 0;
+				let counterValue = 0;
+				for (let i = 0; i < userDays; i++) {
+					randomNumber = getRandomNumber(minTemp, maxTemp);
+					console.log('getMinusDaysTemparature ~ randomNumber:', randomNumber);
+					if (randomNumber > 0) {
+						counterTemperature += randomNumber;
+						counterValue++;
+					}
+				}
+				return counterTemperature / counterValue;
+			}
+			let result = getAvaregePlusTemperature(userMinTemperature, userMaxTemperature, userDays);
+			document.write(`Cереднє значення для додатних показів температури = ${result.toFixed(0)}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 6</title>
+		<script>
+			function table() {
+				const userInput = parseInt(document.getElementById('priceNumber').value);
+				const getTableContainer = document.getElementById('tableContainer');
+				getTableContainer.innerHTML = ''; // Очищення попереднього вмісту
+				const createDiv = document.createElement('div');
+				const createTable = document.createElement('table');
+				const createCaption = document.createElement('caption');
+				const createTBody = document.createElement('tbody');
+				createCaption.innerText = 'Average value';
+				getTableContainer.append(createDiv);
+				createDiv.append(createTable);
+				createTable.append(createCaption);
+				createTable.append(createTBody);
+				for (let i = 0; i < 1; i++) {
+					const createTableRow = document.createElement('tr');
+					createTBody.append(createTableRow);
+					for (let j = 0; j < userInput; j++) {
+						const createTableColumn = document.createElement('th');
+						createTableRow.append(createTableColumn);
+						const createInput = document.createElement('input');
+						createInput.classList.add('inputTable');
+						createTableColumn.append(createInput);
+						createTableColumn.style.border = '1px solid black';
+					}
+				}
+				getTableContainer.style.marginBottom = '20px';
+				getTableContainer.style.marginTop = '20px';
+				createTable.style.backgroundColor = 'blue';
+				createTable.style.fontSize = '1.5rem';
+				createTable.style.lineHeight = '2rem';
+
+				createTable.style.color = 'white';
+				createTable.style.width = '30%';
+				createTable.style.fontWeight = '700';
+				createCaption.style.color = 'black';
+
+				// newDiv.innerHTML = randomNum;
+			}
+			function getSum() {
+				let inputList = document.getElementsByClassName('inputTable');
+				console.log('getSum ~ inputList:', inputList);
+				let inputValue = inputList.length;
+				console.log('getSum ~ inputValue:', inputValue);
+				let sum = 0;
+				for (const inp of inputList) {
+					sum += parseFloat(inp.value);
+				}
+				let result = sum / inputValue;
+				document.getElementById('result').innerHTML = result;
+			}
+			window.onload = function () {
+				document.getElementById('getTable').onclick = table;
+				document.getElementById('getSum').onclick = getSum;
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки.
+			Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+		</h3>
+		<div>
+			<label>
+				Price number
+				<input type="number" id="priceNumber" value="0" />
+			</label>
+			<div>
+				<button id="getTable">get table</button>
+			</div>
+			<div id="tableContainer"></div>
+			<div>
+				<button id="getSum">get sum</button>
+			</div>
+			<div>sum average= <span id="result"></span></div>
+		</div>
+	</body>
+</html>

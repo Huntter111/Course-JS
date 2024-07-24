@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+		<script>
+			class PhoneNumber {
+				constructor(number) {
+					this.number = number;
+				}
+				getOperator() {
+					const prefix = this.number.substring(0, 3);
+					let operator;
+					switch (prefix) {
+						case '050':
+						case '066':
+						case '095':
+						case '099':
+							operator = 'Vodafone';
+							break;
+						case '067':
+						case '068':
+						case '096':
+						case '097':
+						case '098':
+							operator = 'Kyivstar';
+							break;
+						case '063':
+						case '093':
+						case '073':
+							operator = 'Lifecell';
+							break;
+						default:
+							operator = 'Unknown';
+					}
+
+					return operator;
+				}
+				[Symbol.toPrimitive](hint) {
+					switch (hint) {
+						case 'string':
+							return `Number: ${this.number}, Operator: ${this.getOperator()}`;
+							break;
+						default:
+							this.number;
+							break;
+					}
+				}
+				[Symbol.iterator]() {
+					let index = 0;
+					const numberArray = this.number.split('');
+					return {
+						next: () => {
+							if (index < numberArray.length) {
+								return { value: numberArray[index++], done: false };
+							} else {
+								return { done: true };
+							}
+						},
+					};
+				}
+			}
+
+			const phoneNumber1 = new PhoneNumber('0501234567');
+			console.log(String(phoneNumber1)); // Number: 0501234567, Operator: Vodafone
+
+			const phoneNumber2 = new PhoneNumber('0961234567');
+			console.log(String(phoneNumber2)); // Number: 0961234567, Operator: Kyivstar
+
+			const phoneNumber3 = new PhoneNumber('0631234567');
+			console.log(String(phoneNumber3)); // Number: 0631234567, Operator: Lifecell
+
+			const phoneNumber4 = new PhoneNumber('0123456789');
+			console.log(String(phoneNumber4)); // Number: 0123456789, Operator: Unknown
+
+			for (let digit of phoneNumber1) {
+				console.log(digit); // Виведе по черзі кожну цифру номера '0501234567'
+			}
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 1. Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера виводиться оператор (050…. 🡪 MTC, 096… 🡪 Kyivstar,
+			….)
+		</h3>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks 9</title>
+	</head>
+	<body>
+		<h3>
+			ЗЗадача 9. Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати
+			confirm).
+		</h3>
+		<script>
+			let userNumber = parseInt(prompt('Загадайте число від 1 до 10', '5'));
+			const minNum = 1,
+				maxNum = 10;
+			let guessed = false;
+			for (let i = 0; i < 3; i++) {
+				const randomPcNumber = minNum + Math.floor(Math.random() * (maxNum - minNum) + 1);
+				console.log('randomPcNumber:', randomPcNumber);
+
+				let result = confirm(`Ви загадали число ${randomPcNumber}?`);
+				if (result === true) {
+					alert('Вітаю, так ви вгадали число!');
+					break;
+					guessed = true;
+				}
+			}
+			if (!guessed) {
+				alert(`Нажаль, комп'ютер не вгадав ваше число ${userNumber}`);
+			}
+		</script>
+	</body>
+	<style></style>
+</html>

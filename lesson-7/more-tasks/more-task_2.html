@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 2</title>
+	</head>
+	<body>
+		<h3>Задача 2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</h3>
+		<script>
+			// 0
+			function getDay(day) {
+				let result;
+				switch (day) {
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+					case 5:
+						result = 'Це робочий день';
+						break;
+					case 6:
+					case 7:
+						result = 'Це вихідний день';
+						break;
+
+					default:
+						result = 'Error';
+						break;
+				}
+				return result;
+			}
+			let userInputDay = parseInt(
+				prompt("Введіть число від 1 до 7 для з'ясування номера дня чи є він робочим", '3'),
+			);
+
+			let resultDay = getDay(userInputDay);
+			document.write(`Назва місяця = ${resultDay}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

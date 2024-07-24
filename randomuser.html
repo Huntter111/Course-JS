@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Random</title>
+		<style>
+			body {
+				background-color: rgb(255, 255, 255);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			#select-winner-btn {
+				font-size: 1.5rem;
+				background-color: #794f45;
+				color: #fff;
+				padding: 1rem;
+				border-radius: 5px;
+			}
+			#file-input {
+				width: 100%;
+				margin-bottom: 2rem;
+				text-align: center;
+			}
+			.title {
+				font-size: 2rem;
+				text-align: center;
+			}
+			.form-random {
+				/* max-width: 400px; */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+			}
+			.title-hint {
+				color: rgb(255, 0, 0);
+			}
+			.title-name {
+				margin-top: 2rem;
+			}
+			#participants-list {
+				font-size: 1.3rem;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<h2 class="title">Вибір рандомним чином переможця конкурсу на 1200 CP</h2>
+		<h4 class="title-hint">виберіть файл з розширенням .txt</h4>
+		<form action="" class="form-random">
+			<input type="file" accept=".txt" id="file-input" />
+			<button id="select-winner-btn">Вибрати переможця</button>
+		</form>
+		<h3 class="title-name">Список учасників:</h3>
+		<ol id="participants-list"></ol>
+		<script>
+			// Отримуємо посилання на елемент <input> за його id
+			const fileInput = document.getElementById('file-input');
+			const selectWinnerBtn = document.getElementById('select-winner-btn');
+			let selectedPlayer; // Глобальна змінна для збереження вибраного гравця
+
+			// Додаємо обробник події для вибору файлу
+			fileInput.addEventListener('change', function () {
+				const file = fileInput.files[0];
+				const reader = new FileReader();
+
+				// Обробник завантаження файлу
+				reader.onload = function () {
+					const content = reader.result;
+					const players = content.split('\n').filter((player) => player.trim() !== '');
+
+					// Виводимо список учасників
+					const participantsList = document.getElementById('participants-list');
+					participantsList.innerHTML = players.map((player) => `<li>${player}</li>`).join('');
+
+					// Вибираємо гравця рандомним чином
+					const index = Math.floor(Math.random() * players.length);
+					selectedPlayer = players[index];
+
+					// Виводимо вибраного гравця
+					console.log(`Обраний гравець: ${selectedPlayer}`);
+				};
+
+				reader.readAsText(file);
+			});
+
+			// Додаємо обробник події для кнопки "Вибрати переможця"
+			selectWinnerBtn.addEventListener('click', function () {
+				if (selectedPlayer) {
+					alert('Переможець: ' + selectedPlayer);
+				} else {
+					alert('Виберіть файл зі списоком гравців');
+				}
+			});
+		</script>
+	</body>
+	<!-- <body>
+		<h2 class="title">Вибір рандомним чином переможця конкурсу на 1200 CP</h2>
+		<h4 class="title-hint">виберіть файл з розширенням .txt</h4>
+		<form action="" class="form-random">
+			<input type="file" accept=".txt" id="file-input" />
+			<button id="select-winner-btn">Вибрати переможця</button>
+		</form>
+		<script>
+			// Отримуємо посилання на елемент <input> за його id
+			const fileInput = document.getElementById('file-input');
+			const selectWinnerBtn = document.getElementById('select-winner-btn');
+			let selectedPlayer; // Глобальна змінна для збереження вибраного гравця
+
+			// Додаємо обробник події для вибору файлу
+			fileInput.addEventListener('change', function () {
+				const file = fileInput.files[0];
+				const reader = new FileReader();
+
+				// Обробник завантаження файлу
+				reader.onload = function () {
+					const content = reader.result;
+					const players = content.split('\n').filter((player) => player.trim() !== '');
+
+					// Вибираємо гравця рандомним чином
+					const index = Math.floor(Math.random() * players.length);
+					selectedPlayer = players[index];
+
+					// Виводимо вибраного гравця
+					console.log(`Обраний гравець: ${selectedPlayer}`);
+				};
+
+				reader.readAsText(file);
+			});
+
+			// Додаємо обробник події для кнопки "Вибрати переможця"
+			selectWinnerBtn.addEventListener('click', function () {
+				if (selectedPlayer) {
+					alert('Переможець: ' + selectedPlayer);
+				} else {
+					alert('Виберіть гравця перед вибором переможця.');
+				}
+			});
+		</script>
+	</body> -->
+</html>

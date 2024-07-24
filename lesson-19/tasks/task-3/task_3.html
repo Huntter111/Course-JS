@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+		<style>
+			#container {
+				position: relative;
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+				/* background-color: black; */
+			}
+			.image-snow {
+				position: absolute;
+				/* top: 200px;
+				left: 200px; */
+			}
+		</style>
+		<script>
+			// Задача 3. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану і з випадковою швидкістю рухається вниз. Як тільки сніжинка досягає нижньої частини екрану вона знову повинна з’явитись у верхній частині екрану.
+
+			class FallingSnow {
+				constructor(imageSrc, valueSnowFlake) {
+					this.imageSrc = imageSrc;
+					this.valueSnowFlake = valueSnowFlake;
+					this.arraySnow = [];
+
+					// треба присвоїти щось
+				}
+				getRandomShift(minV, maxV) {
+					return minV + Math.floor(Math.random() * (maxV - minV + 1));
+				}
+				createSnowFlake(targetContainer) {
+					const createImg = document.createElement('img');
+					createImg.className = 'image-snow';
+					createImg.src = this.imageSrc;
+
+					createImg.style.top = -this.getRandomShift(100, 200) + 'px';
+
+					const speed = this.getRandomShift(5, 20); //випадкова швидкість
+					const left = this.getRandomShift(0, container.clientWidth - 30) + 'px';
+
+					createImg.style.left = left;
+
+					this.arraySnow.push({ snowImg: createImg, speed: speed, x: left });
+					targetContainer.append(createImg); // додаємо img в контейнер
+				}
+				render(containerId) {
+					const targetContainer = document.getElementById(containerId);
+					for (let i = 0; i < this.valueSnowFlake; i++) {
+						this.createSnowFlake(targetContainer);
+					}
+					setInterval(() => {
+						this.arraySnow.forEach(snowflake => {
+							const top = parseInt(snowflake.snowImg.style.top);
+							if (top >= targetContainer.clientHeight) {
+								snowflake.snowImg.style.top = -this.getRandomShift(100, 200) + 'px';
+								snowflake.snowImg.style.left = snowflake.x;
+							} else {
+								snowflake.snowImg.style.top = top + snowflake.speed + 'px';
+							}
+						});
+					}, 30);
+					console.log('FallingSnow ~ constructor ~ this.arraySnow:', this.arraySnow);
+				}
+			}
+			window.onload = function () {
+				const snow1 = new FallingSnow('./img/snow.png', 100);
+				snow1.render('container');
+			};
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+</html>

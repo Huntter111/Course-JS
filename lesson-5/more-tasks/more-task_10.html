@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks 10</title>
+	</head>
+	<body>
+		<h3>Задача 10. Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.</h3>
+		<script>
+			let counterSum = 0;
+			let userStartNumber = parseInt(prompt('Введіть початок проміжку', '2'));
+			let userEndNumber = parseInt(prompt('Введіть кінець проміжку', '200'));
+			if (userStartNumber % 2 === 0) {
+				userStartNumber++;
+			}
+			for (let i = userStartNumber; i <= userEndNumber; i += 2) {
+				console.log('i:', i);
+				counterSum += i;
+			}
+			document.write(`${counterSum}`);
+		</script>
+	</body>
+	<style></style>
+</html>

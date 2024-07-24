@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 7</title>
+	</head>
+	<body>
+		<h3>
+			Задача 6. З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного
+			товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+		</h3>
+		<script>
+			// 1 Вводимо
+			const priceThingOne = parseFloat(prompt('Введіть вартість першого товару', '0'));
+			const thingOne = parseInt(prompt('Введіть кількість одиниць першого товару', '0'));
+
+			const priceThingTwo = parseFloat(prompt('Введіть вартість другого товару', '0'));
+			const thingTwo = parseInt(prompt('Введіть кількість одиниць другого товару', '0'));
+
+			const priceThingThree = parseFloat(prompt('Введіть вартість третього товару', '0'));
+			const thingThree = parseInt(prompt('Введіть кількість одиниць третього товару', '0'));
+
+			const costThingFirst = priceThingOne * thingOne;
+			const costThingSecond = priceThingTwo * thingTwo;
+			const costThingThird = priceThingThree * thingThree;
+
+			const totalCostThings = costThingFirst + costThingSecond + costThingThird;
+			document.write(`
+				<span>Товарний чек</span> 
+				<ol>
+					<li>
+						Перший товар ${thingOne} x ${priceThingOne} = ${costThingFirst} грн.
+					</li>	
+					<li>
+						Перший товар ${thingTwo} x ${priceThingTwo} = ${costThingSecond} грн.
+					</li>	
+					<li>
+						Перший товар ${thingThree} x ${priceThingThree} = ${costThingThird} грн.
+					</li>	
+				</ol>
+				<span>Сума = ${totalCostThings} грн.</span> 
+
+			`);
+		</script>
+		<style>
+			ol {
+				list-style: none;
+			}
+			li {
+				font-size: 1.5rem;
+			}
+			span {
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 3rem;
+			}
+		</style>
+	</body>
+</html>

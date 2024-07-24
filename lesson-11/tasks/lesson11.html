@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tasks lesson 11</title>
+	</head>
+	<body>
+		<h3></h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			arr = [a[(1, 2, 3, 4)], b[(5, 6, 7, 8)], c[(9, 10, 11)]];
+		</script>
+		<!-- <script>
+			// Дано масив цін. Змінити цей масив так, що на ціни які більше за 1000 грн. дати знижку 30% (*0.7)
+			const arr = [56, 83, 3333, 12034, 3545, 943, 13414, 1034, 43, 56, 789, 2034];
+			console.log('arr:', arr);
+			// ! ForEach
+			arr.forEach((element, index, baseArrRef) => {
+				if (element > 1000) {
+					baseArrRef[index] *= 0.7;
+				}
+			});
+			console.log('arr:', arr);
+		</script> -->
+		<!-- <script>
+			// (fill) Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга 7-ками.
+			let userElements = 10;
+			let array = new Array(userElements);
+
+			let arrayMiddleIndex = Math.floor(array.length / 2);
+			array.fill(1, 0, arrayMiddleIndex).fill(7, arrayMiddleIndex);
+			console.log('array:', array);
+		</script> -->
+		<!-- <script>
+			
+			// Для зміни існуючого масива ForEach.
+			// Дано масив елементів. Усі елементи, які більше за пеший елемент помножити на 2.
+			// let arr = [5, 10, 1, 20, 30, 40, 50];
+			// const firstElement = arr[0];
+			// arr.forEach((element, index, arrRef) => {
+			// 	// // if (element > arrRef[0]) {
+			// 	if (element > firstElement) {
+			// 		arrRef[index] *= 2;
+			// 	}
+			// });
+			// console.log(arr);
+
+			// !Filter для того, щоб сформувати новий масив з потрібним значенням
+			// Дано масив номерів авто. Сформувати новий масив тих, які починаються на "А"
+			// const autoList = ['AO2312BC', 'DF3423AF', 'AT3245ED'];
+			// const firstLettersList = autoList.filter((autoNumber) => autoNumber[0] === 'A');
+			// console.log(firstLettersList);
+			// Дано масив імен. Сформувати масив з перших літер цих імен.
+			// const nameList = ['ВАНО', 'ИВАН', 'НІКТО', 'ОЛЕГ'];
+			// const firstLettersList = nameList.map((nameNumber) => nameNumber[0]);
+			// console.log(firstLettersList);
+
+			// Задача. Дано випадкові значення виграшів - результати ігрового барабана від (-500 до 500)
+			// Масив для задач
+			let scores = [-56, 2, -494, 33, 0, 35, 10, 414, 0, 43, 56, -89, 203];
+			// Обчислити
+			// -2) Вивести виграшні значення (>0)
+			// scores.forEach((score) => {
+			// 	if (score > 0) {
+			// 		console.log(`Виграшні значення: ${score}`);
+			// 	}
+			// });
+			// ===============================================================
+			// -1) Від виграшних значень відняти 20% (*0,8)
+			// scores.forEach((element, index, arrRef) => {
+			// 	if (element > 0) arrRef[index] *= 0.8;
+			// });
+			// console.log(scores);
+			// ===============================================================
+			// 0) Сформувати новий масив, перевівши їх у долари (курс долара)
+			// ЯКЩО ФОРМУЄМО НОВИЙ МАСИВ, ТО ВИКОРИСТОВУЄМО .map
+			// const courseDollar = 37;
+			// const scoresInDollars = scores.map((element) => element / courseDollar);
+			// console.log(scoresInDollars);
+			// ===============================================================
+			// 1) Кінцеву виграшну суму (суму усіх елементів)
+			// Щоб на основі елементів знайти щось одне
+			// const totalScore = scores.reduce((prevSum, element) => prevSum + element);
+			// console.log(`Сума = ${totalScore}`);
+			// ===============================================================
+			// 2) Сума тільки виграшних значень (суму більших за 0)
+			// const positiveSum = scores.reduce((prevSum, element) => {
+			// 	// if (element > 0) return prevSum + element;
+			// 	// else return prevSum;
+			// 	return element > 0 ? prevSum + element : prevSum;
+			// }, 0);
+			// console.log(positiveSum);
+			// ===============================================================
+			// 3) Сума тільки програшних значень (суму менша за 0)
+			// const negativeSum = scores.reduce((prevSum, element) => {
+			// 	return element < 0 ? prevSum + element : prevSum;
+			// }, 0);
+			// console.log(negativeSum);
+			// ===============================================================
+			// 4) визначити чи був ноль
+			// if (scores.some((element) => element === 0)) {
+			// Ok - includes - розв'яже бистріше і простіше
+			// if (scores.includes(0)) {
+			// 	console.log('Є нулі');
+			// } else {
+			// 	console.log('Немає нулів');
+			// }
+			// ===============================================================
+			// З indexOf розв'язок
+			// if (scores.indexOf(0)) {
+			// 	console.log('Є нулі');
+			// } else {
+			// 	console.log('Немає нулів');
+			// }
+			// ===============================================================
+			// 5)!.reduce Підрахувати кількість нулів
+			// const zeroNumber = scores.reduce(
+			// 	(prevZeroNumber, element) => (element === 0 ? (prevZeroNumber += 1) : prevZeroNumber),
+			// 	0,
+			// );
+			// console.log(zeroNumber);
+			// ===============================================================
+			// 6) !.reduce Підрахувати кількість виграшних значень (>0)
+			// const positiveNumber = scores.reduce(
+			// 	(prevPositiveNumber, element) => (element > 0 ? (prevPositiveNumber += 1) : prevPositiveNumber),
+			// 	0,
+			// );
+			// console.log(positiveNumber);
+			// ===============================================================
+			// 7)
+
+			// Сформувати список тих які були після першого нуля! indexOf(0), slice()
+			// const firstZeroIndex = scores.indexOf(0);
+			// let resArr = [];
+			// if (firstZeroIndex !== -1) {
+			// 	resArr = scores.slice(firstZeroIndex + 1);
+			// }
+			// console.log(resArr);
+			// ===============================================================
+			// const lastZeroIndex = scores.lastIndexOf(0);
+			// let resArray = [];
+			// if (lastZeroIndex !== -1) resArray = scores.slice(lastZeroIndex + 1);
+			// console.log(resArray);
+			// +++++++++++++ FILTER +++++++++++++++++
+			// 12) Видалити ті, які є меншими за 20
+			// scores = scores.filter((el) => el >= 20);
+			// console.log(scores);
+			// 13) Видалити нулі
+			// scores = scores.filter((el) => el !== 0);
+			// console.log(scores);
+			// 14) Видалити перше нульову значення
+			// const firstZeroIndex = scores.indexOf(0);
+			// if (firstZeroIndex !== -1) scores.splice(firstZeroIndex, 1);
+			// console.log(scores);
+			// 15) Упорядкувати за зростанням
+			// scores.sort((el1, el2) => el1 - el2);
+			// console.log(scores);
+			// 16) Упорядкувати за спаданням
+			// scores.sort((el1, el2) => el2 - el1);
+			// console.log(scores);
+			// 17) Упорядкувати так, щоб спочатку були від'ємні (без зміни їх слідування), потім всі інші
+			// scores.sort((el1, el2) => {
+			// 	if (el1 < 0 && el2 < 0) return 0; // (-2, -7) => (-2, -7)
+			// 	if (el1 < 0 && el2 >= 0) return -1; // (-2, 5) => (-2, -7)
+			// 	if (el1 >= 0 && el2 < 0) return 1; // (5, -2) => (-2, 5)
+			// 	if (el1 >= 0 && el2 >= 0) return 0; // (2,5) => (2,5)
+			// });
+			// console.log(scores);
+			// 18 Упорядкувати так, щоб спочатку були нулі, потім від'ємні, потім додатні
+
+			// 19) Упорядкувати так, щоб спочатку були виграші > 200, потім всі інші
+			// ============================================================================
+			// ============================================================================
+			// ============================================================================
+			// +++++++++++++++++++++ Багато вимірні масиви +++++++++++++++++++++++
+			/*
+			// Задача. Дано прибуток магазину за К тижнів
+			function getRandomNumber(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			}
+			// функція генерування одного одновимірного масиву (одного рядка)
+			function generateRandomArray(arrayLength, minNum, maxNum) {
+				const arr = [];
+				for (let i = 0; i < arrayLength; i++) {
+					const randNum = getRandomNumber(minNum, maxNum);
+					arr.push(randNum);
+				}
+				return arr;
+			}
+			// функція генерування двовимірного масиву (одновимірної таблиці даних)
+			function generateRandomTable(rowsNumber, columnsNumber, minNum, maxNum) {
+				const table = [];
+				for (let i = 0; i < rowsNumber; i++) {
+					const randomRow = generateRandomArray(columnsNumber, minNum, maxNum);
+					table.push(randomRow); //додаємо рядок у таблицю
+				}
+				return table;
+			}
+			function getTotalSum(table) {
+				let sum = 0;
+				for (let i = 0; i < table.length; i++) {
+					for (let j = 0; j <script table[i].length; j++) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			let table = generateRandomTable(3, 4, 0, 1);
+			console.log(table);
+			let totalSum = getTotalSum(table);
+			console.log(totalSum);
+			*/
+			// let arr = [12, 4444, 5151, 2114, 23, 4441, 642, 5322, 6346346];
+			// let resIndexList = arr.reduce((prevList, el, index) => {
+			// 	if (el > 1000) {
+			// 		prevList.push(index);
+			// 	}
+			// 	return prevList;
+			// }, []);
+			// let resultIndexList = [];
+			// for (let index = 0; index < arr.length; index++) {
+			// 	if (arr[index] > 1000) resultIndexList.push(index);
+			// }
+			// console.log(resultIndexList);
+
+			// ++++++++++++++==== МАСИВИ 2 +++++++++++++++++++
+			/*
+			let arr = []; // створення масиву
+			let b = []; // порожній масив
+			let ages = Array.of(21, 43, 34, 11); //список елементів як параметри метода Array.of
+			let emptyArr = []; // Описати порожній масив products
+			let companyPositon = ['HR', 'Manager', 'Lead', 'Frontend Developer', 'BackEnd Developer']; //Описати масив, що містить перелік посад, що є у компанії
+			let companyCars = ['BMW', 'Mercedes Benz', 'Audi', 'Volvo']; //Описати масив, що містить назви моделей автомобілів, що використовуються у компанії
+			let declarationNumberMonth = [3, 6, 9, 12]; //Описати масив, що містить номери місяців, коли треба подавати декларації
+			*/
+			/*
+			// ============= Створення масиву за допомогою конструктора ===================
+			let arr = new Array(3); // arr = [undefineed, undefineed, undefineed]
+			let arr2 = new Array('Sarah', 'Canva');
+			console.log(arr2);
+			*/
+			/*
+			// ============= Заповннення масиву фіксованим значенням ===================
+			let arr = new Array(3);
+			arr.fill(7);
+			console.log(arr);
+
+			let arr2 = new Array(4).fill(8);
+			console.log(arr2);
+
+			let arr3 = [3, 5, 6, 7, 8];
+			arr3.fill(9);
+			console.log(arr3);
+
+			let arr4 = [3, 5, 6, 7, 8];
+			arr4.fill(5, 1, 4); // fill(5, start, end) - значення яким заповнюємо, потім початок і кінець.
+			console.log(arr4);
+
+			let arr5 = [3, 5, 6, 7, 8];
+			arr5.fill(5, 1, 5);
+			console.log(arr5);
+			*/
+			/*
+			// ============= Завдання ===================
+			let products = new Array(); // Описати порожній масив products
+			console.log(products);
+
+			let arr = new Array(7);
+			console.log(arr);
+
+			let arr2 = new Array(7).fill(22);
+			console.log(arr2);
+
+			let companyPosition = ['PR', 'HR', 'Manager'];
+			*/
+			let masive = [0, 2, 10, 5, 20, 6, 35, 565, 42];
+			/*
+			let sum = 0;
+			for (const element of masive) {
+				sum += 1;
+			}
+			console.log(sum);
+			*/
+			// for (let index = 0; index < masive.length; index++) {
+			// 	if (masive[index] > 7) console.log(masive[index]);
+			// }
+			// for (const element of masive) {
+			// 	if (element > 7) {
+			// 		console.log(element);
+			// 	}
+			// }
+			// Стрілочна функція
+			// let func = (a, b) => a * b;
+			// let result = func(5, 5);
+			// console.log(result);
+			// let func2 = (a) => a * a * a;
+			// let result2 = func2(5);
+			// console.log(result2);
+			// let funcSum = (a, b) => a + b;
+			// result3 = funcSum(3, 5);
+			// console.log(result3);
+
+			// ++++++++++ ForEach
+			// masive.forEach((element) => {
+			// 	if (element > 7) console.log(element);
+			// });
+			// masive.forEach((element, index, baseArrRef) => {
+			// 	if (element > 7) {
+			// 		baseArrRef[index] = 0;
+			// 	}
+			// });
+			// console.log(masive);
+			// let newArr = new Array(3, 12, 2, 0, 5, 1, 56);
+			// newArr.forEach((element, index, baseArrRef) => {
+			// 	if (element > 3) baseArrRef[index] = 100;
+			// });
+			// console.log(newArr);
+			// for (let i = 0; i < newArr.length; i++) {
+			// 	if (newArr[i] > 3) newArr[i] = 100;
+			// }
+			// console.log(newArr);
+
+			// ++++ Дано масив показників температур. Вивести на екран додатні значення показників +++++
+			// let temperatureArray = [-100, 20, 30, 40, -2, 0, 20, 4, 5, 6, 9, -20, -15];
+			// temperatureArray.forEach((element) => {
+			// 	if (element > 0) console.log(`Додатні показники температури ${element}`);
+			// });
+			// // ++++ Масив цін товарів. Знайти суму цін, які більші за 100. ++++
+			// let priceThings = [100, 200, 25, 75, 300, 500, 50, 20, 300, 800, 5, 10, 5];
+			// for (let i = 0; i < priceThings.length; i++) {
+			// 	if (priceThings[i] > 100) console.log(priceThings[i]);
+			// }
+			// // ++++++ Дано масив показників температур. Від’ємні замінити на 0 +++++++
+			// let temperatureArray2 = [-100, -20, 30, 40, -2, 0, 20, 4, -5, 6, 9, -20, -15];
+			// temperatureArray2.forEach((element, index, baseArrRef) => {
+			// 	if (element < 0) baseArrRef[index] = 0;
+			// });
+			// console.log(temperatureArray2);
+
+			//  Створення на основі елементів іншого ітерованого об'єкта без зміни елементів. Копіювання масиву.
+
+			// let arr1 = [1, 45, 53, 5];
+			// console.log('🚀 ~ file: lesson10.html:338 ~ arr1:', arr1);
+			// let arr2 = Array.from(arr1);
+			// console.log('🚀 ~ file: lesson10.html:340 ~ arr2:', arr2);
+			// //  Копіювання за допомогою ...
+			// let arr3 = [...arr1];
+			// console.log('🚀 ~ file: lesson10.html:343 ~ arr3:', arr3);
+			//
+			/*
+			// Створити масив на базі іншого, де кожен елемент множиться на 3
+			const arr1 = [3, 9, 6, 12, 1, 5, 6];
+			const arr2 = Array.from(arr1, (element, index) => element * 3);
+			console.log('🚀 ~ file: lesson10.html:348 ~ arr2:', arr2);
+			const oldArr = [3, 9, 6, 12, 1, 5, 6];
+			const newArr = oldArr.map((element, index, baseArrRef) => element * 3);
+			console.log('🚀 ~ file: lesson10.html:351 ~ newArr:', newArr);
+			// ============================================
+			const twentyPercent = 120 / 100;
+			const priceArr = new Array(500, 700, 1000, 800, 900);
+			const priceTwentyPercent = priceArr.map((element) => element * twentyPercent);
+			console.log('🚀 ~ file: lesson10.html:357 ~ priceTwentyPercent ~ priceTwentyPercent:', priceTwentyPercent);
+			const todayYear = 2023;
+			const birthdayYear = [1965, 1987, 1955, 1997, 1992, 1994, 2005, 2003, 2001, 2000];
+			// MAP
+			const counterYear = birthdayYear.map((element) => todayYear - element);
+			console.log('🚀 ~ file: lesson10.html:360 ~ counterYear:', counterYear);
+
+			const priceDollarArr = [30, 50, 60, 100, 28, 75, 37, 91];
+			const prceGhrivnaArr = priceDollarArr.map((element) => parseInt(element * 37.3));
+			console.log('🚀 ~ file: lesson10.html:365 ~ prceGhrivnaArr:', prceGhrivnaArr);
+			*/
+
+			// Доступ до елементів
+			// let arr = [11, 2, 3, 5];
+			// let x = arr[2];
+			// console.log('🚀 ~ file: lesson10.html:372 ~ x:', x);
+			// let x2 = arr.at(2);
+			// console.log('🚀 ~ file: lesson10.html:374 ~ x2:', x2);
+			/*
+			// ! Додавання вилучення елементів з масиву з КІНЦЯ масиву!
+			let arr = [29, 40, 50, 20];
+			arr.push(9); // Додавання елементу
+			console.log('🚀 ~ file: lesson10.html:378 ~ arr:', arr);
+			arr.pop(); // Вилучення елементу
+			console.log('🚀 ~ file: lesson10.html:378 ~ arr:', arr);
+			arr.length = 2; // Довжина масиву буде 2 числа
+			console.log('🚀 ~ file: lesson10.html:383 ~ arr:', arr);
+
+			// ! Додавання вилучення елементів з масиву з ПОЧАТКУ масиву!
+			arr.unshift(10);
+			console.log('🚀 ~ file: lesson10.html:387 ~ arr:', arr);
+			arr.shift();
+			console.log('🚀 ~ file: lesson10.html:389 ~ arr:', arr);
+
+			// ! Додавання вилучення елементів з масиву з ДОВІЛЬНОЇ ПОЗИЦІЇ!
+
+			arr.splice(1, 0, 99);
+			console.log('🚀 ~ file: lesson10.html:394 ~ arr:', arr);
+			arr.splice(0, 1);
+			console.log('🚀 ~ file: lesson10.html:396 ~ arr:', arr);
+
+			// ! Видалення значення (елемента залишається)!
+			delete arr[0];
+			console.log('🚀 ~ file: lesson10.html:396 ~ arr:', arr);
+
+			let arr2 = [29, 40, 50, 20]; // Видалили 50 і 20
+			arr2.splice(2, 2, 1, 0, 8); // Додали 1,0,8 починаючи з 4 елемента
+			console.log('🚀 ~ file: lesson10.html:404 ~ arr2:', arr2);
+
+			let arr3 = [29, 40, 50, 20];
+			let newArr3 = arr3.slice(0, 3);
+			console.log('🚀 ~ file: lesson10.html:407 ~ newArr2:', newArr3);
+			*/
+			// ============ Пошук індексів з вказаними значеннями у масиві ============
+			/*
+			let arr = [1, 2, 4, 5, 6, 6, 7, 8, 5, 4, 51, 12, 5, 432];
+			let r;
+			r = arr.indexOf(5); // шукає елемент який стоїть в () дужках, якщо такий елемент є то повертає його індекс
+			console.log('🚀 ~ file: lesson10.html:414 ~ r:', r);
+			r = arr.lastIndexOf(5);
+			console.log('🚀 ~ file: lesson10.html:414 ~ r:', r);
+			r = arr.lastIndexOf(5, 5);
+			console.log('🚀 ~ file: lesson10.html:414 ~ r:', r);
+
+			r = arr.findIndex((el, index, baseArrRef) => el > 20);
+			console.log('r=arr.findIndex ~ r:', r);
+
+			r = arr.findLastIndex((el, index, baseArrRef) => el > 5);
+			console.log('🚀 ~ file: lesson10.html:424 ~ r:', r);
+
+			r = arr.find((el, index, baseArrRef) => el > 20);
+			console.log('🚀 ~ file: lesson10.html:424 ~ r:', r);
+			*/
+			// ============== REDUCE ===================
+			// function checkFunc(prevResult, x, i, arr) {
+			// 	if (x > 0) prevResult++;
+			// 	return prevResult;
+			// }
+			// let a = [1, 2, -3, 4, -5];
+			// let res = a.reduce(checkFunc, 0);
+			// console.log('🚀 ~ file: lesson10.html:437 ~ res:', res);
+
+			// // Знайти суму елементів
+			// let res2 = a.reduce((prevResult, x) => prevResult + x);
+			// console.log('🚀 ~ file: lesson10.html:441 ~ res2:', res2);
+
+			// ============== FILTER ===================
+
+			// const arr = [1, 2, 3, 5, 66, 44, 55];
+			// const elements = arr.filter((el, index, baseArrRef) => el > 20);
+			// console.log('🚀 ~ file: lesson10.html:447 ~ elements:', elements);
+			// const elements1 = arr.filter((el) => el < 20);
+			// console.log('🚀 ~ file: lesson10.html:449 ~ elements1:', elements1);
+
+			// ----------Дано покази термометра за місяць. Сформувати покази тільки доданих значень
+			// let temperatureMonth = [2, -2, 9, 3, -4, -5, 0, -1, 8, 7, 14];
+			// let positiveTemperature = temperatureMonth.filter((el) => el > 0);
+			// console.log('🚀 ~ file: lesson10.html:454 ~ positiveTemperature:', positiveTemperature);
+
+			// --------Дано покази термометра за місяць. Сформувати покази тільки значень, які знаходяться між 10 і 15 градусами цельсія
+			// let temperatureMonth = [10, 20, 14, 13, 10, 12, 11, 22, 5, 10, 12, 13];
+			// let resTemperature = temperatureMonth.filter((el) => el > 10 && el < 15);
+			// console.log('🚀 ~ file: lesson10.html:459 ~ resTemperature:', resTemperature);
+
+			// Дано масив цін. Сформувати новий масив, який складається з цін більших за 100 грн
+			// let priceList = [100, 2000, 500, 1000, 656, 534, 6543, 34, 234, 1213, 134];
+			// let resPirceList = priceList.filter((el) => el > 100);
+			// console.log('🚀 ~ file: lesson10.html:464 ~ resPirceList:', resPirceList);
+
+			// == Перевірка елементів усього масиву на відповідність деякій умові
+
+			// let arr = [1, 2, 3, 4, 5];
+			// let resArr = arr.every((el) => el > 0);
+			// console.log('🚀 ~ file: lesson10.html:470 ~ resArr:', resArr);
+
+			// let resArr1 = arr.some((el) => el > 4);
+			// console.log('🚀 ~ file: lesson10.html:473 ~ resArr1:', resArr1);
+
+			// ++++++++++ Сортування елементів у масиві ++++++++++++++++
+			//
+			// function rule(item1, item2) {
+			// 	if (item1 > item2) {
+			// 		return -1;
+			// 	} else if (item1 < item2) {
+			// 		return 1;
+			// 	} else {
+			// 		return 0;
+			// 	}
+			// }
+			// let a = [12, 3 - 21, 4, -56, 4, 3];
+			// a.sort(rule);
+			// console.log('🚀 ~ file: lesson10.html:488 ~ a:', a);
+
+			// var b = [12, 3, -21, 4, -56, 4, 3];
+			// b.sort((b, d) => b - d);
+			// console.log('🚀 ~ file: lesson10.html:491 ~ b:', b);
+			// ПРИКЛАД УПОРЯДКУВАННЯ ЗА ЗРОСТАННЯМ ЗА ДРУГОЮ БУКВОЮ
+			// let arrName = ['Masha', 'Igor', 'Pbsha', 'Oleg'];
+			// arrName.sort((a, b) => {
+			// 	if (a[1] > b[1]) return 1;
+			// 	else if (a[1] < b[1]) return -1;
+			// 	else return 0;
+			// });
+			// console.log(arrName);
+
+			// +++++ Багатовимірні масиви +++++
+			/*
+			let arr = [
+				[26, 20, 12],
+				[61, 22, 53],
+				[96, 28, 53],
+			];
+			let sum1 = 0;
+
+			for (let rowIndex = 1; rowIndex < arr[2].length; rowIndex++) {
+				for (let colIndex = 1; colIndex < arr[2].length; colIndex++) {
+					sum1 += arr[rowIndex][colIndex];
+				}
+			}
+			console.log('🚀 ~ file: lesson10.html:509 ~ sum1:', sum1);
+			let sum = 0;
+			for (let i = 1; i < arr[2].length; i++) {
+				for (let j = 1; j < arr[2].length; j++) {
+					sum += arr[i][j];
+				}
+			}
+			console.log('🚀 ~ file: lesson10.html:519 ~ sum:', sum);
+			let sum2 = 0;
+			for (let row of arr) {
+				for (let element of row) {
+					sum2 += element;
+				}
+			}
+			console.log('🚀 ~ file: lesson10.html:524 ~ sum2:', sum2);
+
+			//  REDUCE
+			let totalSum = arr.reduce(
+				(prevTotalSum, row) => prevTotalSum + row.reduce((prevRowSum, el) => prevRowSum + el),
+				0,
+			);
+			console.log('🚀 ~ file: lesson10.html:536 ~ totalSum:', totalSum);
+			*/
+			let arr2 = [
+				[26, 20, 12],
+				[61, 22, 53],
+				[96, 28, 53],
+				[106, 35, 82],
+				[72, 68, 42],
+				[106, 35, 82],
+				[72, 68, 42],
+			];
+			let sum4 = 0;
+			for (let row of arr2) {
+				for (let element of row) {
+					sum4 += element;
+					// console.log('🚀 ~ file: lesson10.html:550 ~ sum4:', sum4);
+				}
+			}
+			// console.log('🚀 ~ file: lesson10.html:550 ~ sum4:', sum4);
+			function getSum(table) {
+				let sum = 0;
+				for (let i = 0; i < 5; i++) {
+					for (let j = 0; j < 3; j++) {
+						sum += table[i][j];
+						console.log(sum);
+					}
+				}
+				return sum;
+			}
+			let totalsum = getSum(arr2);
+			console.log('🚀 ~ file: lesson10.html:558 ~ totalsum:', totalsum);
+
+			let cafeVisitors = [
+				//1 Січень
+				[30, 45, 60, 25, 50, 40, 55, 70],
+				//2 Лютий
+				[32, 47, 62, 27, 52, 42, 57, 72],
+				//3 Березень
+				[35, 50, 65, 30, 55, 45, 60, 75],
+				//4 Квітень
+				[40, 55, 70, 35, 60, 50, 65, 80],
+				//5 Травень
+				[45, 60, 75, 40, 65, 55, 70, 85],
+				//6 Червень
+				[1, 1, 1, 1, 1, 1, 1, 1],
+				//7 Липень
+				[1, 1, 1, 1, 1, 1, 1, 1],
+				//8 Серпень
+				[1, 1, 1, 1, 1, 1, 1, 1],
+				//9 Вересень
+				[35, 50, 65, 30, 55, 45, 60, 75],
+				//10 Жовтень
+				[40, 55, 70, 35, 60, 50, 65, 80],
+				//11 Листопад
+				[45, 60, 75, 40, 65, 55, 70, 85],
+				//12 Грудень
+				[50, 65, 80, 45, 70, 60, 75, 90],
+			];
+			// 1) загальну кількість відвідувачів;
+			function getAllVisitorsPerYear(table) {
+				let sum = 0;
+				for (let row of table) {
+					for (let element of row) {
+						sum += element;
+					}
+				}
+				return sum;
+			}
+			let totalVisitiors = getAllVisitorsPerYear(cafeVisitors);
+			console.log('🚀 Загальна кількість відвідувачів кафе за рік', totalVisitiors);
+			// 2) кількість відвідувачів за літо
+			function getVisitorsSummer(table) {
+				let sum = 0;
+				for (let i = 5; i < 8; i++) {
+					for (let j = 0; j < table[j].length; j++) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			let totalVisitorsSummer = getVisitorsSummer(cafeVisitors);
+			console.log('🚀 ~ file: lesson10.html:618 ~ totalVisitorsSummer:', totalVisitorsSummer);
+			// 3) кількість відвідувачів за друге півріччя
+
+			function getVisitorsHalfOfYear(table) {
+				let sum = 0;
+				for (let i = 5; i < 11; i++) {
+					console.log(`i = ${table[i]}`);
+					for (let j = 0; j < table[j].length; j++) {
+						console.log(`j = ${table[j]}`);
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			let totalVisitorsHalfOfYear = getVisitorsHalfOfYear(cafeVisitors);
+			console.log('🚀 ~ file: lesson10.html:633 ~ totalVisitorsHalfOfYear:', totalVisitorsHalfOfYear);
+		</script> -->
+	</body>
+</html>

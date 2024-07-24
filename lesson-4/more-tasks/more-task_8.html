@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 8</title>
+	</head>
+	<body>
+		<h3>
+			Задача 8. З клавіатури вводиться кількість сторін багатокутника. Необхідно вивести назву фігури («трикутник»,
+			«чотирикутник», «п’ятикутинк», «шестикутник»).
+		</h3>
+		<script>
+			let getUserTextPolygon = parseInt(prompt('Введіть кількість сторін багатокутника', '3'));
+			let result;
+			switch (getUserTextPolygon) {
+				case 3:
+					result = 'Трикутник';
+					break;
+				case 4:
+					result = 'Чотирикутник';
+					break;
+				case 5:
+					result = "п'ятикутник";
+					break;
+				case 6:
+					result = 'шестикутник';
+					break;
+				default:
+					result = 'Введіть коректне число від 3 до 6';
+					break;
+			}
+			document.write(`${result}`);
+		</script>
+	</body>
+</html>

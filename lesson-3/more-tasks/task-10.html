@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 10</title>
+	</head>
+	<body>
+		<h3>Номер місця яку заняв спортсмен 1-золото 2-срібло 3-бронза</h3>
+		<script>
+			const getPlaceNumber = parseInt(prompt('Введіть місце яке заняв спортсмен', '1'));
+			let result;
+			//! Вирішення за допомогою IF
+			// if (getPlaceNumber === 1) {
+			// 	result = `Спортсмен отримає золото`;
+			// } else if (getPlaceNumber === 2) {
+			// 	result = `Спортсмен отримає срібло`;
+			// } else if (getPlaceNumber === 3) {
+			// 	result = `Спортсмен отримає Бронзу`;
+			// } else {
+			// 	result = `Спортсмен отримає грамоту`;
+			// }
+			// document.write(`${result}`);
+
+			switch (getPlaceNumber) {
+				case 1:
+					result = `Спортсмен отримає золото`;
+					break;
+				case 2:
+					result = `Спортсмен отримає срібло`;
+					break;
+				case 3:
+					result = `Спортсмен отримає Бронзу`;
+					break;
+				default:
+					result = `Спорсмен отримає грамоту`;
+					break;
+			}
+			alert(`${result}`);
+		</script>
+	</body>
+</html>

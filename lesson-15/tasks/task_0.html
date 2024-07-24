@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>
+			Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження
+			добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+		</h3>
+		<script>
+			// 1. Створити два різні об'єкти з масивом цілих чисел
+			// Приклад об'єктів
+			const obj1 = {
+				numbers: [1, 2, 3, 4],
+				//
+				// 2. В першому буде функція знаходження суми
+				sum: function () {
+					return this.numbers.reduce((prevSum, el) => prevSum + el, 0);
+				},
+				getsum: function (val1, val2) {
+					return val1 + val2;
+				},
+			};
+
+			const obj2 = {
+				numbers: [5, 6, 15, 20],
+				//
+				// 3. В другом буде функція для знаходження доботку тих, які знаходяться між заданими мінімальними і макасимальних значення.
+				product: function (minV, maxV) {
+					return this.numbers.reduce((prevSum, el) => (el > minV && el < maxV ? prevSum * el : prevSum), 1);
+				},
+			};
+			let sumObj1 = obj1.sum();
+			console.log('sumObj1:', sumObj1);
+
+			let sumObj2 = obj1.sum.call(obj2);
+			console.log('sumObj2:', sumObj2);
+
+			let productObj1 = obj2.product.call(obj1, 1, 20);
+			console.log('productObj1:', productObj1);
+
+			let productObj2 = obj2.product(5, 20);
+			console.log('productObj2:', productObj2);
+
+			let sumApply1 = obj1.getsum(10, 12);
+			console.log('sumApply:', sumApply1);
+
+			// Власник функції. функції. apply (об'єкт для якого застосовується, [el1, el2, el3])
+			let sumApply2 = obj1.getsum.apply(obj2, [10, 100]);
+			console.log('sumApply2:', sumApply2);
+		</script>
+	</body>
+</html>

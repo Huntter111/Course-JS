@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task15</title>
+	</head>
+	<body>
+		<h2>
+			З клавіатури вводиться кількість місяців, які пройшли від деякого моменту часу. Вивести повну кількість років і
+			місяців. Наприклад, дано 28 місяців, а вивести 2 роки і 4 місяці.
+		</h2>
+		<script>
+			let userInputMonth = parseFloat(prompt('Введіть кількість місяців які прошйли', '22'));
+			const quantityMonthInYear = 12;
+			let valueYear = userInputMonth / quantityMonthInYear;
+			let valueMonth = userInputMonth % quantityMonthInYear;
+			document.write(`Пройшло ${valueYear} роки і ${valueMonth} місяців`);
+		</script>
+	</body>
+</html>

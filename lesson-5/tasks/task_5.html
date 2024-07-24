@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>Задача 5. Вивести таблицю</h3>
+		<script>
+			const tableCulumns = 3;
+			const tableRow = 1;
+			const Numbers = 9;
+			for (let i = 0; i < tableRow; i++) {
+				document.write(`<table >`);
+				document.write('<tr>');
+				for (let j = 0; j < Numbers; j++) {
+					if (j % 3 === 0 && j !== 0) document.write(`<tr>`);
+					document.write(`<td>${j + 1}</td>`);
+				}
+				document.write(`</tr>`);
+				document.write(`</table >`);
+			}
+		</script>
+		<style>
+			table {
+				border: 2px solid black;
+				margin-bottom: 5px;
+			}
+			td {
+				padding: 5px;
+				border: 1px solid rgb(71, 71, 71);
+			}
+		</style>
+	</body>
+</html>

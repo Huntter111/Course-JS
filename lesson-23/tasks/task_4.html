@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>Задача 4. Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв'язання задачі.</h3>
+		<div id="answer"></div>
+		<script>
+			function getSum(firstNum, secondNum) {
+				return firstNum + secondNum;
+			}
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getSecondsToCompleteExample() {
+				const firstRandomNum = getRandomNum(1, 10);
+				const secondRandomNum = getRandomNum(1, 10);
+				const sum = firstRandomNum + secondRandomNum;
+				let userInput;
+				let count = 1;
+
+				const startTest = new Date();
+				do {
+					userInput = parseInt(prompt(`Сума ${firstRandomNum} + ${secondRandomNum} =`));
+					if (!userInput) {
+						console.log('Натиснув cancel або не вірна число');
+						break;
+					} else if (userInput !== sum) {
+						console.log('getSecondsToCompleteExample ~ userInput:', userInput);
+						console.log('Не вірна відповідь');
+						count++;
+					} else {
+						console.log('Все вірно');
+					}
+				} while (userInput !== sum);
+				const endTest = new Date();
+				const timeToCompleteMath = (endTest - startTest) / 1000;
+				let render = `Щоб вирішити цей приклад вам знадобилось ${timeToCompleteMath} секунд та ${count} спроб(и)`;
+				return render;
+			}
+
+			const div = document.getElementById('answer');
+			div.innerText = getSecondsToCompleteExample();
+		</script>
+	</body>
+</html>

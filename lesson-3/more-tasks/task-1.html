@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 1</title>
+	</head>
+	<body>
+		<h3>
+			На сайті банку задають питання стосовно віку користувача. Якщо вік користувача менший за 18 то повідомити про
+			відмову інакше пропустити
+		</h3>
+		<script>
+			const getAgeUser = parseInt(prompt('Введіть вік користувача', '20'));
+			const ageAllowedUser = 18;
+			if (getAgeUser >= ageAllowedUser) {
+				alert('Користувачу доступ дозволено');
+				document.write('Доступ дозволено');
+			} else {
+				document.write('Користувачу доступ заборонено!');
+				alert('Доступ заборонено!');
+			}
+		</script>
+	</body>
+</html>

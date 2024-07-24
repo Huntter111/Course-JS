@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 6</title>
+		<script>
+			function getMessage(fixedParts, gender, userName, age) {
+				const genderLabel = gender === 'm' ? 'Пан' : 'Пані';
+				const pensionerTitle = (gender === 'm' && age >= 65) || (gender === 'w' && age >= 60) ? 'Пенсіонер' : 'Не пенсіонер';
+
+				return `${genderLabel}${fixedParts[0]}${userName}${fixedParts[1]}${pensionerTitle}`;
+			}
+
+			let userName = 'Ivan';
+			let gender = 'm';
+			let age = 31;
+			let message = getMessage`${gender} ${userName}  :  ${age}`;
+			alert(message);
+			console.log('message:', message);
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 6. Дано ім'я користувача, стать і вік. З використанням шаблонів вивести на екран рядок за шаблоном ${пан/пані} {ім'я} : {пенсіонер/не пенсіонер}
+		</h3>
+	</body>
+</html>

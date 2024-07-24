@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 3</title>
+	</head>
+	<body>
+		<h3>Задача 3. Створити окремі функції, які для 4 чисел знаходять: 1)суму; 2)добуток; 3)середнє арифметичне; 4)мінімальне значення.</h3>
+		<script>
+			// 0
+			let userNumberOne = parseInt(prompt('Введіть перше число', '22'));
+			let userNumberTwo = parseInt(prompt('Введіть друге число', '14'));
+			let userNumberThree = parseInt(prompt('Введіть третє число', '10'));
+			let userNumberFour = parseInt(prompt('Введіть четверте число', '2'));
+			// Сума чисел
+			function getSum(x1, x2, x3, x4) {
+				return x1 + x2 + x3 + x4;
+			}
+			// Добуток чисел
+			function getProduct(x1, x2, x3, x4) {
+				return x1 * x2 * x3 * x4;
+			}
+			function getAverage(x1, x2, x3, x4) {
+				return (x1 + x2 + x3 + x4) / 4;
+			}
+			function getMinNumber(x1, x2, x3, x4) {
+				let min;
+				min = x1;
+				if (x2 < min) min = x2;
+				if (x3 < min) min = x3;
+				if (x4 < min) min = x4;
+
+				return min;
+			}
+			document.write(
+				`Сума чисел = ${getSum(userNumberOne, userNumberTwo, userNumberThree, userNumberFour)}, <br>
+            Добуток чисел = ${getProduct(userNumberOne, userNumberTwo, userNumberThree, userNumberFour)}, <br> 
+            Середнє значення = ${getAverage(userNumberOne, userNumberTwo, userNumberThree, userNumberFour)}, <br> 
+            Мінімальне значення = ${getMinNumber(userNumberOne, userNumberTwo, userNumberThree, userNumberFour)} <br>`,
+			);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

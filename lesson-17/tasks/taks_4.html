@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 4</title>
+	</head>
+	<body>
+		<h3>
+			Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер). Організувати
+			реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми
+		</h3>
+
+		<script>
+			class DataBase {
+				constructor(name, unit, quantity, manufacturerName, manufacturerRegNumber) {
+					// назва продукта
+					this.name = name;
+					// одиниця виміру
+					this.unit = unit;
+					this.quantity = quantity;
+					this.manufacturer = {
+						name: manufacturerName,
+						registrationNumber: manufacturerRegNumber,
+					};
+				}
+			}
+			class Warehouse {
+				constructor() {
+					this.products = [];
+				}
+				// Додавання продукта
+				registerProduct(name, unit, quantity, manufacturerName, manufacturerRegNumber) {
+					const exitingProduct = this.products.find(product => product.name === name && product.manufacturer === manufacturerName);
+					console.log('Warehouse ~ registerProduct ~ exitingProduct:', exitingProduct);
+					if (exitingProduct) {
+						exitingProduct.quantity += quantity;
+					} else {
+						const newProduct = new DataBase(name, unit, quantity, manufacturerName, manufacturerRegNumber);
+						this.products.push(newProduct);
+					}
+				}
+				// Видалення продукта
+				dispatchProduct(name, quantity, manufacturerName) {
+					const product = this.products.find(product => product.name === name && product.manufacturer.name === manufacturerName);
+
+					if (product) {
+						if (product.quantity >= quantity) {
+							product.quantity -= quantity;
+							if (product.quantity === 0) {
+								this.products = this.products.filter(p => p !== product);
+							}
+						} else {
+							console.log(`Недостатня кількість товару на складі. Товару залишилось ${product.quantity} шт`);
+						}
+					} else console.log('Товар не знайдено на складі');
+				}
+				// Фільтрація продуктів за назвою
+				filterProductsByName(name) {
+					return this.products.filter(product => product.name === name);
+				}
+				filterProductByFactureName(factureName) {
+					return this.products.filter(nameFirm => (nameFirm.manufacturer.name = factureName));
+				}
+				// Показати всі товари на складі
+				showAllProducts() {
+					return this.products;
+				}
+				toString() {
+					return `${this.showAllProducts()}`;
+				}
+			}
+			let wareHouse = new Warehouse();
+
+			wareHouse.registerProduct('Apple', 'kg', 100, 'Fruit Co', '12345');
+			wareHouse.registerProduct('Banana', 'kg', 150, 'Tropical Co', '67890');
+			wareHouse.registerProduct('Apple', 'kg', 50, 'Fruit Co', '12345');
+			console.log(wareHouse);
+			// Вилучення певної кількості продуктів
+			wareHouse.dispatchProduct('Apple', 80, 'Fruit Co');
+			console.log(`Видалив 80 одиниць товару = ${wareHouse}`);
+			wareHouse.dispatchProduct('Apple', 20, 'Fruit Co');
+
+			// Фільтрація товарів за назвою
+			console.log('Products filtered by name "Apple":', wareHouse.filterProductsByName('Apple'));
+
+			// Фільтрація товарів за назвою фірми
+			console.log('Products filtered by manufacturer name "Fruit Co":', wareHouse.filterProductByFactureName('Fruit Co'));
+			// document.write(wareHouse.showAllProducts());
+			console.log(wareHouse);
+			document.write(wareHouse);
+		</script>
+	</body>
+</html>

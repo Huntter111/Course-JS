@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks 1</title>
+	</head>
+	<body>
+		<h3>
+			Задача 1. Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових
+			чисел вводиться користувачем
+		</h3>
+		<script>
+			const minNum = 1,
+				maxNum = 100;
+			let result;
+			let userNumber = parseInt(prompt('Введіть кількість випадкових чисел, які будуть в маркованому списку', '22'));
+			document.write('<ul>'); // починаємо маркований список перед циклом
+			for (let i = 0; i < userNumber; i++) {
+				const randomNumber = minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+				document.write(`<li>${randomNumber}</li>`);
+			}
+			document.write('</ul>'); // закінчуємо маркований список після циклу
+		</script>
+	</body>
+</html>

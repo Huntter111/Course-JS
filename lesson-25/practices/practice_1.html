@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 1</title>
+	</head>
+	<body>
+		<h3>Задача 1. Дано клас Student (піб, масив оцінок). При приведення до рядка повертати «піб». При приведенні до числа повертати мінімальну оцінку</h3>
+		<script>
+			class Student {
+				constructor(name, scores) {
+					this.name = name;
+					this.scores = scores;
+				}
+				// Опис метода Symbol.toPrimitive
+				[Symbol.toPrimitive](hint) {
+					let result;
+					switch (hint) {
+						case 'number':
+							result = Math.min(...this.scores);
+							break;
+						case 'string':
+							result = this.name;
+							break;
+						default:
+							result = `${this.name} : ${this.scores}`;
+							break;
+					}
+					return result;
+				}
+			}
+			const student1 = new Student('Ivan', [9, 11, 10, 12, 5, 7, 8]);
+			console.log(+student1);
+			console.log('Hello ' + student1);
+			console.log(String(student1));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>taks2</title>
+	</head>
+	<body>
+		<h2>Задача 2</h2>
+		<p>S1=Math.sqrt((a + b)/(2*a))</p>
+		<script>
+			// 1 Просимо користувача ввести дані
+			let firstNumber = parseInt(prompt('Введіть перше число!', '0'));
+			let secondNumber = parseInt(prompt('Введіть друге число!', '0'));
+			// 2 Обчислюємо дані за формулою
+			let result = Math.sqrt((firstNumber + secondNumber) / (2 * firstNumber));
+			// 3 Вивід результату на екран
+			alert(`Корінь квадратний = ${result.toFixed(3)}`);
+			document.write(`Корінь квадратний = ${result}`);
+		</script>
+	</body>
+</html>

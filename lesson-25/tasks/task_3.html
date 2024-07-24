@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+		<script>
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function* generateEvenNumbers(value) {
+				let countValue = value;
+				while (countValue !== 0) {
+					let randomNum = getRandomNum(10, 100);
+					if (randomNum % 2 === 0) {
+						yield randomNum;
+						countValue--;
+					}
+				}
+			}
+
+			window.onload = function () {
+				let userInput = parseInt(prompt('Введіть число для генерації парних чисел', '20'));
+				let arr = [...generateEvenNumbers(userInput)];
+
+				console.log('arr:', arr);
+
+				const resArr = document.querySelector('.container span span');
+				console.log('resArr:', resArr);
+				// resArr.append(arr);
+				resArr.textContent = arr.join(', ');
+				resArr.before(`Згенеровано ${userInput} парних чисел: `);
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача 3. Створити генератор, який би випадковим чином поступово генерував вказану кількість парних чисел.</h3>
+		<div class="container" id="container">
+			<span>
+				<span></span>
+			</span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 2</title>
+		<style>
+			.container {
+				position: relative;
+				width: 100%;
+				height: 100vh;
+			}
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 300px;
+				height: 300px;
+				object-fit: cover;
+				transition: all 0.3s;
+			}
+		</style>
+		<script>
+			class Data {
+				constructor(x, y, imgScr, updateInterval) {
+					this.x = x;
+					this.y = y;
+					this.imgScr = imgScr;
+					this.updateInterval = updateInterval;
+				}
+				getRandomNum(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1));
+				}
+				generateElement() {
+					const img = document.createElement('img');
+					img.src = this.imgScr;
+					img.style.top = parseInt(this.x) + 'px';
+					img.style.left = parseInt(this.y) + 'px';
+
+					return img;
+				}
+				render(targetContainer) {
+					this.image = this.generateElement();
+					const container = document.querySelector(targetContainer);
+					container.append(this.image);
+				}
+				update() {
+					setInterval(() => {
+						this.x = this.getRandomNum(0, 900);
+						this.y = this.getRandomNum(100, 1000);
+						this.image.style.top = this.x + 'px';
+						this.image.style.left = this.y + 'px';
+					}, this.updateInterval);
+				}
+			}
+			class House extends Data {
+				constructor(x, y, imgSrc, updateInterval) {
+					super(x, y, imgSrc, updateInterval);
+				}
+				update() {
+					setInterval(() => {
+						const scale = this.getRandomNum(50, 150) / 100;
+						this.image.style.transform = `scale(${scale})`;
+					}, this.updateInterval);
+				}
+			}
+			class Dog extends Data {
+				constructor(x, y, imgSrc, updateInterval) {
+					super(x, y, imgSrc, updateInterval);
+				}
+				update() {
+					setInterval(() => {
+						this.x = this.getRandomNum(0, window.innerHeight - this.image.height);
+						this.image.style.top = this.x + 'px';
+					}, this.updateInterval);
+				}
+			}
+			class Bird extends Data {
+				constructor(x, y, imgSrc, updateInterval) {
+					super(x, y, imgSrc, updateInterval);
+				}
+				update() {
+					setInterval(() => {
+						this.x = this.getRandomNum(0, window.innerHeight - this.image.height);
+						this.y = this.getRandomNum(0, window.innerWidth - this.image.width);
+						this.image.style.top = this.x + 'px';
+						this.image.style.left = this.y + 'px';
+					}, this.updateInterval);
+				}
+			}
+			window.onload = function () {
+				const house = new House(100, 300, './img/house.jpg', 1000);
+				console.log('house:', house);
+				const dog = new Dog(400, 500, './img/dog.jpg', 3000);
+				console.log('dog:', dog);
+				const bird = new Bird(700, 1000, './img/bird.jpg', 2000);
+				console.log('bird:', bird);
+				house.render('.container');
+				dog.render('.container');
+				bird.render('.container');
+				house.update();
+				dog.update();
+				bird.update();
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача. Розробити Класи: House, Dog, Bird</h3>
+		<div class="container"></div>
+	</body>
+</html>

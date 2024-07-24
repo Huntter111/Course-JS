@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 2</title>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+			<p>номери днів, протягом яких кількість відвідувачів була меншою за 20;</p>
+			<p>номери днів, коли кількість відвідувачів була мінімальною;</p>
+			<p>загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</p>
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getArray(minV, maxV, day) {
+				let arr = [];
+				for (let i = 0; i < day; i++) {
+					const randomNumber = getRandomNumber(minV, maxV);
+					arr.push(randomNumber);
+				}
+				return arr;
+			}
+			let arr = getArray(5, 40, 7);
+			console.log('arr:', arr);
+			function getValueVisitors(array) {
+				let result;
+				let counterVisitorsLessThan20 = [];
+
+				let counterVisitorsLess = [];
+
+				let counterVisitorsWorkDay = 0;
+				let counterVisitorsWeekend = 0;
+				for (let j = 0; j < array.length; j++) {
+					if (j < 5) {
+						counterVisitorsWorkDay += array[j];
+					} else if (j < 7) {
+						counterVisitorsWeekend += array[j];
+					}
+				}
+				for (let k = 4; k < array.length; k++) {
+					const element = array[k];
+				}
+				for (let i = 0; i < array.length; i++) {
+					const day = array[i];
+					if (day < 20) {
+						counterVisitorsLessThan20.push(i + 1);
+					}
+					if (day < 10) {
+						counterVisitorsLess.push(i + 1);
+					}
+				}
+				result = `Кількість відвідувачів була меншою за 20 = ${counterVisitorsLessThan20} <br> Кількість відвідувачів була мінімальною = ${counterVisitorsLess}, 
+				<br> Кількість клієнтів у робочі дні =  ${counterVisitorsWorkDay}, <br>   Кількість клієнтів у вихідні дні = ${counterVisitorsWeekend}, <br>`;
+				return result;
+			}
+			document.write(`${getValueVisitors(arr)}`);
+		</script>
+	</body>
+	<style>
+		p {
+			margin: 0;
+		}
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

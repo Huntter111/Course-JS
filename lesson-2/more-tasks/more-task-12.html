@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task12</title>
+	</head>
+	<body>
+		<h2>
+			З клавіатури вводиться кількість монет номіналом (2 коп, 5коп, 25коп, 50 коп). Визначити скільки гривень і
+			копійок є у даній сумі.
+		</h2>
+		<script>
+			let userInputTwoCoins = parseInt(prompt('Введіть кількість монет номіналом 2 копійки', '6'));
+			let userInputFiveCoins = parseInt(prompt('Введіть кількість монет номіналом 5 копійок', '10'));
+			let userInputTwentyFiveCoins = parseInt(prompt('Введіть кількість монет номіналом 25 копійок', '7'));
+			let userInputFiftyCoins = parseInt(prompt('Введіть кількість монет номіналом 50 копійок', '20'));
+			const oneGrivna = 100;
+			let sumCoins =
+				userInputTwoCoins * 2 + userInputFiveCoins * 5 + userInputTwentyFiveCoins * 25 + userInputFiftyCoins * 50;
+			console.log('sumCoins:', sumCoins);
+
+			let valueGrivna = Math.floor(sumCoins / oneGrivna);
+			let valueCoins = sumCoins % oneGrivna;
+
+			document.write(`Кількість гривень = ${valueGrivna}, кількість копійок = ${valueCoins}`);
+		</script>
+	</body>
+</html>

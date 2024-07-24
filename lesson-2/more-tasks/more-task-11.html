@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task11</title>
+	</head>
+	<body>
+		<h2>
+			Дано поточну кількість годи, хвилин, секунд (як на годиннику). Визначити 1. яка кількість секунд буде на
+			годиннику через N секунд. 2. яка кількість хвилин буде на годиннику через N секунд, X хвилин. Поточний час
+			дорівнює 13 годин 44 хвилини 22 секунд
+		</h2>
+		<script>
+			const oneHour = 3600;
+			const oneMinute = 60;
+			let userInputHour = parseInt(prompt('Введіть кількість годин', '13'));
+			let userInputMinute = parseInt(prompt('Введіть кількість хвилин', '44'));
+			let userInputSecond = parseInt(prompt('Введіть кількість секунд', '22'));
+			let userInputSecondsYet = parseInt(prompt('Введіть додаткові секунди', '10'));
+
+			let sumSeconds = userInputHour * oneHour + userInputMinute * oneMinute + userInputSecond + userInputSecondsYet;
+			console.log('🚀 ~ sumSeconds:', sumSeconds);
+
+			let hours = Math.floor(sumSeconds / oneHour);
+			console.log('🚀 ~ hours:', hours);
+			let remainingSecondsAfterHours = sumSeconds % oneHour;
+			console.log('🚀 ~ remainingSecondsAfterHours:', remainingSecondsAfterHours);
+			// let minutes = Math.floor(remainingSecondsAfterHours / oneMinute);
+			let minutes = Math.floor(remainingSecondsAfterHours / oneMinute);
+			console.log('🚀 ~ minutes:', minutes);
+			let seconds = remainingSecondsAfterHours % oneMinute;
+			console.log('🚀 ~ seconds:', seconds);
+			document.write(
+				`Через ${userInputSecondsYet} секунд на годиннику буде ${seconds} секунд. Кількість хвилин через ${userInputSecondsYet} секунд буде ${minutes} хв. Кількість годин буде ${hours}`,
+			);
+		</script>
+	</body>
+</html>

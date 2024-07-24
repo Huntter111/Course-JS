@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+			<ul>
+				<li>починаються на букву «А»;</li>
+				<li>перша і остання літери співпадають;</li>
+				<li>складаються з більше ніш 5 символів;</li>
+			</ul>
+		</h3>
+		<style>
+			span {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			let carsNumbers = ['AA5345BM', 'BT035HX', 'AC7890BA', 'AE8182CH', 'AB7177BI', 'AK7590BA'];
+			function getLetterStartA(arrCarsNumbers) {
+				let counter = 0;
+				let resultCarsNumbers = [];
+				for (let i = 0; i < arrCarsNumbers.length; i++) {
+					if (arrCarsNumbers[i].startsWith('A')) {
+						counter += 1;
+						resultCarsNumbers.push(arrCarsNumbers[i]);
+					}
+					if (resultCarsNumbers === 0) {
+						resultCarsNumbers = 'Ніякий рядок не починається на "A"';
+					}
+				}
+				return counter;
+			}
+			function getFirstLastLetter(arrCarsNumbers) {
+				let counterFirstLast = 0;
+				let resultFirstLast = [];
+				for (let j = 0; j < arrCarsNumbers.length; j++) {
+					let carsNum = arrCarsNumbers[j];
+					if (carsNum[0] === carsNum[carsNum.length - 1]) {
+						counterFirstLast += 1;
+						resultFirstLast.push(arrCarsNumbers[j]);
+					}
+				}
+				return counterFirstLast;
+			}
+			function getArrLenghtMoreFiveLetter(arrCarsNumbers) {
+				let counterMoreFive = 0;
+				let resultFirstLast = [];
+				for (let j = 0; j < arrCarsNumbers.length; j++) {
+					let carsNum = arrCarsNumbers[j];
+					if (carsNum.length > 5) {
+						counterMoreFive += 1;
+						resultFirstLast.push(arrCarsNumbers[j]);
+					}
+				}
+				return counterMoreFive;
+			}
+
+			let namesStudentsResult = getLetterStartA(carsNumbers);
+			let firstLastLetterResult = getFirstLastLetter(carsNumbers);
+			let moreFiveResult = getArrLenghtMoreFiveLetter(carsNumbers);
+			document.write(`Кількість номерів, які починаються на букву «А» : <span>${namesStudentsResult} номерів </span> <br>
+            Кількість номерів, в яких перша і остання літери співпадають : <span>${firstLastLetterResult} номерів </span> <br> 
+            Кількість номерів складається з більше ніш 5 символів: <span>${moreFiveResult} номерів </span><br>
+         `);
+		</script>
+	</body>
+</html>

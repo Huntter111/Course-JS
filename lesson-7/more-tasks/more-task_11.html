@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 11</title>
+	</head>
+	<body>
+		<h3>Задача 11. Поступово генерують R випадкових чисел у вказаному діапазоні. Знайти суму парних чисел.</h3>
+		<script>
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function isEven(num) {
+				return num % 2 === 0;
+			}
+			function getEvenSum(R, minV = 1, maxV = 100) {
+				let sum = 0;
+
+				for (let i = 0; i < R; i++) {
+					let randomNumber = getRandomNum(minV, maxV);
+					console.log('getEvenSum ~ randomNumber:', randomNumber);
+					if (isEven(randomNumber)) sum += randomNumber;
+				}
+				return sum;
+			}
+			let userNumber = parseInt(prompt('Введіть кількість чисел R', '20'));
+			let userMinNum = parseInt(prompt('Введіть мінімальне число з діапазону', '20'));
+			let userMaxNum = parseInt(prompt('Введіть мінімальне число з діапазону', '200'));
+			let result = getEvenSum(userNumber, userMinNum, userMaxNum);
+
+			document.write(`Сума чисел = ${result}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

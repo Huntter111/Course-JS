@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 2</title>
+	</head>
+	<body>
+		<h3>Знайти найбільше серед двох різних чисел замінити на ноль</h3>
+		<script>
+			let userInputFirstNumber = parseInt(prompt('Введіть перше число', '2'));
+			let userInputSecondNumber = parseInt(prompt('Введіть друге число', '2'));
+
+			if (userInputFirstNumber > userInputSecondNumber) {
+				userInputFirstNumber = 0;
+				console.log('userInputFirstNumber:', userInputFirstNumber);
+			} else {
+				userInputSecondNumber = 0;
+				console.log('userInputSecondNumber:', userInputSecondNumber);
+			}
+			document.write(`Перше число = ${userInputFirstNumber}, друге число = ${userInputSecondNumber}`);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks 15</title>
+	</head>
+	<body>
+		<h3>
+			Задача 16. Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну
+			величину прибутку та вивести величину прибутку протягом кожного окремого тижня.
+		</h3>
+
+		<script>
+			let userNumberProfit;
+			let sumProfit = 0;
+			let counter = 0;
+
+			let result;
+			const userNumberWeeks = parseInt(prompt('Введіть кільксть тижнів', '5'));
+			while (counter < userNumberWeeks) {
+				userNumberProfit = parseFloat(prompt('Введіть суму прибутку', '120'));
+				counter++;
+				sumProfit += userNumberProfit;
+				document.write(`Сума за ${counter} тиждень = ${userNumberProfit} грн <br>`);
+			}
+			result = sumProfit;
+			document.write(`<br> Загальна сума = ${result} грн`);
+		</script>
+	</body>
+	<style></style>
+</html>

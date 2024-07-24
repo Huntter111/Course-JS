@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 6</title>
+	</head>
+	<body>
+		<h3>З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.</h3>
+		<script>
+			const minValue = 1;
+			const maxValue = 7;
+
+			const userValue = parseInt(prompt('Введіть номер дня тижня від 1 до 7', '1'));
+
+			const result = ((userValue - minValue) % (maxValue - minValue + 1)) + minValue;
+			console.log(result);
+
+			if (result === 1) {
+				document.write('Сьогодні понеділок');
+			} else if (result === 2) {
+				document.write('Сьогодні вівторок');
+			} else if (result === 3) {
+				document.write('Сьогодні середа');
+			} else if (result === 4) {
+				document.write('Сьогодні четвер');
+			} else if (result === 5) {
+				document.write(`Сьогодні п'ятниця`);
+			} else if (result === 6) {
+				document.write('Сьогодні субота');
+			} else if (result === 7) {
+				document.write('Сьогодні неділя');
+			} else {
+				alert('Введіть число');
+			}
+		</script>
+	</body>
+</html>

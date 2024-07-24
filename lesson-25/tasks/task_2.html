@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 2</title>
+		<script>
+			class Product {
+				constructor(title, price, value) {
+					this.title = title;
+					this.price = price;
+					this.value = value;
+				}
+				[Symbol.toPrimitive](hint) {
+					switch (hint) {
+						case 'string':
+							return `Товар: ${this.title} - Загальна вартість: ${this.price * this.value}`;
+							break;
+						default:
+							return this.title;
+							break;
+					}
+				}
+			}
+			class Shop {
+				constructor(productList) {
+					this.productList = productList;
+				}
+				// 1) ---- Створили Symbol iterator
+				[Symbol.iterator]() {
+					this.currentIndex = 0;
+					return this;
+				}
+				// 2) ----- Створюємо next()
+				next() {
+					if (this.currentIndex < this.productList.length) {
+						const currentProduct = this.productList[this.currentIndex];
+						this.currentIndex++;
+						return { done: false, value: String(currentProduct) };
+					} else return { done: true };
+				}
+			}
+
+			const productList = [
+				new Product('Product1', 400, 10),
+				new Product('Product2', 500, 20),
+				new Product('Product3', 600, 30),
+				new Product('Product4', 700, 40),
+			];
+			const prod = new Shop(productList);
+
+			for (const item of prod) {
+				console.log(item);
+			}
+			let arr = [...prod];
+			console.log('arr:', arr);
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Дано Shop -- клас, що містить список товарів (масив об'єктів класу Product (назва, ціна, кількість одиниць)). Додати можливість ітератора до
+			класу Shop, щоб при ітеруванні для кожного елемента виводився рядок «товар-загальна вартість»
+		</h3>
+	</body>
+</html>

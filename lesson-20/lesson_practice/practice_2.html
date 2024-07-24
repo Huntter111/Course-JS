@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>practice 2</title>
+		<style>
+			.container {
+				width: 520px;
+				border: 2px solid green;
+				padding: 10px;
+				border-radius: 10px;
+			}
+			div {
+				height: 20px;
+			}
+			.container div {
+				height: 15px;
+			}
+			.item {
+				padding: 5px;
+				width: 500px;
+			}
+
+			.title {
+				display: inline-block;
+				/* width: 150px; */
+				margin-right: 15px;
+			}
+			.value-container {
+				width: 300px;
+				display: inline-block;
+			}
+			.value {
+				background-color: aqua;
+				text-align: center;
+			}
+		</style>
+		<script>
+			class Loader {
+				constructor(title, value, cssStyleObject) {
+					this.title = title;
+					this.value = value;
+					this.cssStyleObject = {
+						item: 'item',
+						title: 'title',
+						value: 'value',
+						valueContainer: 'value-container',
+						...(cssStyleObject ?? {}),
+					};
+				}
+				createItemElement() {
+					const itemContainer = document.createElement('div');
+					itemContainer.className = this.cssStyleObject.item;
+
+					const title = document.createElement('div');
+					title.className = this.cssStyleObject.title;
+					title.innerText = this.title;
+					itemContainer.append(title);
+
+					const valueContainer = document.createElement('div');
+					valueContainer.className = this.cssStyleObject.valueContainer;
+
+					const valueDiv = document.createElement('div');
+					valueDiv.className = this.cssStyleObject.value;
+					valueDiv.style.width = `${this.value}%`;
+					valueDiv.innerText = `${this.value}%`;
+					valueContainer.append(valueDiv);
+					itemContainer.append(valueContainer);
+
+					return itemContainer;
+				}
+				render(targetSelector) {
+					const container = document.createElement('div');
+
+					container.append(this.createItemElement());
+					const targetElement = document.querySelector(targetSelector);
+					targetElement.innerHTML = '';
+					targetElement.append(container);
+				}
+			}
+			window.onload = function () {
+				const l1 = new Loader('Load', 0);
+				l1.render('.d1');
+				let intVal = setInterval(() => {
+					l1.value += 10;
+					if (l1.value > 100) clearInterval(intVal);
+					else l1.render('.d1');
+					if (l1.value === 100) {
+						const finished = new Loader('Завершено', l1.value);
+						finished.render('.d1');
+					}
+				}, 500);
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача. Розробити Loader (задається title, value). Зімітувати завантаження за допомогою таймера.</h3>
+		<div id="dataContainer" class="d1"></div>
+	</body>
+</html>

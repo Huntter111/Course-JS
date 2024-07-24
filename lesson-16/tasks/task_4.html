@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 4</title>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5
+			до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+		</h3>
+
+		<script>
+			class TBankomat {
+				constructor() {
+					// Кількість купюр кожного номіналу
+					this.bills = {
+						5: 0,
+						10: 0,
+						20: 0,
+						50: 0,
+						100: 0,
+						200: 0,
+					};
+				}
+
+				// Додавання купюр до банкомата
+				addBills(nominal, count) {
+					if (this.bills[nominal] !== undefined) {
+						this.bills[nominal] += count;
+					} else {
+						console.log(`Номінал ${nominal} гривень не підтримується`);
+					}
+				}
+
+				// Знаходження максимальної суми, яку може видати банкомат
+				getMaxAmount() {
+					let maxAmount = 0;
+					for (const [nominal, count] of Object.entries(this.bills)) {
+						maxAmount += nominal * count;
+					}
+					return maxAmount;
+				}
+
+				// Знаходження мінімальної суми, яку може видати банкомат
+				getMinAmount() {
+					for (const nominal of Object.keys(this.bills).sort((a, b) => a - b)) {
+						if (this.bills[nominal] > 0) {
+							return parseInt(nominal);
+						}
+					}
+					return 0; // Якщо банкомат порожній
+				}
+
+				// Зняття деякої суми
+				withdraw(amount) {
+					const originalAmount = amount;
+					const withdrawBills = {};
+					const nominalOrder = [200, 100, 50, 20, 10, 5];
+
+					for (const nominal of nominalOrder) {
+						if (amount <= 0) break;
+						let count = Math.min(Math.floor(amount / nominal), this.bills[nominal]);
+						if (count > 0) {
+							withdrawBills[nominal] = count;
+							amount -= nominal * count;
+						}
+					}
+
+					if (amount === 0) {
+						for (const [nominal, count] of Object.entries(withdrawBills)) {
+							this.bills[nominal] -= count;
+						}
+						console.log(`Видано ${originalAmount} гривень:`, withdrawBills);
+						return withdrawBills;
+					} else {
+						console.log(`Неможливо видати ${originalAmount} гривень`);
+						return null;
+					}
+				}
+			}
+
+			// Приклад використання
+			const atm = new TBankomat();
+
+			// Додавання купюр
+			atm.addBills(5, 10);
+			atm.addBills(10, 10);
+			atm.addBills(20, 10);
+			atm.addBills(50, 10);
+			atm.addBills(100, 10);
+			atm.addBills(200, 10);
+
+			console.log('Максимальна сума, яку може видати банкомат:', atm.getMaxAmount());
+			console.log('Мінімальна сума, яку може видати банкомат:', atm.getMinAmount());
+
+			atm.withdraw(365); // Приклад зняття суми
+			atm.withdraw(50); // Приклад зняття суми
+			atm.withdraw(1230); // Приклад зняття суми
+
+			console.log('Максимальна сума, яку може видати банкомат після зняття:', atm.getMaxAmount());
+			console.log('Мінімальна сума, яку може видати банкомат після зняття:', atm.getMinAmount());
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 6</title>
+	</head>
+	<body>
+		<h3>
+			Задача 6. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+		</h3>
+
+		<script>
+			let names = ['Olga', 'John', 'Paul', 'Andrew', 'Abram', 'Peters', 'Tina', 'Jack'];
+			names.sort((el1, el2) => {
+				let a = el1.length;
+				let b = el2.length;
+				return a - b;
+			});
+
+			console.log('names.sort ~ names:', names);
+			function getBinarySearch(arr, numberSymnol) {
+				let start = 0;
+				let end = arr.length - 1;
+
+				while (start <= end) {
+					let middle = Math.floor((start + end) / 2);
+					if (arr[middle].length === numberSymnol) return middle;
+					if (arr[middle].length < numberSymnol) start = middle + 1;
+					if (arr[middle].length > numberSymnol) end = middle - 1;
+				}
+				return -1;
+			}
+
+			let index = getBinarySearch(names, 5);
+			console.log('index:', index);
+		</script>
+	</body>
+</html>

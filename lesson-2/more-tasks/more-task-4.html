@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task4</title>
+	</head>
+	<body>
+		<h2>
+			З клавіатури вводиться вік дитини. Вивести на екран через скільки років вона буде відвідувати садочок, піде у
+			школу, закінчить школу, вступить і закінчить ВНЗ
+		</h2>
+		<script>
+			const ageChild = parseFloat(prompt('Введіть вік дитини', '5'));
+			let goToKindergarten = 3 - ageChild;
+			let goToSchool = 7 - ageChild;
+			let finishSchool = 17 - ageChild;
+			let goToUniversity = 18 - ageChild;
+			let finisUniversity = 23 - ageChild;
+
+			document.write(
+				`Через ${goToKindergarten} років буде відвідувати садочок, через ${goToSchool} років піде до школи, через ${finishSchool} років закінчить школу, через ${goToUniversity} років піде до університету, через ${finisUniversity} років закінчить університет`,
+			);
+		</script>
+	</body>
+</html>

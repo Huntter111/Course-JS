@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+		s
+		<title>Lesson 14</title>
+	</head>
+	<body>
+		<!-- ! Об'кти -->
+		<!-- <script>
+			let students = {
+				firstName: 'Ivan',
+				secondName: 'Kein',
+				classNumber: 7,
+				scores: [9, 19, 8],
+			};
+			students.scores[0];
+			console.log('students.scores[1]:', students.scores[1]);
+			let client = {
+				title: {
+					secondName: 'Smith',
+					firstName: 'John',
+				},
+				address: {
+					zipCode: '8800',
+					city: 'Uzhorod',
+					street: 'Svobody',
+					num: 15,
+				},
+				accountNumber: 'ac2341fsr2',
+				balance: 2344242,
+			};
+			client.title.secondName;
+			
+			console.log("client.title.secondName:", client.title.secondName)
+		</script> -->
+		<!-- ! Вкладений об'єкт -->
+		<!-- <script>
+			let product = {
+				title: 'Table',
+				factory: {
+					title: 'Sun',
+					address: {
+						ZipCode: '2131',
+						city: 'London',
+						street: 'dsdsd',
+						num: 2323,
+					},
+				},
+				exipiredDate: {
+					year: 2023,
+					month: 12,
+					day: 23,
+				},
+				price: 2000,
+			};
+		</script> -->
+		<!-- ! -->
+		<!-- <script>
+			const bookList = [
+				{
+					title: 'Title 0',
+					author: 'Author 0',
+					year: 2000,
+					price: 1000,
+					count: 100,
+				},
+				{
+					title: 'Title 1',
+					author: 'Author 1',
+					year: 2005,
+					price: 500,
+					count: 50,
+				},
+				{
+					title: 'Title 2',
+					author: 'Author 2',
+					year: 2003,
+					price: 20000,
+					count: 2,
+				},
+				{
+					title: 'Title 3',
+					author: 'Author 3',
+					year: 2006,
+					price: 3000,
+					count: 30,
+				},
+			];
+			console.log(bookList);
+			// Кількість книг що були видані після 2000 (загальна кількість екземплярів) .reduce
+			let valueAfter2000 = bookList.reduce((prevSum, book) => (book.year > 2000 ? prevSum + book.count : prevSum), 0);
+			console.log('valueAfter2000:', valueAfter2000);
+			// Знайти загальну вартість кожної із книг ()
+			const booksTotalPrices = bookList.map((book, index, arrayRef) => `${book.title} - ${book.price * book.count} `);
+			document.write(`${booksTotalPrices}`);
+
+			const booksTotalPricesInfo = bookList.map(book => ({
+				title: book.title,
+				totalPrice: book.price,
+			}));
+			console.log(booksTotalPricesInfo);
+			//  Знайти загальну суму
+			const totalPrice = bookList.reduce((prevSum, book) => prevSum + book.price * book.count, 0);
+			console.log('totalPrice:', totalPrice);
+
+			if (bookList.some(book => book.year === 2000)) console.log('Так є книга яка видана у 2000 році');
+			else console.log('Немає такої книги');
+
+			// Чи усі книги видані після 2005 року
+			if (bookList.every(book => book.year > 2005)) console.log('Всі книги видані після 2005');
+			console.log('Не всі книги видані після 2005');
+			// Сформувати тих книг, ціна яких менше за 1000 грн
+			const listLover1000 = bookList.filter(book => book.price < 1000);
+			console.log('listLover1000:', listLover1000);
+			// Загальна вартість тих книг які були видані після 2000 року
+			const totalPriceAfter2000Year = bookList.reduce((prevSum, book) => (book.year === 2000 ? prevSum + book.price : prevSum), 0);
+			console.log('totalPriceAfter2000Year:', totalPriceAfter2000Year);
+			//  Знайти першу книгу яка більше за 3000
+			const searchBook = bookList.find(book => book.price > 3000);
+			console.log('searchBook:', searchBook);
+			// Знайти перший індекс книги більше за 3000
+			const searchBookIndex = bookList.findIndex(book => book.price > 3000);
+			console.log('searchBookIndex:', searchBookIndex);
+			// ====================================================================================
+			// Дано масив імен. Підрахувати кількість входжень кожного імені за зразком!
+			const userNames = ['Ivan', 'Ivan', 'Ivan', 'Olga', 'Petro', 'Petro', 'Olga', 'Olga', 'Ivan', 'Ivan', 'Ola'];
+
+			const namesNumberObject = {};
+			for (const userName of userNames) {
+				if (userName in namesNumberObject)
+					// чи є назва властивості у об'єкті
+					namesNumberObject[userName]++;
+				else namesNumberObject[userName] = 1;
+			}
+			// Виводимо на екран властивості і значення об'єкта namesNumberObject
+			for (const key in namesNumberObject) {
+				document.write(`<br>${key} : ${namesNumberObject[key]}`);
+			}
+		</script> -->
+		<!-- ! Задачі на деструктуризацію об'єктів -->
+		<!-- <script>
+			//  Задача. Розробити функцію, у яку передають об'єкт (день, місяць, рік). Визначити, який буде місяць через N місяців
+			let userDate = {
+				day: 23,
+				month: 5,
+				year: 2023,
+			};
+
+			// function getShiftedMonth(userDate, N) {
+			// 	return ((userDate.month - 1 + N) % 12) + 1;
+			// }
+			function getShiftedMonth({ month }, N) {
+				return ((month - 1 + N) % 12) + 1;
+			}
+			let N = 6;
+			const shiftedMonth = getShiftedMonth(userDate, N);
+			console.log(`Через ${N} місяців буде місяць №${shiftedMonth}`);
+
+		
+			
+		</script> -->
+		<script>
+			// Задача. Розробити функцію яка б генерувала випадковим чином покази годинника (години, хвилини, секунди)
+			function getRandomValue(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			// Через масив
+			// function getRandomTime() {
+			// 	let hours = getRandomValue(0, 11);
+			// 	let minutes = getRandomValue(0, 59);
+			// 	let seconds = getRandomValue(0, 59);
+			// 	return [hours, minutes, seconds];
+			// }
+			// Через об'єкт
+			function getRandomTime() {
+				let hours = getRandomValue(0, 11);
+				let minutes = getRandomValue(0, 59);
+				let seconds = getRandomValue(0, 59);
+				return { hours, minutes, seconds };
+			}
+
+			let randomTime = getRandomTime();
+			document.write(`${randomTime.hours}:${randomTime.minutes}:${randomTime.seconds}`);
+		</script>
+	</body>
+</html>

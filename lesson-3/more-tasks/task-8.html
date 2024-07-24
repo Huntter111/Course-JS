@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 8</title>
+	</head>
+	<body>
+		<h3>
+			5. З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль).
+			Вивести на екран назву транспортного засобу, яким він може керувати.
+		</h3>
+		<script>
+			let getUserCategory = prompt('Введіть назву категорії водія ', 'A').toUpperCase();
+			let result;
+			switch (getUserCategory) {
+				case 'A':
+					result = `Категорія мотоцикл`;
+					break;
+				case 'B':
+					result = `Категорія легковий автомобіль`;
+					break;
+				case 'C':
+					result = `Категорія вантажний автомобіль`;
+					break;
+				default:
+					result = `Введіть коректну категорію A,B,C`;
+					break;
+			}
+			document.write(`${result}`);
+		</script>
+	</body>
+</html>

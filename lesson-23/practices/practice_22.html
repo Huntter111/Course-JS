@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 22</title>
+	</head>
+	<body>
+		<h3>Задача. Дано масив цін. Сформувати 2 окремих рядки з цін розділених через кому які більші за 1000 і менші за 1000.</h3>
+		<script>
+			function getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+
+			let arr = [];
+			for (let i = 0; i < 100; i++) {
+				const randomNum = getRandomNum(100, 3000);
+				arr.push(randomNum);
+			}
+
+			let pricesLessThan1000 = [];
+			let pricesMoreThan1000 = [];
+
+			for (const el of arr) {
+				if (el < 1000) pricesLessThan1000.push(el);
+				else pricesMoreThan1000.push(el);
+			}
+			console.log('firstStringPricesLessThan1000:', firstStringPricesLessThan1000);
+			console.log('secondStringPricesMoreThan1000:', secondStringPricesMoreThan1000);
+			let firstString = pricesLessThan1000.join(', ');
+			let secondString = pricesMoreThan1000.join(', ');
+			document.write(`<b>Рядок що менше за 1000:</b> ${firstString} <br> <br>`);
+			document.write(`<b>Рядок що більше за 1000:</b> ${secondString} `);
+		</script>
+	</body>
+</html>

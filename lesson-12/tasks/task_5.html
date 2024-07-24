@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>Задача 5. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.</h3>
+
+		<script>
+			let names = ['Olga', 'John', 'Paul', 'Andrew', 'Abrams', 'Peter', 'Tina', 'Jack', 'Peter'];
+			names.sort();
+			function getBinarySearch(arr, searchElem) {
+				let start = 0;
+				let end = arr.length - 1;
+				while (start <= end) {
+					let mid = Math.floor((start + end) / 2);
+					if (arr[mid] === searchElem) return true;
+
+					if (arr[mid] < searchElem) start = mid + 1;
+					if (arr[mid] > searchElem) end = mid - 1;
+				}
+				return false;
+			}
+			function getBinarySearchIndex(arr, searchElem) {
+				let start = 0;
+				let end = arr.length - 1;
+				while (start <= end) {
+					let mid = Math.floor((start + end) / 2);
+					if (arr[mid] === searchElem) return mid;
+					if (arr[mid] < searchElem) start = mid + 1;
+					if (arr[mid] > searchElem) end = mid - 1;
+				}
+				return -1;
+			}
+
+			let isNameOlga = getBinarySearch(names, 'Olga');
+			console.log('isNameOlga:', isNameOlga);
+			let isNameOlgaIndex = getBinarySearchIndex(names, 'Olga');
+			console.log('isNameOlgaIndex:', isNameOlgaIndex);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task 5</title>
+		<style></style>
+	</head>
+	<body>
+		<h3>
+			Задача 5. На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий номер). Додати подію обробки події
+			click на форму і якщо клік на input, то автоматично замінювати значення його на 0.
+		</h3>
+		<form>
+			<label>
+				Вік
+				<input type="text" />
+			</label>
+			<label>
+				Зріст
+				<input type="text" />
+			</label>
+			<label>
+				Вага
+				<input type="text" />
+			</label>
+			<label>
+				Заробітна плата
+				<input type="number" />
+			</label>
+			<label>
+				Стаж
+				<input type="number" />
+			</label>
+			<label>
+				Номер відділу
+				<input type="number" />
+			</label>
+			<label>
+				Порядковий номер
+				<input type="number" />
+			</label>
+		</form>
+		<script>
+			document.querySelectorAll('input').forEach(inp => {
+				inp.onclick = function (event) {
+					if (event.target.tagName === 'INPUT') {
+						event.target.value = 0;
+					}
+				};
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 8</title>
+	</head>
+	<body>
+		<h3>8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А».</h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+			span {
+				font-size: 2rem;
+			}
+		</style>
+		<script>
+			const arrCarNumbers = ['AA5347BA', 'BA5347AA', 'AT5347BA', 'AE5347BA', 'BT5347BA', 'HM5347BA', 'AA5347BA'];
+			function getCarNumbersStartA(array) {
+				let carNumbersResult = [];
+				// Розв'язок For..of
+				// for (const item of array) {
+				// 	if (item.startsWith('A')) {
+				// 		carNumbersResult.push(item);
+				// 	}
+				// }
+				// Розв'язок For..Each
+				array.forEach((element) => {
+					if (element.startsWith('A')) {
+						carNumbersResult.push(element);
+					}
+				});
+				return carNumbersResult;
+			}
+
+			let result = document.write(`
+			Масив номерів машин = ${arrCarNumbers} <br> <br>
+			<span>Новий масив номерів які починаються з "А": ${getCarNumbersStartA(arrCarNumbers)} </span>`);
+		</script>
+	</body>
+</html>

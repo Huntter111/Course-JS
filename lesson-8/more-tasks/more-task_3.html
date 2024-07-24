@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 3</title>
+	</head>
+	<body>
+		<h3>Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван»</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			function getArray(min, max, value) {
+				let arr = [];
+				for (let i = 0; i < value; i++) {
+					let randomNum = getRandomNumber(min, max);
+					switch (randomNum) {
+						case 1:
+							arr.push('Іван');
+
+							break;
+						case 2:
+							arr.push('Монгол');
+
+							break;
+						case 3:
+							arr.push('Олексій');
+
+							break;
+						case 4:
+							arr.push('Іван');
+
+							break;
+						case 5:
+							arr.push('Антон');
+							break;
+					}
+				}
+				return arr;
+			}
+			let arrNames = getArray(1, 5, 20);
+			console.log('arrNames:', arrNames);
+			function getName(arr) {
+				let counterName = 0;
+				for (let i = 0; i < arr.length; i++) {
+					const name = arr[i];
+					if (name === 'Іван') counterName++;
+				}
+				return counterName;
+			}
+			document.write(`Ім'я "Іван" зустрічається таку кількість разів = ${getName(arrNames)}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

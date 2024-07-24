@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 1</title>
+	</head>
+	<body>
+		<!-- ! Знайти найбільше число і замінити на 0 -->
+		<!-- <h3>Знайти найбільше число і замінити на 0</h3> -->
+		<!-- <script>
+			let userNum1 = parseInt(prompt('Введіть перше число', '2'));
+			let userNum2 = parseInt(prompt('Введіть друге число', '5'));
+			let userNum3 = parseInt(prompt('Введіть третє число', '-2'));
+
+			let max = 0;
+
+			if (userNum1 > max) max = userNum1;
+			console.log('userNum1:', userNum1);
+			if (userNum2 > max) max = userNum2;
+			console.log('userNum2:', userNum2);
+			if (userNum3 > max) max = userNum3;
+			console.log('userNum3:', userNum3);
+
+			if (userNum1 === max) userNum1 = 0;
+			if (userNum2 === max) userNum2 = 0;
+			if (userNum3 === max) userNum3 = 0;
+
+			document.write(`Перше число ${userNum1}, друге число ${userNum2}, третє число ${userNum3}`);
+		</script> -->
+		<!-- ! Знайти найбільше парне число -->
+		<!-- <h3>Знайти найбільше парне число</h3> -->
+		<!-- <script>
+			let userNum1 = parseInt(prompt('Введіть перше число', '2'));
+			let userNum2 = parseInt(prompt('Введіть друге число', '5'));
+			let userNum3 = parseInt(prompt('Введіть третє число', '-2'));
+
+			let max = 0;
+
+			if (userNum1 % 2 === 0 && userNum1 > 0) max = userNum1;
+			if (userNum2 % 2 === 0 && userNum2 > 0) max = userNum2;
+			if (userNum3 % 2 === 0 && userNum3 > 0) max = userNum3;
+			document.write(`найбільше парне число = ${max}`);
+		</script> -->
+		<h3>
+			Задача 1. На екран виводиться меню: 1. Веселий 2. Сумний 3. Обурений Користувач вводить номер пункту меню і на
+			екрані з’являється відповідне зображення смайла.
+		</h3>
+		<script>
+			let alertMessage = alert('Потрібно написати число яке відповідає вашому стану: 1.Веселий 2.Сумний 3.Обурений');
+			let userNumber = parseInt(prompt('Введіть число яке відповідає вашому стану', '2'));
+			console.log('userNumber:', userNumber);
+			let result;
+			switch (userNumber) {
+				case 1:
+					result = 'Веселий 😀 😀 😀';
+					break;
+				case 2:
+					result = 'Сумний 😒 😒 😒';
+					break;
+				case 3:
+					result = 'Обурений 🤨 🤨 🤨';
+					break;
+				default:
+					result = 'немає такого числа';
+					break;
+			}
+			document.write(`Ваш стан описує наступний смайл ${result}`);
+		</script>
+	</body>
+</html>

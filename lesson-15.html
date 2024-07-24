@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+		s
+		<title>Lesson-15</title>
+	</head>
+	<body>
+		<h2>Lesson 15</h2>
+		<!-- ! Як звертатися до функції в середині об'єкта також метод об'єкта this -->
+		<!-- <script>
+			let auto = {
+				model: 'Audi',
+				owner: 'Ivan',
+				showInfo: function () {
+					document.write(`Власником моделі ${this.model} є ${this.owner} <br>`);
+				},
+			};
+
+			auto.showInfo();
+
+			let pupil = {
+				name: 'Ivan',
+				class_: '8B',
+				marks: [10, 11, 8],
+				// function
+				getAverageScore: function () {
+					let sum = 0;
+					let lenghtArr = this.marks.length;
+					for (let i = 0; i < this.marks.length; i++) {
+						const element = this.marks[i];
+						sum += element;
+					}
+					return (sum / lenghtArr).toFixed(1);
+				},
+			};
+			document.write(`${pupil.getAverageScore()} <br>`);
+		</script> -->
+		<!-- <script>
+			let product = {
+				// Приклад Створити об'єкт товар.
+				// ------------- Властивості характеристика ---------------
+				// Назва товару
+				title: 'Table',
+				// Ціна
+				price: 450,
+				// Кількість
+				count: 34,
+				// Варстіть одиниці
+				paymentPerDay: 25,
+				// --------------- Методи (функціональні можливості) ----------------
+				// Визначення загальної вартості наявної кількості одиниць (потрібно кількість помножити на price)
+				getTotalPrice: function () {
+					return this.count * this.price;
+				},
+				// визначити вартість зберігання для заданої кількості днів
+				getPaymentForDays: function (daysCount) {
+					return daysCount * this.paymentPerDay;
+				},
+				// Зменшення ціни на вказану кількість відсотків
+				reducePrice: function (percentageValue) {
+					this.price = this.price - (this.price * percentageValue) / 100;
+				},
+				// Збільшення ціни на вказану кількість відсотків
+				increacePrice: function (percentageValue) {
+					this.price = this.price + (this.price * percentageValue) / 100;
+				},
+			};
+			document.write(`Total price = ${product.getTotalPrice()} <br>`);
+			document.write(`Вартість зберігання = ${product.getPaymentForDays(2)} грн <br>`);
+			product.reducePrice(10);
+			document.write(`Нова ціна = ${product.price} грн <br>`);
+		</script> -->
+		<!-- ! Invoice -->
+		<!-- <script>
+			// Властивості (дані)
+			let invoices = [
+				{
+					invoiceNumber: 232,
+					complitedTasks: ['Created tasks', 'updated login form design', 'added button'],
+					money: 2000,
+
+					// Методи
+					toString: function () {
+						return `${this.invoiceNumber}, ${this.complitedTasks.length}, ${this.money}`;
+					},
+					// Перетворення у число (повертається сума грошей)
+					valueOf: function () {
+						return this.money;
+					},
+				},
+				{
+					invoiceNumber: 233,
+					complitedTasks: ['Created tasks', 'updated login form design', 'added button'],
+					money: 3000,
+
+					// Методи
+					toString: function () {
+						return `${this.invoiceNumber}, ${this.complitedTasks.length}, ${this.money}`;
+					},
+					// Перетворення у число (повертається сума грошей)
+					valueOf: function () {
+						return this.money;
+					},
+				},
+				{
+					invoiceNumber: 234,
+					complitedTasks: ['Created tasks', 'updated login form design', 'added button'],
+					money: 2500,
+
+					// Методи
+					toString: function () {
+						return `${this.invoiceNumber}, ${this.complitedTasks.length}, ${this.money}`;
+					},
+					// Перетворення у число (повертається сума грошей)
+					valueOf: function () {
+						return this.money;
+					},
+				},
+			];
+			document.write(`<ol>`);
+			for (const invoice of invoices) {
+				document.write(`<li>${invoice}</li>`);
+			}
+			document.write(`</ol>`);
+		</script> -->
+
+		<!-- ! Гра "Рулетка" -->
+		<!-- <script>
+			function Roulette(scoresNumber, minScore, maxScore) {
+				this.minScore = minScore;
+				this.maxScore = maxScore;
+				this.scores = this.getScoresList(scoresNumber);
+			}
+
+			Roulette.prototype.getRandomNumber = function (minV, maxV) {
+				return minV + Math.floor(Math.random() * (maxV - minV + 1));
+			};
+
+			Roulette.prototype.getScoresList = function (scoresNumber) {
+				let scoresList = [];
+				for (let i = 0; i < scoresNumber; i++) {
+					const randomNum = this.getRandomNumber(this.minScore, this.maxScore);
+					scoresList.push(randomNum);
+				}
+				return scoresList;
+			};
+
+			Roulette.prototype.printScores = function () {
+				document.write(`${this.scores}`);
+			};
+
+			Roulette.prototype.toString = function () {
+				return `Roulette (${this.minScore}, ${this.maxScore})`;
+			};
+
+			Roulette.prototype.getRandomScore = function () {
+				let randomIndex = this.getRandomNumber(0, this.scores.length - 1);
+				return this.scores[randomIndex];
+			};
+
+			Roulette.prototype.playGame = function () {
+				let sum = 0;
+				// Поки хоче крутити рулетку
+				while (confirm('Хочете крутити рулетку?')) {
+					const randomScore = this.getRandomScore();
+					sum += randomScore;
+					alert(`ваш поточний виграв/програш = ${randomScore}. Загальний виграш = ${sum}`);
+				}
+				alert(`Загальний виграш = ${sum}`);
+			};
+
+			let r1 = new Roulette(10, -100, 100);
+			r1.playGame();
+		</script> -->
+		<!-- ! Задачі Порожній масив Reduce -->
+		<!-- <script>
+			// Дано функцію без формальних параметрів. Знайти суму усіх аргументів, які не буде передано у
+			// функцію, використавши reduce стосовно arguments
+			function getSum() {
+				return [].reduce.call(arguments, (prevSum, el) => prevSum + el);
+			}
+			let s = getSum(2, 12, 45, 23, 456, 67, 78);
+			document.write(`${s}`);
+			class Range {
+				constructor(minV, maxV) {
+					this.default = minV;
+				}
+			}
+		</script> -->
+		<!-- ! Задача пердбачувач -->
+		<!-- <script>
+			class Predictor {
+				constructor(predictionsList, interval) {
+					this.predictionsList = predictionsList;
+					this.interval = interval;
+				}
+				// Методи:
+				// Вибір випадкового значення
+				getRandomPrediction() {
+					const randomIndex = Math.floor(Math.random() * this.predictionsList.length);
+					return this.predictionsList[randomIndex];
+				}
+				// Метод RUN що ініціалізує запуск таймера і генерування передбачень
+				run() {
+					// З використанням Bind
+					// let func = this.getRandomPrediction.bind(this);
+					// setInterval(function () {
+					// 	alert(func());
+					// }, this.interval * 1000);
+					// Зі стрілковою функцією
+					setInterval(() => {
+						alert(this.getRandomPrediction());
+					}, this.interval * 1000);
+				}
+			}
+			let p1 = new Predictor(['love', 'money', 'friends', 'PEACE'], 2);
+			p1.run();
+		</script> -->
+		<!-- ! Конструктор масива -->
+
+		<script>
+			function Auto(initModel, initOwner, initWeight) {
+				this.model = initModel;
+				this.owner = initOwner;
+				this.weight = initWeight;
+			}
+			function Bus(initModel, initOwner, initWeight) {
+				this.model = initModel;
+				this.owner = initOwner;
+				this.weight = initWeight;
+			}
+			// Створити масив об'єктів
+
+			const transoprtList = [
+				new Auto('Audi', 'Ivan', 2000),
+				new Bus('DAF', 'Ivan', 80000),
+				new Auto('BMW', 'Oleg', 3000),
+				new Auto('Opel', 'MAX', 4000),
+				new Bus('DAF', 'Kar', 60000),
+			];
+			// Знайти сумарну вагу Авто та Автобусів окремо
+			let sumWeightAuto = 0;
+			let sumWeightBus = 0;
+			for (const item of transoprtList) {
+				if (item instanceof Auto) {
+					sumWeightAuto += item.weight;
+				}
+				if (item instanceof Bus) {
+					sumWeightBus += item.weight;
+				}
+			}
+			console.log('sumWeight:', sumWeightAuto);
+			console.log('sumWeightBus:', sumWeightBus);
+		</script>
+	</body>
+</html>

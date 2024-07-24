@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>Задача 1. Знайти суми елементів у вказаній області</h3>
+		<img src="../img/image-1.png" alt="" />
+		<style>
+			img {
+				margin-bottom: 2rem;
+				display: block;
+			}
+		</style>
+		<script>
+			let table = [
+				[10, 20, 30, 40],
+				[50, 60, 70, 80],
+				[90, 100, 110, 120],
+				[130, 140, 150, 160],
+			];
+			document.write(`Приклад таблиці <br>
+			[10, 20, 30, 40], <br>
+			[50, 60, 70, 80], <br>
+			[90, 100, 110, 120],<br>
+			[130, 140, 150, 160],<br>`);
+			// ====================================================================
+			function getOneFrame(table) {
+				let sum = 0;
+				for (let i = 0; i < 2; i++) {
+					for (let j = 0; j < 2; j++) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultOneFrame = getOneFrame(table);
+			document.write(`Cума в першій області = ${resultOneFrame} <br>`);
+
+			// =================================================================
+			function getTwoFrame(table) {
+				let sum = 0;
+				for (let i = 0; i < 2; i++) {
+					for (let j = 2; j < 4; j++) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultTwoFrame = getTwoFrame(table);
+			document.write(`Cума в дпугій області = ${resultTwoFrame} <br>`);
+			// ====================================================================
+			function getThreeFrame(table) {
+				let sum = 0;
+				for (let i = 2; i < 4; i++) {
+					for (let j = 0; j < 2; j++) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultThreeFrame = getThreeFrame(table);
+			document.write(`Cума в третій області = ${resultThreeFrame} <br>`);
+			// ====================================================================
+			function getFourFrame(table) {
+				let sum = 0;
+				for (let i = 2; i < 4; i++) {
+					for (let j = 2; j < 4; j++) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultFourFrame = getFourFrame(table);
+			document.write(`Cума в четвертій області = ${resultFourFrame} <br>`);
+			// ====================================================================
+			function getEvenLines(table) {
+				let sum = 0;
+				for (let i = 1; i < 4; i = i + 2) {
+					for (let j = 0; j < table.length; j++) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultEvenLines = getEvenLines(table);
+			document.write(`Сума парних рядків: ${resultEvenLines} <br>`);
+			// ====================================================================
+			function getOddColumns(table) {
+				let sum = 0;
+				for (let i = 0; i < table.length; i++) {
+					for (let j = 0; j < table.length; j = j + 2) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultGetOddColumns = getOddColumns(table);
+			document.write(`Суму непарних стовпців: ${resultGetOddColumns} <br>`);
+
+			// ====================================================================
+			function getEvenLinesOddColumsElement(table) {
+				let sum = 0;
+				for (let i = 1; i < table.length; i = i + 2) {
+					for (let j = 0; j < table.length; j = j + 2) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultEvenLinesOddColums = getEvenLinesOddColumsElement(table);
+			document.write(`У парних рядках – непарні стовпці: ${resultEvenLinesOddColums} <br>`);
+			// ====================================================================
+			function getOddLinesEvenColumnsElement(table) {
+				let sum = 0;
+				for (let i = 0; i < table.length; i = i + 2) {
+					for (let j = 1; j < table.length; j = j + 2) {
+						sum += table[i][j];
+					}
+				}
+				return sum;
+			}
+			const resultOddLinesEvenColumnsElement = getOddLinesEvenColumnsElement(table);
+			document.write(`У непарних – парні: ${resultOddLinesEvenColumnsElement} <br>`);
+		</script>
+	</body>
+</html>

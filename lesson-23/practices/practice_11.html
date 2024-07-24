@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 11</title>
+	</head>
+	<body>
+		<h3>Задача 11. Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи є це день вихідним</h3>
+		<script>
+			let userInput = prompt('Введіть номер дня щоб дізнатись чи є він вихідним', '');
+
+			// Рішення з використання регулярних виразів
+			let testWorkDay = /(mon|tue|wed|thu|fri|1|2|3|4|5)/gi;
+			let testDayOff = /(sat|sun|0|6)/gi;
+			let workDay = testWorkDay.test(userInput);
+			let dayOff = testDayOff.test(userInput);
+
+			if (workDay) document.write(`Робочий день`);
+			if (dayOff) document.write(`Вихідний день`);
+
+			// Рішення з використання switch
+			let result;
+			switch (userInput) {
+				case '1':
+				case '2':
+				case '3':
+				case '4':
+				case '5':
+				case 'mon':
+				case 'tue':
+				case 'wed':
+				case 'thu':
+				case 'fri':
+					result = 'Робочий';
+					break;
+				case '0':
+				case '6':
+				case 'sat':
+				case 'sun':
+					result = 'Вихідний';
+				default:
+					result = 'Некоректне введення';
+			}
+			console.log(result);
+		</script>
+	</body>
+</html>

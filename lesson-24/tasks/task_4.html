@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+	</head>
+	<body>
+		<h3>Задача 4. Вводиться велике число. Кожні 3 розряди відділяти пробілом. 7457896524 -> 7 457 896 524</h3>
+		<script>
+			let str = prompt('Введіть число', '7457896524');
+			console.log('example:', str);
+
+			let regex = /\B(?=(\d{3})+(?!\d))/g;
+			// \B означає "не на межі слова", щоб уникнути вставки пробілу на початку числа.
+			// (?=(\d{3})+(?!\d)) використовує позитивний погляд вперед (positive lookahead), щоб знайти позиції перед кожною групою з трьох цифр, яка не є в кінці рядка.І
+
+			let newStr = str.replace(regex, ' ');
+			console.log('newStr:', newStr);
+		</script>
+	</body>
+</html>

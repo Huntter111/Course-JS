@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+
+		<title>Lesson Tasks</title>
+	</head>
+	<body>
+		<!-- ? Введіть мову яка буде виводитись "ua" "en"  // ========================================================================================== -->
+		<!-- <script>
+			function getGreeting(lang) {
+				let result;
+				switch (lang) {
+					case 'ua':
+						result = `Ваша мова Українська`;
+
+						break;
+					case 'en':
+						result = `Ваша мова Англійська`;
+
+						break;
+
+					default:
+						result = `Error`;
+						break;
+				}
+				return result;
+			}
+         let resultLanguage = prompt('Введіть мову на якій хочете продовжити "ua", "en"', 'ua');
+         const message = getGreeting(resultLanguage);
+         document.write(`${message}`);
+      </script>  -->
+		<!-- ? Задача двоє гравців кидають кубик і визначається сумарна кількість балів. Визначити переможця!   // ========================================================================================== -->
+		<!-- <script>
+			let result;
+			function getRandomNumber(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			}
+
+			let userScoreFirst = getRandomNumber(1, 6) + getRandomNumber(1, 6);
+			let userScoreSecond = getRandomNumber(1, 6) + getRandomNumber(1, 6);
+
+			if (userScoreFirst > userScoreSecond) {
+				result = `Виграв перший гравець`;
+			} else if (userScoreFirst < userScoreSecond) {
+				result = `Виграв другий гравець`;
+			} else result = `Нічия`;
+			document.write(`${result}. <br>Перший гравець = ${userScoreFirst}, другий гравець = ${userScoreSecond}`);
+		</script> -->
+		<!-- ? Обчислити S=Max(a,b) + Min(c,d) + Max(a,c)  // ========================================================================================== -->
+		<!-- <script>
+			function getMax(x1, x2) {
+				return x1 > x2 ? x1 : x2;
+			}
+			function getMin(x1, x2) {
+				return x1 < x2 ? x1 : x2;
+			}
+			// Ввести змінні a,b,c,d
+			let a = parseFloat(prompt('Введіть число a', '2'));
+			let b = parseFloat(prompt('Введіть число b', '4'));
+			let c = parseFloat(prompt('Введіть число c', '1'));
+			let d = parseFloat(prompt('Введіть число d', '22'));
+
+			let m1 = getMax(a, b);
+			let m2 = getMin(c, d);
+			let m3 = getMax(a, c);
+
+			const s = m1 + m2 + m3;
+			const S = getMax(a, b) + getMin(c, d) + getMax(a, c);
+			document.write(`Сума чисело = ${s}. Інший розв'язок = ${S}`);
+		</script> -->
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

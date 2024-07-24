@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>task6</title>
+	</head>
+	<body>
+		<h2>
+			Скласти алгоритм, який обчислює цілу і дробову частину даного числа х. Наприклад: число 23,56 => ціла: 23,
+			дробова: 0,56.
+		</h2>
+		<script>
+			let userNumber = parseFloat(prompt('Введіть будь-яке число', '23.56'));
+			console.log('🚀 ~ userNumber:', userNumber);
+
+			let integerNumber = Math.floor(userNumber);
+			console.log('🚀 ~ integerNumber:', integerNumber);
+
+			let fractionalPartNumber = userNumber - integerNumber;
+
+			document.write(`Ціла частина = ${integerNumber}, дробова частина = ${fractionalPartNumber.toFixed(2)}`);
+		</script>
+	</body>
+</html>

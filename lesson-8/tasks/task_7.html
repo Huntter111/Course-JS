@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 7</title>
+	</head>
+	<body>
+		<h3>
+			Задача 7. Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+			<ul>
+				<li>за весь рік;</li>
+				<li>у першій половині року;</li>
+				<li>у другій половині року;</li>
+				<li>за літо;</li>
+				<li>за ІІ квартал;</li>
+				<li>за парні місяці (з парними номерами);</li>
+				<li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+			</ul>
+		</h3>
+		<style></style>
+		<script>
+			// function getRandomNumber(minV, maxV) {
+			// 	return minV + Math.floor(Math.random() * (maxV - minV + 1));
+			// }
+			// function getRandomArray(valueNumer, minV, maxV) {
+			// 	const arr = new Array(valueNumer).fill(0).map(() => getRandomNumber(minV, maxV));
+			// 	return arr;
+			// }
+			// let paymentsArray = getRandomArray(12, 100, 1000);
+			// console.log(paymentsArray);
+
+			// function getPayment(arr, startMonth, endMonth) {
+			// 	let sum = 0;
+			// 	for (let month = startMonth; month <= endMonth; month++) {
+			// 		sum += arr[month - 1];
+			// 	}
+			// 	return sum;
+			// }
+			// let resultSum1 = getPayment(paymentsArray, 1, 12);
+			// console.log(resultSum1);
+			// let resultSum2 = getPayment(paymentsArray, 1, 6);
+			// console.log(resultSum2);
+			let arrPayments = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
+			function getPaymentsSum(arrPayments, startMonth, endMonth) {
+				let sumPayments = 0;
+				for (let i = startMonth; i <= endMonth; i++) {
+					sumPayments += arrPayments[i - 1];
+				}
+				return sumPayments;
+			}
+			function getSumEvenMonth(arrPayments) {
+				let sumEvenMonth = 0;
+				for (let j = 1; j <= 12; j++) {
+					if ((j - 1) % 2 === 0) {
+						sumEvenMonth += arrPayments[j];
+						// console.log(`За кожен міс ${sumEvenMonth} ${j}`);
+					}
+				}
+				return sumEvenMonth;
+			}
+			function getStartMothSeason(arrPayments) {
+				let sumStartMothSeason = 0;
+				for (let m = 3; m <= arrPayments.length; m += 3) {
+					sumStartMothSeason += arrPayments[m - 1];
+					// console.log(sumStartMothSeason);
+				}
+				return sumStartMothSeason;
+			}
+			let result = document.write(`
+			   За увесь рік заплчено: ${getPaymentsSum(arrPayments, 1, 12)} грн. <br>
+			   За перше півріччя заплачено: ${getPaymentsSum(arrPayments, 1, 6)} <br>
+			   За друге півріччя заплачено: ${getPaymentsSum(arrPayments, 7, 12)} <br>
+			   За літо півріччя заплачено: ${getPaymentsSum(arrPayments, 6, 8)} <br>
+			   За ІІ квартал заплачено: ${getPaymentsSum(arrPayments, 1, 12)} <br>
+			   За парні місяці заплачено: ${getSumEvenMonth(arrPayments)} <br>
+			   За місяці, які є початковими у сезоні (весна, літо, осінь, зима): ${getStartMothSeason(arrPayments)} <br>
+			   `);
+		</script>
+	</body>
+</html>

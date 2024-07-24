@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 15</title>
+		<script>
+			let str = 'I call 0-800-500-415 every day, but 0-800-500-789 is better';
+
+			if (/\D0-800-\d{3}-\d{3}\D/.test(str)) {
+				let list = str.match(/\D0-800-\d{3}-\d{3}\D/g);
+				console.log('list:', list);
+				alert(list);
+			} else alert('no');
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 15. Дано повідомлення від користувача. Визначити, чи є у середині (не на початку і не у кінці) повідомлення номер телефону форматі
+			«0-800-***-***» (приклад: 0-800-500-415).
+		</h3>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 3</title>
+	</head>
+	<body>
+		<h3>Дано повідомлення. Отримати окремі речення (речення закінчується якимось розділовим знаком)</h3>
+		<script>
+			let str = 'Hello! My names is Vladimir. Can I help you?';
+			console.log('example:', str);
+			let res = str.match(/[^.!?]+[.!?]+/g);
+			console.log('res:', res);
+			alert(res);
+		</script>
+	</body>
+</html>

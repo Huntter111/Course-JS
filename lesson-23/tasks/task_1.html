@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+		<script>
+			function getHoliday(date, userHolidayDays) {
+				return new Date(date.setDate(date.getDate() + userHolidayDays));
+			}
+
+			let userHolidayDays = parseInt(prompt('Введіть кількість днів відпустки', ''));
+			const currentDate = new Date();
+
+			const answer = getHoliday(currentDate, userHolidayDays);
+			console.log('answer:', answer);
+			alert(`Ви маєте повернутись до роботи ${answer}`);
+		</script>
+	</head>
+	<body>
+		<h3>Задача 1. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.</h3>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>
+			Задача 5. Дано послідовність оцінок учня. Підрахувати кількість: 1) двійок 2) кількість хороших оцінок (добре, відмінно); 3) кількість оцінок, які
+			нижче середнього.
+		</h3>
+		<script>
+			function getRandomNumber(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+			// R = 20
+			function getArray(min, max, R = 20) {
+				let arrEvaluetions = [];
+
+				for (let i = 0; i < R; i++) {
+					const randomNum = getRandomNumber(min, max);
+					arrEvaluetions.push(randomNum);
+				}
+				return arrEvaluetions;
+			}
+
+			let array = getArray(2, 12, 30);
+			console.log('array:', array);
+
+			function getCounterEvaluations(arr) {
+				let result;
+				let counterDeuce = 0;
+				let counterBestEvaluations = 0;
+				let counterBelowAvarage = 0;
+
+				for (let i = 0; i < arr.length; i++) {
+					const element = arr[i];
+					if (element > 1 && element <= 4) counterDeuce++;
+					else if (element <= 9) counterBestEvaluations++;
+					else counterBelowAvarage++;
+				}
+				result = `Кількість двійок = ${counterDeuce}, Кількість оцінок нижче середнього = ${counterBestEvaluations}, Кількість хороших оцінок = ${counterBelowAvarage}`;
+				return result;
+			}
+			document.write(`${getCounterEvaluations(array)}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

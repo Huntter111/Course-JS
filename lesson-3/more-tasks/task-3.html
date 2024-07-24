@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>More Task 3</title>
+	</head>
+	<body>
+		<h3>
+			На роботу компаніє приймає працівників від 32 до 45 років. 3 клавіатури вводиться вік претендента. З'ясувати,
+			чи може він бути прийнятим на роботу.
+		</h3>
+		<script>
+			let userAge = parseInt(prompt('Введіть ваш вік', '35'));
+			const minAgeValue = 32;
+			const maxAgeValue = 45;
+			if (userAge >= minAgeValue && userAge <= maxAgeValue) {
+				document.write(`Ви нам підходите`);
+			} else {
+				document.write(`Ви нам НЕ підходите`);
+			}
+		</script>
+	</body>
+</html>

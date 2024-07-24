@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>
+			<ul>
+				<li>1) загальну вартість усіх сайтів</li>
+				<li>2) кількість сайтів, що було зроблено між 2000 та 2009 рр.</li>
+				<li>3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000</li>
+				<li>4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</li>
+				<li>5) знайти рік, коли прибуток був найбільшим</li>
+				<li>6) упорядкувати список за спаданням прибутку</li>
+				<li>7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</li>
+			</ul>
+		</h3>
+
+		<script>
+			let companies = [
+				{
+					name: 'Future Tech Solutions',
+					owner: 'Alice Brown',
+					sponsors: [
+						{
+							lastName: 'Taylor',
+							firstName: 'James',
+							investmentAmount: 40000,
+						},
+						{
+							lastName: 'Anderson',
+							firstName: 'Laura',
+							investmentAmount: 55000,
+						},
+						{
+							lastName: 'Thomas',
+							firstName: 'David',
+							investmentAmount: 70000,
+						},
+					],
+					releaseYear: 2015,
+					websiteValue: 8000,
+				},
+				{
+					name: 'Tech Innovations LLC',
+					owner: 'John Doe',
+					sponsors: [
+						{
+							lastName: 'Smith',
+							firstName: 'Anna',
+							investmentAmount: 50000,
+						},
+						{
+							lastName: 'Johnson',
+							firstName: 'Robert',
+							investmentAmount: 75000,
+						},
+						{
+							lastName: 'Williams',
+							firstName: 'Emily',
+							investmentAmount: 60000,
+						},
+					],
+					releaseYear: 2002,
+					websiteValue: 150000,
+				},
+				{
+					name: 'Innovative Web Solutions',
+					owner: 'Michael Green',
+					sponsors: [
+						{
+							lastName: 'Harris',
+							firstName: 'Emma',
+							investmentAmount: 1000,
+						},
+						{
+							lastName: 'Clark',
+							firstName: 'Oliver',
+							investmentAmount: 80000,
+						},
+						{
+							lastName: 'Lewis',
+							firstName: 'Sophia',
+							investmentAmount: 5000,
+						},
+					],
+					releaseYear: 2008,
+					websiteValue: 300000,
+				},
+			];
+			// Всі вкладення інвесторів за всі сайти
+			function getTotalSum(companies) {
+				let totalScore = companies.reduce((prevSum, company) => {
+					let companySum = company.sponsors.reduce((prevSum, sponsor) => prevSum + sponsor.investmentAmount, 0);
+					return prevSum + companySum;
+				}, 0);
+				return totalScore;
+			}
+
+			document.write(`0. Всі вкладення інвесторів за всі сайти = ${getScoreWebSites(companies)} <br>`);
+			//================================================================================
+			// 1) загальну вартість усіх сайтів
+			function getScoreWebSites(companies) {
+				let totalPriceWebsites = companies.reduce((prevScore, company) => prevScore + company.websiteValue, 0);
+				return totalPriceWebsites;
+			}
+			document.write(`1. Загальну вартість усіх сайтів = ${getScoreWebSites(companies)} <br> `);
+			//================================================================================
+			// 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+			function getScoreWebsitesAfter2000to2009(companies) {
+				const scoreWebsites = companies.reduce(
+					(prevValue, company) => (company.releaseYear >= 2000 && company.releaseYear <= 2009 ? prevValue + 1 : prevValue),
+					0,
+				);
+				return scoreWebsites;
+			}
+
+			console.log('getScoreWebsitesAfter2000to2009(companies):', getScoreWebsitesAfter2000to2009(companies));
+			document.write(`2. Кількість сайтів, що було зроблено між 2000 та 2009 рр. = ${getScoreWebsitesAfter2000to2009(companies)} <br>`);
+			//================================================================================
+			// 3) Кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+			function getScoreInvestment(companies) {
+				const score = companies.reduce((scoreCompany, company) => {
+					let totalSum = company.sponsors.reduce((prevSum, sponsor) => prevSum + sponsor.investmentAmount, 0);
+					if (totalSum > 100000) scoreCompany += 1;
+					return scoreCompany;
+				}, 0);
+				return score;
+			}
+			document.write(`3. Кількість сайтів, де сума спонсорських вкладень була більшою за 100000 = ${getScoreInvestment(companies)} <br>`);
+			//================================================================================
+			// 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+			function getArraySponsors(companies) {
+				let sponsorsData = [];
+				for (const key in companies) {
+					if (Object.hasOwnProperty.call(companies, key)) {
+						const element = companies[key];
+
+						let sponsor = element.sponsors;
+						console.log('sponsor:', sponsor);
+						sponsorsData.push(sponsor);
+					}
+				}
+				return sponsorsData;
+			}
+			getArraySponsors(companies);
+			let sponsors = getArraySponsors(companies);
+			console.log('getArraySponsors(companies):', getArraySponsors(companies));
+			// document.write(`Масив спонсорів = ${JSON.stringify(sponsors)} <br>`);
+			//================================================================================
+			// 5) знайти рік, коли прибуток був найбільшим
+			function getYearWhenScoreMax(companies) {
+				let max = companies[0].websiteValue;
+				let year;
+				console.log('max:', max);
+				for (const company of companies) {
+					if (company.websiteValue > max) {
+						max = company.websiteValue;
+						year = company.releaseYear;
+					}
+				}
+				console.log('year:', year);
+				console.log('max:', max);
+				return year;
+			}
+			document.write(`5. З найти рік, коли прибуток був найбільшим = ${getYearWhenScoreMax(companies)}`);
+			//================================================================================
+			// 6) упорядкувати список за спаданням прибутку
+			function sortList(companies) {
+				return companies.sort((el1, el2) => {
+					return el2.websiteValue - el1.websiteValue;
+				});
+			}
+			let sortedCompanies = sortList(companies);
+			console.log('sortedCompanies:', sortedCompanies);
+
+			//================================================================================
+			// 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+			function getLists(companies) {
+				let websiteLess10000 = companies.filter(company => company.websiteValue <= 10000);
+				let websiteMore10000 = companies.filter(company => company.websiteValue > 10000);
+				return { websiteLess10000, websiteMore10000 };
+			}
+			let lists = getLists(companies);
+			document.write(`${lists.websiteLess10000},${lists.websiteMore10000}, `);
+			console.log('lists :', lists);
+		</script>
+	</body>
+</html>

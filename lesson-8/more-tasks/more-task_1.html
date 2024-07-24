@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="../../img/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="../../img/android-chrome-512x512.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png" />
+
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>
+			Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+			хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+		</h3>
+		<script>
+			let arrRating = [5, 4, 5, 4, 5, 5, 2, 4, 4];
+			function getAvaregeRating(arr) {
+				let sumRating = 0;
+				let counterRating = 0;
+				for (let i = 0; i < arr.length; i++) {
+					sumRating += arr[i];
+					counterRating++;
+				}
+				return sumRating / arr.length;
+			}
+			function isRating(arr) {
+				let result;
+				let avarageRating = getAvaregeRating(arr);
+
+				if (avarageRating >= 4.5) {
+					result = 'Відмінник';
+				} else if (arr.includes(2)) {
+					result = 'Двійочник';
+				} else if (arr.includes(3)) {
+					result = 'Трійочник';
+				} else result = 'Хорошист';
+				return result;
+			}
+
+			document.write(`Учень: ${isRating(arrRating)}`);
+		</script>
+	</body>
+	<style>
+		body {
+			padding: 2rem;
+		}
+	</style>
+</html>

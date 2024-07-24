@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 4</title>
+		<style>
+			#container {
+				position: relative;
+				height: 90vh;
+				width: 100%;
+			}
+			.star {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				top: 10%;
+				left: 10%;
+				object-fit: cover;
+				background-color: gold;
+				border-radius: 50%;
+				/* transition: width 1s, height 1s; */
+			}
+		</style>
+		<script>
+			class Star {
+				constructor(valueStars) {
+					this.valueStars = valueStars;
+					this.starsArray = [];
+					this.listBacgroundColor = ['green', 'coral', 'yellow', 'aqua', 'gold'];
+				}
+				getRandomColor() {
+					const randomIndex = Math.floor(Math.random() * this.listBacgroundColor.length);
+					const randomColor = this.listBacgroundColor[randomIndex];
+					return randomColor;
+				}
+				getRandomNum(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1));
+				}
+				generateStar(container) {
+					const star = document.createElement('div');
+					star.className = 'star';
+					this.randomNumber = this.getRandomNum(5, 40);
+					star.style.width = this.randomNumber + 'px';
+					star.style.height = this.randomNumber + 'px';
+					// star.style.top = this.getRandomNum(30, container.clientHeight) + 'px';
+					// star.style.left = this.getRandomNum(30, container.clientWidth) + 'px';
+					star.style.top = this.getRandomNum(30, window.innerHeight) + 'px';
+					star.style.left = this.getRandomNum(30, window.innerWidth) + 'px';
+
+					star.style.backgroundColor = this.getRandomColor();
+					star.style.borderRadius = '50%';
+
+					const speed = this.getRandomNum(3, 5); // випадкова швидкість
+					const randomInterval = this.getRandomNum(50, 100);
+					const maxWidth = this.getRandomNum(120, 150);
+					this.starsArray.push({ starDiv: star, speed: speed, interval: randomInterval, maxWidth: maxWidth });
+					container.append(star);
+				}
+				render(containerId) {
+					const targetContainer = document.getElementById(containerId);
+					for (let i = 0; i < this.valueStars; i++) {
+						this.generateStar(targetContainer);
+					}
+					this.starsArray.forEach(star => {
+						setInterval(() => {
+							const width = parseInt(star.starDiv.style.width);
+							const height = parseInt(star.starDiv.style.height);
+							if (width >= star.maxWidth) {
+								star.starDiv.style.width = this.randomNumber + 'px';
+								star.starDiv.style.height = this.randomNumber + 'px';
+
+								star.starDiv.style.top = this.getRandomNum(30, window.innerHeight - 150) + 'px';
+								star.starDiv.style.left = this.getRandomNum(30, window.innerWidth - 150) + 'px';
+							} else {
+								star.starDiv.style.width = width + star.speed + 'px';
+								star.starDiv.style.height = height + star.speed + 'px';
+							}
+						}, star.interval);
+					});
+				}
+			}
+
+			window.onload = function () {
+				const stars = new Star(40);
+				stars.render('container');
+				console.log('stars:', stars);
+				stars.getRandomColor();
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 4. Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка з певним кроком і інтервалом збільшується
+			від мінімального до максимального розміру. Як тільки досягнути максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+		</h3>
+		<div id="container"></div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 1</title>
+	</head>
+	<body>
+		<h3>
+			1. Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів
+			заповнених нулями.
+		</h3>
+		<style>
+			body {
+				font-size: 1.5rem;
+			}
+		</style>
+		<script>
+			const userNumber = parseInt(prompt('Введіть кількість елементів для заповнення', '20'));
+			function getArrayFill(number) {
+				let arr = new Array(number);
+				arr.fill(0);
+				console.log(arr);
+				return arr;
+			}
+			let result = document.write(`Масив з ${userNumber} числами заповнений нулями: ${getArrayFill(userNumber)}`);
+		</script>
+	</body>
+</html>

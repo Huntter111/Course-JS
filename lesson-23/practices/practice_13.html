@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 13</title>
+		<script>
+			let str = 'Іван Opel купив , а Оленка Audi. Їх товариш купив Mercedes. На підприємстві ж є Toyota, Nissan та Volkswagen';
+			if (/(BMW|Audi)/.test(str)) {
+				alert('ok');
+				let autoList = str.match(/(BMW|Audi|Nissan)/g);
+				alert(autoList);
+			} else alert('no such cars');
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача 13. Рядок тексту, у якому згадуються різні моделі автомобілів. «Іван Opel купив , а Оленка Audi. Їх товариш купив Mercedes. На підприємстві ж є
+			Toyota, Nissan та Volkswagen» Визначити чи є «BMW» там або «Audi». Та сформувати список усіх таких авто. Задача. Дано перелік адрес ресурсів.
+		</h3>
+	</body>
+</html>

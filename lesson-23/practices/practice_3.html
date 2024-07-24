@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 3</title>
+		<script>
+			function getSeason(date) {
+				const month = date.getMonth() + 1;
+				let season;
+				switch (month) {
+					case 1:
+					case 2:
+					case 12:
+						season = 'Winter';
+						break;
+					case 3:
+					case 4:
+					case 5:
+						season = 'Spring';
+						break;
+					case 6:
+					case 7:
+					case 8:
+						season = 'Summer';
+						break;
+					case 9:
+					case 10:
+					case 11:
+						'Fall';
+						break;
+				}
+				return season;
+			}
+			const currentDate = new Date();
+			const message = getSeason(currentDate);
+			alert(message);
+		</script>
+	</head>
+	<body>
+		<h3>Задача 3. Визначити поточну пору року</h3>
+	</body>
+</html>

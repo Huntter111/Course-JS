@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 2</title>
+	</head>
+	<body>
+		<h3>
+			Задача 2. Створити об’єкт «Авто».
+
+			<ul>
+				<li>Поля(властивості)</li>
+				<li>
+					<ul>
+						<li>Марка</li>
+						<li>Розмір бака</li>
+						<li>Кількість наявних літрів</li>
+						<li>Кількість місць</li>
+						<li>Кількість пасажирів</li>
+					</ul>
+				</li>
+				<li>Методи (дії)</li>
+				<li>
+					<ul>
+						<li>Заправка на вказану кількість літрів</li>
+						<li>Виведення кількості пасажирів</li>
+						<li>Додавання пасажирів</li>
+						<li>Висадка пасажирів</li>
+					</ul>
+				</li>
+			</ul>
+		</h3>
+		<script>
+			const car = {
+				mark: 'Audi',
+				tankSize: 20,
+				litersAvailable: 15,
+				seats: 5,
+				passengers: 4,
+
+				// Metods
+
+				gasStation: function (litters) {
+					// if (this.litersAvailable + litters <= this.tankSize) {
+					// 	this.litersAvailable += litters;
+					// 	return `У баці зараз ${this.litersAvailable}`;
+					// } else {
+					// 	return `Не можна заправити більше, ніж ${this.tankSize}`;
+					// }
+					return this.tankSize - this.litersAvailable;
+				},
+				toString: function () {
+					return `${this.passengers}`;
+				},
+				addPassengers: function (addPeople) {
+					let newPassengers;
+					if (addPeople > 1) {
+						newPassengers = this.passengers += addPeople;
+					}
+					return newPassengers;
+				},
+				disPassengers: function (disPeople) {
+					let disPassengers;
+					if (disPeople > 1) {
+						disPassengers = this.passengers -= disPeople;
+					}
+					return disPassengers;
+				},
+			};
+			let result = document.write(`Заправка на вказану кількість літрів: ${car.gasStation()}; <br>
+			         Виведення кількості пасажирів ${car.toString()}; <br>
+			      Додавання пасажирів ${car.addPassengers(2)}; <br>
+			      Висадка пасажирів ${car.disPassengers(3)}; <br>
+			      `);
+			console.log('result:', result);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 5</title>
+	</head>
+	<body>
+		<h3>Задача 5. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.</h3>
+		<script>
+			let ages = [16, 17, 15, 18, 17, 16, 14, 19, 15, 17];
+			console.log('example:', ages);
+
+			let map = new Map();
+			let max = ages[0];
+			for (const el of ages) {
+				if (max < el) max = el;
+				let elCount = map.get(el) || 0;
+				map.set(el, elCount + 1);
+			}
+
+			console.log('max:', max);
+			console.log('map:', map);
+		</script>
+	</body>
+</html>

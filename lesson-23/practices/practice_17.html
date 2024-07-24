@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 17</title>
+	</head>
+	<body>
+		<h3>
+			Задача 17. Дано масив імен. Вирівняти усі імена за довжиною найбільшого. <br />
+			Задача. Користувач вводить ім’я. Створити рядок з 15 повторень цього рядка.
+		</h3>
+		<script>
+			const arr = [
+				'Іра',
+				'Максим',
+				'Олег',
+				'Артур',
+				'Андрій',
+				'Георгій',
+				'Гриша',
+				'Віталій',
+				'Антон',
+				'Володимир',
+				'Сергій',
+				'Влад',
+				'Паша',
+				'Микола',
+				'Микита',
+				'Тімур',
+				'Ян',
+				'Янтарка',
+			];
+
+			function getMaxLengthWord(arr) {
+				const maxLength = Math.max(...arr.map(name => name.length));
+				console.log('maxLength:', maxLength);
+				// Створили новий масив який відсортований від найдовшого до короткого елемента також додано відступи по максимальній довжині елемента в масиві
+				const arrSort = arr.sort((el1, el2) => el2.length - el1.length).map(el => el.padEnd(maxLength));
+
+				console.log('arrSort:', arrSort);
+				return arrSort;
+			}
+			document.write(`Відсортований і вирівняний масив імен ${getMaxLengthWord(arr)} <br>`);
+
+			function getRepeat(valueRepeat, userInput) {
+				let repeats = userInput.repeat(valueRepeat);
+				console.log('getRepeat ~ repeats:', repeats);
+				return repeats;
+			}
+			let userInput = prompt("Введіть ваше ім'я", '');
+			console.log(typeof userInput);
+			const valueRepeat = 15;
+			document.write(`15 повторень імені ${getRepeat(valueRepeat, userInput)}`);
+		</script>
+	</body>
+</html>

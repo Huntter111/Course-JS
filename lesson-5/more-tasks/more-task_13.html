@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks 13</title>
+	</head>
+	<body>
+		<h3>
+			13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів
+			користувач намагається потопити корабель.
+		</h3>
+		<script>
+			let result;
+			let fieldLenght = parseInt(prompt('Введіть довжина поля', '5'));
+			let fieldWidth = parseInt(prompt('Введіть ширину поля', '5'));
+			let valueAmmunition = parseInt(prompt('Введіть кількість снарядів для ураження корабля', '5'));
+			const shipRow = Math.floor(Math.random() * fieldLenght);
+			console.log('shipRow:', shipRow);
+			const shipColumn = Math.floor(Math.random() * fieldWidth);
+			console.log('shipColumn :', shipColumn);
+
+			for (let i = 0; i < valueAmmunition; i++) {
+				let userRow = parseInt(prompt('Введіть координати Х', '3'));
+				let userColumn = parseInt(prompt('Введіть координати Y', '3'));
+				if (shipRow === userRow && shipColumn === userColumn) {
+					result = `Ура ви вразили ціль`;
+					alert(`Ура ви вразили ціль`);
+					break;
+				} else {
+					result = `Нажаль ви не вразили ціль`;
+					alert(`Нажаль, промах. Спробуйте ще раз. Залишилось снарядів: ${valueAmmunition - i - 1} шт.`);
+				}
+			}
+			document.write(
+				`Корабль був розташований по X у "${shipRow}" позиції та по Y у "${shipColumn}" позиції. ${result}`,
+			);
+		</script>
+	</body>
+	<style></style>
+</html>

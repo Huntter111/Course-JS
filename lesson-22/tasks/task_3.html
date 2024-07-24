@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task 3</title>
+		<style></style>
+		<script>
+			class IsNotNumberError extends Error {
+				constructor() {
+					super();
+					this.message = 'Має бути числом';
+					this.name = 'IsNotNumberError';
+				}
+			}
+
+			class IsMonthRangeError extends Error {
+				constructor() {
+					super();
+					this.message = 'Місяці мають бути від 1 до 12';
+					this.name = 'IsMonthRangeError';
+				}
+			}
+			class IsMonthHolidayError extends Error {
+				constructor() {
+					super();
+					this.message = 'На жаль зараз канікули. Всі вчителя у відпустці';
+					this.name = 'IsMonthHolidayError';
+				}
+			}
+			class IsRatingLowError extends Error {
+				constructor() {
+					super();
+					this.message = 'Оцінка низька';
+					this.name = 'IsRatingLowError';
+				}
+			}
+			class IsLastMonthInSemesterError extends Error {
+				constructor() {
+					super();
+					this.message = 'Останній місяць семестру';
+					this.name = 'IsLastMonthInSemesterError';
+				}
+			}
+			function validate() {
+				let userMonth = parseInt(document.forms[0].elements[0].value);
+				let userRating = parseInt(document.forms[0].elements[1].value);
+				let monthError = '';
+				let ratingError = '';
+				try {
+					if (isNaN(userMonth)) throw new IsNotNumberError();
+					if (userMonth < 1 || userMonth > 12) throw new IsMonthRangeError();
+					if (userMonth >= 6 && userMonth <= 8) throw new IsMonthHolidayError();
+				} catch (err) {
+					if (err instanceof IsNotNumberError) {
+						monthError = err.message;
+						console.log(err.message);
+					} else if (err instanceof IsMonthRangeError || err instanceof IsMonthHolidayError) {
+						monthError = err.message;
+						console.log(err.message);
+					}
+				}
+				try {
+					if (isNaN(userRating)) throw new IsNotNumberError();
+					if (userRating < 0 || userRating > 100) throw new IsNotNumberError();
+					if (userMonth === 5 || userMonth === 12) throw new IsLastMonthInSemesterError();
+					if (userRating < 40) throw new IsRatingLowError();
+				} catch (err) {
+					if (err instanceof IsNotNumberError) {
+						ratingError = err.message;
+					} else if (err instanceof IsRatingLowError) {
+						ratingError = err.message;
+						// document.forms[0].elements[1].value = '';
+					} else if (err instanceof IsLastMonthInSemesterError) {
+						monthError = err.message;
+					}
+				}
+				answerFirst.innerText = monthError;
+				answerSecond.innerText = ratingError;
+				return monthError === '' && ratingError === '';
+			}
+
+			window.onload = function () {
+				document.forms[0].elements[2].onclick = validate;
+				document.getElementById('check-answer').onclick = function (e) {
+					e.preventDefault();
+					validate();
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<h3>
+			Задача. Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є числом, чи від 1 до
+			100). <br />
+			Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок зробити з використанням
+			відповідних класів.
+		</h3>
+		<div class="container">
+			<form>
+				Місяць навчання: <input type="text" /> <br />
+				Оцінка: <input type="number" /> <br />
+				<button type="submit" id="check-answer">Check</button>
+			</form>
+			<div class="container-answer">
+				<span id="answerFirst"></span> <br />
+				<span id="answerSecond"></span>
+			</div>
+		</div>
+	</body>
+</html>

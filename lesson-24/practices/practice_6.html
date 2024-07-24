@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Practice 6</title>
+		<script>
+			function saveUserData() {
+				let name = document.getElementById('userName').value;
+				let age = document.getElementById('userAge').value;
+
+				let user = {
+					name,
+					age,
+				};
+				localStorage.setItem('user', JSON.stringify(user));
+			}
+			window.onload = function () {
+				if (localStorage.getItem('user')) {
+					let user = JSON.parse(localStorage.getItem('user'));
+					alert(`Hello ${user.name}, You are ${user.age}`);
+				}
+				document.getElementById('btn').onclick = saveUserData;
+			};
+		</script>
+	</head>
+	<body>
+		<h3>Задача 6. Зберегти ім'я користувача і Прізвище в Local Storage</h3>
+		<div>
+			<label>
+				Name:
+				<input type="text" id="userName" />
+			</label>
+		</div>
+		<div>
+			<label>
+				Age:
+				<input type="text" id="userAge" />
+			</label>
+		</div>
+		<button id="btn">Save user</button>
+	</body>
+</html>

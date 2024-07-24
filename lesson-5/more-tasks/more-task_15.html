@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lesson tasks 15</title>
+	</head>
+	<body>
+		<h3>Задача 15. Користувача поступово вводить показники температури протягом року. Знайти середню температуру.</h3>
+
+		<script>
+			let userNumberTemperature;
+			let sumTemperature = 0;
+			let counter = 0;
+
+			let result;
+			for (let i = 0; i < 12; i++) {
+				userNumberTemperature = parseFloat(prompt(`Введіть показники температури за ${i + 1} місяць `, '22'));
+				counter++;
+				console.log('counter:', counter);
+				sumTemperature += userNumberTemperature;
+				console.log('sumTemperature:', sumTemperature);
+			}
+
+			result = sumTemperature / counter;
+			document.write(`Сердня температура = ${result} градусів`);
+		</script>
+	</body>
+	<style></style>
+</html>
